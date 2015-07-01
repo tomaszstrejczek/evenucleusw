@@ -1,0 +1,5 @@
+.vs/
+src/evenucelusw/wwwroot/jspm_packages/
+src/evenucelusw/wwwroot/bin/
+src/evenucelusw/project.lock.json
+src/evenucelusw/evenucelusw.xproj.user
