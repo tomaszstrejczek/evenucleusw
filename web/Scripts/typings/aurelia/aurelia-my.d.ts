@@ -1,0 +1,2 @@
+declare module 'aurelia-my' {
+}
