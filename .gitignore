@@ -10,3 +10,5 @@ web/bin/
 evenucleusw.v12.suo
 web/web.csproj.user
 packages/
+node_modules/
+web/test/coverage/
