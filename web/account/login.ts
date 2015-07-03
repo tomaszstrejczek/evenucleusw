@@ -26,10 +26,10 @@ export class Login {
     }
 
     trylogin() {
-        if (app.state.login(this.username, this.password))
-            this.theRouter.navigate(this.destination, true);
-        else
-            alert("Access denied");
+        //if (app.state.login(this.username, this.password))
+        //    this.theRouter.navigate(this.destination, true);
+        //else
+        //    alert("Access denied");
     }
 
 } 
