@@ -6,3 +6,6 @@ src/evenucelusw/evenucelusw.xproj.user
 web/jspm_packages/
 web/obj/
 *.map
+web/bin/
+evenucleusw.v12.suo
+web/web.csproj.user

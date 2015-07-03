@@ -18,14 +18,17 @@
     <IISExpressUseClassicPipelineMode />
   </PropertyGroup>
   <ItemGroup>
-    <Content Include="app.css" />
+    <Content Include="account\login.html" />
     <Content Include="app.html" />
     <Content Include="config.js" />
     <Content Include="index.html" />
+    <Content Include="styles\styles.css" />
     <Content Include="web.config" />
     <Content Include="welcome.html" />
   </ItemGroup>
   <ItemGroup>
+    <TypeScriptCompile Include="account\app-state.ts" />
+    <TypeScriptCompile Include="account\login.ts" />
     <TypeScriptCompile Include="app.ts" />
     <TypeScriptCompile Include="main.ts" />
     <TypeScriptCompile Include="Scripts\typings\aurelia\aurelia-binding.d.ts" />
