@@ -27,6 +27,7 @@
     <Content Include="welcome.html" />
   </ItemGroup>
   <ItemGroup>
+    <TypeScriptCompile Include="account\AccountService.ts" />
     <TypeScriptCompile Include="account\app-state.ts" />
     <TypeScriptCompile Include="account\login.ts" />
     <TypeScriptCompile Include="app.ts" />
@@ -40,9 +41,11 @@
     <TypeScriptCompile Include="Scripts\typings\aurelia\aurelia-router.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\aurelia\aurelia-task-queue.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\aurelia\aurelia-templating.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\es6-promise\es6-promise.d.ts" />
     <TypeScriptCompile Include="welcome.ts" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="packages.config" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>

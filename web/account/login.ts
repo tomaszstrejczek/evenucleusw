@@ -1,6 +1,10 @@
-﻿import {Router} from "aurelia-router";
+﻿import {autoinject} from 'aurelia-framework';
+import {Router} from "aurelia-router";
 import {AppState} from "app-state";
+import {IAccountService, AccountService} from "AccountService";
 
+
+@autoinject
 export class Login {
     static inject = [Router];
 
@@ -9,7 +13,7 @@ export class Login {
     public password: string;
     public destination: string;
 
-    constructor(private theRouter: aur.Router) {
+    constructor(private theRouter: Router, private service: IAccountService) {
         this.heading = "aurelia login page";
         this.username = "Admin";
         this.password = "xxx";
