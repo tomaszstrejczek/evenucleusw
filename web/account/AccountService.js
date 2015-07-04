@@ -1,8 +1,13 @@
-export class AccountService {
-    Login(user, password) {
-        return new Promise((resolve, reject) => {
-            resolve("ok");
-        });
+export var AccountService;
+(function (AccountService_1) {
+    class AccountService {
+        constructor() {
+        }
+        Login(user, password) {
+            return new Promise((resolve, reject) => {
+                resolve("ok1");
+            });
+        }
     }
-}
-//# sourceMappingURL=AccountService.js.map
+    AccountService_1.AccountService = AccountService;
+})(AccountService || (AccountService = {}));
