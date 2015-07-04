@@ -1,0 +1,26 @@
+{
+    "compilerOptions": {
+        "target": "es6",
+        "sourceMap": true,
+        "experimentalDecorators": true
+    },
+    "files": [
+	"web/app.ts",
+	"web/main.ts",
+	"web/welcome.ts",
+	"web/account/AccountService.ts",
+	"web/account/app-state.ts",
+	"web/account/login.ts",
+	"web/tests/account.ts",
+	"web/Scripts/typings/aurelia/aurelia-binding.d.ts",
+	"web/Scripts/typings/aurelia/aurelia-dependency-injection.d.ts",
+	"web/Scripts/typings/aurelia/aurelia-framework.d.ts",
+	"web/Scripts/typings/aurelia/aurelia-loader.d.ts",
+	"web/Scripts/typings/aurelia/aurelia-metadata.d.ts",
+	"web/Scripts/typings/aurelia/aurelia-my.d.ts",
+	"web/Scripts/typings/aurelia/aurelia-router.d.ts",
+	"web/Scripts/typings/aurelia/aurelia-task-queue.d.ts",
+	"web/Scripts/typings/aurelia/aurelia-templating.d.ts",
+	"web/Scripts/typings/jasmine/jasmine.d.ts"
+    ]
+}
