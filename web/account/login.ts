@@ -4,7 +4,6 @@ import {AppState} from "app-state";
 import {IAccountService, AccountService} from "AccountService";
 
 
-@autoinject
 export class Login {
     static inject = [Router];
 

@@ -1,13 +1,13 @@
-export var AccountService;
-(function (AccountService_1) {
-    class AccountService {
-        constructor() {
-        }
-        Login(user, password) {
-            return new Promise((resolve, reject) => {
+;
+export class AccountService {
+    Login(user, password) {
+        return new Promise((resolve, reject) => {
+            if (user == "admin" && password == "admin123")
                 resolve("ok1");
-            });
-        }
+            else
+                reject("Invalid user or password");
+        });
     }
-    AccountService_1.AccountService = AccountService;
-})(AccountService || (AccountService = {}));
+}
+;
+//# sourceMappingURL=AccountService.js.map
