@@ -26,7 +26,7 @@ export class Welcome{
 
   activate(a, queryParams, c, d) {
       setTimeout(() => {
-          this._router.navigate("login", "");
+          //this._router.navigate("login", "");
       });
   }
 }

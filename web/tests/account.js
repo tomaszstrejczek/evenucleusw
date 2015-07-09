@@ -1,6 +1,10 @@
+import { inject } from "aurelia-framework";
 import { AccountService } from "../account/AccountService";
 describe("Sanity check", () => {
     var a;
+    beforeEach(() => {
+        inject();
+    });
     it("Sanity check", () => {
         a = true;
         expect(a).toBe(true);

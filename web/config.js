@@ -1,6 +1,6 @@
 System.config({
   "baseURL": "/",
-  "transpiler": "babel",
+  "transpiler": "traceur",
   "babelOptions": {
     "optional": [
       "runtime"
@@ -36,13 +36,13 @@ System.config({
     "aurelia-templating-binding": "github:aurelia/templating-binding@0.13.0",
     "aurelia-templating-resources": "github:aurelia/templating-resources@0.13.0",
     "aurelia-templating-router": "github:aurelia/templating-router@0.14.0",
-    "babel": "npm:babel-core@5.6.15",
-    "babel-runtime": "npm:babel-runtime@5.6.15",
     "bootstrap": "github:twbs/bootstrap@3.3.5",
     "core-js": "npm:core-js@0.9.18",
     "css": "github:systemjs/plugin-css@0.1.13",
     "font-awesome": "npm:font-awesome@4.3.0",
     "jasmine": "npm:jasmine@2.3.1",
+    "traceur": "github:jmcriffey/bower-traceur@0.0.88",
+    "traceur-runtime": "github:jmcriffey/bower-traceur-runtime@0.0.88",
     "github:aurelia/animator-css@0.13.0": {
       "aurelia-templating": "github:aurelia/templating@0.13.0"
     },
