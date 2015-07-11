@@ -8,8 +8,6 @@ declare var myWindow: MyWindow;
 myWindow = <MyWindow>window;
 
 declare var myApp: Application;
-myWindow.MyApp = <Application>Application.create({
-    rootElement: "#app-body"
-});
+myWindow.MyApp = <Application>Application.create();
 myApp = myWindow.MyApp;
 

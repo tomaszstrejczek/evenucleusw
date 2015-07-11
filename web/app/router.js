@@ -1,5 +1,6 @@
 myApp.Router.map(function () {
     this.resource("home", { path: "/" });
+    this.resource("characters", { path: "/characters" });
 });
 myApp.HomeRoute = Ember.Route.extend({
     model: function () {

@@ -21,28 +21,36 @@
 </head>
 <body>
 
-<nav class="navbar navbar-default">
-    <!-- Brand -->
-    <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="#">EveNucleus</a>
-    </div>
-</nav>
+    <script type="text/x-handlebars">
+        <nav class="navbar navbar-default">
+            <!-- Brand -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">EveNucleus</a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li>{{#link-to "characters"}}Characters{{/link-to}}</li>
+                </ul>
+            </div>
+        </nav>
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-12" id="app-body">
-            
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    {{outlet}}
+                </div>
+            </div>
         </div>
-    </div>
-</div>
+    </script>
 
-<script type="text/x-handlebars" data-template-name="home">
+
+    <script type="text/x-handlebars" data-template-name="home">
         <p>Home page</p>
         <ul id="blueprint-list">
             {{#each blueprint in model}}
@@ -53,6 +61,11 @@
             {{/each}}
         </ul>
     </script>
+
+    <script type="text/x-handlebars" data-template-name="characters">
+        <p>Characters</p>
+    </script>
+
 
     <script src="app/myapp.js"></script>
     <script src="app/router.js"></script>
