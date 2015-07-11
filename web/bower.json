@@ -1,0 +1,25 @@
+{
+  "name": "evenucleusw",
+  "version": "0.0.1",
+  "authors": [
+    "tomek <tomasz@strejczek.name>"
+  ],
+  "description": "Eve nucleus",
+  "main": "app.js",
+  "moduleType": [
+    "amd"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "ember": "~1.13.3",
+    "handlebars": "~3.0.3",
+    "ember-data": "~1.13.5"
+  }
+}

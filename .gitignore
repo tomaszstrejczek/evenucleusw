@@ -12,3 +12,7 @@ web/web.csproj.user
 packages/
 node_modules/
 web/test/coverage/
+evenucleusw/bower_components/
+evenucleusw/obj/
+evenucleusw/bin/
+web/bower_components/
