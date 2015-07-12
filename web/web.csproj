@@ -153,10 +153,9 @@
     <Content Include="bower_components\jquery\src\var\support.js" />
     <Content Include="bower_components\jquery\src\var\toString.js" />
     <Content Include="bower_components\jquery\src\wrap.js" />
+    <Content Include="app\home.hbs" />
     <None Include="characters\characters.hbs" />
-    <Content Include="characters\characters.hbs.js">
-      <DependentUpon>characters.hbs</DependentUpon>
-    </Content>
+    <Content Include="Gruntfile.js" />
     <Content Include="index.html" />
     <Content Include="web.config" />
   </ItemGroup>
@@ -164,7 +163,7 @@
     <TypeScriptCompile Include="app.ts" />
     <TypeScriptCompile Include="app\myapp.ts" />
     <TypeScriptCompile Include="app\router.ts" />
-    <Content Include="blueprints\blueprint.js" />
+    <Content Include="industry\blueprint.js" />
     <TypeScriptCompile Include="typings\ember\ember-tests.ts" />
     <TypeScriptCompile Include="typings\ember\ember.d.ts" />
     <TypeScriptCompile Include="typings\handlebars\handlebars-tests.ts" />
@@ -296,6 +295,7 @@
     <Content Include="bower_components\bootstrap\LICENSE" />
     <Content Include="bower_components\bootstrap\package.json" />
     <Content Include="bower_components\bootstrap\README.md" />
+    <Content Include="industry\industry.hbs" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>

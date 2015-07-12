@@ -1,0 +1,10 @@
+﻿<p>Industry</p>
+<ul id="blueprint-list">
+    {{#each model as |item|}}
+    <li>
+        <input type="checkbox" class="toggle">
+        <label>{{item.name}}</label><button class="destroy"></button>
+    </li>
+    {{/each}}
+</ul>
+

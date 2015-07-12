@@ -15,7 +15,8 @@ myApp = myWindow.MyApp;
 
 (<any>myApp).NavigationController = Ember.Controller.extend({
     items: Ember.A([
-        Ember.Object.create({ title: "Characters", location: 'characters', active: null })
+        Ember.Object.create({ title: "Characters", location: 'characters', active: null }),
+        Ember.Object.create({ title: "Industry", location: 'industry', active: null })
     ])
 });
 
