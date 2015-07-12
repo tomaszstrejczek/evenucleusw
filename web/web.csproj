@@ -153,6 +153,10 @@
     <Content Include="bower_components\jquery\src\var\support.js" />
     <Content Include="bower_components\jquery\src\var\toString.js" />
     <Content Include="bower_components\jquery\src\wrap.js" />
+    <None Include="characters\characters.hbs" />
+    <Content Include="characters\characters.hbs.js">
+      <DependentUpon>characters.hbs</DependentUpon>
+    </Content>
     <Content Include="index.html" />
     <Content Include="web.config" />
   </ItemGroup>

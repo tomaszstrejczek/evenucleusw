@@ -5,6 +5,6 @@
 
 (<any>myApp).HomeRoute = Ember.Route.extend({
     model: function () {
-        return this.store.find('blueprint');
+        return this.store.findAll('blueprint');
     }
 });

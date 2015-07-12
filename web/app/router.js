@@ -4,7 +4,7 @@ myApp.Router.map(function () {
 });
 myApp.HomeRoute = Ember.Route.extend({
     model: function () {
-        return this.store.find('blueprint');
+        return this.store.findAll('blueprint');
     }
 });
 //# sourceMappingURL=router.js.map

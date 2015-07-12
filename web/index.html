@@ -18,10 +18,16 @@
 
     <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
 
+    <script src="characters/characters.hbs.js"></script>
+    <script>
+        Ember.TEMPLATES['characters'] = Ember.HTMLBars.compile(characters(), {
+            moduleName: 'characters'
+        });
+    </script>
 </head>
 <body>
 
-    <script type="text/x-handlebars">
+<script type="text/x-handlebars">
         <nav class="navbar navbar-default">
             <!-- Brand -->
             <div class="navbar-header">
@@ -34,9 +40,7 @@
                 <a class="navbar-brand" href="#">EveNucleus</a>
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <li>{{#link-to "characters"}}Characters{{/link-to}}</li>
-                </ul>
+                {{render "navigation"}}
             </div>
         </nav>
 
@@ -49,23 +53,28 @@
         </div>
     </script>
 
-
-    <script type="text/x-handlebars" data-template-name="home">
-        <p>Home page</p>
-        <ul id="blueprint-list">
-            {{#each blueprint in model}}
-            <li>
-                <input type="checkbox" class="toggle">
-                <label>{{blueprint.name}}</label><button class="destroy"></button>
-            </li>
+    <script type="text/x-handlebars" data-template-name="navigation">
+        <ul class="nav navbar-nav">
+            {{#each items as |menu|}}
+            {{#list-link}}
+            {{link-to menu.title menu.location}}
+            {{/list-link}}
             {{/each}}
         </ul>
     </script>
 
-    <script type="text/x-handlebars" data-template-name="characters">
-        <p>Characters</p>
-    </script>
 
+    <script type="text/x-handlebars" data-template-name="home">
+        <p>Home page</p>
+        <ul id="blueprint-list">
+            {{#each model as |item|}}
+            <li>
+                <input type="checkbox" class="toggle">
+                <label>{{item.name}}</label><button class="destroy"></button>
+            </li>
+            {{/each}}
+        </ul>
+    </script>
 
     <script src="app/myapp.js"></script>
     <script src="app/router.js"></script>
