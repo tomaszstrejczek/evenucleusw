@@ -1,14 +1,17 @@
 var Application = Ember.Application;
-;
-myWindow = window;
-myWindow.MyApp = Application.create();
-myApp = myWindow.MyApp;
+window.MyApp = myApp = Application.create({
+    LOG_TRANSITIONS: true,
+    LOG_TRANSITIONS_INTERNAL: true
+});
+
 myApp.NavigationController = Ember.Controller.extend({
     items: Ember.A([
         Ember.Object.create({ title: "Characters", location: 'characters', active: null }),
         Ember.Object.create({ title: "Industry", location: 'industry', active: null })
     ])
 });
+
+
 myApp.ListLinkComponent = Ember.Component.extend({
     tagName: 'li',
     classNameBindings: ['active'],
@@ -16,4 +19,20 @@ myApp.ListLinkComponent = Ember.Component.extend({
         return this.get('childViews').anyBy('active');
     }.property('childViews.@each.active')
 });
-//# sourceMappingURL=myapp.js.map
+
+MyApp.ApplicationAdapter = DS.FixtureAdapter.extend();
+
+myApp.ApplicationController = Ember.Controller.extend({
+    // requires the sessions controller
+    needs: ['sessions'],
+    // creates a computed property called currentUser that will be
+    // binded on the curretUser of the sessions controller and will return its value
+    currentUser: (function () {
+        return this.get('controllers.sessions.currentUser');
+    }).property('controllers.sessions.currentUser'),
+    // creates a computed property called isAuthenticated that will be
+    // binded on the curretUser of the sessions controller and will verify if the object is empty
+    isAuthenticated: (function () {
+        return !Ember.isEmpty(this.get('controllers.sessions.currentUser'));
+    }).property('controllers.sessions.currentUser')
+});

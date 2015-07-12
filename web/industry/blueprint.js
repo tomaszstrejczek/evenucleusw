@@ -1,11 +1,9 @@
-﻿MyApp.ApplicationAdapter = DS.FixtureAdapter.extend();
-
-MyApp.Blueprint = DS.Model.extend({
+﻿myApp.Blueprint = DS.Model.extend({
     name: DS.attr("string"),
     group: DS.attr("string")
 });
 
-MyApp.Blueprint.FIXTURES = [
+myApp.Blueprint.FIXTURES = [
  {
      id: 1,
      name: "Stiletto",

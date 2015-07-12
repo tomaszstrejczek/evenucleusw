@@ -20,6 +20,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Content Include="app.css" />
+    <Content Include="app\ApiKey.js" />
+    <Content Include="app\SessionsController.js" />
+    <Content Include="app\User.js" />
     <Content Include="bower_components\bootstrap\dist\css\bootstrap-theme.css" />
     <Content Include="bower_components\bootstrap\dist\css\bootstrap-theme.min.css" />
     <Content Include="bower_components\bootstrap\dist\css\bootstrap.css" />
@@ -157,10 +160,10 @@
     <None Include="characters\characters.hbs" />
     <Content Include="Gruntfile.js" />
     <Content Include="index.html" />
+    <Content Include="templates.js" />
     <Content Include="web.config" />
   </ItemGroup>
   <ItemGroup>
-    <TypeScriptCompile Include="app.ts" />
     <TypeScriptCompile Include="app\myapp.ts" />
     <TypeScriptCompile Include="app\router.ts" />
     <Content Include="industry\blueprint.js" />

@@ -12,31 +12,20 @@
 
     <script src="bower_components/handlebars/handlebars.js"></script>
     <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/jquery-cookie/jquery.cookie.js"></script>
     <script src="bower_components/ember/ember-template-compiler.js"></script>
     <script src="bower_components/ember/ember.debug.js"></script>
     <script src="bower_components/ember-data/ember-data.js"></script>
+    <script src="bower_components/ember-localstorage-adapter/localstorage_adapter.js"></script>
 
     <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
 
     <script src="templates.js"></script>
 
-    <!--<script src="app/home.hbs.js"></script>
-    <script src="characters/characters.hbs.js"></script>
-    <script src="industry/industry.hbs.js"></script>-->
     <script>
         Ember.TEMPLATES['test_ref'] = Ember.HTMLBars.compile("<p>ala ma kota</p>", {
             moduleName: 'test_ref'
         });
-
-        //Ember.TEMPLATES['home'] = Ember.HTMLBars.compile("<p>ala ma kota</p>", {
-        //    moduleName: 'home'
-        //});
-        //Ember.TEMPLATES['characters'] = Ember.HTMLBars.compile(characters(), {
-        //    moduleName: 'characters'
-        //});
-        //Ember.TEMPLATES['industry'] = Ember.HTMLBars.compile(industry(), {
-        //    moduleName: 'industry'
-        //});
     </script>
 </head>
 <body>
@@ -81,5 +70,9 @@
     <script src="app/myapp.js"></script>
     <script src="app/router.js"></script>
     <script src="industry/blueprint.js"></script>
+    <script src="app/User.js"></script>
+    <script src="app/ApiKey.js"></script>
+    <script src="app/SessionsController.js"></script>
+
 </body>
 </html>
