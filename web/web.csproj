@@ -21,6 +21,10 @@
   <ItemGroup>
     <Content Include="app.css" />
     <Content Include="app\ApiKey.js" />
+    <Content Include="app\AuthenticatedRoute.js" />
+    <Content Include="app\myapp.js" />
+    <Content Include="app\router.js" />
+    <Content Include="app\SessionsRoute.js" />
     <Content Include="app\SessionsController.js" />
     <Content Include="app\User.js" />
     <Content Include="bower_components\bootstrap\dist\css\bootstrap-theme.css" />
@@ -54,6 +58,9 @@
     <Content Include="bower_components\ember-data\ember-data.js" />
     <Content Include="bower_components\ember-data\ember-data.min.js" />
     <Content Include="bower_components\ember-data\ember-data.prod.js" />
+    <Content Include="bower_components\ember-localstorage-adapter\.gitignore" />
+    <Content Include="bower_components\ember-localstorage-adapter\ember-addon-main.js" />
+    <Content Include="bower_components\ember-localstorage-adapter\localstorage_adapter.js" />
     <Content Include="bower_components\ember\.gitignore" />
     <Content Include="bower_components\ember\ember-template-compiler.js" />
     <Content Include="bower_components\ember\ember-testing.js" />
@@ -70,6 +77,7 @@
     <Content Include="bower_components\handlebars\handlebars.runtime.amd.min.js" />
     <Content Include="bower_components\handlebars\handlebars.runtime.js" />
     <Content Include="bower_components\handlebars\handlebars.runtime.min.js" />
+    <Content Include="bower_components\jquery-cookie\jquery.cookie.js" />
     <Content Include="bower_components\jquery\dist\jquery.js" />
     <Content Include="bower_components\jquery\dist\jquery.min.js" />
     <Content Include="bower_components\jquery\MIT-LICENSE.txt" />
@@ -157,6 +165,15 @@
     <Content Include="bower_components\jquery\src\var\toString.js" />
     <Content Include="bower_components\jquery\src\wrap.js" />
     <Content Include="app\home.hbs" />
+    <Content Include="bower_components\ember-localstorage-adapter\.bower.json" />
+    <Content Include="bower_components\ember-localstorage-adapter\.travis.yml" />
+    <Content Include="bower_components\ember-localstorage-adapter\bower.json" />
+    <Content Include="bower_components\ember-localstorage-adapter\CHANGELOG.md" />
+    <Content Include="bower_components\ember-localstorage-adapter\LICENSE" />
+    <Content Include="bower_components\ember-localstorage-adapter\package.json" />
+    <Content Include="bower_components\ember-localstorage-adapter\README.md" />
+    <Content Include="bower_components\jquery-cookie\.bower.json" />
+    <Content Include="bower_components\jquery-cookie\bower.json" />
     <None Include="characters\characters.hbs" />
     <Content Include="Gruntfile.js" />
     <Content Include="index.html" />
@@ -164,8 +181,6 @@
     <Content Include="web.config" />
   </ItemGroup>
   <ItemGroup>
-    <TypeScriptCompile Include="app\myapp.ts" />
-    <TypeScriptCompile Include="app\router.ts" />
     <Content Include="industry\blueprint.js" />
     <TypeScriptCompile Include="typings\ember\ember-tests.ts" />
     <TypeScriptCompile Include="typings\ember\ember.d.ts" />

@@ -37,6 +37,89 @@ Ember.TEMPLATES['home'] = Ember.HTMLBars.template((function() {
     templates: []
   };
 }()));
+Ember.TEMPLATES['sessions'] = Ember.HTMLBars.template((function() {
+  return {
+    meta: {
+      "revision": "Ember@1.13.3",
+      "loc": {
+        "source": null,
+        "start": {
+          "line": 1,
+          "column": 0
+        },
+        "end": {
+          "line": 11,
+          "column": 6
+        }
+      },
+      "moduleName": "sessions"
+    },
+    arity: 0,
+    cachedFragment: null,
+    hasRendered: false,
+    buildFragment: function buildFragment(dom) {
+      var el0 = dom.createDocumentFragment();
+      var el1 = dom.createElement("div");
+      dom.setAttribute(el1,"class","jumbotron");
+      var el2 = dom.createTextNode("\n  ");
+      dom.appendChild(el1, el2);
+      var el2 = dom.createElement("form");
+      dom.setAttribute(el2,"class","form-horizontal");
+      var el3 = dom.createTextNode("\n    ");
+      dom.appendChild(el2, el3);
+      var el3 = dom.createElement("div");
+      dom.setAttribute(el3,"class","form-group");
+      var el4 = dom.createTextNode("\n      ");
+      dom.appendChild(el3, el4);
+      var el4 = dom.createComment("");
+      dom.appendChild(el3, el4);
+      var el4 = dom.createTextNode("\n    ");
+      dom.appendChild(el3, el4);
+      dom.appendChild(el2, el3);
+      var el3 = dom.createTextNode("\n    ");
+      dom.appendChild(el2, el3);
+      var el3 = dom.createElement("div");
+      dom.setAttribute(el3,"class","form-group");
+      var el4 = dom.createTextNode("\n      ");
+      dom.appendChild(el3, el4);
+      var el4 = dom.createComment("");
+      dom.appendChild(el3, el4);
+      var el4 = dom.createTextNode("\n    ");
+      dom.appendChild(el3, el4);
+      dom.appendChild(el2, el3);
+      var el3 = dom.createTextNode("\n    ");
+      dom.appendChild(el2, el3);
+      var el3 = dom.createElement("button");
+      dom.setAttribute(el3,"type","submit");
+      dom.setAttribute(el3,"class","btn btn-primary btn-lg");
+      var el4 = dom.createTextNode("Login");
+      dom.appendChild(el3, el4);
+      dom.appendChild(el2, el3);
+      var el3 = dom.createTextNode("\n  ");
+      dom.appendChild(el2, el3);
+      dom.appendChild(el1, el2);
+      var el2 = dom.createTextNode("\n");
+      dom.appendChild(el1, el2);
+      dom.appendChild(el0, el1);
+      return el0;
+    },
+    buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
+      var element0 = dom.childAt(fragment, [0, 1]);
+      var morphs = new Array(3);
+      morphs[0] = dom.createElementMorph(element0);
+      morphs[1] = dom.createMorphAt(dom.childAt(element0, [1]),1,1);
+      morphs[2] = dom.createMorphAt(dom.childAt(element0, [3]),1,1);
+      return morphs;
+    },
+    statements: [
+      ["element","action",["loginUser"],["on","submit"],["loc",[null,[2,32],[2,66]]]],
+      ["inline","input",[],["value",["subexpr","@mut",[["get","username_or_email",["loc",[null,[4,20],[4,37]]]]],[],[]],"type","text","class","form-control input-lg","id","username","placeholder","Enter username"],["loc",[null,[4,6],[4,124]]]],
+      ["inline","input",[],["value",["subexpr","@mut",[["get","password",["loc",[null,[7,20],[7,28]]]]],[],[]],"type","password","class","form-control input-lg","id","password","placeholder","Password"],["loc",[null,[7,6],[7,113]]]]
+    ],
+    locals: [],
+    templates: []
+  };
+}()));
 Ember.TEMPLATES['characters'] = Ember.HTMLBars.template((function() {
   return {
     meta: {

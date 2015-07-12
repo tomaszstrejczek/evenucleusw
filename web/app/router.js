@@ -13,7 +13,8 @@ myApp.Router.map(function () {
         });
     });
 });
-myApp.IndustryRoute = Ember.Route.extend({
+
+myApp.IndustryRoute = myApp.AuthenticatedRoute.extend({
     model: function () {
         return this.store.findAll('blueprint');
     }

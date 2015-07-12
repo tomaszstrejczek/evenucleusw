@@ -20,7 +20,7 @@ myApp.ListLinkComponent = Ember.Component.extend({
     }.property('childViews.@each.active')
 });
 
-MyApp.ApplicationAdapter = DS.FixtureAdapter.extend();
+myApp.ApplicationAdapter = DS.FixtureAdapter.extend();
 
 myApp.ApplicationController = Ember.Controller.extend({
     // requires the sessions controller
@@ -35,4 +35,16 @@ myApp.ApplicationController = Ember.Controller.extend({
     isAuthenticated: (function () {
         return !Ember.isEmpty(this.get('controllers.sessions.currentUser'));
     }).property('controllers.sessions.currentUser')
+});
+
+// For more information see: http://emberjs.com/guides/routing/
+myApp.ApplicationRoute = Ember.Route.extend({
+    actions: {
+        // create a global logout action
+        logout: function () {
+            // get the sessions controller instance and reset it to then transition to the sessions route
+            this.controllerFor('sessions').reset();
+            this.transitionTo('sessions');
+        }
+    }
 });

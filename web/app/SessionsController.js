@@ -60,9 +60,29 @@
                 password: null
             });
 
+            // mimic
+            var promise = new Promise(function(resolve, reject) {
+                    if (data.password == "admin123") {
+                        var response = {
+                            api_key: {
+                                access_token: "token",
+                                user_id: data.username_or_email
+                            }
+                        };
+                        resolve(response);
+                    } else {
+                        var error = {
+                            status: 401
+                        };
+                        reject(error);
+                    }
+                }
+            );
+
             // send a POST request to the /sessions api with the form data
-            Ember.$.post('/session', data).then(function (response) {
-                // set the ajax header with the returned access_token object
+            //Ember.$.post('/session', data).then(function (response) {
+            promise.then(function (response) {
+            // set the ajax header with the returned access_token object
                 Ember.$.ajaxSetup({
                     headers: {
                         'Authorization': 'Bearer ' + response.api_key.access_token
