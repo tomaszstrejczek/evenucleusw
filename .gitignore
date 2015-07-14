@@ -4,3 +4,7 @@
 build
 node_modules
 npm-debug.log
+evenucleusw.v12.suo
+web/jspm_packages/
+web/bower_components/
+packages/
