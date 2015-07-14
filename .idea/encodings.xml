@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/src/actions/AuthActions.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/components/App/App.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/components/Header/Header.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/components/Industry/Industry.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/components/Industry/Industry.less" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/components/Industry/package.json" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/components/LoginPage/LoginPage.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/components/Navigation/Navigation.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/constants/ActionTypes.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/stores/AuthStore.js" charset="UTF-8" />
+  </component>
+</project>

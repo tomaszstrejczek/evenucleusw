@@ -1,18 +1,6 @@
-.vs/
-src/evenucelusw/wwwroot/jspm_packages/
-src/evenucelusw/wwwroot/bin/
-src/evenucelusw/project.lock.json
-src/evenucelusw/evenucelusw.xproj.user
-web/jspm_packages/
-web/obj/
-*.map
-web/bin/
-evenucleusw.v12.suo
-web/web.csproj.user
-packages/
-node_modules/
-web/test/coverage/
-evenucleusw/bower_components/
-evenucleusw/obj/
-evenucleusw/bin/
-web/bower_components/
+# Include your project-specific ignores in this file
+# Read about how to use .gitignore: https://help.github.com/articles/ignoring-files
+
+build
+node_modules
+npm-debug.log
