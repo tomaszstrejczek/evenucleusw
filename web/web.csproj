@@ -20,13 +20,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Content Include="app.css" />
-    <Content Include="app\ApiKey.js" />
-    <Content Include="app\AuthenticatedRoute.js" />
-    <Content Include="app\myapp.js" />
-    <Content Include="app\router.js" />
-    <Content Include="app\SessionsRoute.js" />
-    <Content Include="app\SessionsController.js" />
-    <Content Include="app\User.js" />
     <Content Include="bower_components\bootstrap\dist\css\bootstrap-theme.css" />
     <Content Include="bower_components\bootstrap\dist\css\bootstrap-theme.min.css" />
     <Content Include="bower_components\bootstrap\dist\css\bootstrap.css" />
@@ -164,7 +157,6 @@
     <Content Include="bower_components\jquery\src\var\support.js" />
     <Content Include="bower_components\jquery\src\var\toString.js" />
     <Content Include="bower_components\jquery\src\wrap.js" />
-    <Content Include="app\home.hbs" />
     <Content Include="bower_components\ember-localstorage-adapter\.bower.json" />
     <Content Include="bower_components\ember-localstorage-adapter\.travis.yml" />
     <Content Include="bower_components\ember-localstorage-adapter\bower.json" />
@@ -174,15 +166,10 @@
     <Content Include="bower_components\ember-localstorage-adapter\README.md" />
     <Content Include="bower_components\jquery-cookie\.bower.json" />
     <Content Include="bower_components\jquery-cookie\bower.json" />
-    <Content Include="app\sessions.hbs" />
-    <None Include="characters\characters.hbs" />
-    <Content Include="Gruntfile.js" />
     <Content Include="index.html" />
-    <Content Include="templates.js" />
     <Content Include="web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="industry\blueprint.js" />
     <TypeScriptCompile Include="typings\ember\ember-tests.ts" />
     <TypeScriptCompile Include="typings\ember\ember.d.ts" />
     <TypeScriptCompile Include="typings\handlebars\handlebars-tests.ts" />
@@ -314,7 +301,6 @@
     <Content Include="bower_components\bootstrap\LICENSE" />
     <Content Include="bower_components\bootstrap\package.json" />
     <Content Include="bower_components\bootstrap\README.md" />
-    <Content Include="industry\industry.hbs" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>
@@ -329,6 +315,11 @@
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="app\" />
+    <Folder Include="characters\" />
+    <Folder Include="industry\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">12.0</VisualStudioVersion>

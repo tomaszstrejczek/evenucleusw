@@ -4,33 +4,19 @@
 <head>
     <meta charset="utf-8" />
     <title>TypeScript HTML App</title>
-    <link rel="stylesheet" href="app.css" type="text/css"/>
+    <link rel="stylesheet" href="app.css" type="text/css" />
 
-    <link href="bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet"/>
-    <link href="bower_components/bootstrap/dist/css/bootstrap-theme.css" rel="stylesheet"/>
+    <link href="bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <link href="bower_components/bootstrap/dist/css/bootstrap-theme.css" rel="stylesheet" />
 
-
-    <script src="bower_components/handlebars/handlebars.js"></script>
+    
     <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/jquery-cookie/jquery.cookie.js"></script>
-    <script src="bower_components/ember/ember-template-compiler.js"></script>
-    <script src="bower_components/ember/ember.debug.js"></script>
-    <script src="bower_components/ember-data/ember-data.js"></script>
-    <script src="bower_components/ember-localstorage-adapter/localstorage_adapter.js"></script>
 
     <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
 
-    <script src="templates.js"></script>
-
-    <script>
-        Ember.TEMPLATES['test_ref'] = Ember.HTMLBars.compile("<p>ala ma kota</p>", {
-            moduleName: 'test_ref'
-        });
-    </script>
 </head>
 <body>
-
-<script type="text/x-handlebars">
         <nav class="navbar navbar-default">
             <!-- Brand -->
             <div class="navbar-header">
@@ -43,37 +29,15 @@
                 <a class="navbar-brand" href="#">EveNucleus</a>
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                {{render "navigation"}}
             </div>
         </nav>
 
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    {{outlet}}
                 </div>
             </div>
         </div>
-    </script>
 
-    <script type="text/x-handlebars" data-template-name="navigation">
-        <ul class="nav navbar-nav">
-            {{#each items as |menu|}}
-            {{#list-link}}
-            {{link-to menu.title menu.location}}
-            {{/list-link}}
-            {{/each}}
-        </ul>
-    </script>
-
-
-    <script src="app/myapp.js"></script>
-    <script src="app/AuthenticatedRoute.js"></script>
-    <script src="app/router.js"></script>
-    <script src="app/User.js"></script>
-    <script src="app/ApiKey.js"></script>
-    <script src="app/SessionsController.js"></script>
-    <script src="app/SessionsRoute.js"></script>
-    <script src="industry/blueprint.js"></script>
 </body>
 </html>

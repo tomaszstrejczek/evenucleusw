@@ -40,8 +40,7 @@ var person = Person1.create({
     firstName: 'Yehuda',
     lastName: 'Katz'
 });
-person.addObserver('fullName', null, function () {
-});
+person.addObserver('fullName', null, function () { });
 person.set('firstName', 'Brohuda');
 App.todosController = Em.Object.create({
     todos: [
