@@ -1,24 +1,33 @@
-var Greeter = (function () {
-    function Greeter(element) {
-        this.element = element;
-        this.element.innerHTML += "The time is: ";
-        this.span = document.createElement('span');
-        this.element.appendChild(this.span);
-        this.span.innerText = new Date().toUTCString();
-    }
-    Greeter.prototype.start = function () {
-        var _this = this;
-        this.timerToken = setInterval(function () { return _this.span.innerHTML = new Date().toUTCString(); }, 500);
-    };
-    Greeter.prototype.stop = function () {
-        clearTimeout(this.timerToken);
-    };
-    return Greeter;
-})();
-exports.Greeter = Greeter;
-window.onload = function () {
-    var el = document.getElementById('content');
-    var greeter = new Greeter(el);
-    greeter.start();
+﻿var path = decodeURI(window.location.pathname);
+
+function onSetMeta(name, content) {
+    // Remove and create a new <meta /> tag in order to make it work
+    // with bookmarks in Safari
+    var elements = document.getElementsByTagName('meta');
+    [].slice.call(elements).forEach(function (element) {
+        if (element.getAttribute('name') === name) {
+            element.parentNode.removeChild(element);
+        }
+    });
+
+    var meta = document.createElement('meta');
+    meta.setAttribute('name', name);
+    meta.setAttribute('content', content);
+    document.getElementsByTagName('head')[0].appendChild(meta);
 };
-//# sourceMappingURL=app.js.map
+
+function run() {
+    // Render the top-level React component
+    var props = {
+        path: path,
+        context: {
+            onSetTitle: function(value) { document.title = value },
+            onSetMeta: onSetMeta
+        }
+    };
+
+    var element = React.createElement(App, props);
+
+    React.render(element, document.getElementById('app'));
+}
+

@@ -21,6 +21,9 @@
     "jquery-cookie": "~1.4.1"
   },
   "devDependencies": {
-    "bootstrap": "~3.3.5"
+    "bootstrap": "~3.3.5",
+    "react": "~0.13.3",
+    "fastclick": "~1.0.6",
+    "when": "~3.7.3"
   }
 }
