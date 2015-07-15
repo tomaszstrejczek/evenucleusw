@@ -1,8 +1,5 @@
 require.config({
   shim: {
-    "react": {
-      "exports": "React"
-    },
     "JSXTransformer": "JSXTransformer"
   },
 
@@ -13,11 +10,14 @@ require.config({
     fastclick: "bower_components/fastclick/lib/fastclick",
     "jquery-cookie": "bower_components/jquery-cookie/jquery.cookie",
     jquery: "bower_components/jquery/dist/jquery",
-    react: "bower_components/react/react",
+    react: "bower_components/react/react-with-addons",
     requirejs: "bower_components/requirejs/require",
     JSXTransformer: "bower_components/react/JSXTransformer",
     jsx: "bower_components/requirejs-react-jsx/jsx",
-    text: "bower_components/requirejs-text/text"
+    text: "bower_components/requirejs-text/text",
+    "mirrorkey-browser": "bower_components/mirrorkey/mirrorkey_browser",
+    flux: "bower_components/flux/dist/flux",
+    superagent: "bower_components/superagent/lib/client",
   },
 
   config: {

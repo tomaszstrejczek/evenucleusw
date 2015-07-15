@@ -1,20 +1,52 @@
-﻿define(['react'], function(React) {
+﻿define(['react', 'jsx!app/Navigation', 'jsx!characters/Characters', 'jsx!app/Login', 'jsx!industry/Industry', 'app/AppActions'],
+    function(React, Navigation, Characters, Login, Industry, AppActions) {
+
     var App = React.createClass({
+        propTypes: function() {
+            return {
+                path: PropTypes.string.isRequired
+            };
+        },
+        componentDidMount: function() {
+            window.addEventListener('popstate', this.handlePopState);
+        },
+
+        componentWillUnmount: function() {
+            window.removeEventListener('popstate', this.handlePopState);
+        },
+        shouldComponentUpdate: function(nextProps) {
+            return this.props.path !== nextProps.path;
+        },
+
+        handlePopState: function (event) {
+            AppActions.navigateTo(window.location.hash, {replace: !!event.state});
+        },
+
         render: function() {
+            var component;
+            switch (this.props.path) {
+
+                case '':
+                case '#/':
+                case '/':
+                case '#/characters':
+                    component = <Characters />;
+                    break;
+
+                case '#/login':
+                    component = <Login />;
+                    break;
+
+                case '#/industry':
+                    component = <Industry />;
+                    break;
+            }
+
             return (
-                <nav className="navbar navbar-default">
-                    <div className="navbar-header">
-                        <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                            <span className="sr-only">Toggle navigation</span>
-                            <span className="icon-bar"></span>
-                            <span className="icon-bar"></span>
-                            <span className="icon-bar"></span>
-                        </button>
-                        <a className="navbar-brand" href="#">EveNucleus</a>
-                    </div>
-                    <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                    </div>
-                </nav>
+                <div>
+                    <Navigation/>
+                    {component}
+                </div>
             );
         }
     });

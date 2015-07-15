@@ -1,8 +1,8 @@
-define(['jsx!app/App', 'react', 'jquery', 'fastclick'],
-    function(App, React, $, FastClick) {
+define(['jsx!app/App', 'react', 'jquery', 'fastclick', 'actions/ActionTypes', 'app/Dispatcher'],
+    function(App, React, $, FastClick, ActionTypes, Dispatcher) {
     console.log('app starting');
 
-    var path = decodeURI(window.location.pathname);
+    var path = decodeURI(window.location.hash);
 
     function onSetMeta(name, content) {
         // Remove and create a new <meta /> tag in order to make it work
@@ -33,6 +33,14 @@ define(['jsx!app/App', 'react', 'jquery', 'fastclick'],
         var element = React.createElement(App, props);
 
         React.render(element, document.getElementById('app'));
+
+        // Update `Application.path` prop when `window.location` is changed
+        Dispatcher.register(function(action) {
+            if (action.type === ActionTypes.CHANGE_LOCATION) {
+                element = React.cloneElement(element, {path: action.path});
+                React.render(element, document.getElementById('app'));
+            }
+        });
     };
 
     $(document).ready(function() {
