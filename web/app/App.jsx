@@ -40,7 +40,9 @@
             return (
                 <div>
                     <Navigation path={this.props.path}/>
+                    <div className="container">
                     {component}
+                    </div>
                 </div>
             );
         }
