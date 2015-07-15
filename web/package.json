@@ -1,0 +1,21 @@
+{
+  "jspm": {
+    "directories": {},
+    "dependencies": {
+      "bootstrap": "github:twbs/bootstrap@^3.3.5",
+      "css": "github:systemjs/plugin-css@^0.1.13",
+      "fastclick": "npm:fastclick@^1.0.6",
+      "flux": "npm:flux@^2.0.3",
+      "jquery": "github:components/jquery@^2.1.4",
+      "jquery.cookie": "github:carhartl/jquery-cookie@^1.4.1",
+      "jsx": "github:floatdrop/plugin-jsx@^1.1.0",
+      "react": "npm:react@^0.14.0-beta1",
+      "react-dom": "npm:react-dom@^0.14.0-beta1"
+    },
+    "devDependencies": {
+      "babel": "npm:babel-core@^5.1.13",
+      "babel-runtime": "npm:babel-runtime@^5.1.13",
+      "core-js": "npm:core-js@^0.9.4"
+    }
+  }
+}

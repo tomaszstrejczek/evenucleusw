@@ -6,21 +6,20 @@
     <title>TypeScript HTML App</title>
     <link rel="stylesheet" href="app.css" type="text/css" />
 
-    <link href="bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
-    <link href="bower_components/bootstrap/dist/css/bootstrap-theme.css" rel="stylesheet" />
+    <!--
+        <link href="bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+        <link href="bower_components/bootstrap/dist/css/bootstrap-theme.css" rel="stylesheet" />
 
-<!--
-    <script src="bower_components/jquery/dist/jquery.js"></script>
-    <script src="bower_components/jquery-cookie/jquery.cookie.js"></script>
-
-    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
-    
-    <script src="bower_components/react/JSXTransformer.js"></script>
-    <script src="bower_components/react/react-with-addons.js"></script>
-    <script src="bower_components/fastclick/lib/fastclick.js"></script>
--->
-
-    <script src="bower_components/requirejs/require.js" data-main="./config"></script>
+        <script src="bower_components/requirejs/require.js" data-main="./config"></script>
+    -->
+    <script src="jspm_packages/system.js"></script>
+    <script src="config.js"></script>
+    <script>
+        System.import('bootstrap');
+        System.import('bootstrap/css/bootstrap.css!');
+        System.import('bootstrap/css/bootstrap-theme.css!');
+        System.import('./app');
+    </script>
 
 </head>
 
