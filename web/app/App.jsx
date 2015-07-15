@@ -2,11 +2,6 @@
     function(React, Navigation, Characters, Login, Industry, AppActions) {
 
     var App = React.createClass({
-        propTypes: function() {
-            return {
-                path: PropTypes.string.isRequired
-            };
-        },
         componentDidMount: function() {
             window.addEventListener('popstate', this.handlePopState);
         },
@@ -44,7 +39,7 @@
 
             return (
                 <div>
-                    <Navigation/>
+                    <Navigation path={this.props.path}/>
                     {component}
                 </div>
             );

@@ -25,8 +25,12 @@ System.config({
     "jquery": "github:components/jquery@2.1.4",
     "jquery.cookie": "github:carhartl/jquery-cookie@1.4.1",
     "jsx": "github:floatdrop/plugin-jsx@1.1.0",
+    "less": "github:aaike/jspm-less-plugin@0.0.5",
     "react": "npm:react@0.14.0-beta1",
     "react-dom": "npm:react-dom@0.14.0-beta1",
+    "github:aaike/jspm-less-plugin@0.0.5": {
+      "less.js": "github:distros/less@2.4.0"
+    },
     "github:floatdrop/plugin-jsx@1.1.0": {
       "react-tools": "npm:react-tools@0.13.3"
     },
