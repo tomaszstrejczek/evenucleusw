@@ -16,3 +16,5 @@ evenucleusw/bower_components/
 evenucleusw/obj/
 evenucleusw/bin/
 web/bower_components/
+webapp/jspm_packages/
+webapp/obj/

@@ -1,0 +1,212 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <ProjectGuid>{603B0D2B-DEFE-4492-AFDE-10BBF6BFC56D}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <OutputPath>bin</OutputPath>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <DebugType>full</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+    <TypeScriptToolsVersion>1.5</TypeScriptToolsVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+  </PropertyGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="app.js" />
+    <Content Include="app\*.js" />
+    <Content Include="app\*.jsx" />
+    <Content Include="app\*.css" />
+    <Content Include="characters\*.js" />
+    <Content Include="characters\*.jsx" />
+    <Content Include="characters\*.css" />
+    <Content Include="config.js" />
+    <Content Include="favicon.ico" />
+    <Content Include="industry\*.js" />
+    <Content Include="industry\*.jsx" />
+    <Content Include="industry\*.css" />
+    <Content Include="actions\*.js" />
+    <Content Include="styles\**\*.js" />
+    <Content Include="app.css" />
+    <Content Include="index.html" />
+    <Content Include="styles\fonts\glyphicons\flat-ui-icons-regular.svg" />
+    <Content Include="styles\fonts\lato\lato-black.svg" />
+    <Content Include="styles\fonts\lato\lato-bold.svg" />
+    <Content Include="styles\fonts\lato\lato-bolditalic.svg" />
+    <Content Include="styles\fonts\lato\lato-italic.svg" />
+    <Content Include="styles\fonts\lato\lato-light.svg" />
+    <Content Include="styles\fonts\lato\lato-regular.svg" />
+    <Content Include="styles\img\icons\png\Book.png" />
+    <Content Include="styles\img\icons\png\Calendar.png" />
+    <Content Include="styles\img\icons\png\Chat.png" />
+    <Content Include="styles\img\icons\png\Clipboard.png" />
+    <Content Include="styles\img\icons\png\Compas.png" />
+    <Content Include="styles\img\icons\png\Gift-Box.png" />
+    <Content Include="styles\img\icons\png\Infinity-Loop.png" />
+    <Content Include="styles\img\icons\png\Mail.png" />
+    <Content Include="styles\img\icons\png\Map.png" />
+    <Content Include="styles\img\icons\png\Pensils.png" />
+    <Content Include="styles\img\icons\png\Pocket.png" />
+    <Content Include="styles\img\icons\png\Retina-Ready.png" />
+    <Content Include="styles\img\icons\png\Toilet-Paper.png" />
+    <Content Include="styles\img\icons\png\Watches.png" />
+    <Content Include="styles\img\icons\svg\book.svg" />
+    <Content Include="styles\img\icons\svg\calendar.svg" />
+    <Content Include="styles\img\icons\svg\chat.svg" />
+    <Content Include="styles\img\icons\svg\clipboard.svg" />
+    <Content Include="styles\img\icons\svg\clocks.svg" />
+    <Content Include="styles\img\icons\svg\compas.svg" />
+    <Content Include="styles\img\icons\svg\gift-box.svg" />
+    <Content Include="styles\img\icons\svg\loop.svg" />
+    <Content Include="styles\img\icons\svg\mail.svg" />
+    <Content Include="styles\img\icons\svg\map.svg" />
+    <Content Include="styles\img\icons\svg\paper-bag.svg" />
+    <Content Include="styles\img\icons\svg\pencils.svg" />
+    <Content Include="styles\img\icons\svg\retina.svg" />
+    <Content Include="styles\img\icons\svg\ribbon.svg" />
+    <Content Include="styles\img\icons\svg\toilet-paper.svg" />
+    <Content Include="styles\img\login\icon.png" />
+    <Content Include="styles\img\login\imac-2x.png" />
+    <Content Include="styles\img\login\imac.png" />
+    <Content Include="styles\img\tile\ribbon-2x.png" />
+    <Content Include="styles\img\tile\ribbon.png" />
+    <Content Include="web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="package.json" />
+    <Content Include="styles\fonts\glyphicons\flat-ui-icons-regular.eot" />
+    <Content Include="styles\fonts\glyphicons\flat-ui-icons-regular.ttf" />
+    <Content Include="styles\fonts\glyphicons\flat-ui-icons-regular.woff" />
+    <Content Include="styles\fonts\glyphicons\selection.json" />
+    <Content Include="styles\fonts\lato\lato-black.eot" />
+    <Content Include="styles\fonts\lato\lato-black.ttf" />
+    <Content Include="styles\fonts\lato\lato-black.woff" />
+    <Content Include="styles\fonts\lato\lato-bold.eot" />
+    <Content Include="styles\fonts\lato\lato-bold.ttf" />
+    <Content Include="styles\fonts\lato\lato-bold.woff" />
+    <Content Include="styles\fonts\lato\lato-bolditalic.eot" />
+    <Content Include="styles\fonts\lato\lato-bolditalic.ttf" />
+    <Content Include="styles\fonts\lato\lato-bolditalic.woff" />
+    <Content Include="styles\fonts\lato\lato-italic.eot" />
+    <Content Include="styles\fonts\lato\lato-italic.ttf" />
+    <Content Include="styles\fonts\lato\lato-italic.woff" />
+    <Content Include="styles\fonts\lato\lato-light.eot" />
+    <Content Include="styles\fonts\lato\lato-light.ttf" />
+    <Content Include="styles\fonts\lato\lato-light.woff" />
+    <Content Include="styles\fonts\lato\lato-regular.eot" />
+    <Content Include="styles\fonts\lato\lato-regular.ttf" />
+    <Content Include="styles\fonts\lato\lato-regular.woff" />
+    <Content Include="styles\less\.csscomb.json" />
+    <Content Include="styles\less\.csslintrc" />
+    <Content Include="styles\less\flat-ui.less" />
+    <Content Include="styles\less\mixins.less" />
+    <Content Include="styles\less\mixins\background-clip.less" />
+    <Content Include="styles\less\mixins\background-variant.less" />
+    <Content Include="styles\less\mixins\border-radius.less" />
+    <Content Include="styles\less\mixins\buttons.less" />
+    <Content Include="styles\less\mixins\center-block.less" />
+    <Content Include="styles\less\mixins\clearfix.less" />
+    <Content Include="styles\less\mixins\forms.less" />
+    <Content Include="styles\less\mixins\gradients.less" />
+    <Content Include="styles\less\mixins\grid.less" />
+    <Content Include="styles\less\mixins\hide-text.less" />
+    <Content Include="styles\less\mixins\image.less" />
+    <Content Include="styles\less\mixins\nav-divider.less" />
+    <Content Include="styles\less\mixins\navbar-vertical-align.less" />
+    <Content Include="styles\less\mixins\opacity.less" />
+    <Content Include="styles\less\mixins\pagination.less" />
+    <Content Include="styles\less\mixins\pallets.less" />
+    <Content Include="styles\less\mixins\reset-filter.less" />
+    <Content Include="styles\less\mixins\resize.less" />
+    <Content Include="styles\less\mixins\responsive-visibility.less" />
+    <Content Include="styles\less\mixins\select.less" />
+    <Content Include="styles\less\mixins\size.less" />
+    <Content Include="styles\less\mixins\switches.less" />
+    <Content Include="styles\less\mixins\tab-focus.less" />
+    <Content Include="styles\less\mixins\text-emphasis.less" />
+    <Content Include="styles\less\mixins\text-overflow.less" />
+    <Content Include="styles\less\mixins\vendor-prefixes.less" />
+    <Content Include="styles\less\modules\button-groups.less" />
+    <Content Include="styles\less\modules\buttons.less" />
+    <Content Include="styles\less\modules\code.less" />
+    <Content Include="styles\less\modules\dropdowns.less" />
+    <Content Include="styles\less\modules\footer.less" />
+    <Content Include="styles\less\modules\forms.less" />
+    <Content Include="styles\less\modules\glyphicons.less" />
+    <Content Include="styles\less\modules\input-groups.less" />
+    <Content Include="styles\less\modules\local-fonts.less" />
+    <Content Include="styles\less\modules\login.less" />
+    <Content Include="styles\less\modules\navbar.less" />
+    <Content Include="styles\less\modules\pager.less" />
+    <Content Include="styles\less\modules\pagination.less" />
+    <Content Include="styles\less\modules\palette.less" />
+    <Content Include="styles\less\modules\print.less" />
+    <Content Include="styles\less\modules\progress-bars.less" />
+    <Content Include="styles\less\modules\radiocheck.less" />
+    <Content Include="styles\less\modules\scaffolding.less" />
+    <Content Include="styles\less\modules\select.less" />
+    <Content Include="styles\less\modules\share.less" />
+    <Content Include="styles\less\modules\slider.less" />
+    <Content Include="styles\less\modules\switch.less" />
+    <Content Include="styles\less\modules\tagsinput.less" />
+    <Content Include="styles\less\modules\thumbnails.less" />
+    <Content Include="styles\less\modules\tiles.less" />
+    <Content Include="styles\less\modules\todo-list.less" />
+    <Content Include="styles\less\modules\tooltip.less" />
+    <Content Include="styles\less\modules\type.less" />
+    <Content Include="styles\less\modules\typeahead.less" />
+    <Content Include="styles\less\modules\video.less" />
+    <Content Include="styles\less\spaces.less" />
+    <Content Include="styles\less\variables.less" />
+    <None Include="web.Debug.config">
+      <DependentUpon>web.config</DependentUpon>
+    </None>
+    <None Include="web.Release.config">
+      <DependentUpon>web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">12.0</VisualStudioVersion>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RootNamespace>webapp</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\WebApplications\Microsoft.WebApplication.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\WebApplications\Microsoft.WebApplication.targets')" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>8070</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:8070/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+    <TypeScriptRemoveComments>false</TypeScriptRemoveComments>
+    <TypeScriptSourceMap>true</TypeScriptSourceMap>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+    <TypeScriptRemoveComments>true</TypeScriptRemoveComments>
+    <TypeScriptSourceMap>false</TypeScriptSourceMap>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
+</Project>
