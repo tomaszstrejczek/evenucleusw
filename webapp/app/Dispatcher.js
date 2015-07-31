@@ -2,8 +2,8 @@
  * Created by ts15187 on 2015-07-15.
  */
 
-define(['flux'], function(flux){
-    var dispatcher = new flux.Dispatcher();
+import flux from 'flux';
 
-    return dispatcher;
-});
+var dispatcher = new flux.Dispatcher();
+
+module.exports = dispatcher;

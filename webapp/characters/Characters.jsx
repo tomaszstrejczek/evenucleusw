@@ -1,12 +1,12 @@
-﻿define(['react'], function(React) {
+﻿import React from 'react';
 
-    var Characters = React.createClass({
-        render: function() {
-            return (
-                <p>Characters</p>
-            );
-        }
-    });
+var Characters = React.createClass({
+    render: function() {
+        return (
+            <p>Characters</p>
+        );
+    }
+});
 
-    return Characters;
-})
+module.exports = Characters;
+

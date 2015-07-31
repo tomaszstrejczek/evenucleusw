@@ -1,12 +1,12 @@
-﻿define(['react'], function(React) {
+﻿import React from 'react';
 
-    var Industry = React.createClass({
-        render: function() {
-            return (
-                <p>Industry</p>
-            );
-        }
-    });
+var Industry = React.createClass({
+    render: function() {
+        return (
+            <p>Industry</p>
+        );
+    }
+});
 
-    return Industry;
-})
+module.exports = Industry;
+
