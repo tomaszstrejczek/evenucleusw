@@ -5,7 +5,8 @@ define(['react/lib/keyMirror'], function(keyMirror) {
     var constants = keyMirror({
         GET_PAGE: null,
         RECEIVE_PAGE: null,
-        CHANGE_LOCATION: null
+        CHANGE_LOCATION: null,
+        LOGIN_USER: null
     });
 
     return constants;

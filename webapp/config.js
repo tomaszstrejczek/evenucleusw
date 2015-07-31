@@ -28,6 +28,7 @@ System.config({
     "less": "github:aaike/jspm-less-plugin@0.0.5",
     "react": "npm:react@0.14.0-beta1",
     "react-dom": "npm:react-dom@0.14.0-beta1",
+    "react-router": "npm:react-router@1.0.0-beta3",
     "github:aaike/jspm-less-plugin@0.0.5": {
       "less.js": "github:distros/less@2.4.0"
     },
@@ -282,6 +283,10 @@ System.config({
       "path": "github:jspm/nodelibs-path@0.1.0",
       "process": "github:jspm/nodelibs-process@0.1.1"
     },
+    "npm:invariant@2.1.0": {
+      "envify": "npm:envify@3.4.0",
+      "process": "github:jspm/nodelibs-process@0.1.1"
+    },
     "npm:jstransform@10.1.0": {
       "base62": "npm:base62@0.1.1",
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
@@ -351,6 +356,12 @@ System.config({
     },
     "npm:react-dom@0.14.0-beta1": {
       "react": "npm:react@0.14.0-beta1"
+    },
+    "npm:react-router@1.0.0-beta3": {
+      "invariant": "npm:invariant@2.1.0",
+      "keymirror": "npm:keymirror@0.1.1",
+      "qs": "npm:qs@2.4.1",
+      "warning": "npm:warning@1.0.2"
     },
     "npm:react-tools@0.13.3": {
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
@@ -432,6 +443,9 @@ System.config({
     },
     "npm:vm-browserify@0.0.4": {
       "indexof": "npm:indexof@0.0.1"
+    },
+    "npm:warning@1.0.2": {
+      "process": "github:jspm/nodelibs-process@0.1.1"
     }
   }
 });
