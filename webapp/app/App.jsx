@@ -1,4 +1,4 @@
-﻿define(['react', 'app/Navigation.jsx!', 'characters/Characters.jsx!', 'app/Login.jsx!', 'industry/Industry.jsx!', 'app/AppActions'],
+﻿define(['react', 'app/Navigation.jsx', 'characters/Characters.jsx', 'app/Login.jsx', 'industry/Industry.jsx', 'app/AppActions'],
     function(React, Navigation, Characters, Login, Industry, AppActions) {
 
     var App = React.createClass({

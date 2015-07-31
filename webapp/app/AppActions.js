@@ -5,7 +5,6 @@ define(['app/Dispatcher', 'actions/ActionTypes'],
     function(Dispatcher, ActionTypes) {
 
     function navigateTo(path, options) {
-        //this.loadPage(path, function() {
             if (options && options.replace) {
                 window.history.replaceState({}, document.title, path);
             } else {
@@ -14,15 +13,14 @@ define(['app/Dispatcher', 'actions/ActionTypes'],
 
             Dispatcher.dispatch({
                 type: ActionTypes.CHANGE_LOCATION,
-                path
+                path: path
             });
-        //});
     };
 
     function loadPage(path, cb) {
         Dispatcher.dispatch({
             type: ActionTypes.GET_PAGE,
-            path
+            path: path
         });
 
 /*
@@ -31,8 +29,8 @@ define(['app/Dispatcher', 'actions/ActionTypes'],
             .end(function (err, res) {
                 Dispatcher.dispatch({
                     type: ActionTypes.RECEIVE_PAGE,
-                    path,
-                    err,
+                    path: path,
+                    err: err,
                     page: res ? res.body : null
                 });
                 if (cb) {

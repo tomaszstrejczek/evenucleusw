@@ -1,4 +1,4 @@
-﻿define(['react', 'app/Login.css!', 'react/lib/LinkedStateMixin'], function(React, loginCss, LinkedStateMixin) {
+﻿define(['react', 'app/Login.css', 'react/lib/LinkedStateMixin'], function(React, loginCss, LinkedStateMixin) {
     var Login = React.createClass({
         mixins: [LinkedStateMixin],
         getInitialState: function() {

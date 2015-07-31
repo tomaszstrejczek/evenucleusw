@@ -18,3 +18,5 @@ evenucleusw/bin/
 web/bower_components/
 webapp/jspm_packages/
 webapp/obj/
+webapp/Built/
+webapp/x

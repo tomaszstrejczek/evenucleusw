@@ -1,6 +1,9 @@
-define(['app/App.jsx!', 'react', 'jquery', 'fastclick', 'actions/ActionTypes', 'app/Dispatcher', 'react-dom'],
+define(['app/App.jsx', 'react', 'jquery', 'fastclick', 'actions/ActionTypes', 'app/Dispatcher', 'react-dom'],
     function(App, React, $, FastClick, ActionTypes, Dispatcher, ReactDom) {
     console.log('app starting');
+
+    require('bootstrap-less/bootstrap');
+    require('styles/less/flat-ui');
 
     var path = decodeURI(window.location.hash);
 
@@ -32,19 +35,19 @@ define(['app/App.jsx!', 'react', 'jquery', 'fastclick', 'actions/ActionTypes', '
 
         var element = React.createElement(App, props);
 
-        ReactDom.render(element, document.getElementById('app'));
+        React.render(element, document.getElementById('app'));
 
         // Update `Application.path` prop when `window.location` is changed
         Dispatcher.register(function(action) {
             if (action.type === ActionTypes.CHANGE_LOCATION) {
                 element = React.cloneElement(element, {path: action.path});
-                ReactDom.render(element, document.getElementById('app'));
+                React.render(element, document.getElementById('app'));
             }
         });
     };
 
     $(document).ready(function() {
-        FastClick(document.body);
+        FastClick.attach(document.body);
         run();
     });
 
