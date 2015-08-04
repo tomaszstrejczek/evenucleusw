@@ -1,16 +1,8 @@
 ﻿import React from 'react';
+import { Link } from 'react-router';
 
 var Navigation = React.createClass({
-    propTypes: function() {
-        return {
-            path: PropTypes.string
-        };
-    },
     render: function() {
-        var charactersClass = this.props.path === '#/characters'  ? 'active':'';
-        var industryClass = this.props.path === '#/industry'?'active':'';
-        var loginClass = this.props.path === '#/login'?'active':'';
-
         return (
             <nav className="navbar navbar-default">
                 <div className="navbar-header active">
@@ -24,11 +16,11 @@ var Navigation = React.createClass({
                 </div>
                 <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul className="nav navbar-nav">
-                        <li className={charactersClass}><a href="#/characters">Chracters</a></li>
-                        <li className={industryClass}><a href="#/industry">Industry</a></li>
+                        <li><Link to="/characters">Chracters</Link></li>
+                        <li><Link to="/industry">Industry</Link></li>
                     </ul>
                     <ul className="nav navbar-nav navbar-right">
-                        <li className={loginClass}><a href="#/login">Login</a></li>
+                        <li><Link to="/login">Login</Link></li>
                     </ul>
                 </div>
             </nav>

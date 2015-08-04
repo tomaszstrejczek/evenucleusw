@@ -167,6 +167,7 @@
     <Content Include="styles\less\modules\video.less" />
     <Content Include="styles\less\spaces.less" />
     <Content Include="styles\less\variables.less" />
+    <Content Include="app\Routes.jsx" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>

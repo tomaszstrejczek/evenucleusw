@@ -1,5 +1,6 @@
 ﻿import React from 'react';
 import LinkedStateMixin from 'react/lib/LinkedStateMixin';
+import AuthService from 'app/AuthService';
 
 require('app/Login.css');
 
@@ -13,6 +14,10 @@ var Login = React.createClass({
     },
     login: function(e) {
         e.preventDefault();
+        AuthService.login(this.state.user, this.state.password)
+            .catch(function(err) {
+                console.log("Error logging in", err);
+            });
     },
     render: function() {
         return (

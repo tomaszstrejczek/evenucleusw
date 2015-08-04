@@ -4,6 +4,8 @@ import $ from 'jquery';
 import FastClick from 'fastclick';
 import ActionTypes from 'actions/ActionTypes';
 import Dispatcher from 'app/Dispatcher';
+import routes from 'app/Routes.jsx';
+import Router from 'react-router';
 
 console.log('app starting');
 
@@ -11,7 +13,6 @@ console.log('app starting');
 require('bootstrap-less/bootstrap');
 require('styles/less/flat-ui');
 
-var path = decodeURI(window.location.hash);
 
 function onSetMeta(name, content) {
     // Remove and create a new <meta /> tag in order to make it work
@@ -30,25 +31,8 @@ function onSetMeta(name, content) {
 };
 
 function run() {
-    // Render the top-level React component
-    var props = {
-        path: path,
-        context: {
-            onSetTitle: function(value) { document.title = value },
-            onSetMeta: onSetMeta
-        }
-    };
-
-    var element = React.createElement(App, props);
-
-    React.render(element, document.getElementById('app'));
-
-    // Update `Application.path` prop when `window.location` is changed
-    Dispatcher.register(function(action) {
-        if (action.type === ActionTypes.CHANGE_LOCATION) {
-            element = React.cloneElement(element, {path: action.path});
-            React.render(element, document.getElementById('app'));
-        }
+    Router.run(routes, function (Handler) {
+      React.render(<Handler />, document.body);
     });
 };
 
