@@ -1,8 +1,35 @@
 ﻿import React from 'react';
 import { Link } from 'react-router';
+import LoginStore from 'app/LoginStore';
 
 var Navigation = React.createClass({
+
+    getInitialState: function() {
+        return {
+            userLoggedIn: LoginStore.isLoggedIn()
+        };
+    },
+
+    componentDidMount: function() {
+        this.changeListener = this._onChange.bind(this);
+        LoginStore.addChangeListener(this.changeListener);
+    },
+
+    _onChange: function() {
+        this.setState(this.getInitialState());
+    },
+
+    componentWillUnmount: function() {
+        LoginStore.removeChangeListener(this.changeListener);
+    },
+
     render: function() {
+        var login;
+        if (this.state.userLoggedIn)
+            login = <li><Link to="/logout">Logout</Link></li>;
+        else
+            login = <li><Link to="/login">Login</Link></li>;
+
         return (
             <nav className="navbar navbar-default">
                 <div className="navbar-header active">
@@ -20,7 +47,7 @@ var Navigation = React.createClass({
                         <li><Link to="/industry">Industry</Link></li>
                     </ul>
                     <ul className="nav navbar-nav navbar-right">
-                        <li><Link to="/login">Login</Link></li>
+                        {login}
                     </ul>
                 </div>
             </nav>
