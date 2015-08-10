@@ -11,7 +11,7 @@ var Navigation = React.createClass({
     },
 
     componentDidMount: function() {
-        this.changeListener = this._onChange.bind(this);
+        this.changeListener = this._onChange;
         LoginStore.addChangeListener(this.changeListener);
     },
 

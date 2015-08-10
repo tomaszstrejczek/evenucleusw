@@ -1,6 +1,5 @@
 ﻿import {LOGIN_USER} from 'actions/ActionTypes';
 import BaseStore from './BaseStore';
-import jwt_decode from 'jwt-decode';
 
 
 class LoginStore extends BaseStore {

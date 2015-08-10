@@ -4,13 +4,17 @@ import AuthService from 'app/AuthService';
 
 require('app/Login.css');
 
+class LoginModel {
+    constructor() {
+        this.user = '';
+        this.password = '';
+    }
+};
+
 var Login = React.createClass({
     mixins: [LinkedStateMixin],
     getInitialState: function() {
-        return {
-        user: '',
-        password: ''
-        };
+        return new LoginModel();
     },
     login: function(e) {
         e.preventDefault();
