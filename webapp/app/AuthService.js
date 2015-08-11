@@ -5,7 +5,7 @@ class AuthService {
     login(username, password) {
         function loginMock()
         {
-            if (username !== 'admin')
+            if (username !== 'a@a.a')
                 throw 'Invalid user/password';
             
             return 'token';

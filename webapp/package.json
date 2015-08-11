@@ -19,6 +19,7 @@
     "fastclick": "^1.0.6",
     "file-loader": "^0.8.4",
     "flux": "^2.0.3",
+    "formsy-react": "^0.14.1",
     "jquery": "^2.1.4",
     "jsx-loader": "^0.13.2",
     "less": "^2.5.1",
@@ -33,4 +34,5 @@
     "webpack": "^1.10.5",
     "when": "^3.7.3"
   }
+, "-vs-binding":{"BeforeBuild":["build"]}
 }
