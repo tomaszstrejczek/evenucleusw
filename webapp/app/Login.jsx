@@ -41,6 +41,10 @@ var MyInput = React.createClass({
 
 var Login = React.createClass({
     mixins: [LinkedStateMixin],
+    contextTypes: { 
+        router: React.PropTypes.func 
+    }, 
+
     getInitialState: function() {
         return {
             formError: ''
@@ -59,6 +63,9 @@ var Login = React.createClass({
     submit: function(model) {
         var that = this;
         AuthService.login(model.email, model.password)
+            .then(function() {
+                that.context.router.transitionTo('/');
+            })
             .catch(function(err) {
                 console.log("Error logging in", err);
                 that.setState({

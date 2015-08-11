@@ -17,6 +17,18 @@ class AuthService {
                 LoginActions.loginUser(token);
             });
     }
+
+    logout() {
+        function logoutMock()
+        {
+        }
+
+        return delay(100)
+            .then(logoutMock)
+            .then(function() {
+                LoginActions.logout();
+            });
+    }
 }
 
 export default new AuthService();

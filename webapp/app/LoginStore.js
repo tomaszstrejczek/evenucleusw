@@ -1,4 +1,4 @@
-﻿import {LOGIN_USER} from 'actions/ActionTypes';
+﻿import {LOGIN_USER, LOGOUT_USER} from 'actions/ActionTypes';
 import BaseStore from './BaseStore';
 
 
@@ -16,6 +16,10 @@ class LoginStore extends BaseStore {
             case LOGIN_USER:
                 this._jwt = action.jwt;
                 this._user = 'user admin';
+                this.emitChange();
+                break;
+            case LOGOUT_USER:
+                this._user = null;
                 this.emitChange();
                 break;
             default:

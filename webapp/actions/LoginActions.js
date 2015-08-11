@@ -1,5 +1,5 @@
 ﻿import Dispatcher from 'app/Dispatcher';
-import {LOGIN_USER} from 'actions/ActionTypes';
+import {LOGIN_USER, LOGOUT_USER} from 'actions/ActionTypes';
 
 export default {
     loginUser: (jwt) => {
@@ -15,6 +15,14 @@ export default {
         Dispatcher.dispatch({
             actionType: LOGIN_USER,
             jwt: jwt
+        });
+    },
+
+    logout: () => {
+        localStorage.clear('jwt');
+
+        Dispatcher.dispatch({
+            actionType: LOGOUT_USER
         });
     }
 };

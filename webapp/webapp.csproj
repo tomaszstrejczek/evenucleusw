@@ -33,6 +33,7 @@
     <Content Include="favicon.ico" />
     <Content Include="forms\icon.jsx" />
     <Content Include="forms\input.jsx" />
+    <Content Include="app\Logout.jsx" />
     <None Include="forms\row.jsx" />
     <None Include="forms\component.jsx" />
     <Content Include="industry\*.js" />
