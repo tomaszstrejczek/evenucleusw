@@ -1,6 +1,7 @@
 ﻿import React from 'react';
 import LinkedStateMixin from 'react/lib/LinkedStateMixin';
 import AuthService from 'app/AuthService';
+import Input from 'forms/input';
 
 require('app/Login.css');
 
@@ -73,8 +74,8 @@ var Login = React.createClass({
                     <div className="account-wall">
                         <Formsy.Form className="form-signin" onValidSubmit={this.submit} onValid={this.enableButton} onInvalid={this.disableButton}>
                             <span className="help-block">{this.state.formError}</span>
-                            <MyInput name="email" type="text" validations="isEmail" placeholder="Email" required autofocus valueLink={this.linkState('user')}></MyInput>
-                            <MyInput name="password" type="password" placeholder="Password" required valueLink={this.linkState('password')}></MyInput>
+                            <Input name="email" type="text" validations="isEmail" placeholder="Email" required autofocus layout="elementOnly"></Input>
+                            <Input name="password" type="password" placeholder="Password" required layout="elementOnly"></Input>
                             <button className="btn btn-lg btn-primary btn-block" type="submit" disabled={!this.state.canSubmit}>
                                 Sign in</button>
                             <label className="checkbox pull-left">
