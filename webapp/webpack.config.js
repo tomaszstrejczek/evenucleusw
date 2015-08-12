@@ -7,7 +7,10 @@ var LESS_LOADER = 'style-loader!css-loader!less-loader';
 
 module.exports = {
   context: path.join(__dirname, '.'),
-  entry: './app.js',
+  entry: {
+    main: './app.js',
+    test: 'test/index.js'
+  },
   output: {
     path: path.join(__dirname, 'Built'),
     filename: '[name].bundle.js',

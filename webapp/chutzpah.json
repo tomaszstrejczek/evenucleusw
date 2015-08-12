@@ -1,0 +1,6 @@
+{
+  "Framework": "mocha",
+  "Tests": [
+    { "Path": "Built/test.bundle.js" }
+  ]
+}
