@@ -1,2 +1,3 @@
-require('test/utils/dom.js')
+var jsdom = require('jsdom');
+
 require('test/smoke0');
