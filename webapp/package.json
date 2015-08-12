@@ -32,7 +32,12 @@
     "style-loader": "^0.12.3",
     "url-loader": "^0.5.6",
     "webpack": "^1.10.5",
+    "webpack-notifier": "^1.2.1",
     "when": "^3.7.3"
+  },
+  "-vs-binding": {
+    "BeforeBuild": [
+      "build"
+    ]
   }
-, "-vs-binding":{"BeforeBuild":["build"]}
 }

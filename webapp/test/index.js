@@ -1,1 +1,2 @@
-﻿require('test/smoke0')
+require('test/utils/dom.js')
+require('test/smoke0');

@@ -1,1 +1,0 @@
-mocha Built/test.bundle.js --reporter nyan

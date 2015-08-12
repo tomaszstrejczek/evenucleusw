@@ -1,4 +1,5 @@
 ﻿var path = require('path');
+var WebpackNotifierPlugin = require('webpack-notifier');
 
 var SCSS_LOADER = 'style-loader!css-loader!sass-loader?includePaths[]=' +
         path.resolve(__dirname, './node_modules/bootstrap-sass/assets/stylesheets');
@@ -47,5 +48,8 @@ module.exports = {
   resolveLoader: {
     root: [path.resolve(__dirname, './node_modules')],
     extensions: ['', '.js']
-  }
+  },
+  plugins: [
+      new WebpackNotifierPlugin()
+  ],
 }
