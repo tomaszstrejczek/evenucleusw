@@ -10,7 +10,8 @@ module.exports = {
   context: path.join(__dirname, '.'),
   entry: {
     main: './app.js',
-    test: 'test/index.js'
+    test: 'test/purejs/index.js',
+    dom: 'test/dom/index.js'
   },
   output: {
     path: path.join(__dirname, 'Built'),
