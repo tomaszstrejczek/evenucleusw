@@ -22,23 +22,25 @@
     "formsy-react": "^0.14.1",
     "jquery": "^2.1.4",
     "jsx-loader": "^0.13.2",
+    "karma": "^0.13.9",
+    "karma-chrome-launcher": "^0.2.0",
+    "karma-mocha": "^0.2.0",
+    "karma-phantomjs-launcher": "^0.2.1",
+    "karma-requirejs": "^0.2.2",
     "less": "^2.5.1",
     "less-loader": "^2.2.0",
     "mocha": "^2.2.5",
     "node-sass": "^3.2.0",
+    "phantomjs": "^1.9.18",
     "react": "^0.13.3",
     "react-dom": "^0.1.0",
     "react-router": "^0.13.3",
+    "requirejs": "^2.1.20",
     "sass-loader": "^1.0.3",
     "style-loader": "^0.12.3",
     "url-loader": "^0.5.6",
     "webpack": "^1.10.5",
     "webpack-notifier": "^1.2.1",
     "when": "^3.7.3"
-  },
-  "-vs-binding": {
-    "BeforeBuild": [
-      "build"
-    ]
   }
 }

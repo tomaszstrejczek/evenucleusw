@@ -40,6 +40,7 @@
     <Content Include="industry\*.jsx" />
     <Content Include="industry\*.css" />
     <Content Include="actions\*.js" />
+    <Content Include="karma.conf.js" />
     <Content Include="styles\**\*.js" />
     <Content Include="app.css" />
     <Content Include="index.html" />
@@ -84,8 +85,13 @@
     <Content Include="styles\img\login\imac.png" />
     <Content Include="styles\img\tile\ribbon-2x.png" />
     <Content Include="styles\img\tile\ribbon.png" />
-    <Content Include="test\index.js" />
-    <Content Include="test\smoke0.js" />
+    <Content Include="test\dom\dom.html" />
+    <Content Include="test\dom\index.js" />
+    <Content Include="test\dom\login-test.js" />
+    <Content Include="test\dom\smoke0-test.js" />
+    <Content Include="test\purejs\index.js" />
+    <Content Include="test\purejs\smoke0.js" />
+    <Content Include="test\utils\dom.js" />
     <Content Include="web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -175,6 +181,7 @@
     <Content Include="styles\less\spaces.less" />
     <Content Include="styles\less\variables.less" />
     <Content Include="app\Routes.jsx" />
+    <Content Include="test\mocha.opts" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>
