@@ -53,4 +53,5 @@ module.exports = {
   plugins: [
       new WebpackNotifierPlugin()
   ],
+  devtool: 'inline-source-map',
 }
