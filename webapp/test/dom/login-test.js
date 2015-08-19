@@ -6,11 +6,10 @@ describe('Login', function () {
     let login;
 
     beforeEach(function() {
-        ddd
     })
 
     it('empty', function () {
-
+throw 'ala';
     });
 });
  
