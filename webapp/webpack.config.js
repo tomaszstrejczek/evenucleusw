@@ -9,9 +9,9 @@ var LESS_LOADER = 'style-loader!css-loader!less-loader';
 module.exports = {
   context: path.join(__dirname, '.'),
   entry: {
-    main: './app.js',
-    test: 'test/purejs/index.js',
-    dom: 'test/dom/index.js'
+    main: './app.ts',
+    //test: 'test/purejs/index.js',
+    //dom: 'test/dom/index.js'
   },
   output: {
     path: path.join(__dirname, 'Built'),
@@ -40,10 +40,12 @@ module.exports = {
         { test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,    loader: "file" },
         { test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,    loader: "url?limit=10000&mimetype=image/svg+xml" },
         { test: /\.png$/,    loader: "file" },
+
+        { test: /\.ts$/, loader: "ts-loader" },
     ]
   },
   resolve: {
-    extensions: ['', '.js', '.jsx', '.less'],
+    extensions: ['', '.js', '.jsx', '.less', '.ts'],
     root: [__dirname, path.join(__dirname, './node_modules')]
   },
   resolveLoader: {
@@ -53,5 +55,8 @@ module.exports = {
   plugins: [
       new WebpackNotifierPlugin()
   ],
-  devtool: 'inline-source-map',
+  devtool: 'source-map',
+  ts: {
+    compiler: 'typescript'
+  }
 }
