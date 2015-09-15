@@ -1,44 +1,42 @@
 /// <reference path="references.d.ts" />
+/// <amd-dependency path="bootstrap-less/bootstrap" />
+/// <amd-dependency path="styles/less/flat-ui" />
 
 //import App from 'app/App.jsx';
 //import React from 'react';
 import $ = require('jquery');
-import {FastClick} from 'fastclick';
+import * as fclick from 'fastclick';
 //import ActionTypes from 'actions/ActionTypes';
 //import Dispatcher from 'app/Dispatcher';
 //import routes from 'app/Routes.jsx';
-//import Router from 'react-router';
+import Router = require('react-router');
 
-//console.log('app starting');
-
-
-//require('bootstrap-less/bootstrap');
-//require('styles/less/flat-ui');
+console.log('app starting');
 
 
-//function onSetMeta(name, content) {
-//    // Remove and create a new <meta /> tag in order to make it work
-//    // with bookmarks in Safari
-//    var elements = document.getElementsByTagName('meta');
-//    [].slice.call(elements).forEach(function (element) {
-//        if (element.getAttribute('name') === name) {
-//            element.parentNode.removeChild(element);
-//        }
-//    });
+function onSetMeta(name, content) {
+    // Remove and create a new <meta /> tag in order to make it work
+    // with bookmarks in Safari
+    var elements = document.getElementsByTagName('meta');
+    [].slice.call(elements).forEach(function (element) {
+        if (element.getAttribute('name') === name) {
+            element.parentNode.removeChild(element);
+        }
+    });
 
-//    var meta = document.createElement('meta');
-//    meta.setAttribute('name', name);
-//    meta.setAttribute('content', content);
-//    document.getElementsByTagName('head')[0].appendChild(meta);
-//};
+    var meta = document.createElement('meta');
+    meta.setAttribute('name', name);
+    meta.setAttribute('content', content);
+    document.getElementsByTagName('head')[0].appendChild(meta);
+};
 
-//function run() {
+function run() {
 //    Router.run(routes, function (Handler) {
 //      React.render(<Handler />, document.body);
 //    });
-//};
+};
 
 $(document).ready(function() {
-    FastClick.attach(document.body);
-//    run();
+    fclick.attach(document.body);
+    run();
 });

@@ -1,7 +1,6 @@
 {
   "compilerOptions": {
-    "module": "commonjs",
-    "sourceMap": true
+    "module": "amd"
   },
   "files": [
     "app.ts"

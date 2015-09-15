@@ -55,7 +55,7 @@ module.exports = {
   plugins: [
       new WebpackNotifierPlugin()
   ],
-  devtool: 'source-map',
+//  devtool: 'source-map',
   ts: {
     compiler: 'typescript'
   }
