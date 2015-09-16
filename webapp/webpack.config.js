@@ -9,7 +9,7 @@ var LESS_LOADER = 'style-loader!css-loader!less-loader';
 module.exports = {
   context: path.join(__dirname, '.'),
   entry: {
-    main: './app.ts',
+    main: './app.tsx',
     //test: 'test/purejs/index.js',
     //dom: 'test/dom/index.js'
   },
@@ -41,11 +41,11 @@ module.exports = {
         { test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,    loader: "url?limit=10000&mimetype=image/svg+xml" },
         { test: /\.png$/,    loader: "file" },
 
-        { test: /\.ts$/, loader: "ts-loader" },
+        { test: /\.tsx?$/, loader: "ts-loader" },
     ]
   },
   resolve: {
-    extensions: ['', '.js', '.jsx', '.less', '.ts'],
+    extensions: ['', '.js', '.jsx', '.less', '.ts', '.tsx'],
     root: [__dirname, path.join(__dirname, './node_modules')]
   },
   resolveLoader: {

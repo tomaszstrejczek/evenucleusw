@@ -22,3 +22,7 @@ webapp/Built/
 webapp/x
 webapp/bin/
 webapp/test/dom/x
+webapp/app.js
+webapp/app/App.js
+webapp/app/Navigation.js
+webapp/app/Routes.js

@@ -1,8 +1,9 @@
 {
   "compilerOptions": {
-    "module": "amd"
+    "module": "amd",
+    "jsx": "react"
   },
   "files": [
-    "app.ts"
+    "app.tsx"
   ]
 }

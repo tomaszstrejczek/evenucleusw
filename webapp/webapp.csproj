@@ -23,9 +23,12 @@
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <ItemGroup>
-    <TypeScriptCompile Include="app.ts" />
+    <TypeScriptCompile Include="app.tsx" />
     <Content Include="app\*.js" />
-    <Content Include="app\*.jsx" />
+    <Content Include="app\App.jsx" />
+    <Content Include="app\Login.jsx" />
+    <Content Include="app\Logout.jsx" />
+    <Content Include="app\Navigation.jsx" />
     <Content Include="app\*.css" />
     <Content Include="characters\*.js" />
     <Content Include="characters\*.jsx" />
@@ -35,6 +38,7 @@
     <Content Include="forms\icon.jsx" />
     <Content Include="forms\input.jsx" />
     <Content Include="app\Logout.jsx" />
+    <TypeScriptCompile Include="app\Routes.tsx" />
     <None Include="forms\row.jsx" />
     <None Include="forms\component.jsx" />
     <Content Include="industry\*.js" />
@@ -181,7 +185,6 @@
     <Content Include="styles\less\modules\video.less" />
     <Content Include="styles\less\spaces.less" />
     <Content Include="styles\less\variables.less" />
-    <Content Include="app\Routes.jsx" />
     <Content Include="test\mocha.opts" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
@@ -221,10 +224,10 @@
     <TypeScriptRemoveComments>false</TypeScriptRemoveComments>
     <TypeScriptSourceMap>true</TypeScriptSourceMap>
     <TypeScriptTarget>ES5</TypeScriptTarget>
-    <TypeScriptJSXEmit>None</TypeScriptJSXEmit>
+    <TypeScriptJSXEmit>React</TypeScriptJSXEmit>
     <TypeScriptCompileOnSaveEnabled>False</TypeScriptCompileOnSaveEnabled>
     <TypeScriptNoImplicitAny>False</TypeScriptNoImplicitAny>
-    <TypeScriptModuleKind>System</TypeScriptModuleKind>
+    <TypeScriptModuleKind>AMD</TypeScriptModuleKind>
     <TypeScriptOutFile />
     <TypeScriptOutDir />
     <TypeScriptGeneratesDeclarations>False</TypeScriptGeneratesDeclarations>

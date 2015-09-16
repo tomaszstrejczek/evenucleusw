@@ -1,34 +1,34 @@
-﻿import React from 'react';
+﻿import * as React from 'react';
 import { Link } from 'react-router';
-import LoginStore from 'app/LoginStore';
+//import LoginStore from 'app/LoginStore';
 
-var Navigation = React.createClass({
+export class Navigation extends React.Component<any, any> {
 
-    getInitialState: function() {
-        return {
-            userLoggedIn: LoginStore.isLoggedIn()
-        };
-    },
+    //getInitialState: function() {
+    //    return {
+    //        userLoggedIn: LoginStore.isLoggedIn()
+    //    };
+    //},
 
-    componentDidMount: function() {
-        this.changeListener = this._onChange;
-        LoginStore.addChangeListener(this.changeListener);
-    },
+    //componentDidMount: function() {
+    //    this.changeListener = this._onChange;
+    //    LoginStore.addChangeListener(this.changeListener);
+    //},
 
-    _onChange: function() {
-        this.setState(this.getInitialState());
-    },
+    //_onChange: function() {
+    //    this.setState(this.getInitialState());
+    //},
 
-    componentWillUnmount: function() {
-        LoginStore.removeChangeListener(this.changeListener);
-    },
+    //componentWillUnmount: function() {
+    //    LoginStore.removeChangeListener(this.changeListener);
+    //},
 
-    render: function() {
-        var login;
-        if (this.state.userLoggedIn)
-            login = <li><Link to="/logout">Logout</Link></li>;
-        else
-            login = <li><Link to="/login">Login</Link></li>;
+    render(): JSX.Element {
+        //var login;
+        //if (this.state.userLoggedIn)
+        //    login = <li><Link to="/logout">Logout</Link></li>;
+        //else
+        //    login = <li><Link to="/login">Login</Link></li>;
 
         return (
             <nav className="navbar navbar-default">
@@ -47,13 +47,12 @@ var Navigation = React.createClass({
                         <li><Link to="/industry">Industry</Link></li>
                     </ul>
                     <ul className="nav navbar-nav navbar-right">
-                        {login}
+                        
                     </ul>
                 </div>
             </nav>
         );
     }
-});
+};
 
-module.exports = Navigation;
 
