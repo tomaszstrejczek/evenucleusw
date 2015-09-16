@@ -1,8 +1,10 @@
-import * as React from 'react';
+﻿import * as React from 'react';
 import { Router, Route, Link, Navigation } from 'react-router';
 import {App} from './App';
 
-//import Characters from 'characters/Characters.jsx';
+import {Characters} from './../characters/Characters';
+import {Industry} from './../industry/Industry';
+
 //import Login from 'app/Login.jsx';
 //import Industry from 'industry/Industry.jsx';
 //import App from 'app/App.jsx';
@@ -21,6 +23,9 @@ import {App} from './App';
 
 //module.exports = routes;
 export var routes = (
-    <Route path="/" handler={App} />
+    <Route path="/" handler={App} >
+        <Route name="characters" path="/characters" handler={Characters}/>
+        <Route name="industry" path="/industry" handler={Industry}/>
+    </Route>
 
 );

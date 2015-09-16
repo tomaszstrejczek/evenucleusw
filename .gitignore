@@ -26,3 +26,6 @@ webapp/app.js
 webapp/app/App.js
 webapp/app/Navigation.js
 webapp/app/Routes.js
+webapp/industry/Industry.js
+webapp/characters/Characters.js
+webapp/actions/AppActions.js
