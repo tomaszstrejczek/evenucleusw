@@ -29,3 +29,5 @@ webapp/app/Routes.js
 webapp/industry/Industry.js
 webapp/characters/Characters.js
 webapp/actions/AppActions.js
+webapp/app/BaseStore.js
+webapp/app/Dispatcher.js

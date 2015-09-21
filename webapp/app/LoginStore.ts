@@ -1,8 +1,11 @@
-﻿import {LOGIN_USER, LOGOUT_USER} from 'actions/ActionTypes';
-import BaseStore from './BaseStore';
+﻿import {ActionTypes} from './../actions/ActionTypes';
+import {BaseStore} from './BaseStore';
 
 
 class LoginStore extends BaseStore {
+
+    private _user: string;
+    private _jwt: string;
 
     constructor() {
         super();
@@ -13,12 +16,12 @@ class LoginStore extends BaseStore {
 
     _registerToActions(action) {
         switch(action.actionType) {
-            case LOGIN_USER:
+            case ActionTypes.LOGIN_USER:
                 this._jwt = action.jwt;
                 this._user = 'user admin';
                 this.emitChange();
                 break;
-            case LOGOUT_USER:
+            case ActionTypes.LOGOUT_USER:
                 this._user = null;
                 this.emitChange();
                 break;
@@ -27,17 +30,17 @@ class LoginStore extends BaseStore {
         };
     }
 
-    get user() {
+    user(): string {
         return this._user;
     }
 
-    get jwt() {
+    jwt(): string {
         return this._jwt;
     }
 
-    isLoggedIn() {
+    isLoggedIn():boolean {
         return !!this._user;
     }
 }
 
-export default new LoginStore();
+export = new LoginStore();
