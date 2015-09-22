@@ -1,22 +1,17 @@
 ﻿import * as React from 'react';
 import { Link } from 'react-router';
-import * as LoginStore from './LoginStore';
+import {loginStore} from './LoginStore';
 
 class NavigationState {
     userLoggedIn: boolean;
 
     constructor() {
-        this.userLoggedIn = LoginStore.isLoggedIn();
+        this.userLoggedIn = loginStore.isLoggedIn();
     }
 }
 
-export class Navigation extends React.Component<any, any> {
+export class Navigation extends React.Component<any, NavigationState> {
 
-    //getInitialState(): function() {
-    //    return {
-    //        userLoggedIn: LoginStore.isLoggedIn()
-    //    };
-    //},
 
     //componentDidMount: function() {
     //    this.changeListener = this._onChange;

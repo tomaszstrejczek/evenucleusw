@@ -43,4 +43,4 @@ class LoginStore extends BaseStore {
     }
 }
 
-export = new LoginStore();
+export var loginStore = new LoginStore();

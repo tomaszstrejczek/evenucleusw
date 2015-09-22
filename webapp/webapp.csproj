@@ -41,6 +41,7 @@
     <TypeScriptCompile Include="app\App.tsx" />
     <TypeScriptCompile Include="app\BaseStore.ts" />
     <TypeScriptCompile Include="app\Dispatcher.ts" />
+    <TypeScriptCompile Include="app\LoginStore.ts" />
     <TypeScriptCompile Include="app\Navigation.tsx" />
     <TypeScriptCompile Include="app\Routes.tsx" />
     <None Include="forms\row.jsx" />
