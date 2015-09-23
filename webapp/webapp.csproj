@@ -26,8 +26,15 @@
     <TypeScriptCompile Include="actions\ActionTypes.ts" />
     <TypeScriptCompile Include="actions\AppActions.ts" />
     <TypeScriptCompile Include="app.tsx" />
-    <Content Include="app\*.js" />
-    <Content Include="app\Login.jsx" />
+    <Content Include="app\App.js" />
+    <Content Include="app\AppActions.js" />
+    <Content Include="app\AuthService.js" />
+    <Content Include="app\BaseStore.js" />
+    <Content Include="app\Dispatcher.js" />
+    <Content Include="app\LoginStore.js" />
+    <Content Include="app\Navigation.js" />
+    <Content Include="app\Routes.js" />
+    <TypeScriptCompile Include="app\Login.tsx" />
     <Content Include="app\Logout.jsx" />
     <Content Include="app\*.css" />
     <Content Include="characters\*.js" />
@@ -36,7 +43,7 @@
     <Content Include="config.js" />
     <Content Include="favicon.ico" />
     <Content Include="forms\icon.jsx" />
-    <Content Include="forms\input.jsx" />
+    <TypeScriptCompile Include="forms\input.tsx" />
     <Content Include="app\Logout.jsx" />
     <TypeScriptCompile Include="app\App.tsx" />
     <TypeScriptCompile Include="app\BaseStore.ts" />
@@ -45,7 +52,7 @@
     <TypeScriptCompile Include="app\Navigation.tsx" />
     <TypeScriptCompile Include="app\Routes.tsx" />
     <None Include="forms\row.jsx" />
-    <None Include="forms\component.jsx" />
+    <TypeScriptCompile Include="forms\component.tsx" />
     <Content Include="industry\*.js" />
     <Content Include="industry\*.jsx" />
     <Content Include="industry\*.css" />
