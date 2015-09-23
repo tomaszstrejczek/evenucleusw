@@ -49,8 +49,6 @@
     <Content Include="industry\*.js" />
     <Content Include="industry\*.jsx" />
     <Content Include="industry\*.css" />
-    <Content Include="actions\ActionTypes.js" />
-    <Content Include="actions\AppActions.js" />
     <Content Include="karma.conf.js" />
     <Content Include="styles\**\*.js" />
     <Content Include="app.css" />

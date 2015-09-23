@@ -12,26 +12,33 @@ class NavigationState {
 
 export class Navigation extends React.Component<any, NavigationState> {
 
+    public state: NavigationState;
+    private changeListener: () => void;
 
-    //componentDidMount: function() {
-    //    this.changeListener = this._onChange;
-    //    LoginStore.addChangeListener(this.changeListener);
-    //},
+    constructor() {
+        this.state = new NavigationState();
+        super();
+    }
 
-    //_onChange: function() {
-    //    this.setState(this.getInitialState());
-    //},
+    componentDidMount() {
+        this.changeListener = this._onChange;
+        loginStore.addChangeListener(this.changeListener);
+    }
 
-    //componentWillUnmount: function() {
-    //    LoginStore.removeChangeListener(this.changeListener);
-    //},
+    _onChange() {
+        this.setState(new NavigationState());
+    }
+
+    componentWillUnmount() {
+        loginStore.removeChangeListener(this.changeListener);
+    }
 
     render(): JSX.Element {
-        //var login;
-        //if (this.state.userLoggedIn)
-        //    login = <li><Link to="/logout">Logout</Link></li>;
-        //else
-        //    login = <li><Link to="/login">Login</Link></li>;
+        var login;
+        if (this.state.userLoggedIn)
+            login = <li><Link to="/logout">Logout</Link></li>;
+        else
+            login = <li><Link to="/login">Login</Link></li>;
 
         return (
             <nav className="navbar navbar-default">
@@ -50,7 +57,7 @@ export class Navigation extends React.Component<any, NavigationState> {
                         <li><Link to="/industry">Industry</Link></li>
                     </ul>
                     <ul className="nav navbar-nav navbar-right">
-                        
+                        {login}
                     </ul>
                 </div>
             </nav>

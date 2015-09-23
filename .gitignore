@@ -31,3 +31,4 @@ webapp/characters/Characters.js
 webapp/actions/AppActions.js
 webapp/app/BaseStore.js
 webapp/app/Dispatcher.js
+webapp/app/LoginStore.js
