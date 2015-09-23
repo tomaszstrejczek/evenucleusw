@@ -1,18 +1,16 @@
-﻿'use strict';
+﻿import * as React from 'react';
 
-var React = require('react');
-
-module.exports = {
+export class ComponentMixin {
 
     propTypes: {
         layout: React.PropTypes.string
-    },
+    };
 
     contextTypes: {
         layout: React.PropTypes.string
-    },
+    };
 
-    getDefaultProps: function() {
+    getDefaultProps() {
         return {
             disabled: false,
             validatePristine: false,
@@ -20,35 +18,35 @@ module.exports = {
             onFocus: function() {},
             onBlur: function() {}
         };
-    },
+    };
 
-    hashString: function(string) {
+    hashString(string) {
         var hash = 0;
         for (var i = 0; i < string.length; i++) {
             hash = (((hash << 5) - hash) + string.charCodeAt(i)) & 0xFFFFFFFF;
         }
         return hash;
-    },
+    };
 
-    getId: function() {
+    getId() {
         return this.props.id || this.props.name.split('[').join('_').replace(']', '') + this.hashString(JSON.stringify(this.props));
-    },
+    };
 
-    getLayout: function() {
+    getLayout() {
         var defaultLayout = this.context.layout || 'horizontal';
         return this.props.layout ? this.props.layout : defaultLayout;
-    },
+    };
 
-    renderHelp: function() {
+    renderHelp() {
         if (!this.props.help) {
             return '';
         }
         return (
             <span className="help-block">{this.props.help}</span>
         );
-    },
+    };
 
-    renderErrorMessage: function() {
+    renderErrorMessage() {
         if (!this.showErrors()) {
             return '';
         }
@@ -59,9 +57,9 @@ module.exports = {
         return (
             <span className="help-block validation-message">{errorMessage}</span>
         );
-    },
+    };
 
-    showErrors: function() {
+    showErrors() {
         if (this.isPristine() === true) {
             if (this.props.validatePristine === false) {
                 return false;
