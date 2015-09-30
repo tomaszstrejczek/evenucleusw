@@ -1,7 +1,16 @@
 ﻿import * as React from 'react';
 
-export class ComponentMixin {
+class ComponentProps {
+    disabled: boolean = false;
+    validatePristine: boolean = false;
+    onChange():void { };
+    onFocus():void { };
+    onBlur():void { };
+};
 
+export class ComponentMixin extends React.Mixin<ComponentProps, any> {
+
+/*
     propTypes: {
         layout: React.PropTypes.string
     };
@@ -67,4 +76,5 @@ export class ComponentMixin {
         }
         return (this.isValid() === false);
     }
+    */
 };
