@@ -5,3 +5,7 @@
 /// <reference path="typings/react/react.d.ts" />
 /// <reference path="typings/flux/flux.d.ts" />
 /// <reference path="typings/node/node.d.ts" />
+/// <reference path="typings/when/when.d.ts" />
+
+
+/// <reference path="typings/mine-formsy-react/formsy-react.d.ts" />

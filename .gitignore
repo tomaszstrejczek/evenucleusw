@@ -34,5 +34,3 @@ webapp/app/Dispatcher.js
 webapp/app/LoginStore.js
 webapp/actions/ActionTypes.js
 webapp/app/Login.js
-webapp/forms/component.js
-webapp/forms/input.js

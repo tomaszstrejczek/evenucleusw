@@ -1,25 +1,18 @@
-﻿import * as React from 'react';
+﻿'use strict';
 
-class ComponentProps {
-    disabled: boolean = false;
-    validatePristine: boolean = false;
-    onChange():void { };
-    onFocus():void { };
-    onBlur():void { };
-};
+var React = require('react');
 
-export class ComponentMixin extends React.Mixin<ComponentProps, any> {
+module.exports = {
 
-/*
     propTypes: {
         layout: React.PropTypes.string
-    };
+    },
 
     contextTypes: {
         layout: React.PropTypes.string
-    };
+    },
 
-    getDefaultProps() {
+    getDefaultProps: function() {
         return {
             disabled: false,
             validatePristine: false,
@@ -27,35 +20,35 @@ export class ComponentMixin extends React.Mixin<ComponentProps, any> {
             onFocus: function() {},
             onBlur: function() {}
         };
-    };
+    },
 
-    hashString(string) {
+    hashString: function(string) {
         var hash = 0;
         for (var i = 0; i < string.length; i++) {
             hash = (((hash << 5) - hash) + string.charCodeAt(i)) & 0xFFFFFFFF;
         }
         return hash;
-    };
+    },
 
-    getId() {
+    getId: function() {
         return this.props.id || this.props.name.split('[').join('_').replace(']', '') + this.hashString(JSON.stringify(this.props));
-    };
+    },
 
-    getLayout() {
+    getLayout: function() {
         var defaultLayout = this.context.layout || 'horizontal';
         return this.props.layout ? this.props.layout : defaultLayout;
-    };
+    },
 
-    renderHelp() {
+    renderHelp: function() {
         if (!this.props.help) {
             return '';
         }
         return (
             <span className="help-block">{this.props.help}</span>
         );
-    };
+    },
 
-    renderErrorMessage() {
+    renderErrorMessage: function() {
         if (!this.showErrors()) {
             return '';
         }
@@ -66,9 +59,9 @@ export class ComponentMixin extends React.Mixin<ComponentProps, any> {
         return (
             <span className="help-block validation-message">{errorMessage}</span>
         );
-    };
+    },
 
-    showErrors() {
+    showErrors: function() {
         if (this.isPristine() === true) {
             if (this.props.validatePristine === false) {
                 return false;
@@ -76,5 +69,4 @@ export class ComponentMixin extends React.Mixin<ComponentProps, any> {
         }
         return (this.isValid() === false);
     }
-    */
 };
