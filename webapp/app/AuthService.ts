@@ -1,5 +1,5 @@
 ﻿import * as When from 'when';
-import {AppActions} from './actions/AppActions';
+import {AppActions} from './../actions/AppActions';
 
 export class AuthService {
     public static login(username: string, password:string): When.Promise<string> {

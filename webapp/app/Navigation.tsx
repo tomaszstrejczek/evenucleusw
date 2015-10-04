@@ -21,7 +21,7 @@ export class Navigation extends React.Component<any, NavigationState> {
     }
 
     componentDidMount() {
-        this.changeListener = this._onChange;
+        this.changeListener = this._onChange.bind(this);
         loginStore.addChangeListener(this.changeListener);
     }
 

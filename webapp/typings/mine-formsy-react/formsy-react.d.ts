@@ -1,4 +1,8 @@
-﻿declare module FormsyReact {
+﻿///<reference path='../react/react.d.ts' />
+
+declare module FormsyReact {
+    import React = __React;
+
     interface FormsyBaseState {
         _value: any;
         _isRequired: boolean;
@@ -39,7 +43,12 @@
         isValidValue(): boolean;
     }
 
+    interface FormInterface extends React.ReactElement<any> {
+    }
+
+
     var Mixin: MixinInterface;
+    var Form: FormInterface;
 }
 
 declare module "formsy-react" {

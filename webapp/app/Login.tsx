@@ -1,9 +1,9 @@
 ﻿import * as React from 'react';
 import {Context} from 'react-router';
 
-//import LinkedStateMixin from 'react/lib/LinkedStateMixin';
-import {AuthService} from './app/AuthService';
-var Input = require('./forms/input');
+import {AuthService} from './../app/AuthService';
+var Input = require('./../forms/input');
+var LinkedStateMixin  = require('react/lib/LinkedStateMixin');
 
 require('app/Login.css');
 
@@ -12,12 +12,12 @@ import Formsy = require('formsy-react');
 class FormsyBase<P extends Formsy.FormsyBaseProps, S extends Formsy.FormsyBaseState> extends React.Component<P, S> {
     _implementation = Formsy.Mixin;
 
-    getInitialState(): Formsy.FormsyBaseState {
-        return this._implementation.getInitialState();
+    constructor() {
+        super();
+        this.state = this._implementation.getInitialState() as S;
+        this.props = this._implementation.getDefaultProps() as P;
     }
-    getDefaultProps(): Formsy.FormsyBaseProps {
-        return this._implementation.getDefaultProps();
-    }
+
     componentWillMount(): void {
         this._implementation.componentWillMount();
     }
@@ -130,15 +130,16 @@ interface HasRooter {
 }
 
 export class Login extends React.Component<any, LoginState> {
+    static mixins = [LinkedStateMixin];
 
-    static contextTypes = {
+    constructor() {
+        super();
+        this.state = new LoginState();
+    }
+
+    static contextTypes: React.ValidationMap<any> = {
         router: React.PropTypes.func.isRequired
     };
-
-
-    getInitialState(): LoginState {
-        return new LoginState();
-    }
 
     enableButton() {
         this.setState(
@@ -171,38 +172,30 @@ export class Login extends React.Component<any, LoginState> {
             });
     }
 
+    render(): JSX.Element {
+        return (
+            <div className="row">
+                <div className="col-sm-6 col-md-4 col-md-offset-4">
+                    <h1 className="text-center login-title">Sign in to continue to Bootsnipp</h1>
+                    <div className="account-wall">
+                        <Formsy.Form className="form-signin" onValidSubmit={this.submit.bind(this)} onValid={this.enableButton.bind(this)} onInvalid={this.disableButton.bind(this)}>
+                            <span className="help-block">{this.state.formError}</span>
+                            <Input name="email" type="text" validations="isEmail" placeholder="Email" required autofocus layout="elementOnly"></Input>
+                            <Input name="password" type="password" placeholder="Password" required layout="elementOnly"></Input>
+                            <button className="btn btn-lg btn-primary btn-block" type="submit" disabled={!this.state.canSubmit}>
+                                Sign in</button>
+                            <label className="checkbox pull-left">
+                                <input type="checkbox" value="remember-me"></input>
+                                Remember me
+                            </label>
+                        </Formsy.Form>
+                    </div>
+                    <a href="#" className="text-center new-account">Create an account </a>
+                </div>
+            </div>
+        );
+    }
+
 }
 
-//var Login = React.createClass({
-//    mixins: [LinkedStateMixin],
-//    contextTypes: { 
-//        router: React.PropTypes.func 
-//    }, 
-
-//    render: function() {
-//        return (
-//            <div className="row">
-//                <div className="col-sm-6 col-md-4 col-md-offset-4">
-//                    <h1 className="text-center login-title">Sign in to continue to Bootsnipp</h1>
-//                    <div className="account-wall">
-//                        <Formsy.Form className="form-signin" onValidSubmit={this.submit} onValid={this.enableButton} onInvalid={this.disableButton}>
-//                            <span className="help-block">{this.state.formError}</span>
-//                            <Input name="email" type="text" validations="isEmail" placeholder="Email" required autofocus layout="elementOnly"></Input>
-//                            <Input name="password" type="password" placeholder="Password" required layout="elementOnly"></Input>
-//                            <button className="btn btn-lg btn-primary btn-block" type="submit" disabled={!this.state.canSubmit}>
-//                                Sign in</button>
-//                            <label className="checkbox pull-left">
-//                                <input type="checkbox" value="remember-me"></input>
-//                                Remember me
-//                            </label>
-//                        </Formsy.Form>
-//                    </div>
-//                    <a href="#" className="text-center new-account">Create an account </a>
-//                </div>
-//            </div>
-//        );
-//    }
-//});
-
-//module.exports = Login;
 

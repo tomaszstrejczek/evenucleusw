@@ -29,14 +29,13 @@
     <Content Include="app\AppActions.js" />
     <TypeScriptCompile Include="app\AuthService.ts" />
     <TypeScriptCompile Include="app\Login.tsx" />
-    <Content Include="app\Logout.jsx" />
     <Content Include="app\*.css" />
     <Content Include="characters\*.jsx" />
     <Content Include="characters\*.css" />
     <Content Include="config.js" />
     <Content Include="favicon.ico" />
     <TypeScriptCompile Include="characters\Characters.tsx" />
-    <Content Include="app\Logout.jsx" />
+    <TypeScriptCompile Include="app\Logout.tsx" />
     <TypeScriptCompile Include="app\App.tsx" />
     <TypeScriptCompile Include="app\BaseStore.ts" />
     <TypeScriptCompile Include="app\Dispatcher.ts" />
