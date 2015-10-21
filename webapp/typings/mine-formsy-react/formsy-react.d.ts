@@ -15,9 +15,8 @@ declare module FormsyReact {
     }
 
     interface FormsyBaseProps {
-        validationError: string;
-        validationErrors: any;
-
+        validationError?: string;
+        validationErrors?: any;
     }
 
     interface MixinInterface {
