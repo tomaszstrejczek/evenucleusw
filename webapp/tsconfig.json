@@ -4,6 +4,7 @@
     "jsx": "react"
   },
   "files": [
-    "app.tsx"
+    "app.tsx",
+    "test/dom/index.ts"
   ]
 }

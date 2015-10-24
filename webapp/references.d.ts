@@ -6,6 +6,8 @@
 /// <reference path="typings/flux/flux.d.ts" />
 /// <reference path="typings/node/node.d.ts" />
 /// <reference path="typings/when/when.d.ts" />
+/// <reference path="typings/chai/chai.d.ts" />
+/// <reference path="typings/mocha/mocha.d.ts" />
 
 
 /// <reference path="typings/mine-formsy-react/formsy-react.d.ts" />
