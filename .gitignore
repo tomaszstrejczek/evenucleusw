@@ -37,3 +37,6 @@ webapp/app/Login.js
 webapp/app/AuthService.js
 webapp/app/Logout.js
 webapp/forms/component.js
+webapp/test/dom/index.js
+webapp/test/dom/login-test.js
+webapp/test/dom/smoke0-test.js

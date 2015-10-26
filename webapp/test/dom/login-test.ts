@@ -14,7 +14,9 @@ export class Runner {
             })
 
             it('empty', function () {
-                throw 'ala';
+                expect(() => {
+                    throw 'ala';
+                }).to.throw('ala');
             });
         });
     }
