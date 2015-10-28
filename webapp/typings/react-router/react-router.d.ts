@@ -197,13 +197,23 @@ declare module ReactRouter {
     interface HistoryLocation extends Location, LocationListener { }
     interface RefreshLocation extends Location { }
     interface StaticLocation extends LocationBase { }
-    interface TestLocation extends Location, LocationListener { }
+    class TestLocation implements Location, LocationListener {
+        constructor(path: string[]);
+        getCurrentPath(): void;
+        toString(): string;
+        push(path: string): void;
+        replace(path: string): void;
+        pop(): void;
+        addChangeListener(listener: Function): void;
+        removeChangeListener(listener: Function): void;
+    }
+
 
     var HashLocation: HashLocation;
     var HistoryLocation: HistoryLocation;
     var RefreshLocation: RefreshLocation;
     var StaticLocation: StaticLocation;
-    var TestLocation: TestLocation;
+    //var TestLocation: TestLocation;
 
 
     //

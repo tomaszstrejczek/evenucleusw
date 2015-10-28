@@ -40,3 +40,4 @@ webapp/forms/component.js
 webapp/test/dom/index.js
 webapp/test/dom/login-test.js
 webapp/test/dom/smoke0-test.js
+webapp/test/dom/TestContext.js

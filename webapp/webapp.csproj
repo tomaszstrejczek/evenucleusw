@@ -91,7 +91,7 @@
     <Content Include="styles\img\tile\ribbon.png" />
     <Content Include="test\dom\dom.html" />
     <TypeScriptCompile Include="test\dom\index.ts" />
-    <TypeScriptCompile Include="test\dom\login-test.ts" />
+    <TypeScriptCompile Include="test\dom\login-test.tsx" />
     <TypeScriptCompile Include="test\dom\smoke0-test.ts" />
     <Content Include="test\purejs\index.js" />
     <Content Include="test\purejs\smoke0.js" />
@@ -99,6 +99,7 @@
     <Content Include="web.config" />
     <TypeScriptCompile Include="industry\Industry.tsx" />
     <TypeScriptCompile Include="references.d.ts" />
+    <TypeScriptCompile Include="test\dom\TestContext.tsx" />
     <TypeScriptCompile Include="typings\fastclick\fastclick.d.ts" />
     <TypeScriptCompile Include="typings\flux\flux.d.ts" />
     <TypeScriptCompile Include="typings\jquery\jquery.d.ts" />
