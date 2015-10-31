@@ -186,9 +186,9 @@ export class Login extends React.Component<any, LoginState> {
                     <div className="account-wall">
                         <Formsy.Form className="form-signin" onValidSubmit={this.submit.bind(this)} onValid={this.enableButton.bind(this)} onInvalid={this.disableButton.bind(this)}>
                             <span className="help-block">{this.state.formError}</span>
-                            <Input name="email" type="text" validations="isEmail" placeholder="Email" required autofocus layout="elementOnly" validationError="This is not a valid email"></Input>
-                            <Input name="password" type="password" placeholder="Password" required layout="elementOnly"></Input>
-                            <button className="btn btn-lg btn-primary btn-block" type="submit" disabled={!this.state.canSubmit}>
+                            <Input name="email" type="text" validations="isEmail" placeholder="Email" required autofocus layout="elementOnly" validationError="This is not a valid email" ref="email"></Input>
+                            <Input name="password" type="password" placeholder="Password" required layout="elementOnly" ref="password"></Input>
+                            <button className="btn btn-lg btn-primary btn-block" type="submit" disabled={!this.state.canSubmit} ref="button">
                                 Sign in</button>
                             <label className="checkbox pull-left">
                                 <input type="checkbox" value="remember-me"></input>

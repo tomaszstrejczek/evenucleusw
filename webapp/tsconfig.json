@@ -1,7 +1,8 @@
 {
   "compilerOptions": {
     "module": "amd",
-    "jsx": "react"
+    "jsx": "react",
+    "noEmit": true
   },
   "files": [
     "app.tsx",
