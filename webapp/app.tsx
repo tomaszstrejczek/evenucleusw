@@ -8,12 +8,15 @@ import {BaseStore} from './app/BaseStore';
 
 //import App from 'app/App.jsx';
 import * as React from 'react';
+import * as ReactDOM from 'react-dom';
 import $ = require('jquery');
 import * as fclick from 'fastclick';
 //import ActionTypes from 'actions/ActionTypes';
 //import Dispatcher from 'app/Dispatcher';
 import {routes} from './app/Routes';
 import Router = require('react-router');
+
+import {KernelCreator} from './app/kernel';
 
 console.log('app starting');
 
@@ -35,8 +38,10 @@ function onSetMeta(name, content) {
 };
 
 function run() {
+    var kernel = KernelCreator.create();
+
     Router.run(routes, function (Handler: new() => React.Component<any, any>) {
-      React.render(<Handler/>, document.body);
+      ReactDOM.render(<Handler/>, document.getElementById("app"));
     });
 };
 

@@ -28,6 +28,7 @@
     <TypeScriptCompile Include="app.tsx" />
     <Content Include="app\AppActions.js" />
     <TypeScriptCompile Include="app\AuthService.ts" />
+    <TypeScriptCompile Include="app\kernel.ts" />
     <TypeScriptCompile Include="app\Login.tsx" />
     <Content Include="app\*.css" />
     <Content Include="characters\*.jsx" />
