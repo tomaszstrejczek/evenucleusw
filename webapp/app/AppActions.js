@@ -1,6 +1,7 @@
 /**
  * Created by ts15187 on 2015-07-15.
  */
+/*
 import Dispatcher from 'app/Dispatcher';
 import ActionTypes from 'actions/ActionTypes';
 
@@ -22,7 +23,7 @@ function loadPage(path, cb) {
         type: ActionTypes.GET_PAGE,
         path: path
     });
-
+*/
 /*
     http.get('/api/query?path=' + encodeURI(path))
         .accept('application/json')

@@ -23,11 +23,16 @@
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <ItemGroup>
+    <TypeScriptCompile Include="actions\Actions.ts" />
     <TypeScriptCompile Include="actions\ActionTypes.ts" />
     <TypeScriptCompile Include="actions\AppActions.ts" />
+    <TypeScriptCompile Include="actions\LoginActions.ts" />
+    <TypeScriptCompile Include="actions\rootReducer.ts" />
     <TypeScriptCompile Include="app.tsx" />
     <Content Include="app\AppActions.js" />
-    <TypeScriptCompile Include="app\AuthService.ts" />
+    <TypeScriptCompile Include="app\AppState.ts" />
+    <TypeScriptCompile Include="api\AuthService.ts" />
+    <TypeScriptCompile Include="app\IStoreContext.ts" />
     <TypeScriptCompile Include="app\kernel.ts" />
     <TypeScriptCompile Include="app\Login.tsx" />
     <Content Include="app\*.css" />
@@ -38,9 +43,6 @@
     <TypeScriptCompile Include="characters\Characters.tsx" />
     <TypeScriptCompile Include="app\Logout.tsx" />
     <TypeScriptCompile Include="app\App.tsx" />
-    <TypeScriptCompile Include="app\BaseStore.ts" />
-    <TypeScriptCompile Include="app\Dispatcher.ts" />
-    <TypeScriptCompile Include="app\LoginStore.ts" />
     <TypeScriptCompile Include="app\Navigation.tsx" />
     <TypeScriptCompile Include="app\Routes.tsx" />
     <Content Include="industry\*.jsx" />
@@ -108,6 +110,8 @@
     <TypeScriptCompile Include="typings\node\node.d.ts" />
     <TypeScriptCompile Include="typings\react-router\react-router.d.ts" />
     <TypeScriptCompile Include="typings\react\react.d.ts" />
+    <TypeScriptCompile Include="typings\redux-actions\redux-actions.d.ts" />
+    <TypeScriptCompile Include="utils\deepCopy.ts" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="package.json" />

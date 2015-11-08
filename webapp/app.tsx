@@ -18,6 +18,11 @@ import Router = require('react-router');
 
 import {KernelCreator} from './app/kernel';
 
+import {AppState} from './app/AppState';
+import {rootReducer} from './actions/rootReducer';
+import {Store, createStore} from 'redux';
+import {Provider} from 'react-redux';
+
 console.log('app starting');
 
 
@@ -39,9 +44,13 @@ function onSetMeta(name, content) {
 
 function run() {
     var kernel = KernelCreator.create();
+    const store: Store = createStore(rootReducer, new AppState());
 
     Router.run(routes, function (Handler: new() => React.Component<any, any>) {
-      ReactDOM.render(<Handler/>, document.getElementById("app"));
+        ReactDOM.render(
+            <Provider store={store}>
+                <Handler/>
+            </Provider>, document.getElementById("app"));
     });
 };
 

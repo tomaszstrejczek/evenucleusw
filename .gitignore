@@ -41,3 +41,6 @@ webapp/test/dom/index.js
 webapp/test/dom/login-test.js
 webapp/test/dom/smoke0-test.js
 webapp/test/dom/TestContext.js
+webapp/utils/deepCopy.js
+webapp/app/AppState.js
+webapp/app/kernel.js

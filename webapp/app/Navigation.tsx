@@ -1,36 +1,42 @@
 ﻿import * as React from 'react';
 import { Link } from 'react-router';
-import {loginStore} from './LoginStore';
+import {IStoreContext} from './IStoreContext';
+import {AppState} from './AppState';
 
 class NavigationState {
-    userLoggedIn: boolean;
-
-    constructor() {
-        this.userLoggedIn = loginStore.isLoggedIn();
+    constructor(public userLoggedIn: boolean) {
     }
 }
 
 export class Navigation extends React.Component<any, NavigationState> {
 
+    context: IStoreContext;
+    static contextTypes: React.ValidationMap<any> = {
+        store: React.PropTypes.func.isRequired
+    };
+
+
     public state: NavigationState;
     private changeListener: () => void;
 
-    constructor() {
-        this.state = new NavigationState();
-        super();
+    constructor(props, context) {
+        super(props, context);
+        var s: AppState = this.context.store.getState() as AppState;
+        this.state = new NavigationState(s.loginInfo.isLoggedIn());
     }
 
     componentDidMount() {
         this.changeListener = this._onChange.bind(this);
-        loginStore.addChangeListener(this.changeListener);
+        this.context.store.subscribe(this.changeListener);
     }
 
     _onChange() {
-        this.setState(new NavigationState());
+        var s: AppState = this.context.store.getState() as AppState;
+        this.setState(new NavigationState(s.loginInfo.isLoggedIn()));
     }
 
     componentWillUnmount() {
-        loginStore.removeChangeListener(this.changeListener);
+        //loginStore.removeChangeListener(this.changeListener);
     }
 
     render(): JSX.Element {

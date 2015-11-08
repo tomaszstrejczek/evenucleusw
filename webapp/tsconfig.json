@@ -2,7 +2,9 @@
   "compilerOptions": {
     "module": "amd",
     "jsx": "react",
-    "noEmit": true
+    "noEmit": true,
+    "experimentalDecorators":true,
+    "target": "ES5"
   },
   "files": [
     "app.tsx",
