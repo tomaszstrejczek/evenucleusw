@@ -4,8 +4,6 @@
 
 /// <reference path="app/Routes.tsx"/>
 
-import {BaseStore} from './app/BaseStore';
-
 //import App from 'app/App.jsx';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';

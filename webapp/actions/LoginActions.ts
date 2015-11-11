@@ -1,6 +1,6 @@
 ﻿import {Action, typeName} from './Actions';
 import {ActionTypes} from './ActionTypes';
-import {AppState} from './../app/AppState';
+import {LoginInfo} from './../app/AppState';
 import {handleActions} from 'redux-actions';
 import {owl} from './../utils/deepCopy';
 
@@ -23,9 +23,9 @@ export class LogoutAction extends Action {
     }
 }
 
-export var LoginReducer = handleActions<AppState>(
+export var LoginReducer = handleActions<LoginInfo>(
     {
-        [ActionTypes[ActionTypes.LOGIN_USER]]: (state: AppState, action: LoginAction): AppState => {
+        [ActionTypes[ActionTypes.LOGIN_USER]]: (state: LoginInfo, action: LoginAction): LoginInfo => {
             var result = owl.clone(state);
 
             var savedJwt = localStorage.getItem('jwt');
@@ -40,7 +40,7 @@ export var LoginReducer = handleActions<AppState>(
             result.jwt = action.jwt;
             return result;
         },
-        [ActionTypes[ActionTypes.LOGOUT_USER]]: (state: AppState, action: LogoutAction): AppState => {
+        [ActionTypes[ActionTypes.LOGOUT_USER]]: (state: LoginInfo, action: LogoutAction): LoginInfo => {
             var result = owl.clone(state);
 
             localStorage.removeItem('jwt');
@@ -48,5 +48,5 @@ export var LoginReducer = handleActions<AppState>(
             result.jwt = undefined;
             return result;
         }
-    }, new AppState()
+    }, new LoginInfo()
 );

@@ -25,11 +25,9 @@
   <ItemGroup>
     <TypeScriptCompile Include="actions\Actions.ts" />
     <TypeScriptCompile Include="actions\ActionTypes.ts" />
-    <TypeScriptCompile Include="actions\AppActions.ts" />
     <TypeScriptCompile Include="actions\LoginActions.ts" />
     <TypeScriptCompile Include="actions\rootReducer.ts" />
     <TypeScriptCompile Include="app.tsx" />
-    <Content Include="app\AppActions.js" />
     <TypeScriptCompile Include="app\AppState.ts" />
     <TypeScriptCompile Include="api\AuthService.ts" />
     <TypeScriptCompile Include="app\IStoreContext.ts" />

@@ -1,5 +1,5 @@
 ﻿import * as When from 'when';
-import {AppActions} from './../actions/AppActions';
+//import {AppActions} from './../actions/AppActions';
 
 export class AuthService {
     public static login(username: string, password:string): When.Promise<string> {
@@ -14,10 +14,11 @@ export class AuthService {
         return When.resolve('')
             .delay(100)
             .then(loginMock)
-            .then((token: string):string => {
-                AppActions.loginUser(token);
-                return token;
-            });
+            //.then((token: string):string => {
+            //    AppActions.loginUser(token);
+            //    return token;
+        //})
+            ;
     }
 
     public static logout(): When.Promise<void> {
@@ -27,9 +28,10 @@ export class AuthService {
 
         return When.resolve()
             .then(logoutMock)
-            .then(() => {
-                AppActions.logout();
-            });
+            //.then(() => {
+            //    AppActions.logout();
+        //})
+            ;
     }
 }
 

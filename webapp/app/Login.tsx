@@ -1,7 +1,7 @@
 ﻿import * as React from 'react';
 import {Context} from 'react-router';
 
-import {AuthService} from './../app/AuthService';
+import {AuthService} from './../api/AuthService';
 var Input = require('./../forms/input');
 var LinkedStateMixin  = require('react/lib/LinkedStateMixin');
 

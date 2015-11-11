@@ -2,8 +2,8 @@
 import {LoginReducer} from './LoginActions'; 
  
  
-const rootReducer = combineReducers({ 
-   loginReducer: LoginReducer
- }); 
+const rootReducer = combineReducers({
+    loginInfo: LoginReducer
+}); 
  
 export { rootReducer }; 
