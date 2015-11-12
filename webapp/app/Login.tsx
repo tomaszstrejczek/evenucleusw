@@ -2,6 +2,10 @@
 import {Context} from 'react-router';
 
 import {AuthService} from './../api/AuthService';
+import {IStoreContext} from './IStoreContext';
+import {LoginAction} from './../actions/LoginActions';
+
+
 var Input = require('./../forms/input');
 var LinkedStateMixin  = require('react/lib/LinkedStateMixin');
 
@@ -131,7 +135,7 @@ class LoginModel {
     password: string;
 }
 
-interface HasRooter {
+interface IRooterContext {
     router: Context;
 }
 
@@ -143,8 +147,11 @@ export class Login extends React.Component<any, LoginState> {
         this.state = new LoginState();
     }
 
+    context: IStoreContext & IRooterContext;
+
     static contextTypes: React.ValidationMap<any> = {
-        router: React.PropTypes.func.isRequired
+        router: React.PropTypes.func.isRequired,
+        store: React.PropTypes.object.isRequired
     };
 
     enableButton() {
@@ -166,8 +173,9 @@ export class Login extends React.Component<any, LoginState> {
     submit(model: LoginModel): void {
         var that = this;
         AuthService.login(model.email, model.password)
-            .then(function () {
-                (that.context as HasRooter).router.transitionTo('/');
+            .then(function (jwt: string) {
+                that.context.store.dispatch(new LoginAction(jwt));
+                that.context.router.transitionTo('/');
             })
             .catch(function(err) {
                 console.log("Error logging in", err);

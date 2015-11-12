@@ -12,7 +12,7 @@ export class Navigation extends React.Component<any, NavigationState> {
 
     context: IStoreContext;
     static contextTypes: React.ValidationMap<any> = {
-        store: React.PropTypes.func.isRequired
+        store: React.PropTypes.object.isRequired
     };
 
 

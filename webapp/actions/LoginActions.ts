@@ -24,29 +24,29 @@ export class LogoutAction extends Action {
 }
 
 export var LoginReducer = handleActions<LoginInfo>(
-    {
-        [ActionTypes[ActionTypes.LOGIN_USER]]: (state: LoginInfo, action: LoginAction): LoginInfo => {
-            var result = owl.clone(state);
+{
+    [ActionTypes[ActionTypes.LOGIN_USER]]: (state: LoginInfo, action: LoginAction): LoginInfo => {
+        var result = owl.clone(state);
 
-            var savedJwt = localStorage.getItem('jwt');
+        var savedJwt = localStorage.getItem('jwt');
 
-            if (savedJwt !== action.jwt) {
-                //var nextPath = RouterContainer.get().getCurrentQuery().nextPath || '/';
+        if (savedJwt !== action.jwt) {
+            //var nextPath = RouterContainer.get().getCurrentQuery().nextPath || '/';
 
-                //RouterContainer.get().transitionTo(nextPath);
-                localStorage.setItem('jwt', action.jwt);
-            }
-
-            result.jwt = action.jwt;
-            return result;
-        },
-        [ActionTypes[ActionTypes.LOGOUT_USER]]: (state: LoginInfo, action: LogoutAction): LoginInfo => {
-            var result = owl.clone(state);
-
-            localStorage.removeItem('jwt');
-
-            result.jwt = undefined;
-            return result;
+            //RouterContainer.get().transitionTo(nextPath);
+            localStorage.setItem('jwt', action.jwt);
         }
-    }, new LoginInfo()
+
+        result.jwt = action.jwt;
+        return result;
+    },
+    [ActionTypes[ActionTypes.LOGOUT_USER]]: (state: LoginInfo, action: LogoutAction): LoginInfo => {
+        var result = owl.clone(state);
+
+        localStorage.removeItem('jwt');
+
+        result.jwt = undefined;
+        return result;
+    }
+}, new LoginInfo()
 );
