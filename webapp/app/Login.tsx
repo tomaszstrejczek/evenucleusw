@@ -3,7 +3,7 @@ import {Context} from 'react-router';
 
 import {AuthService} from './../api/AuthService';
 import {IStoreContext} from './IStoreContext';
-import {LoginAction} from './../actions/LoginActions';
+import {createLoginAction} from './../actions/LoginActions';
 
 
 var Input = require('./../forms/input');
@@ -174,7 +174,7 @@ export class Login extends React.Component<any, LoginState> {
         var that = this;
         AuthService.login(model.email, model.password)
             .then(function (jwt: string) {
-                that.context.store.dispatch(new LoginAction(jwt));
+                that.context.store.dispatch(createLoginAction(jwt));
                 that.context.router.transitionTo('/');
             })
             .catch(function(err) {
