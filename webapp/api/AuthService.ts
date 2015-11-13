@@ -1,8 +1,13 @@
 ﻿import * as When from 'when';
 //import {AppActions} from './../actions/AppActions';
 
-export class AuthService {
-    public static login(username: string, password:string): When.Promise<string> {
+export interface IAuthService {
+    login(username: string, password: string): When.Promise<string>;
+    logout(): When.Promise<void>;
+}
+
+export class AuthService implements IAuthService {
+    public login(username: string, password:string): When.Promise<string> {
         function loginMock()
         {
             if (username !== 'a@a.a')
@@ -21,7 +26,7 @@ export class AuthService {
             ;
     }
 
-    public static logout(): When.Promise<void> {
+    public logout(): When.Promise<void> {
         function logoutMock()
         {
         }

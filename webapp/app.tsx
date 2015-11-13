@@ -14,8 +14,6 @@ import * as fclick from 'fastclick';
 import {routes} from './app/Routes';
 import Router = require('react-router');
 
-import {KernelCreator} from './app/kernel';
-
 import {AppState} from './app/AppState';
 import {rootReducer} from './actions/rootReducer';
 import {Store, createStore} from 'redux';
@@ -41,7 +39,6 @@ function onSetMeta(name, content) {
 };
 
 function run() {
-    var kernel = KernelCreator.create();
     const store: Store = createStore(rootReducer, new AppState());
 
     Router.run(routes, function (Handler: new() => React.Component<any, any>) {

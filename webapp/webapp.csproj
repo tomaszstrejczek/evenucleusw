@@ -29,6 +29,7 @@
     <TypeScriptCompile Include="app.tsx" />
     <TypeScriptCompile Include="app\AppState.ts" />
     <TypeScriptCompile Include="api\AuthService.ts" />
+    <TypeScriptCompile Include="app\IKernelContext.ts" />
     <TypeScriptCompile Include="app\IStoreContext.ts" />
     <TypeScriptCompile Include="app\kernel.ts" />
     <TypeScriptCompile Include="app\Login.tsx" />
@@ -101,7 +102,6 @@
     <TypeScriptCompile Include="references.d.ts" />
     <TypeScriptCompile Include="test\dom\TestContext.tsx" />
     <TypeScriptCompile Include="typings\fastclick\fastclick.d.ts" />
-    <TypeScriptCompile Include="typings\flux\flux.d.ts" />
     <TypeScriptCompile Include="typings\jquery\jquery.d.ts" />
     <TypeScriptCompile Include="typings\mine-formsy-react\formsy-react.d.ts" />
     <TypeScriptCompile Include="typings\node\node.d.ts" />
