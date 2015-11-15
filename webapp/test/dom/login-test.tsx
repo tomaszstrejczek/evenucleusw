@@ -2,11 +2,10 @@
 
 import {expect} from 'chai';
 import {Login} from './../../app/Login';
-import * as ReactAddons from 'react/addons';
 import * as React from 'react';
+import * as ReactDOM from 'react-dom';
+import * as ReactAddons from 'react/addons';
 import {TestContext} from './TestContext';
-
-//import ReactAddons from 'react/addons';
 
 //const TestUtils = ReactAddons.addons.TestUtils;
 
@@ -22,19 +21,19 @@ export class Runner {
             
             beforeEach(function () {
                 login = TestContext.getRouterComponent(Login);
-                var node = React.findDOMNode(login);
+                var node = ReactDOM.findDOMNode(login);
                 expect(node).not.to.be.null;
 
-                emailDiv = React.findDOMNode<HTMLDivElement>(login.refs["email"]);
+                emailDiv = ReactDOM.findDOMNode<HTMLDivElement>(login.refs["email"]);
                 expect(emailDiv).not.to.be.null;
 
                 email = emailDiv.getElementsByTagName("input")[0];
                 expect(email).not.to.be.null;
 
-                button = React.findDOMNode<HTMLButtonElement>(login.refs["button"]);
+                button = ReactDOM.findDOMNode<HTMLButtonElement>(login.refs["button"]);
                 expect(button).not.to.be.null;              
 
-                passwordDiv = React.findDOMNode<HTMLDivElement>(login.refs["password"]);
+                passwordDiv = ReactDOM.findDOMNode<HTMLDivElement>(login.refs["password"]);
                 expect(passwordDiv).not.to.be.null;
 
                 password = passwordDiv.getElementsByTagName("input")[0];
