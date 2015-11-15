@@ -4,6 +4,7 @@ import ReactRouter = require('react-router');
 import {KernelCreator} from './kernel';
 import {Kernel} from './../node_modules/inversify/source/inversify';
 import {IKernelContext} from './IKernelContext';
+import {IAuthServiceContext, IAuthService} from './../api/AuthService';
 
 import { bindActionCreators } from 'redux';
 
@@ -11,14 +12,16 @@ var RouteHandler = ReactRouter.RouteHandler;
 
 var kernelSingleton = KernelCreator.create();
 
-export class App extends React.Component<any, any> implements React.ChildContextProvider<IKernelContext> {
+export class App extends React.Component<any, any> implements React.ChildContextProvider<IAuthServiceContext> {
 
     static childContextTypes: React.ValidationMap<any> = {
-        kernel: React.PropTypes.object
+        authService: React.PropTypes.object
     };
 
-    getChildContext(): IKernelContext {
-        return { kernel: kernelSingleton };
+    getChildContext(): IAuthServiceContext {
+        return {
+            authService: kernelSingleton.resolve<IAuthService>("IAuthService")
+        };
     };
 
     render(): JSX.Element {

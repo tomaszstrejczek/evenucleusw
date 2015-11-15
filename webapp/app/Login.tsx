@@ -1,9 +1,8 @@
 ﻿import * as React from 'react';
 import {Context} from 'react-router';
 
-import {IAuthService} from './../api/AuthService';
+import {IAuthServiceContext} from './../api/AuthService';
 import {IStoreContext} from './IStoreContext';
-import {IKernelContext} from './IKernelContext';
 import {createLoginAction} from './../actions/LoginActions';
 
 
@@ -136,7 +135,7 @@ class LoginModel {
     password: string;
 }
 
-interface IRooterContext {
+interface IRouterContext {
     router: Context;
 }
 
@@ -148,19 +147,13 @@ export class Login extends React.Component<any, LoginState> {
         this.state = new LoginState();
     }
 
-    context: IStoreContext & IRooterContext & IKernelContext;
+    context: IStoreContext & IRouterContext & IAuthServiceContext;
 
     static contextTypes: React.ValidationMap<any> = {
         router: React.PropTypes.func.isRequired,
         store: React.PropTypes.object.isRequired,
-        kernel: React.PropTypes.object.isRequired
+        authService: React.PropTypes.object.isRequired
     };
-
-    _authService: IAuthService;
-
-    componentDidMount(): void {
-        this._authService = this.context.kernel.resolve<IAuthService>("IAuthService");
-    }
 
     enableButton() {
         this.setState(
@@ -180,7 +173,7 @@ export class Login extends React.Component<any, LoginState> {
 
     submit(model: LoginModel): void {
         var that = this;
-        this._authService.login(model.email, model.password)
+        this.context.authService.login(model.email, model.password)
             .then(function (jwt: string) {
                 that.context.store.dispatch(createLoginAction(jwt));
                 that.context.router.transitionTo('/');

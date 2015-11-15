@@ -10,7 +10,6 @@ module.exports = {
   context: path.join(__dirname, '.'),
   entry: {
     main: './app.tsx',
-    test: 'test/purejs/index.js',
     dom: 'test/dom/index.ts'
   },
   output: {

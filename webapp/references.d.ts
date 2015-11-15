@@ -11,6 +11,7 @@
 /// <reference path="typings/redux/redux.d.ts" />
 /// <reference path="typings/react-redux/react-redux.d.ts" />
 /// <reference path="typings/redux-actions/redux-actions.d.ts" />
+/// <reference path="typings/sinon/sinon.d.ts" />
 
 
 /// <reference path="typings/mine-formsy-react/formsy-react.d.ts" />

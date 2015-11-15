@@ -100,7 +100,6 @@
     <Content Include="web.config" />
     <TypeScriptCompile Include="industry\Industry.tsx" />
     <TypeScriptCompile Include="references.d.ts" />
-    <TypeScriptCompile Include="test\dom\TestContext.tsx" />
     <TypeScriptCompile Include="typings\fastclick\fastclick.d.ts" />
     <TypeScriptCompile Include="typings\jquery\jquery.d.ts" />
     <TypeScriptCompile Include="typings\mine-formsy-react\formsy-react.d.ts" />

@@ -5,9 +5,40 @@ import {Login} from './../../app/Login';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as ReactAddons from 'react/addons';
-import {TestContext} from './TestContext';
+import {IAuthServiceContext, IAuthService, AuthService} from './../../api/AuthService';
+import {AppState} from './../../app/AppState';
+import {Store, createStore} from 'redux';
+import {rootReducer} from './../../actions/rootReducer';
+import {IStoreContext} from './../../app/IStoreContext';
+import * as Sinon from 'sinon';
 
 //const TestUtils = ReactAddons.addons.TestUtils;
+
+interface ContainerProps {
+    store: Store;
+    authService: IAuthService;
+}
+
+class Container extends React.Component<ContainerProps, any> implements React.ChildContextProvider<IAuthServiceContext & IStoreContext> {
+
+    static childContextTypes: React.ValidationMap<any> = {
+        authService: React.PropTypes.object,
+        store: React.PropTypes.object
+    };
+
+    getChildContext(): IAuthServiceContext&IStoreContext {
+        return {
+            authService: this.props.authService,
+            store: this.props.store
+        };
+    };
+
+    render(): JSX.Element {
+        return (
+            <Login/>
+        );
+    }
+}
 
 export class Runner {
     static run(): void {
@@ -20,7 +51,16 @@ export class Runner {
             let button: HTMLButtonElement;
             
             beforeEach(function () {
-                login = TestContext.getRouterComponent(Login);
+                const store: Store = createStore(rootReducer, new AppState());
+                var div = document.createElement('div');
+                var authService = Sinon.stub(new AuthService()).returns("ala") as any as IAuthService;
+
+                var component = ReactDOM.render(
+                    <Container store={store} authService={authService}/>
+                    , div);
+
+                login = ReactAddons.addons.TestUtils.findRenderedComponentWithType(component, Login);
+
                 var node = ReactDOM.findDOMNode(login);
                 expect(node).not.to.be.null;
 

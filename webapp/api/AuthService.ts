@@ -6,6 +6,10 @@ export interface IAuthService {
     logout(): When.Promise<void>;
 }
 
+export interface IAuthServiceContext {
+    authService: IAuthService;
+}
+
 export class AuthService implements IAuthService {
     public login(username: string, password:string): When.Promise<string> {
         function loginMock()
