@@ -1,0 +1,1 @@
+gci . *.js -rec | Where {$_.FullName -notlike "*\node_modules\*"}
