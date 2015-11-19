@@ -7,6 +7,6 @@
     }
 }
 
-export class AppState {
-    public loginInfo: LoginInfo;
+export interface IAppState {
+    loginInfo: LoginInfo;
 }

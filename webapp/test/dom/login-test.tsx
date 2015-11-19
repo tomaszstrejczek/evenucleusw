@@ -6,7 +6,7 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as ReactAddons from 'react-addons-test-utils';
 import {IAuthServiceContext, IAuthService, AuthService} from './../../api/AuthService';
-import {AppState} from './../../app/AppState';
+import {LoginInfo} from './../../app/AppState';
 import {Store, createStore} from 'redux';
 import {rootReducer} from './../../actions/rootReducer';
 import {IStoreContext} from './../../app/IStoreContext';
@@ -55,7 +55,10 @@ export class Runner {
             let button: HTMLButtonElement;
             
             beforeEach(function () {
-                const store: Store = createStore(rootReducer, new AppState());
+                var initialState = {
+                    loginInfo: new LoginInfo()
+                }
+                const store: Store = createStore(rootReducer, initialState);
                 var div = document.createElement('div');
                 var authService = new AuthService();
                 Sinon.stub(authService, "login").returns("ala") as any as IAuthService;

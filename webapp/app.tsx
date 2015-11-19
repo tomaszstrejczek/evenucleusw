@@ -14,7 +14,7 @@ import * as fclick from 'fastclick';
 import {routes} from './app/Routes';
 import Router = require('react-router');
 
-import {AppState} from './app/AppState';
+import {LoginInfo} from './app/AppState';
 import {rootReducer} from './actions/rootReducer';
 import {Store, createStore} from 'redux';
 import {Provider} from 'react-redux';
@@ -39,7 +39,10 @@ function onSetMeta(name, content) {
 };
 
 function run() {
-    const store: Store = createStore(rootReducer, new AppState());
+    var initialState = {
+        loginInfo: new LoginInfo()
+    };
+    const store: Store = createStore(rootReducer, initialState);
 
     Router.run(routes, function (Handler: new() => React.Component<any, any>) {
         ReactDOM.render(

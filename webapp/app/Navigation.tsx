@@ -1,7 +1,7 @@
 ﻿import * as React from 'react';
 import { Link } from 'react-router';
 import {IStoreContext} from './IStoreContext';
-import {AppState} from './AppState';
+import {IAppState} from './AppState';
 
 class NavigationState {
     constructor(public userLoggedIn: boolean) {
@@ -21,7 +21,7 @@ export class Navigation extends React.Component<any, NavigationState> {
 
     constructor(props, context) {
         super(props, context);
-        var s: AppState = this.context.store.getState() as AppState;
+        var s: IAppState = this.context.store.getState() as IAppState;
         this.state = new NavigationState(s.loginInfo.isLoggedIn());
     }
 
@@ -31,7 +31,7 @@ export class Navigation extends React.Component<any, NavigationState> {
     }
 
     _onChange() {
-        var s: AppState = this.context.store.getState() as AppState;
+        var s: IAppState = this.context.store.getState() as IAppState;
         this.setState(new NavigationState(s.loginInfo.isLoggedIn()));
     }
 
