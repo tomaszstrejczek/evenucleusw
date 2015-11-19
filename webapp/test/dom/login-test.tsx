@@ -12,6 +12,7 @@ import {rootReducer} from './../../actions/rootReducer';
 import {IStoreContext} from './../../app/IStoreContext';
 import {IRouterContext} from './../../app/IRouterContext';
 import * as Sinon from 'sinon';
+import * as When from 'when';
 
 //const TestUtils = ReactAddons.addons.TestUtils;
 
@@ -53,6 +54,8 @@ export class Runner {
             let passwordDiv: HTMLDivElement;
             let password: HTMLInputElement;
             let button: HTMLButtonElement;
+            let loginStub: Sinon.SinonStub;
+            let transitionToStub: Sinon.SinonStub;
             
             beforeEach(function () {
                 var initialState = {
@@ -61,8 +64,11 @@ export class Runner {
                 const store: Store = createStore(rootReducer, initialState);
                 var div = document.createElement('div');
                 var authService = new AuthService();
-                Sinon.stub(authService, "login").returns("ala") as any as IAuthService;
+                loginStub = Sinon.stub(authService, "login");
                 var router = function () { };
+                (router as any).transitionTo = function (adr: string) { };
+                
+                transitionToStub = Sinon.stub(router, "transitionTo");
 
                 var component = ReactDOM.render(
                     <Container store={store} authService={authService} router={router}/>
@@ -91,7 +97,7 @@ export class Runner {
 
             afterEach(function () {
                 //var div = document.body.getElementsByTagName("div")[0];
-                //React.unmountComponentAtNode(div);
+                //ReactDOM.unmountComponentAtNode(div);
                 //document.body.innerHTML = "";
             })
 
@@ -139,6 +145,23 @@ export class Runner {
                 expect(button.disabled).to.be.false;
             });
 
+            it('authorize', function () {
+                email.value = "ala@a.a";
+                ReactAddons.Simulate.change(email);
+                password.value = "123";
+                ReactAddons.Simulate.change(password);
+
+                expect(button.disabled).to.be.false;
+
+                loginStub.returns(When.resolve('ala'));
+                ReactAddons.Simulate.submit(button);
+
+                expect(loginStub.calledOnce).to.be.true;
+                expect(loginStub.calledWith("ala@a.a", "123")).to.be.true;
+
+                expect(transitionToStub.calledOnce).to.be.true;
+                expect(transitionToStub.calledWith("/")).to.be.true;
+            });
 
         });
     }
