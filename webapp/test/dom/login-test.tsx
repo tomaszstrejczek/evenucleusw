@@ -4,12 +4,13 @@ import {expect} from 'chai';
 import {Login} from './../../app/Login';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import * as ReactAddons from 'react/addons';
+import * as ReactAddons from 'react-addons-test-utils';
 import {IAuthServiceContext, IAuthService, AuthService} from './../../api/AuthService';
 import {AppState} from './../../app/AppState';
 import {Store, createStore} from 'redux';
 import {rootReducer} from './../../actions/rootReducer';
 import {IStoreContext} from './../../app/IStoreContext';
+import {IRouterContext} from './../../app/IRouterContext';
 import * as Sinon from 'sinon';
 
 //const TestUtils = ReactAddons.addons.TestUtils;
@@ -17,19 +18,22 @@ import * as Sinon from 'sinon';
 interface ContainerProps {
     store: Store;
     authService: IAuthService;
+    router: any;
 }
 
-class Container extends React.Component<ContainerProps, any> implements React.ChildContextProvider<IAuthServiceContext & IStoreContext> {
+class Container extends React.Component<ContainerProps, any> implements React.ChildContextProvider<IAuthServiceContext & IStoreContext & IRouterContext> {
 
     static childContextTypes: React.ValidationMap<any> = {
         authService: React.PropTypes.object,
-        store: React.PropTypes.object
+        store: React.PropTypes.object,
+        router: React.PropTypes.func
     };
 
-    getChildContext(): IAuthServiceContext&IStoreContext {
+    getChildContext(): IAuthServiceContext & IStoreContext & IRouterContext {
         return {
             authService: this.props.authService,
-            store: this.props.store
+            store: this.props.store,
+            router: this.props.router
         };
     };
 
@@ -43,7 +47,7 @@ class Container extends React.Component<ContainerProps, any> implements React.Ch
 export class Runner {
     static run(): void {
         describe('Login', function () {
-            let login: ReactAddons.Component<any, any>;
+            let login: React.Component<any, any>;
             let emailDiv: HTMLDivElement;
             let email: HTMLInputElement;
             let passwordDiv: HTMLDivElement;
@@ -53,13 +57,15 @@ export class Runner {
             beforeEach(function () {
                 const store: Store = createStore(rootReducer, new AppState());
                 var div = document.createElement('div');
-                var authService = Sinon.stub(new AuthService()).returns("ala") as any as IAuthService;
+                var authService = new AuthService();
+                Sinon.stub(authService, "login").returns("ala") as any as IAuthService;
+                var router = function () { };
 
                 var component = ReactDOM.render(
-                    <Container store={store} authService={authService}/>
+                    <Container store={store} authService={authService} router={router}/>
                     , div);
 
-                login = ReactAddons.addons.TestUtils.findRenderedComponentWithType(component, Login);
+                login = ReactAddons.findRenderedComponentWithType(component, Login);
 
                 var node = ReactDOM.findDOMNode(login);
                 expect(node).not.to.be.null;
@@ -97,7 +103,7 @@ export class Runner {
 
                 // Check if invalid email
                 email.value = "ala";
-                ReactAddons.addons.TestUtils.Simulate.change(email);
+                ReactAddons.Simulate.change(email);
                 expect(button.disabled).to.be.true;
                 var msg = emailDiv.getElementsByClassName("validation-message")[0];
                 expect(msg).not.to.be.null;
@@ -105,7 +111,7 @@ export class Runner {
 
                 // Check valid email
                 email.value = "ala@a.a";
-                ReactAddons.addons.TestUtils.Simulate.change(email);
+                ReactAddons.Simulate.change(email);
                 var elems = emailDiv.getElementsByClassName("validation-message");
                 expect(elems.length).to.be.equal(0);
             });
@@ -115,7 +121,7 @@ export class Runner {
 
                 // Check password
                 password.value = "ala";
-                ReactAddons.addons.TestUtils.Simulate.change(password);
+                ReactAddons.Simulate.change(password);
                 expect(button.disabled).to.be.true;
             });
 
@@ -123,9 +129,9 @@ export class Runner {
                 expect(button.disabled).to.be.true;
 
                 email.value = "ala@a.a";
-                ReactAddons.addons.TestUtils.Simulate.change(email);
+                ReactAddons.Simulate.change(email);
                 password.value = "123";
-                ReactAddons.addons.TestUtils.Simulate.change(password);
+                ReactAddons.Simulate.change(password);
 
                 expect(button.disabled).to.be.false;
             });

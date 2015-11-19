@@ -12,7 +12,6 @@ module.exports = {
     main: './app.tsx',
     dom: 'test/dom/index.ts'
   },
-  externals: ['sinon'],
   output: {
     path: path.join(__dirname, 'Built'),
     filename: '[name].bundle.js',

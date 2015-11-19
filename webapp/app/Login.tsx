@@ -3,6 +3,7 @@ import {Context} from 'react-router';
 
 import {IAuthServiceContext} from './../api/AuthService';
 import {IStoreContext} from './IStoreContext';
+import {IRouterContext} from './IRouterContext';
 import {createLoginAction} from './../actions/LoginActions';
 
 
@@ -133,10 +134,6 @@ class LoginState {
 class LoginModel {
     email: string;
     password: string;
-}
-
-interface IRouterContext {
-    router: Context;
 }
 
 export class Login extends React.Component<any, LoginState> {
