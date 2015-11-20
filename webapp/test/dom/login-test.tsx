@@ -154,13 +154,20 @@ export class Runner {
                 expect(button.disabled).to.be.false;
 
                 loginStub.returns(When.resolve('ala'));
+
+                Sinon.stub(Login.prototype, "submit").returns("ala");
+
                 ReactAddons.Simulate.submit(button);
+
+                //expect(spySubmit.calledOnce).to.be.true;
 
                 expect(loginStub.calledOnce).to.be.true;
                 expect(loginStub.calledWith("ala@a.a", "123")).to.be.true;
 
                 expect(transitionToStub.calledOnce).to.be.true;
                 expect(transitionToStub.calledWith("/")).to.be.true;
+
+
             });
 
         });

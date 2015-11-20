@@ -168,9 +168,9 @@ export class Login extends React.Component<any, LoginState> {
             })
     }
 
-    submit(model: LoginModel): void {
+    submit(model: LoginModel): When.Promise<void> {
         var that = this;
-        this.context.authService.login(model.email, model.password)
+        return this.context.authService.login(model.email, model.password)
             .then(function (jwt: string) {
                 that.context.store.dispatch(createLoginAction(jwt));
                 that.context.router.transitionTo('/');
