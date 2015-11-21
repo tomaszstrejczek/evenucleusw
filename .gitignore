@@ -44,3 +44,9 @@ webapp/test/dom/TestContext.js
 webapp/utils/deepCopy.js
 webapp/app/AppState.js
 webapp/app/kernel.js
+webapp/actions/LoginActions.js
+webapp/actions/rootReducer.js
+webapp/app/IKernelContext.js
+webapp/api/AuthService.js
+webapp/app/IRouterContext.js
+webapp/app/IStoreContext.js

@@ -155,19 +155,20 @@ export class Runner {
 
                 loginStub.returns(When.resolve('ala'));
 
-                Sinon.stub(Login.prototype, "submit").returns("ala");
+                var submitSpy = Sinon.spy(login, "submit");
 
                 ReactAddons.Simulate.submit(button);
 
-                //expect(spySubmit.calledOnce).to.be.true;
+                expect(submitSpy.called).to.be.true;
+                var submitResult = submitSpy.returnValues[0] as When.Promise<void>;
+                return submitResult
+                    .then(() => {
+                        expect(loginStub.calledOnce).to.be.true;
+                        expect(loginStub.calledWith("ala@a.a", "123")).to.be.true;
 
-                expect(loginStub.calledOnce).to.be.true;
-                expect(loginStub.calledWith("ala@a.a", "123")).to.be.true;
-
-                expect(transitionToStub.calledOnce).to.be.true;
-                expect(transitionToStub.calledWith("/")).to.be.true;
-
-
+                        expect(transitionToStub.calledOnce).to.be.true;
+                        expect(transitionToStub.calledWith("/")).to.be.true;
+                    });
             });
 
         });
