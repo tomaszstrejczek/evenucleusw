@@ -171,6 +171,35 @@ export class Runner {
                     });
             });
 
+            it('invalid authorization', function () {
+                email.value = "ala@a.a";
+                ReactAddons.Simulate.change(email);
+                password.value = "123";
+                ReactAddons.Simulate.change(password);
+
+                expect(button.disabled).to.be.false;
+
+                loginStub.returns(When.promise(() => { throw "Invalid ala"; }));
+
+                var submitSpy = Sinon.spy(login, "submit");
+
+                ReactAddons.Simulate.submit(button);
+
+                expect(submitSpy.called).to.be.true;
+                var submitResult = submitSpy.returnValues[0] as When.Promise<void>;
+                return submitResult
+                    .then(() => {
+                        expect(loginStub.calledOnce).to.be.true;
+                        expect(loginStub.calledWith("ala@a.a", "123")).to.be.true;
+
+                        var helpBlock = button = ReactDOM.findDOMNode<HTMLButtonElement>(login.refs["helpblock"]);
+                        expect(helpBlock.textContent).to.be.eq("Invalid ala");
+
+                        expect(transitionToStub.calledOnce).to.be.false;
+
+                    });
+            });
+
         });
     }
 }
