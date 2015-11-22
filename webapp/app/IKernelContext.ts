@@ -1,5 +1,5 @@
-﻿import {Kernel} from './../node_modules/inversify/source/inversify';
+﻿import * as TypeIoc from 'typeioc';
 
 export interface IKernelContext {
-    kernel: Kernel;
+    kernel: TypeIoc.IContainer;
 }

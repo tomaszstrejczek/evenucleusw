@@ -2,7 +2,7 @@
 import {Navigation} from './Navigation';
 import ReactRouter = require('react-router');
 import {KernelCreator} from './kernel';
-import {Kernel} from './../node_modules/inversify/source/inversify';
+import * as TypeIoc from 'typeioc';
 import {IKernelContext} from './IKernelContext';
 import {IAuthServiceContext, IAuthService} from './../api/AuthService';
 
