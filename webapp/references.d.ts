@@ -12,6 +12,7 @@
 /// <reference path="typings/react-redux/react-redux.d.ts" />
 /// <reference path="typings/redux-actions/redux-actions.d.ts" />
 /// <reference path="typings/sinon/sinon.d.ts" />
-
+/// <reference path="typings/es6-promise/es6-promise.d.ts" />
+/// <reference path="typings/restful.js/restful.js.d.ts" />
 
 /// <reference path="typings/mine-formsy-react/formsy-react.d.ts" />

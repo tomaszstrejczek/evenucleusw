@@ -33,6 +33,7 @@
     <TypeScriptCompile Include="app\IRouterContext.ts" />
     <TypeScriptCompile Include="app\IStoreContext.ts" />
     <TypeScriptCompile Include="app\kernel.ts" />
+    <TypeScriptCompile Include="app\Register.tsx" />
     <TypeScriptCompile Include="app\Login.tsx" />
     <Content Include="app\*.css" />
     <Content Include="characters\*.jsx" />

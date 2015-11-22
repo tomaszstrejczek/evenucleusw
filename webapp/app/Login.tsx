@@ -1,5 +1,5 @@
 ﻿import * as React from 'react';
-import {Context} from 'react-router';
+import {Context, Link} from 'react-router';
 
 import {IAuthServiceContext} from './../api/AuthService';
 import {IStoreContext} from './IStoreContext';
@@ -207,7 +207,7 @@ export class Login extends React.Component<any, LoginState> {
                             </label>
                         </Formsy.Form>
                     </div>
-                    <a href="#" className="text-center new-account">Create an account </a>
+                    <Link to="/register" className="text-center new-account">Create an account </Link>
                 </div>
             </div>
         );

@@ -50,3 +50,5 @@ webapp/app/IKernelContext.js
 webapp/api/AuthService.js
 webapp/app/IRouterContext.js
 webapp/app/IStoreContext.js
+api/bin/
+api/obj/
