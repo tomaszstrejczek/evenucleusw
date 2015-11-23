@@ -1,4 +1,6 @@
 ﻿import * as When from 'when';
+import * as Restful from 'restful.js';
+
 //import {AppActions} from './../actions/AppActions';
 
 export interface IAuthService {
@@ -11,6 +13,11 @@ export interface IAuthServiceContext {
 }
 
 export class AuthService implements IAuthService {
+    _api: Restful.Api;
+
+    constructor(api: Restful.Api) {
+        this._api = api;
+    }
     public login(username: string, password:string): When.Promise<string> {
         function loginMock()
         {

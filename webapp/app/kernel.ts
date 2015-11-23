@@ -6,10 +6,13 @@ import * as Restful from 'restful.js';
 export class KernelCreator {
     public static create(): TypeIoc.IContainer {
         var kernel = TypeIoc.createBuilder();
-        kernel.register<IAuthService>(AuthService).as(() => new AuthService());
+        kernel.register<IAuthService>("IAuthService").as((c) => {
+            var api: Restful.Api = c.resolve<Restful.Api>("Restful.Api");
+            return new AuthService(api);
+        });
 
         var api = Restful.default("http://localhost:8080");
-        kernel.register<Restful.Api>(api).as(() => api).within(TypeIoc.Types.Scope.Container);
+        kernel.register<Restful.Api>("Restful.Api").as(() => api).within(TypeIoc.Types.Scope.Container);
 
         console.log('kernel created');
         return kernel.build();
