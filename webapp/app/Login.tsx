@@ -178,7 +178,7 @@ export class Login extends React.Component<any, LoginState> {
             .catch(function(err) {
                 console.log("Error logging in", err);
                 that.setState((prevState: LoginState, props: any): LoginState => {
-                    prevState.formError = err;
+                    prevState.formError = err.toString();
                     return prevState;
                 });
             });

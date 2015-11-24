@@ -30,7 +30,7 @@ namespace api
             if (m.email == "a@a.a")
                 return "new token";
 
-            throw new Exception("Invalid user/password");
+            throw new UserException(strings.InvalidUserPassword);
         }
     }
 
