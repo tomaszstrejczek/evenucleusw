@@ -1,5 +1,6 @@
 ﻿import * as When from 'when';
 import * as Restful from 'restful.js';
+import * as $ from 'jquery';
 
 //import {AppActions} from './../actions/AppActions';
 
@@ -27,9 +28,15 @@ export class AuthService implements IAuthService {
             return 'token';
         }
 
-        return When.resolve('')
-            .delay(100)
-            .then(loginMock)
+        return When.promise<string>(function (resolve: (data: string) => void, reject: (reason: any) => void): void {
+            $.post("http://localhost:8080/login", { email: username, password: password })
+                .then(resolve, reject);
+        });
+        //$.post("/login", { email: username, password: password }
+
+        //return When.resolve('')
+        //    .delay(100)
+        //    .then(loginMock)
             //.then((token: string):string => {
             //    AppActions.loginUser(token);
             //    return token;
