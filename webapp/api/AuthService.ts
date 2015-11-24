@@ -29,7 +29,7 @@ export class AuthService implements IAuthService {
         }
 
         return When.promise<string>(function (resolve: (data: string) => void, reject: (reason: any) => void): void {
-            $.post("http://localhost:8080/login", { email: username, password: password })
+            $.post("/api/login", { email: username, password: password })
                 .then(resolve, reject);
         });
         //$.post("/login", { email: username, password: password }

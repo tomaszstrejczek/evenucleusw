@@ -5,6 +5,7 @@ using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
 using Nancy;
+using Nancy.ModelBinding;
 using Nancy.Routing;
 
 namespace api
@@ -13,11 +14,20 @@ namespace api
     {
         public Account()
         {
-            Post["/login"] = parameters => Login(parameters);
+            Post["/login"] = Login;
         }
+
+        struct LoginModel
+        {
+            public string email;
+            public string password;
+        }
+
         private string Login(dynamic parameters)
         {
-            if (parameters.login == "a@a.a")
+            var m = this.Bind<LoginModel>();
+
+            if (m.email == "a@a.a")
                 return "new token";
 
             throw new Exception("Invalid user/password");

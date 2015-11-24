@@ -7,7 +7,7 @@ namespace api
     {
         static void Main(string[] args)
         {
-            var url = "http://+:8080";
+            var url = "http://+:8070/api";
 
             using (WebApp.Start<Startup>(url))
             {
