@@ -14,7 +14,7 @@ namespace api
     {
         public Account()
         {
-            Post["/login"] = Login;
+            Post["/api/login"] = Login;
         }
 
         struct LoginModel

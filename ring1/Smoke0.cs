@@ -15,8 +15,10 @@ namespace ring1
 			var bootstrapper = new TestingBootstrapper();
 			var browser = new Browser(bootstrapper);
 
-            var result = browser.Post("/api/login", with => {
+            var result = browser.Post("http://localhost:8070/api/login", with => {
                 with.HttpRequest();
+                with.FormValue("email", "a@a.a");
+                with.FormValue("password", "123");
             });
 
             // Then
