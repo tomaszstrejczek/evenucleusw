@@ -59,6 +59,10 @@
       <Project>{2feed3dd-c782-49c2-8679-20bec802396b}</Project>
       <Name>api</Name>
     </ProjectReference>
+    <ProjectReference Include="..\fas\Nancy\src\Nancy.Testing\Nancy.Testing.csproj">
+      <Project>{d79203c0-b672-4751-9c95-c3ab7d3fefbe}</Project>
+      <Name>Nancy.Testing</Name>
+    </ProjectReference>
     <ProjectReference Include="..\fas\Nancy\src\Nancy\Nancy.csproj">
       <Project>{34576216-0dca-4b0f-a0dc-9075e75a676f}</Project>
       <Name>Nancy</Name>
