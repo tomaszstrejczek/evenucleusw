@@ -1,3 +1,6 @@
 [submodule "fas/Nancy.Bootstrappers.Ninject"]
 	path = fas/Nancy.Bootstrappers.Ninject
 	url = https://github.com/tomek1909/Nancy.Bootstrappers.Ninject.git
+[submodule "fas/Nancy"]
+	path = fas/Nancy
+	url = https://github.com/tomek1909/Nancy.git
