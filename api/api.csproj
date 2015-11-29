@@ -161,7 +161,7 @@
     <Compile Include="Account.cs" />
     <Compile Include="AccountContextProvider.cs" />
     <Compile Include="AccountRepo.cs" />
-    <Compile Include="BeforRequest.cs" />
+    <Compile Include="BeforeRequest.cs" />
     <Compile Include="Bootstrapper.cs" />
     <Compile Include="ErrorHtmlPageResponse.cs" />
     <Compile Include="ErrorResponse.cs" />
@@ -173,6 +173,7 @@
     <Compile Include="Migrations\AccountContextModelSnapshot.cs" />
     <Compile Include="MyConfiguration.cs" />
     <Compile Include="PasswordHash.cs" />
+    <Compile Include="Pilots.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />

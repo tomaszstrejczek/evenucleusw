@@ -31,7 +31,7 @@ namespace ts.api
             pipelines.OnError.AddItemToEndOfPipeline((z, a) => ErrorResponse.FromException(a));
 
             var accountRepo = container.Get<IAccountRepo>();
-            pipelines.BeforeRequest.AddItemToStartOfPipeline((ctx, token) => BeforRequest.BeforRequestHandler(accountRepo, ctx, token));
+            pipelines.BeforeRequest.AddItemToStartOfPipeline((ctx, token) => BeforeRequest.BeforeRequestHandler(accountRepo, ctx, token));
 
             base.RequestStartup(container, pipelines, context);
         }

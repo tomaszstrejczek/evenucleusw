@@ -27,7 +27,7 @@ namespace ring1
 
         protected override void ConfigureApplicationContainer(TinyIoCContainer container)
         {
-            container.Register<IMyConfiguration, MyConfiguration>();
+            container.Register<IMyConfiguration, MyTestConfiguration>();
             container.Register<IAccountContextProvider, AccountContextProvider>();
             container.Register<IAccountRepo, AccountRepo>();
         }
@@ -37,14 +37,18 @@ namespace ring1
             pipelines.OnError.AddItemToEndOfPipeline((z, a) => ErrorResponse.FromException(a));
 
             var accountRepo = container.Resolve<IAccountRepo>();
-            pipelines.BeforeRequest.AddItemToStartOfPipeline((ctx, token) => BeforRequest.BeforRequestHandler(accountRepo, ctx, token));
+            pipelines.BeforeRequest.AddItemToStartOfPipeline((ctx, token) => ts.api.BeforeRequest.BeforeRequestHandler(accountRepo, ctx, token));
 
             base.RequestStartup(container, pipelines, context);
         }
 
         protected override IEnumerable<INancyModule> GetAllModules(TinyIoCContainer container)
         {
-            return new Account[] {new Account(container.Resolve<IAccountRepo>())}.AsEnumerable();
+            return new INancyModule[]
+            {
+                new Account(container.Resolve<IAccountRepo>()),
+                new Pilots(), 
+            }.AsEnumerable();
         }
     }
 }
