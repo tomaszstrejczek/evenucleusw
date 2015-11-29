@@ -5,7 +5,7 @@ using System.Text.RegularExpressions;
 using Nancy;
 using Nancy.Responses;
 
-namespace api
+namespace ts.api
 {
     public class ErrorHtmlPageResponse : HtmlResponse
     {

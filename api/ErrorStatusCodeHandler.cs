@@ -5,7 +5,7 @@ using Nancy.ErrorHandling;
 using Nancy.Responses;
 using Nancy.Responses.Negotiation;
 
-namespace api
+namespace ts.api
 {
     public sealed class ErrorStatusCodeHandler : IStatusCodeHandler
     {

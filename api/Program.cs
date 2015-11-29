@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.Owin.Hosting;
 
-namespace api
+namespace ts.api
 {
     class Program
     {

@@ -3,15 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Owin;
+using ts.shared;
 
 namespace ts.api
 {
-    public class Startup
+    public class MyConfiguration: IMyConfiguration
     {
-        public void Configuration(IAppBuilder app)
-        {
-            app.UseNancy();
-        }
+        public bool UseSql => true;
+        public string ConnectionString => "";
     }
 }

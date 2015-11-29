@@ -3,9 +3,10 @@ using System.Net;
 using System.Net.Sockets;
 using Nancy.Responses;
 using Newtonsoft.Json;
+using Ninject;
 using HttpStatusCode = Nancy.HttpStatusCode;
 
-namespace api
+namespace ts.api
 {
     public class ErrorResponse : JsonResponse
     {
@@ -38,6 +39,11 @@ namespace api
             //}
 
             var statusCode = HttpStatusCode.InternalServerError;
+            if (exception is UserException)
+            {
+                statusCode = HttpStatusCode.Accepted;
+                
+            }
 
             var error = new Error { ErrorMessage = summary, FullException = exception.ToString() };
 
@@ -59,7 +65,7 @@ namespace api
             return response;
         }
 
-        class Error
+        public class Error
         {
             public string ErrorMessage { get; set; }
 

@@ -3,15 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Owin;
+using ts.db;
 
 namespace ts.api
 {
-    public class Startup
+    public interface IAccountContextProvider
     {
-        public void Configuration(IAppBuilder app)
-        {
-            app.UseNancy();
-        }
+        AccountContext Context { get; }
     }
 }

@@ -56,3 +56,8 @@ webapp/app/Register.js
 x
 ring1/bin/
 ring1/obj/
+shared/obj/
+ring0/obj/
+ring0/bin/
+db/obj/
+db/bin/
