@@ -9,6 +9,7 @@ using Nancy.Bootstrapper;
 using Nancy.Testing;
 using Nancy.TinyIoc;
 using Microsoft.Data.Entity;
+using Serilog;
 using ts.db;
 using ts.shared;
 
@@ -30,6 +31,15 @@ namespace ring1
             container.Register<IMyConfiguration, MyTestConfiguration>();
             container.Register<IAccountContextProvider, AccountContextProvider>();
             container.Register<IAccountRepo, AccountRepo>();
+
+            var config = new LoggerConfiguration();
+#if DEBUG
+            config.MinimumLevel.Debug().WriteTo.Trace();
+#else
+            config.MinimumLevel.Debug();
+#endif
+            var log = config.CreateLogger();
+            container.Register<ILogger>(log);
         }
 
         protected override void RequestStartup(TinyIoCContainer container, IPipelines pipelines, NancyContext context)

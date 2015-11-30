@@ -61,3 +61,5 @@ ring0/obj/
 ring0/bin/
 db/obj/
 db/bin/
+evenucleusw.sln.DotSettings.user
+shared/bin/

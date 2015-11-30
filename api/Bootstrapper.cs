@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Nancy.Bootstrapper;
 using Nancy;
 using Ninject;
+using Serilog;
 using ts.shared;
 
 namespace ts.api
@@ -24,6 +25,15 @@ namespace ts.api
             existingContainer.Bind<IAccountContextProvider>().To<AccountContextProvider>();
             existingContainer.Bind<IMyConfiguration>().To<MyConfiguration>();
             existingContainer.Bind<IAccountRepo>().To<AccountRepo>();
+
+            var config = new LoggerConfiguration();
+#if DEBUG
+            config.MinimumLevel.Debug().WriteTo.Trace();
+#else
+            config.MinimumLevel.Debug();
+#endif
+            var log = config.CreateLogger();
+            existingContainer.Bind<ILogger>().ToConstant(log);
         }
 
         protected override void RequestStartup(IKernel container, IPipelines pipelines, NancyContext context)
