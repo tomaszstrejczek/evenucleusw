@@ -120,10 +120,16 @@
   <data name="AccountAlreadyExists" xml:space="preserve">
     <value>Account with given email already exists</value>
   </data>
+  <data name="ErrorKeyAlreadyDefined" xml:space="preserve">
+    <value>Provided key is already defined</value>
+  </data>
   <data name="InvalidSessionKey" xml:space="preserve">
     <value>Session has expired</value>
   </data>
   <data name="InvalidUserPassword" xml:space="preserve">
     <value>Invalid user/password</value>
+  </data>
+  <data name="SecurityException" xml:space="preserve">
+    <value>SecurityException</value>
   </data>
 </root>

@@ -70,6 +70,15 @@ namespace ts.api {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Provided key is already defined.
+        /// </summary>
+        public static string ErrorKeyAlreadyDefined {
+            get {
+                return ResourceManager.GetString("ErrorKeyAlreadyDefined", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Session has expired.
         /// </summary>
         public static string InvalidSessionKey {
@@ -84,6 +93,15 @@ namespace ts.api {
         public static string InvalidUserPassword {
             get {
                 return ResourceManager.GetString("InvalidUserPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SecurityException.
+        /// </summary>
+        public static string SecurityException {
+            get {
+                return ResourceManager.GetString("SecurityException", resourceCulture);
             }
         }
     }

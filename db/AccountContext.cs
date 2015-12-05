@@ -14,6 +14,7 @@ namespace ts.db
         public DbSet<User> Users { get; set; }
         public DbSet<Session> Sessions { get; set; }
         public DbSet<ArchiveSession> ArchiveSessions { get; set; }
+        public DbSet<KeyInfo> KeyInfos { get; set; }
 
         public AccountContext(IMyConfiguration configuration)
         {
@@ -41,6 +42,8 @@ namespace ts.db
                 .HasMaxLength(96);
 
             modelBuilder.Entity<Session>().HasOne<User>();
+
+            modelBuilder.Entity<User>().HasMany<KeyInfo>();
         }
     }
 }

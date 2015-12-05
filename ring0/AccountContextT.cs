@@ -9,20 +9,8 @@ using ts.db;
 namespace ring0
 {
     [TestClass]
-    public class AccountContextT
+    public class AccountContextT: TestBase
     {
-        private AccountRepo AccountRepo
-        {
-            get
-            {
-                var config = new MyTestConfiguration();
-                var ctxprovider = new AccountContextProvider(config);
-                var accountrepo = new AccountRepo(ctxprovider);
-
-                return accountrepo;
-            }
-        }
-
         [TestMethod]
         public async Task Register()
         {

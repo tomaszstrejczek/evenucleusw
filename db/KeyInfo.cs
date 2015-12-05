@@ -6,12 +6,11 @@ using System.Threading.Tasks;
 
 namespace ts.db
 {
-    public class User
+    public class KeyInfo
     {
+        public long KeyInfoId { get; set; }
+        public long KeyId { get; set; }
+        public string VCode { get; set; }
         public long UserId { get; set; }
-        public string Email { get; set; }
-        public string HashedPassword { get; set; }
-
-        public virtual ICollection<KeyInfo> KeyInfos { get; set; }
     }
 }
