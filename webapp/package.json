@@ -52,7 +52,7 @@
     "sass-loader": "^1.0.3",
     "sinon": "git+https://github.com/sinonjs/sinon.git",
     "style-loader": "^0.12.3",
-    "ts-loader": "^0.5.5",
+    "ts-loader": "^0.6.0",
     "typeioc": "^1.3.0",
     "typescript": "^1.7.3",
     "url-loader": "^0.5.6",

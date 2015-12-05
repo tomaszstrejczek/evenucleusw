@@ -66,7 +66,9 @@ export class Runner {
                 var authService = new AuthService(null);
                 loginStub = Sinon.stub(authService, "login");
                 var router = function () { };
-                (router as any).transitionTo = function (adr: string) { };
+                (router as any).transitionTo = (adr: string) => { };
+                (router as any).makeHref = (to: string): string => to;
+                (router as any).isActive = (): boolean => true;
                 
                 transitionToStub = Sinon.stub(router, "transitionTo");
 

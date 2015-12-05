@@ -202,6 +202,7 @@
     <Content Include="forms\icon.jsx" />
     <Content Include="forms\input.jsx" />
     <Content Include="forms\row.jsx" />
+    <Content Include="tsconfig.json" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>
