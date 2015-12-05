@@ -27,6 +27,8 @@ namespace ts.api
 
             using (var ctx = _accountContextProvider.Context)
             {
+                var user = await ctx.Users.Include(c => c.Notifications).SingleOrDefaultAsync(u => u.UserId == userid);
+
                 var n = new Notification()
                 {
                     Status = NotificationStatus.NotSeen,
@@ -37,6 +39,7 @@ namespace ts.api
                 };
 
                 ctx.Notifications.Add(n);
+                user.Notifications.Add(n);
                 await ctx.SaveChangesAsync();
 
                 return n.NotificationId;

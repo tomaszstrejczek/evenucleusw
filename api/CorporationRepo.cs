@@ -44,7 +44,10 @@ namespace ts.api
                 {
                     a.UserId = userid;
                     if (storedCorpos.All(x => x.EveId != a.EveId))
+                    {
+                        user.Corporations.Add(a);
                         ctx.Corporations.Add(a);
+                    }
                 }
 
                 await ctx.SaveChangesAsync();

@@ -28,8 +28,9 @@ namespace ts.api
 
             using (var ctx = _accountContextProvider.Context)
             {
-                var existing = await ctx.Users.SingleOrDefaultAsync(x => x.UserId == userid && x.KeyInfos.Any(z => z.KeyId==keyid));
-                if (existing != null)
+                var user = await ctx.Users.Include(c => c.KeyInfos).SingleOrDefaultAsync(x => x.UserId == userid);
+
+                if (user.KeyInfos.Any(x => x.KeyId == keyid))
                 {
                     _logger.Debug("{method} strings.ErrorKeyAlreadyDefined", "UserRepo::AddKey");
                     throw new UserException(strings.ErrorKeyAlreadyDefined);
@@ -42,6 +43,7 @@ namespace ts.api
                     UserId = userid
                 };
                 ctx.KeyInfos.Add(k);
+                user.KeyInfos.Add(k);
                 await ctx.SaveChangesAsync();
 
                 return k.KeyInfoId;

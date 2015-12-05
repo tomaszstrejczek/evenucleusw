@@ -179,10 +179,12 @@
     <Compile Include="IAccountRepo.cs" />
     <Compile Include="ICorporationRepo.cs" />
     <Compile Include="IEveApi.cs" />
+    <Compile Include="IJobRepo.cs" />
     <Compile Include="IKeyInfoRepo.cs" />
     <Compile Include="INotificationRepo.cs" />
     <Compile Include="IPilotRepo.cs" />
     <Compile Include="ISkillRepo.cs" />
+    <Compile Include="JobRepo.cs" />
     <Compile Include="KeyInfoRepo.cs" />
     <Compile Include="Migrations\20151128202714_Initial.cs" />
     <Compile Include="Migrations\20151128202714_Initial.Designer.cs" />

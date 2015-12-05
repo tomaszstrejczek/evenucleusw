@@ -42,11 +42,11 @@ namespace ts.db
             modelBuilder.Entity<User>().Property(u => u.Email)
                 .IsRequired()
                 .HasMaxLength(255);
-            modelBuilder.Entity<User>().HasMany<KeyInfo>();
-            modelBuilder.Entity<User>().HasMany<Pilot>();
-            modelBuilder.Entity<User>().HasMany<Corporation>();
-            modelBuilder.Entity<User>().HasMany<Job>();
-            modelBuilder.Entity<User>().HasMany<Notification>();
+            modelBuilder.Entity<User>().HasMany<KeyInfo>().WithOne().HasForeignKey(k => k.UserId);
+            modelBuilder.Entity<User>().HasMany<Pilot>().WithOne().HasForeignKey(k => k.UserId);
+            modelBuilder.Entity<User>().HasMany<Corporation>().WithOne().HasForeignKey(k => k.UserId);
+            modelBuilder.Entity<User>().HasMany<Job>().WithOne().HasForeignKey(k => k.UserId);
+            modelBuilder.Entity<User>().HasMany<Notification>().WithOne().HasForeignKey(k => k.UserId);
 
             modelBuilder.Entity<Session>().Property(u => u.SessionId)
                 .IsRequired()
@@ -65,7 +65,11 @@ namespace ts.db
                 .Ignore(x => x.Url);
 
             modelBuilder.Entity<Skill>().HasOne<Pilot>();
-            
+
+            modelBuilder.Entity<Job>()
+                .Ignore(x => x.DurationDescription);
+
+
         }
     }
 }

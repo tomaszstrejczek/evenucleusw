@@ -134,6 +134,7 @@
     <Compile Include="SkillRepoT.cs" />
     <Compile Include="TestBase.cs" />
     <Compile Include="PilotRepoT.cs" />
+    <Compile Include="JobsRepoT.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
