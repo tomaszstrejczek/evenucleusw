@@ -6,3 +6,7 @@
 	path = fas/Nancy
 	url = https://github.com/tomek1909/Nancy.git
 	branch = evenucleus
+[submodule "fas/evelib"]
+	path = fas/evelib
+	url = https://github.com/tomek1909/evelib.git
+	branch = for_evenucleus
