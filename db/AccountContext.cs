@@ -15,6 +15,11 @@ namespace ts.db
         public DbSet<Session> Sessions { get; set; }
         public DbSet<ArchiveSession> ArchiveSessions { get; set; }
         public DbSet<KeyInfo> KeyInfos { get; set; }
+        public DbSet<Pilot> Pilots { get; set; }
+        public DbSet<Corporation> Corporations { get; set; }
+        public DbSet<Skill> Skills { get; set; }
+        public DbSet<Job> Jobs { get; set; }
+        public DbSet<Notification> Notifications { get; set; }
 
         public AccountContext(IMyConfiguration configuration)
         {
@@ -37,13 +42,30 @@ namespace ts.db
             modelBuilder.Entity<User>().Property(u => u.Email)
                 .IsRequired()
                 .HasMaxLength(255);
+            modelBuilder.Entity<User>().HasMany<KeyInfo>();
+            modelBuilder.Entity<User>().HasMany<Pilot>();
+            modelBuilder.Entity<User>().HasMany<Corporation>();
+            modelBuilder.Entity<User>().HasMany<Job>();
+            modelBuilder.Entity<User>().HasMany<Notification>();
+
             modelBuilder.Entity<Session>().Property(u => u.SessionId)
                 .IsRequired()
                 .HasMaxLength(96);
-
             modelBuilder.Entity<Session>().HasOne<User>();
 
-            modelBuilder.Entity<User>().HasMany<KeyInfo>();
+            modelBuilder.Entity<Pilot>().HasMany<Skill>().WithOne().HasForeignKey(s => s.PilotId);
+            modelBuilder.Entity<Pilot>()
+                .Ignore(x => x.TrainedSkills)
+                .Ignore(x => x.TrainingLengthDescription)
+                .Ignore(x => x.TrainingWarning)
+                .Ignore(x => x.TrainingNotActive)
+                .Ignore(x => x.Url);
+
+            modelBuilder.Entity<Corporation>()
+                .Ignore(x => x.Url);
+
+            modelBuilder.Entity<Skill>().HasOne<Pilot>();
+            
         }
     }
 }

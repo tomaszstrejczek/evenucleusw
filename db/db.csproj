@@ -120,10 +120,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccountContext.cs" />
+    <Compile Include="Corporation.cs" />
+    <Compile Include="Job.cs" />
     <Compile Include="KeyInfo.cs" />
+    <Compile Include="Notification.cs" />
+    <Compile Include="Pilot.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ArchiveSession.cs" />
     <Compile Include="Session.cs" />
+    <Compile Include="Skill.cs" />
     <Compile Include="User.cs" />
   </ItemGroup>
   <ItemGroup>

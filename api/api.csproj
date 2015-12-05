@@ -171,27 +171,37 @@
     <Compile Include="AccountRepo.cs" />
     <Compile Include="BeforeRequest.cs" />
     <Compile Include="Bootstrapper.cs" />
+    <Compile Include="CorporationRepo.cs" />
     <Compile Include="ErrorHtmlPageResponse.cs" />
     <Compile Include="ErrorResponse.cs" />
     <Compile Include="ErrorStatusCodeHandler.cs" />
     <Compile Include="IAccountContextProvider.cs" />
     <Compile Include="IAccountRepo.cs" />
+    <Compile Include="ICorporationRepo.cs" />
+    <Compile Include="IEveApi.cs" />
     <Compile Include="IKeyInfoRepo.cs" />
+    <Compile Include="INotificationRepo.cs" />
+    <Compile Include="IPilotRepo.cs" />
+    <Compile Include="ISkillRepo.cs" />
     <Compile Include="KeyInfoRepo.cs" />
     <Compile Include="Migrations\20151128202714_Initial.cs" />
     <Compile Include="Migrations\20151128202714_Initial.Designer.cs" />
     <Compile Include="Migrations\AccountContextModelSnapshot.cs" />
     <Compile Include="MyConfiguration.cs" />
+    <Compile Include="NotificationRepo.cs" />
     <Compile Include="PasswordHash.cs" />
+    <Compile Include="PilotRepo.cs" />
     <Compile Include="Pilots.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SkillRepo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="strings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>strings.resx</DependentUpon>
     </Compile>
+    <Compile Include="UserDataDto.cs" />
     <Compile Include="UserException.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -208,6 +218,10 @@
     <ProjectReference Include="..\db\db.csproj">
       <Project>{caa3c016-d563-496b-8cf5-4649448ba2ce}</Project>
       <Name>db</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\fas\evelib\EveLib.EveXml\EveLib.EveXml.csproj">
+      <Project>{655ca737-cd94-4128-b2b5-dce37ea6e7f8}</Project>
+      <Name>EveLib.EveXml</Name>
     </ProjectReference>
     <ProjectReference Include="..\fas\Nancy.Bootstrappers.Ninject\src\Nancy.Bootstrappers.Ninject\Nancy.Bootstrappers.Ninject.csproj">
       <Project>{760a88f1-7cea-47fe-86ac-4f75609100f2}</Project>

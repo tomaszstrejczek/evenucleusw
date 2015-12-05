@@ -13,5 +13,9 @@ namespace ts.db
         public string HashedPassword { get; set; }
 
         public virtual ICollection<KeyInfo> KeyInfos { get; set; }
+        public virtual ICollection<Corporation> Corporations { get; set; }
+        public virtual ICollection<Pilot> Pilots { get; set; }
+        public virtual ICollection<Job> Jobs { get; set; }
+        public virtual ICollection<Notification> Notifications { get; set; }
     }
 }
