@@ -46,6 +46,6 @@ namespace ring0
         public ICacheLocalProvider CacheLocalProvider => new CacheEveLibProvider(EveCache);
         public IRefTypeDict RefTypeDict => new RefTypeDict(CacheLocalProvider, EveCache);
         public EveApi EveApi => new EveApi(Logger, EveCache);
-
+        public ICharacterNameDict CharacterNameDict => new CharacterNameDict(CacheLocalProvider, EveCache);
     }
 }

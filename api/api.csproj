@@ -172,6 +172,7 @@
     <Compile Include="BeforeRequest.cs" />
     <Compile Include="Bootstrapper.cs" />
     <Compile Include="CacheLocalProvider.cs" />
+    <Compile Include="CharacterNameDict.cs" />
     <Compile Include="CorporationRepo.cs" />
     <Compile Include="ErrorHtmlPageResponse.cs" />
     <Compile Include="ErrorResponse.cs" />
@@ -181,9 +182,11 @@
     <Compile Include="IAccountContextProvider.cs" />
     <Compile Include="IAccountRepo.cs" />
     <Compile Include="ICacheLocalProvider.cs" />
+    <Compile Include="ICharacterNameDict.cs" />
     <Compile Include="ICorporationRepo.cs" />
     <Compile Include="IEveApi.cs" />
     <Compile Include="IJobRepo.cs" />
+    <Compile Include="IJobService.cs" />
     <Compile Include="IKeyInfoRepo.cs" />
     <Compile Include="INotificationRepo.cs" />
     <Compile Include="IPilotRepo.cs" />
@@ -192,6 +195,7 @@
     <Compile Include="ISkillRepo.cs" />
     <Compile Include="ITypeNameDict.cs" />
     <Compile Include="JobRepo.cs" />
+    <Compile Include="JobService.cs" />
     <Compile Include="KeyInfoRepo.cs" />
     <Compile Include="Migrations\20151128202714_Initial.cs" />
     <Compile Include="Migrations\20151128202714_Initial.Designer.cs" />

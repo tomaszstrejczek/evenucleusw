@@ -67,6 +67,7 @@
     <Compile Include="EveApiT.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PilotServiceT.cs" />
+    <Compile Include="JobServiceT.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\api\api.csproj">
