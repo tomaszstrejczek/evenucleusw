@@ -120,6 +120,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccountContext.cs" />
+    <Compile Include="CacheEntry.cs" />
     <Compile Include="Corporation.cs" />
     <Compile Include="Job.cs" />
     <Compile Include="KeyInfo.cs" />

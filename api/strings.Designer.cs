@@ -70,6 +70,42 @@ namespace ts.api {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Error calling Eve Api. Possibly wrong access mask for the key.
+        /// </summary>
+        public static string ErrorAccessMask {
+            get {
+                return ResourceManager.GetString("ErrorAccessMask", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Authentication failure. Invalid key and/or verification code.
+        /// </summary>
+        public static string ErrorAuthenticationFailure {
+            get {
+                return ResourceManager.GetString("ErrorAuthenticationFailure", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Authentication failure. Invalid key {0} and/or verification code.
+        /// </summary>
+        public static string ErrorAuthenticationFailureWithKey {
+            get {
+                return ResourceManager.GetString("ErrorAuthenticationFailureWithKey", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error calling Eve Api.
+        /// </summary>
+        public static string ErrorCallingEveApi {
+            get {
+                return ResourceManager.GetString("ErrorCallingEveApi", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Provided key is already defined.
         /// </summary>
         public static string ErrorKeyAlreadyDefined {

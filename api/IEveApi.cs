@@ -5,8 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 using eZet.EveLib.EveXmlModule;
-using eZet.EveLib.EveXmlModule.Models.Account;
 using eZet.EveLib.EveXmlModule.Models.Character;
+using eZet.EveLib.EveXmlModule.Models.Misc;
 
 namespace ts.api
 {
@@ -28,7 +28,7 @@ namespace ts.api
         bool CheckKey(long keyid, string vcode);
 
         Task<CharacterSheet> GetCharacterSheet(long keyid, string vcode, long characterId);
-        Task<CharacterList.CharacterInfo> GetCharacterInfo(long keyid, string vcode, long characterId);
+        Task<CharacterInfo> GetCharacterInfo(long keyid, string vcode, long characterId);
         Task<SkillTraining> GetSkillTraining(long keyid, string vcode, long characterId);
         Task<SkillQueue> GetSkillQueue(long keyid, string vcode, long characterId);
 
@@ -72,7 +72,7 @@ namespace ts.api
         /// <param name="characterId">characterId</param>
         /// <param name="cutoffDate">Only entries newet than this date are retuned</param>
         /// <returns></returns>
-        //Task<List<WalletTransaction>> GetTransactions(long keyid, string vcode, string characterName, long characterId, DateTime cutoffDate);
+        Task<List<WalletTransactions.Transaction>> GetTransactions(long keyid, string vcode, string characterName, long characterId, DateTime cutoffDate);
 
         /// <summary>
         /// Returns wallet transactions for given character. Only the entries newer than cutoffDate are returned. Provide really old date to get all entires
@@ -82,7 +82,7 @@ namespace ts.api
         /// <param name="corproationId">corporation id</param>
         /// <param name="cutoffDate">Only entries newet than this date are retuned</param>
         /// <returns></returns>
-        //Task<List<WalletTransaction>> GetTransactionsCorpo(long keyid, string vcode, long corporationId, DateTime cutoffDate);
+        Task<List<WalletTransactions.Transaction>> GetTransactionsCorpo(long keyid, string vcode, long corporationId, DateTime cutoffDate);
 
     }
 }

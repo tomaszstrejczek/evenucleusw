@@ -20,6 +20,7 @@ namespace ts.db
         public DbSet<Skill> Skills { get; set; }
         public DbSet<Job> Jobs { get; set; }
         public DbSet<Notification> Notifications { get; set; }
+        public DbSet<CacheEntry> CacheEntries { get; set; }
 
         public AccountContext(IMyConfiguration configuration)
         {
@@ -69,7 +70,7 @@ namespace ts.db
             modelBuilder.Entity<Job>()
                 .Ignore(x => x.DurationDescription);
 
-
+            modelBuilder.Entity<CacheEntry>().HasKey(c => c.Key);
         }
     }
 }

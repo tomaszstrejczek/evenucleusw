@@ -120,6 +120,18 @@
   <data name="AccountAlreadyExists" xml:space="preserve">
     <value>Account with given email already exists</value>
   </data>
+  <data name="ErrorAccessMask" xml:space="preserve">
+    <value>Error calling Eve Api. Possibly wrong access mask for the key</value>
+  </data>
+  <data name="ErrorAuthenticationFailure" xml:space="preserve">
+    <value>Authentication failure. Invalid key and/or verification code</value>
+  </data>
+  <data name="ErrorAuthenticationFailureWithKey" xml:space="preserve">
+    <value>Authentication failure. Invalid key {0} and/or verification code</value>
+  </data>
+  <data name="ErrorCallingEveApi" xml:space="preserve">
+    <value>Error calling Eve Api</value>
+  </data>
   <data name="ErrorKeyAlreadyDefined" xml:space="preserve">
     <value>Provided key is already defined</value>
   </data>

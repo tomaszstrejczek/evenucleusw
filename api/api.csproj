@@ -175,6 +175,8 @@
     <Compile Include="ErrorHtmlPageResponse.cs" />
     <Compile Include="ErrorResponse.cs" />
     <Compile Include="ErrorStatusCodeHandler.cs" />
+    <Compile Include="EveApi.cs" />
+    <Compile Include="EveSqlServerCache.cs" />
     <Compile Include="IAccountContextProvider.cs" />
     <Compile Include="IAccountRepo.cs" />
     <Compile Include="ICorporationRepo.cs" />
@@ -183,6 +185,7 @@
     <Compile Include="IKeyInfoRepo.cs" />
     <Compile Include="INotificationRepo.cs" />
     <Compile Include="IPilotRepo.cs" />
+    <Compile Include="IRefTypeDict.cs" />
     <Compile Include="ISkillRepo.cs" />
     <Compile Include="JobRepo.cs" />
     <Compile Include="KeyInfoRepo.cs" />
@@ -220,6 +223,10 @@
     <ProjectReference Include="..\db\db.csproj">
       <Project>{caa3c016-d563-496b-8cf5-4649448ba2ce}</Project>
       <Name>db</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\fas\evelib\EveLib.Core\EveLib.Core.csproj">
+      <Project>{aa85978c-2bf5-419f-9f8e-b70162e83f34}</Project>
+      <Name>EveLib.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\fas\evelib\EveLib.EveXml\EveLib.EveXml.csproj">
       <Project>{655ca737-cd94-4128-b2b5-dce37ea6e7f8}</Project>

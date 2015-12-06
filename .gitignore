@@ -63,3 +63,5 @@ db/obj/
 db/bin/
 evenucleusw.sln.DotSettings.user
 shared/bin/
+ring2/bin/
+ring2/obj/
