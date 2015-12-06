@@ -31,7 +31,7 @@ namespace ring2
         }
 
         [TestMethod]
-        public async Task MultipleChars()
+        public void MultipleChars()
         {
             long code = 3231405;
             string vcode = "UZDkcXJAQYdDXu8ItoX7ICXT914ephxHX2n07CFjgKwkYhP2XE6PerFGzTWYfgL6";
@@ -43,7 +43,7 @@ namespace ring2
         }
 
         [TestMethod]
-        public async Task CorpoKey()
+        public void CorpoKey()
         {
             int code = 4865846;
             String vcode = "t99aNY7KfAMRUxCz7S29ZkPvBEwVjrYwtWdgGVXFYKq0lHAWtIlpwuiVqxZpnwBT";
@@ -55,7 +55,7 @@ namespace ring2
         }
 
         [TestMethod]
-        public async Task InvalidKey()
+        public void InvalidKey()
         {
             long code = 1;
             string vcode = "UZDkcXJAQYdDXu8ItoX7ICXT914ephxHX2n07CFjgKwkYhP2XE6PerFGzTWYfgL6";
@@ -70,16 +70,15 @@ namespace ring2
             }
         }
 
-        //[TestMethod]
-        //public async Task R2WP_RefTypeDict()
-        //{
-        //    var localdb = _localdb;
-        //    var evecache = new EveSqLiteCache(Logger, localdb);
-        //    var cache = new CacheEveLibProvider(evecache);
-        //    var refTypeDict = new RefTypeDict(cache, evecache);
-        //    var result = await refTypeDict.GetById(56);
-        //    Assert.AreEqual("Manufacturing", result);
-        //}
+        [TestMethod]
+        public async Task RefTypeDict()
+        {
+            var evecache = new EveSqlServerCache(Logger, AccountContextProvider);
+            var cache = new CacheEveLibProvider(evecache);
+            var refTypeDict = new RefTypeDict(cache, evecache);
+            var result = await refTypeDict.GetById(56);
+            Assert.AreEqual("Manufacturing", result);
+        }
 
         [TestMethod]
         public async Task JournalEntriesCharacters()
@@ -180,7 +179,7 @@ namespace ring2
         }
 
         [TestMethod]
-        public async Task IsCorporationKey()
+        public void IsCorporationKey()
         {
             int code = 4865846;
             String vcode = "t99aNY7KfAMRUxCz7S29ZkPvBEwVjrYwtWdgGVXFYKq0lHAWtIlpwuiVqxZpnwBT";
@@ -194,7 +193,7 @@ namespace ring2
         }
 
         [TestMethod]
-        public async Task CorporationName()
+        public void CorporationName()
         {
             int code = 4865846;
             String vcode = "t99aNY7KfAMRUxCz7S29ZkPvBEwVjrYwtWdgGVXFYKq0lHAWtIlpwuiVqxZpnwBT";

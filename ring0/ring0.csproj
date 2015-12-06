@@ -127,6 +127,8 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="CacheEveLibProviderT.cs" />
+    <Compile Include="EveSqlServerCacheT.cs" />
     <Compile Include="KeyInfoRepoT.cs" />
     <Compile Include="MyTestConfiguration.cs" />
     <Compile Include="AccountContextT.cs" />
@@ -135,6 +137,7 @@
     <Compile Include="TestBase.cs" />
     <Compile Include="PilotRepoT.cs" />
     <Compile Include="JobsRepoT.cs" />
+    <Compile Include="TypeNameDictT.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -147,6 +150,10 @@
     <ProjectReference Include="..\db\db.csproj">
       <Project>{caa3c016-d563-496b-8cf5-4649448ba2ce}</Project>
       <Name>db</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\fas\evelib\EveLib.Core\EveLib.Core.csproj">
+      <Project>{aa85978c-2bf5-419f-9f8e-b70162e83f34}</Project>
+      <Name>EveLib.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\shared\shared.csproj">
       <Project>{f8ccfb67-a37a-40a4-834b-0c150e188a4e}</Project>

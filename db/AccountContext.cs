@@ -21,6 +21,7 @@ namespace ts.db
         public DbSet<Job> Jobs { get; set; }
         public DbSet<Notification> Notifications { get; set; }
         public DbSet<CacheEntry> CacheEntries { get; set; }
+        public DbSet<TypeNameEntry> TypeNameEntries { get; set; }
 
         public AccountContext(IMyConfiguration configuration)
         {
@@ -71,6 +72,8 @@ namespace ts.db
                 .Ignore(x => x.DurationDescription);
 
             modelBuilder.Entity<CacheEntry>().HasKey(c => c.Key);
+
+            modelBuilder.Entity<TypeNameEntry>().HasKey(c => c.Key);
         }
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using eZet.EveLib.Core.Cache;
 using ts.api;
 using Serilog;
 
@@ -40,5 +41,6 @@ namespace ring0
             }
         }
 
+        public IEveLibCache EveCache => new EveSqlServerCache(Logger, AccountContextProvider);
     }
 }

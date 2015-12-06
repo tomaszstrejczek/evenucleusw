@@ -130,6 +130,7 @@
     <Compile Include="ArchiveSession.cs" />
     <Compile Include="Session.cs" />
     <Compile Include="Skill.cs" />
+    <Compile Include="TypeNameEntry.cs" />
     <Compile Include="User.cs" />
   </ItemGroup>
   <ItemGroup>

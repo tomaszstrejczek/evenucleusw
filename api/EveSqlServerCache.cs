@@ -41,9 +41,8 @@ namespace ts.api
             {
                 if (_counter % 100 == 0)
                 {
-                    await
-                        ctx.Database.ExecuteSqlCommandAsync("delete from CacheEntry where CachedUntil < ?",
-                            new CancellationToken(), DateTime.UtcNow);
+                    var todel = await ctx.CacheEntries.Where(x => x.CachedUntil < DateTime.UtcNow).ToListAsync();
+                    ctx.CacheEntries.RemoveRange(todel);
                 }
 
                 // Add new entry
