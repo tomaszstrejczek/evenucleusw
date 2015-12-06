@@ -187,6 +187,7 @@
     <Compile Include="IKeyInfoRepo.cs" />
     <Compile Include="INotificationRepo.cs" />
     <Compile Include="IPilotRepo.cs" />
+    <Compile Include="IPilotService.cs" />
     <Compile Include="IRefTypeDict.cs" />
     <Compile Include="ISkillRepo.cs" />
     <Compile Include="ITypeNameDict.cs" />
@@ -200,6 +201,7 @@
     <Compile Include="PasswordHash.cs" />
     <Compile Include="PilotRepo.cs" />
     <Compile Include="Pilots.cs" />
+    <Compile Include="PilotService.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RefTypeDict.cs" />

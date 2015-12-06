@@ -23,7 +23,7 @@ namespace ts.api
             //if (eZet.EveLib.Core.Config.CacheFactory == null)
             eZet.EveLib.Core.Config.CacheFactory = (arg) => eveCache;
         }
-        public EveApi(ILogger logger, IEveLibCache eveCache, IRefTypeDict refTypeDict)
+        public EveApi(ILogger logger, IEveLibCache eveCache)
         {
             _logger = logger;
 

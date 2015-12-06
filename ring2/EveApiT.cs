@@ -11,19 +11,12 @@ namespace ring2
     [TestClass]
     public class EveApiT : TestBase
     {
-        public EveApi GetEveApi()
-        {
-            var evecache = new EveSqlServerCache(Logger, AccountContextProvider);
-
-            return new EveApi(Logger, evecache, null);
-        }
-
         [TestMethod]
         public void SingleChar()
         {
             long code = 3483492;
             string vcode = "ZwML01eU6aQUVIEC7gedCEaySiNxRTJxgWo2qoVnxd5duN4tt4CWgMuYMSVNWIUG";
-            var api = GetEveApi();
+            var api = EveApi;
             var chars = api.GetCharacters(code, vcode);
 
             Assert.AreEqual(1, chars.Count);
@@ -35,7 +28,7 @@ namespace ring2
         {
             long code = 3231405;
             string vcode = "UZDkcXJAQYdDXu8ItoX7ICXT914ephxHX2n07CFjgKwkYhP2XE6PerFGzTWYfgL6";
-            var api = GetEveApi();
+            var api = EveApi;
             var chars = api.GetCharacters(code, vcode);
 
             Assert.IsTrue(chars.Count > 1);
@@ -47,7 +40,7 @@ namespace ring2
         {
             int code = 4865846;
             String vcode = "t99aNY7KfAMRUxCz7S29ZkPvBEwVjrYwtWdgGVXFYKq0lHAWtIlpwuiVqxZpnwBT";
-            var api = GetEveApi();
+            var api = EveApi;
             var chars = api.GetCharacters(code, vcode);
 
             Assert.AreEqual(1, chars.Count);
@@ -61,7 +54,7 @@ namespace ring2
             string vcode = "UZDkcXJAQYdDXu8ItoX7ICXT914ephxHX2n07CFjgKwkYhP2XE6PerFGzTWYfgL6";
             try
             {
-                var api = GetEveApi();
+                var api = EveApi;
                 var chars = api.GetCharacters(code, vcode);
                 Assert.IsFalse(false, "Unreachable");
             }
@@ -71,7 +64,7 @@ namespace ring2
         }
 
         [TestMethod]
-        public async Task RefTypeDict()
+        public async Task RefTypeDictT()
         {
             var evecache = new EveSqlServerCache(Logger, AccountContextProvider);
             var cache = new CacheEveLibProvider(evecache);
@@ -85,7 +78,7 @@ namespace ring2
         {
             int code = 3483492;
             String vcode = "ZwML01eU6aQUVIEC7gedCEaySiNxRTJxgWo2qoVnxd5duN4tt4CWgMuYMSVNWIUG";
-            var api = GetEveApi();
+            var api = EveApi;
 
             var characters = api.GetCharacters(code, vcode);
             Assert.AreEqual(1, characters.Count);
@@ -112,7 +105,7 @@ namespace ring2
         {
             int code = 4865846;
             String vcode = "t99aNY7KfAMRUxCz7S29ZkPvBEwVjrYwtWdgGVXFYKq0lHAWtIlpwuiVqxZpnwBT";
-            var api = GetEveApi();
+            var api = EveApi;
 
             var entries = await api.GetJournalEntriesCorpo(code, vcode, 2, new DateTime(1900, 1, 1));
             Assert.IsTrue(entries.Count > 0);
@@ -134,7 +127,7 @@ namespace ring2
         {
             int code = 3483492;
             String vcode = "ZwML01eU6aQUVIEC7gedCEaySiNxRTJxgWo2qoVnxd5duN4tt4CWgMuYMSVNWIUG";
-            var api = GetEveApi();
+            var api = EveApi;
 
             var characters = api.GetCharacters(code, vcode);
             Assert.AreEqual(1, characters.Count);
@@ -161,7 +154,7 @@ namespace ring2
         {
             int code = 4865846;
             String vcode = "t99aNY7KfAMRUxCz7S29ZkPvBEwVjrYwtWdgGVXFYKq0lHAWtIlpwuiVqxZpnwBT";
-            var api = GetEveApi();
+            var api = EveApi;
 
             var entries = await api.GetTransactionsCorpo(code, vcode, 2, new DateTime(1900, 1, 1));
             Assert.IsTrue(entries.Count > 0);
@@ -183,7 +176,7 @@ namespace ring2
         {
             int code = 4865846;
             String vcode = "t99aNY7KfAMRUxCz7S29ZkPvBEwVjrYwtWdgGVXFYKq0lHAWtIlpwuiVqxZpnwBT";
-            var api = GetEveApi();
+            var api = EveApi;
 
             Assert.IsTrue(api.IsCorporationKey(code, vcode));
 
@@ -197,7 +190,7 @@ namespace ring2
         {
             int code = 4865846;
             String vcode = "t99aNY7KfAMRUxCz7S29ZkPvBEwVjrYwtWdgGVXFYKq0lHAWtIlpwuiVqxZpnwBT";
-            var api = GetEveApi();
+            var api = EveApi;
 
             String name = api.GetCorporationName(code, vcode);
             Assert.AreEqual("My Random Corporation", name);
@@ -208,7 +201,7 @@ namespace ring2
         {
             int code = 3483492;
             String vcode = "ZwML01eU6aQUVIEC7gedCEaySiNxRTJxgWo2qoVnxd5duN4tt4CWgMuYMSVNWIUG";
-            var api = GetEveApi();
+            var api = EveApi;
 
             var characters = api.GetCharacters(code, vcode);
             Assert.AreEqual(1, characters.Count);
@@ -229,7 +222,7 @@ namespace ring2
         {
             int code = 3483492;
             String vcode = "ZwML01eU6aQUVIEC7gedCEaySiNxRTJxgWo2qoVnxd5duN4tt4CWgMuYMSVNWIUG";
-            var api = GetEveApi();
+            var api = EveApi;
 
             var characters = api.GetCharacters(code, vcode);
             Assert.AreEqual(1, characters.Count);
@@ -244,7 +237,7 @@ namespace ring2
         {
             int code = 4865846;
             String vcode = "t99aNY7KfAMRUxCz7S29ZkPvBEwVjrYwtWdgGVXFYKq0lHAWtIlpwuiVqxZpnwBT";
-            var api = GetEveApi();
+            var api = EveApi;
 
             var corpo = api.GetCorporations(code, vcode);
             var rsp = await corpo.GetIndustryJobsAsync();
