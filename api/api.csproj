@@ -166,7 +166,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Account.cs" />
+    <Compile Include="ServiceKeyInfo.cs" />
+    <Compile Include="ServiceAccount.cs" />
     <Compile Include="AccountContextProvider.cs" />
     <Compile Include="AccountRepo.cs" />
     <Compile Include="BeforeRequest.cs" />

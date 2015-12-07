@@ -67,7 +67,7 @@ namespace ring2
         public async Task RefTypeDictT()
         {
             var evecache = new EveSqlServerCache(Logger, AccountContextProvider);
-            var cache = new CacheEveLibProvider(evecache);
+            var cache = new CacheLocalProvider(evecache);
             var refTypeDict = new RefTypeDict(cache, evecache);
             var result = await refTypeDict.GetById(56);
             Assert.AreEqual("Manufacturing", result);

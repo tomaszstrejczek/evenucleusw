@@ -61,7 +61,7 @@ namespace ts.api {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Account with given email already exists.
+        ///   Looks up a localized string similar to ServiceAccount with given email already exists.
         /// </summary>
         public static string AccountAlreadyExists {
             get {

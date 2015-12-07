@@ -25,6 +25,19 @@ namespace ts.api
             existingContainer.Bind<IAccountContextProvider>().To<AccountContextProvider>();
             existingContainer.Bind<IMyConfiguration>().To<MyConfiguration>();
             existingContainer.Bind<IAccountRepo>().To<AccountRepo>();
+            existingContainer.Bind<ICacheLocalProvider>().To<CacheLocalProvider>();
+            existingContainer.Bind<ICharacterNameDict>().To<CharacterNameDict>();
+            existingContainer.Bind<ICorporationRepo>().To<CorporationRepo>();
+            existingContainer.Bind<IEveApi>().To<EveApi>();
+            existingContainer.Bind<IJobRepo>().To<JobRepo>();
+            existingContainer.Bind<IJobService>().To<JobsService>();
+            existingContainer.Bind<IKeyInfoRepo>().To<KeyInfoRepo>();
+            existingContainer.Bind<INotificationRepo>().To<NotificationRepo>();
+            existingContainer.Bind<IPilotRepo>().To<PilotRepo>();
+            existingContainer.Bind<IPilotService>().To<PilotService>();
+            existingContainer.Bind<IRefTypeDict>().To<RefTypeDict>();
+            existingContainer.Bind<ISkillRepo>().To<SkillRepo>();
+            existingContainer.Bind<ITypeNameDict>().To<TypeNameDict>();
 
             var config = new LoggerConfiguration();
 #if DEBUG
@@ -41,7 +54,7 @@ namespace ts.api
             pipelines.OnError.AddItemToEndOfPipeline((z, a) => ErrorResponse.FromException(a));
 
             var accountRepo = container.Get<IAccountRepo>();
-            pipelines.BeforeRequest.AddItemToStartOfPipeline((ctx, token) => BeforeRequest.BeforeRequestHandler(accountRepo, ctx, token));
+            pipelines.BeforeRequest.AddItemToEndOfPipeline((ctx, token) => BeforeRequest.BeforeRequestHandler(accountRepo, ctx, token));
 
             base.RequestStartup(container, pipelines, context);
         }

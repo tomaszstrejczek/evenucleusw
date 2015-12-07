@@ -31,6 +31,19 @@ namespace ring1
             container.Register<IMyConfiguration, MyTestConfiguration>();
             container.Register<IAccountContextProvider, AccountContextProvider>();
             container.Register<IAccountRepo, AccountRepo>();
+            container.Register<ICacheLocalProvider,CacheLocalProvider>();
+            container.Register<ICharacterNameDict,CharacterNameDict>();
+            container.Register<ICorporationRepo,CorporationRepo>();
+            container.Register<IEveApi,EveApi>();
+            container.Register<IJobRepo,JobRepo>();
+            container.Register<IJobService,JobsService>();
+            container.Register<IKeyInfoRepo,KeyInfoRepo>();
+            container.Register<INotificationRepo,NotificationRepo>();
+            container.Register<IPilotRepo,PilotRepo>();
+            container.Register<IPilotService,PilotService>();
+            container.Register<IRefTypeDict,RefTypeDict>();
+            container.Register<ISkillRepo,SkillRepo>();
+            container.Register<ITypeNameDict,TypeNameDict>();
 
             var config = new LoggerConfiguration();
 #if DEBUG
@@ -47,7 +60,7 @@ namespace ring1
             pipelines.OnError.AddItemToEndOfPipeline((z, a) => ErrorResponse.FromException(a));
 
             var accountRepo = container.Resolve<IAccountRepo>();
-            pipelines.BeforeRequest.AddItemToStartOfPipeline((ctx, token) => ts.api.BeforeRequest.BeforeRequestHandler(accountRepo, ctx, token));
+            pipelines.BeforeRequest.AddItemToEndOfPipeline((ctx, token) => ts.api.BeforeRequest.BeforeRequestHandler(accountRepo, ctx, token));
 
             base.RequestStartup(container, pipelines, context);
         }
@@ -56,8 +69,9 @@ namespace ring1
         {
             return new INancyModule[]
             {
-                new Account(container.Resolve<IAccountRepo>()),
-                new Pilots(), 
+                new ServiceAccount(container.Resolve<IAccountRepo>()),
+                new Pilots(),
+                new ServiceKeyInfo(container.Resolve<IKeyInfoRepo>()),
             }.AsEnumerable();
         }
     }

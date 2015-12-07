@@ -15,7 +15,7 @@ namespace ring0
         public async Task WrongArgument()
         {
             var evecache = new EveSqlServerCache(Logger, AccountContextProvider);
-            var provider = new CacheEveLibProvider(evecache);
+            var provider = new CacheLocalProvider(evecache);
 
             try
             {
@@ -31,7 +31,7 @@ namespace ring0
         public async Task NormalFlow()
         {
             var evecache = new EveSqlServerCache(Logger, AccountContextProvider);
-            var provider = new CacheEveLibProvider(evecache);
+            var provider = new CacheLocalProvider(evecache);
 
             var result = await provider.Get<string>("ala", () => Task.FromResult(new Tuple<DateTime, string>(DateTime.UtcNow.AddMilliseconds(10), "kot")));
             Assert.AreEqual("kot", result);

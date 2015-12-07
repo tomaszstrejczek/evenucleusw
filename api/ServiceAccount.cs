@@ -11,11 +11,11 @@ using Nancy.Routing;
 
 namespace ts.api
 {
-    public class Account: NancyModule
+    public class ServiceAccount: NancyModule
     {
         private readonly IAccountRepo _accountRepo;
 
-        public Account(IAccountRepo accountRepo)
+        public ServiceAccount(IAccountRepo accountRepo)
         {
             _accountRepo = accountRepo;
             Post["/api/account/login", runAsync:true] = async (parameters, ct) => await Login(parameters, ct);

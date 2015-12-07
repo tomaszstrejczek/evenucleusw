@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AccountAlreadyExists" xml:space="preserve">
-    <value>Account with given email already exists</value>
+    <value>ServiceAccount with given email already exists</value>
   </data>
   <data name="ErrorAccessMask" xml:space="preserve">
     <value>Error calling Eve Api. Possibly wrong access mask for the key</value>

@@ -8,11 +8,11 @@ using Newtonsoft.Json;
 
 namespace ts.api
 {
-    public class CacheEveLibProvider : ICacheLocalProvider
+    public class CacheLocalProvider : ICacheLocalProvider
     {
         private readonly IEveLibCache _eveLibCache;
 
-        public CacheEveLibProvider(IEveLibCache eveLibCache)
+        public CacheLocalProvider(IEveLibCache eveLibCache)
         {
             _eveLibCache = eveLibCache;
         }
