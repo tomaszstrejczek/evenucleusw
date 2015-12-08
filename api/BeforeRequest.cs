@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Nancy;
+using Nancy.Session;
 
 namespace ts.api
 {
@@ -24,9 +25,8 @@ namespace ts.api
 
             // request ctx 
             var userid = await accountRepo.CheckSession(skeys[0]);
-            if (ctx.Parameters == null)
-                ctx.Parameters = new ExpandoObject();
-            ctx.Parameters.UserId = userid;
+            ctx.Request.Session = new Session();
+            ctx.Request.Session["UserId"] = userid;
             return null;
         }
     }

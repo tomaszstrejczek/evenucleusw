@@ -35,7 +35,7 @@ namespace ts.api
         {
             var m = this.Bind<AddModel>();
 
-            return (await _keyInfoRepo.AddKey(1, m.KeyId, m.VCode)).ToString();
+            return (await _keyInfoRepo.AddKey((long) this.Context.Request.Session["UserId"], m.KeyId, m.VCode)).ToString();
         }
 
         struct DeleteModel
