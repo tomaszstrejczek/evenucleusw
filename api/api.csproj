@@ -150,7 +150,7 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Diagnostics.DiagnosticSource, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.4.0.0-beta-23516\lib\dotnet5.2\System.Diagnostics.DiagnosticSource.dll</HintPath>
+      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.4.0.0-beta-23516\lib\portable-net45+win8+wp8+wpa81\System.Diagnostics.DiagnosticSource.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Interactive.Async, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -166,75 +166,38 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ServiceKeyInfo.cs" />
-    <Compile Include="ServiceAccount.cs" />
-    <Compile Include="AccountContextProvider.cs" />
-    <Compile Include="AccountRepo.cs" />
     <Compile Include="BeforeRequest.cs" />
     <Compile Include="Bootstrapper.cs" />
-    <Compile Include="CacheLocalProvider.cs" />
-    <Compile Include="CharacterNameDict.cs" />
-    <Compile Include="CorporationRepo.cs" />
     <Compile Include="ErrorHtmlPageResponse.cs" />
     <Compile Include="ErrorResponse.cs" />
     <Compile Include="ErrorStatusCodeHandler.cs" />
-    <Compile Include="EveApi.cs" />
-    <Compile Include="EveSqlServerCache.cs" />
-    <Compile Include="IAccountContextProvider.cs" />
-    <Compile Include="IAccountRepo.cs" />
-    <Compile Include="ICacheLocalProvider.cs" />
-    <Compile Include="ICharacterNameDict.cs" />
-    <Compile Include="ICorporationRepo.cs" />
-    <Compile Include="IEveApi.cs" />
-    <Compile Include="IJobRepo.cs" />
-    <Compile Include="IJobService.cs" />
-    <Compile Include="IKeyInfoRepo.cs" />
-    <Compile Include="INotificationRepo.cs" />
-    <Compile Include="IPilotRepo.cs" />
-    <Compile Include="IPilotService.cs" />
-    <Compile Include="IRefTypeDict.cs" />
-    <Compile Include="ISkillRepo.cs" />
-    <Compile Include="ITypeNameDict.cs" />
-    <Compile Include="JobRepo.cs" />
-    <Compile Include="JobService.cs" />
-    <Compile Include="KeyInfoRepo.cs" />
     <Compile Include="Migrations\20151128202714_Initial.cs" />
     <Compile Include="Migrations\20151128202714_Initial.Designer.cs" />
     <Compile Include="Migrations\AccountContextModelSnapshot.cs" />
     <Compile Include="MyConfiguration.cs" />
-    <Compile Include="NotificationRepo.cs" />
-    <Compile Include="PasswordHash.cs" />
-    <Compile Include="PilotRepo.cs" />
     <Compile Include="Pilots.cs" />
-    <Compile Include="PilotService.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RefTypeDict.cs" />
-    <Compile Include="SkillRepo.cs" />
+    <Compile Include="ServiceAccount.cs" />
+    <Compile Include="ServiceKeyInfo.cs" />
     <Compile Include="Startup.cs" />
-    <Compile Include="strings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>strings.resx</DependentUpon>
-    </Compile>
-    <Compile Include="TypeNameDict.cs" />
-    <Compile Include="UserDataDto.cs" />
-    <Compile Include="UserException.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="strings.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>strings.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
+    <ProjectReference Include="..\data\data.csproj">
+      <Project>{7c0c53f2-0733-49de-8bf2-425267a3d7d7}</Project>
+      <Name>data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\db\db.csproj">
       <Project>{caa3c016-d563-496b-8cf5-4649448ba2ce}</Project>
       <Name>db</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\domain\domain.csproj">
+      <Project>{cb8e3f45-de62-420d-a164-3430f2c35705}</Project>
+      <Name>domain</Name>
     </ProjectReference>
     <ProjectReference Include="..\fas\evelib\EveLib.Core\EveLib.Core.csproj">
       <Project>{aa85978c-2bf5-419f-9f8e-b70162e83f34}</Project>
@@ -255,6 +218,10 @@
     <ProjectReference Include="..\fas\Nancy\src\Nancy\Nancy.csproj">
       <Project>{34576216-0dca-4b0f-a0dc-9075e75a676f}</Project>
       <Name>Nancy</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\services\services.csproj">
+      <Project>{938ecf13-a4d9-4858-8b40-4ae44126f10b}</Project>
+      <Name>services</Name>
     </ProjectReference>
     <ProjectReference Include="..\shared\shared.csproj">
       <Project>{f8ccfb67-a37a-40a4-834b-0c150e188a4e}</Project>

@@ -7,7 +7,11 @@ using Nancy.Bootstrapper;
 using Nancy;
 using Ninject;
 using Serilog;
+using ts.data;
 using ts.shared;
+
+using ts.services;
+using ts.domain;
 
 namespace ts.api
 {
@@ -38,6 +42,8 @@ namespace ts.api
             existingContainer.Bind<IRefTypeDict>().To<RefTypeDict>();
             existingContainer.Bind<ISkillRepo>().To<SkillRepo>();
             existingContainer.Bind<ITypeNameDict>().To<TypeNameDict>();
+            existingContainer.Bind<IAccountService>().To<AccountService>();
+            existingContainer.Bind<IKeyInfoService>().To<KeyInfoService>();
 
             var config = new LoggerConfiguration();
 #if DEBUG

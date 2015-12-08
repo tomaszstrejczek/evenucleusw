@@ -65,3 +65,8 @@ evenucleusw.sln.DotSettings.user
 shared/bin/
 ring2/bin/
 ring2/obj/
+services/bin/
+domain/obj/
+data/bin/
+services/obj/
+data/obj/

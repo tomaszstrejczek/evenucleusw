@@ -35,6 +35,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Extensions.Logging, Version=1.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Logging.1.0.0-rc1-final\lib\net451\Microsoft.Extensions.Logging.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Moq, Version=4.2.1510.2205, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL">
       <HintPath>..\packages\Moq.4.2.1510.2205\lib\net40\Moq.dll</HintPath>
       <Private>True</Private>
@@ -70,13 +75,13 @@
     <Compile Include="JobServiceT.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\api\api.csproj">
-      <Project>{2feed3dd-c782-49c2-8679-20bec802396b}</Project>
-      <Name>api</Name>
+    <ProjectReference Include="..\data\data.csproj">
+      <Project>{7c0c53f2-0733-49de-8bf2-425267a3d7d7}</Project>
+      <Name>data</Name>
     </ProjectReference>
-    <ProjectReference Include="..\db\db.csproj">
-      <Project>{caa3c016-d563-496b-8cf5-4649448ba2ce}</Project>
-      <Name>db</Name>
+    <ProjectReference Include="..\domain\domain.csproj">
+      <Project>{cb8e3f45-de62-420d-a164-3430f2c35705}</Project>
+      <Name>domain</Name>
     </ProjectReference>
     <ProjectReference Include="..\fas\evelib\EveLib.Core\EveLib.Core.csproj">
       <Project>{aa85978c-2bf5-419f-9f8e-b70162e83f34}</Project>
@@ -89,6 +94,10 @@
     <ProjectReference Include="..\ring0\ring0.csproj">
       <Project>{137d8264-9b3f-414d-a41a-3fb4fab37a71}</Project>
       <Name>ring0</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\services\services.csproj">
+      <Project>{938ecf13-a4d9-4858-8b40-4ae44126f10b}</Project>
+      <Name>services</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

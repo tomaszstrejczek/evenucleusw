@@ -4,6 +4,7 @@ using System.Net.Sockets;
 using Nancy.Responses;
 using Newtonsoft.Json;
 using Ninject;
+using ts.domain;
 using HttpStatusCode = Nancy.HttpStatusCode;
 
 namespace ts.api

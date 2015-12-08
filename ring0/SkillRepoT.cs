@@ -5,8 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-using ts.api;
-using ts.db;
+using ts.data;
+using ts.domain;
 
 namespace ring0
 {

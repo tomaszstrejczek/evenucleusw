@@ -6,7 +6,9 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Nancy;
-using Nancy.Session;
+using ts.data;
+using ts.domain;
+using Session = Nancy.Session.Session;
 
 namespace ts.api
 {

@@ -8,7 +8,6 @@ using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Nancy.Responses.Negotiation;
 using Nancy.Testing;
-using ts.db;
 
 namespace ring1
 {

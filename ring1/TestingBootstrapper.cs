@@ -10,8 +10,9 @@ using Nancy.Testing;
 using Nancy.TinyIoc;
 using Microsoft.Data.Entity;
 using Serilog;
-using ts.db;
+using ts.data;
 using ts.shared;
+using ts.services;
 
 namespace ring1
 {
@@ -44,6 +45,8 @@ namespace ring1
             container.Register<IRefTypeDict,RefTypeDict>();
             container.Register<ISkillRepo,SkillRepo>();
             container.Register<ITypeNameDict,TypeNameDict>();
+            container.Register<IAccountService, AccountService>();
+            container.Register<IKeyInfoService, KeyInfoService>();
 
             var config = new LoggerConfiguration();
 #if DEBUG
@@ -69,9 +72,9 @@ namespace ring1
         {
             return new INancyModule[]
             {
-                new ServiceAccount(container.Resolve<IAccountRepo>()),
+                new ServiceAccount(container.Resolve<IAccountService>()),
                 new Pilots(),
-                new ServiceKeyInfo(container.Resolve<IKeyInfoRepo>()),
+                new ServiceKeyInfo(container.Resolve<IKeyInfoService>()),
             }.AsEnumerable();
         }
     }

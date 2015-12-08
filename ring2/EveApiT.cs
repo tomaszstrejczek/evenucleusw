@@ -4,7 +4,8 @@ using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using ring0;
 
-using ts.api;
+using ts.data;
+using ts.domain;
 
 namespace ring2
 {

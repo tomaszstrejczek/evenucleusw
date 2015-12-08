@@ -1,9 +1,10 @@
 ﻿using System;
-using ts.api;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Nancy;
 using Nancy.Responses.Negotiation;
 using Nancy.Testing;
+using ts.api;
+using ts.domain;
 
 
 namespace ring1

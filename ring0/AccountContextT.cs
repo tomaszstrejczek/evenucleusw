@@ -3,8 +3,8 @@ using System.Security.Cryptography;
 using System.Threading.Tasks;
 using Microsoft.Data.Entity;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using ts.api;
-using ts.db;
+using ts.data;
+using ts.domain;
 
 namespace ring0
 {

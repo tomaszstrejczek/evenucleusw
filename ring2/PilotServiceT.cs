@@ -7,8 +7,9 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 
 using ring0;
-using ts.api;
-using ts.db;
+using ts.data;
+using ts.domain;
+using ts.services;
 
 namespace ring2
 {

@@ -151,9 +151,13 @@
       <Project>{2feed3dd-c782-49c2-8679-20bec802396b}</Project>
       <Name>api</Name>
     </ProjectReference>
-    <ProjectReference Include="..\db\db.csproj">
-      <Project>{caa3c016-d563-496b-8cf5-4649448ba2ce}</Project>
-      <Name>db</Name>
+    <ProjectReference Include="..\data\data.csproj">
+      <Project>{7c0c53f2-0733-49de-8bf2-425267a3d7d7}</Project>
+      <Name>data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\domain\domain.csproj">
+      <Project>{cb8e3f45-de62-420d-a164-3430f2c35705}</Project>
+      <Name>domain</Name>
     </ProjectReference>
     <ProjectReference Include="..\fas\Nancy\src\Nancy.Testing\Nancy.Testing.csproj">
       <Project>{d79203c0-b672-4751-9c95-c3ab7d3fefbe}</Project>
@@ -162,6 +166,10 @@
     <ProjectReference Include="..\fas\Nancy\src\Nancy\Nancy.csproj">
       <Project>{34576216-0dca-4b0f-a0dc-9075e75a676f}</Project>
       <Name>Nancy</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\services\services.csproj">
+      <Project>{938ecf13-a4d9-4858-8b40-4ae44126f10b}</Project>
+      <Name>services</Name>
     </ProjectReference>
     <ProjectReference Include="..\shared\shared.csproj">
       <Project>{f8ccfb67-a37a-40a4-834b-0c150e188a4e}</Project>

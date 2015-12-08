@@ -8,48 +8,50 @@ using System.Threading.Tasks;
 using Nancy;
 using Nancy.ModelBinding;
 using Nancy.Routing;
+using ts.domain;
+using ts.services;
 
 namespace ts.api
 {
     public class ServiceAccount: NancyModule
     {
-        private readonly IAccountRepo _accountRepo;
+        private readonly IAccountService _accountService;
 
-        public ServiceAccount(IAccountRepo accountRepo)
+        public ServiceAccount(IAccountService accountService)
         {
-            _accountRepo = accountRepo;
-            Post["/api/account/login", runAsync:true] = async (parameters, ct) => await Login(parameters, ct);
-            Post["/api/account/register", runAsync: true] = async (parameters, ct) => await Register(parameters, ct);
-            Post["/api/account/logout", runAsync: true] = async (parameters, ct) => await Logout(parameters, ct);
+            _accountService = accountService;
+            Post["/api/account/login", runAsync:true] = async (parameters, ct) => await Login();
+            Post["/api/account/register", runAsync: true] = async (parameters, ct) => await Register();
+            Post["/api/account/logout", runAsync: true] = async (parameters, ct) => await Logout();
         }
 
         struct LoginModel
         {
-            public string email;
-            public string password;
+            public string email { get; set; }
+            public string password { get; set; }
         }
 
-        private async Task<string> Login(dynamic parameters, CancellationToken ct)
+        private async Task<string> Login()
         {
             var m = this.Bind<LoginModel>();
 
-            return await _accountRepo.Login(m.email, m.password);
+            return await _accountService.Login(m.email, m.password);
         }
 
-        private async Task<string> Register(dynamic parameters, CancellationToken ct)
+        private async Task<string> Register()
         {
             var m = this.Bind<LoginModel>();
 
-            return await _accountRepo.RegisterUser(m.email, m.password);
+            return await _accountService.Register(m.email, m.password);
         }
 
-        private async Task<string> Logout(dynamic parameters, CancellationToken ct)
+        private async Task<string> Logout()
         {
             var skeys = this.Context.Request.Headers["jwt"].ToList();
             if (skeys.Count != 1)
                 throw new UserException(strings.InvalidSessionKey);
 
-            await _accountRepo.Logout(skeys[0]);
+            await _accountService.Logout(skeys[0]);
             return "logged out";
         }
     }
