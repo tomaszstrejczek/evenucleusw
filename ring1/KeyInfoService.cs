@@ -18,7 +18,7 @@ namespace ring1
         {
             var skey = GetSKey();
 
-            var result = Browser.Post("http://localhost:8070/api/keyinfo/add", with => {
+            var result = Browser.Post("http://localhost:8070/keyinfo/add", with => {
                 with.HttpRequest();
                 with.Header("jwt", skey);
                 with.FormValue("KeyId", "3483492");
@@ -29,7 +29,7 @@ namespace ring1
             Assert.AreEqual(Nancy.HttpStatusCode.OK, result.StatusCode);
             var keyinfoid = result.Body.AsString();
 
-            result = Browser.Post("http://localhost:8070/api/keyinfo/delete", with => {
+            result = Browser.Post("http://localhost:8070/keyinfo/delete", with => {
                 with.HttpRequest();
                 with.Header("jwt", skey);
                 with.FormValue("KeyInfoId", keyinfoid);
@@ -44,7 +44,7 @@ namespace ring1
         {
             var skey = GetSKey();
 
-            var result = Browser.Post("http://localhost:8070/api/keyinfo/add", with => {
+            var result = Browser.Post("http://localhost:8070/keyinfo/add", with => {
                 with.HttpRequest();
                 with.Header("jwt", skey);
                 with.FormValue("KeyId", "3483492");
@@ -54,7 +54,7 @@ namespace ring1
             Assert.AreEqual(Nancy.HttpStatusCode.OK, result.StatusCode);
             var keyinfoid = result.Body.AsString();
 
-            var pilots = Browser.Get("http://localhost:8070/api/keyinfo", with => {
+            var pilots = Browser.Get("http://localhost:8070/keyinfo", with => {
                 with.HttpRequest();
                 with.Header("jwt", skey);
                 with.Accept(new MediaRange("application/json"));

@@ -20,9 +20,9 @@ namespace ts.api
         public ServiceAccount(IAccountService accountService)
         {
             _accountService = accountService;
-            Post["/api/account/login", runAsync:true] = async (parameters, ct) => await Login();
-            Post["/api/account/register", runAsync: true] = async (parameters, ct) => await Register();
-            Post["/api/account/logout", runAsync: true] = async (parameters, ct) => await Logout();
+            Post["/account/login", runAsync:true] = async (parameters, ct) => await Login();
+            Post["/account/register", runAsync: true] = async (parameters, ct) => await Register();
+            Post["/account/logout", runAsync: true] = async (parameters, ct) => await Logout();
         }
 
         struct LoginModel

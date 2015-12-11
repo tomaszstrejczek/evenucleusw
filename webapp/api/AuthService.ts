@@ -29,8 +29,12 @@ export class AuthService implements IAuthService {
         }
 
         return When.promise<string>(function (resolve: (data: string) => void, reject: (reason: any) => void): void {
-            $.post("/api/login", { email: username, password: password })
-                .then(resolve, reject);
+            $.post("/api/account/login", { email: username, password: password })
+                .then((data: any, textStatus: string, jqXHR: JQueryXHR) => {
+                    if (jqXHR.status === 202)
+                        reject(data as ts.dto.Error);
+                    resolve(data);
+                }, reject);
         });
         //$.post("/login", { email: username, password: password }
 

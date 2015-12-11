@@ -11,7 +11,7 @@ namespace ts.api
     {
         public Pilots()
         {
-            Get["/api/pilots/{userid}"] = (dynamic parameters) => GetPilots(parameters.userid);
+            Get["/pilots/{userid}"] = (dynamic parameters) => GetPilots(parameters.userid);
         }
 
         public string GetPilots(long userid)

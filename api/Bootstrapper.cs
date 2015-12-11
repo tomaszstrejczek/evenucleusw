@@ -55,6 +55,13 @@ namespace ts.api
 #endif
             var log = config.CreateLogger();
             existingContainer.Bind<ILogger>().ToConstant(log);
+
+            var c = existingContainer.Get<IMyConfiguration>();
+            if (!c.UseSql)
+            {
+                var ctx = existingContainer.Get<IAccountContextProvider>();
+                ctx.Context.Database.EnsureCreated();
+            }
         }
 
         protected override void RequestStartup(IKernel container, IPipelines pipelines, NancyContext context)

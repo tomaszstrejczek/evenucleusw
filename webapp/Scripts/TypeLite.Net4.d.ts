@@ -8,38 +8,43 @@
 
 declare module ts.dto {
 	interface KeyInfoDto {
-		KeyInfoId: number;
-		KeyId: number;
-		VCode: string;
-		UserId: number;
-		Pilots: ts.dto.PilotDto[];
-		Corporations: ts.dto.CorporationDto[];
+		keyInfoId: number;
+		keyId: number;
+		vCode: string;
+		userId: number;
+		pilots: ts.dto.PilotDto[];
+		corporations: ts.dto.CorporationDto[];
 	}
 	interface PilotDto {
-		PilotId: number;
-		EveId: number;
-		Name: string;
-		Url: string;
-		CurrentTrainingNameAndLevel: string;
-		CurrentTrainingEnd: Date;
-		TrainingQueueEnd: Date;
-		TrainingActive: boolean;
-		MaxManufacturingJobs: number;
-		MaxResearchJobs: number;
-		FreeManufacturingJobsNofificationCount: number;
-		FreeResearchJobsNofificationCount: number;
-		KeyInfoId: number;
-		UserId: number;
-		TrainingWarning: boolean;
-		TrainingNotActive: boolean;
+		pilotId: number;
+		eveId: number;
+		name: string;
+		url: string;
+		currentTrainingNameAndLevel: string;
+		currentTrainingEnd: Date;
+		trainingQueueEnd: Date;
+		trainingActive: boolean;
+		maxManufacturingJobs: number;
+		maxResearchJobs: number;
+		freeManufacturingJobsNofificationCount: number;
+		freeResearchJobsNofificationCount: number;
+		keyInfoId: number;
+		userId: number;
+		trainingWarning: boolean;
+		trainingNotActive: boolean;
 	}
 	interface CorporationDto {
-		CorporationId: number;
-		EveId: number;
-		Name: string;
-		KeyInfoId: number;
-		UserId: number;
-		Url: string;
+		corporationId: number;
+		eveId: number;
+		name: string;
+		keyInfoId: number;
+		userId: number;
+		url: string;
+	}
+	interface Error {
+		errorMessage: string;
+		fullException: string;
+		errors: string[];
 	}
 }
 

@@ -11,9 +11,9 @@ namespace ts.api
 {
     public class ErrorResponse : JsonResponse
     {
-        readonly Error error;
+        readonly ts.dto.Error error;
 
-        private ErrorResponse(Error error)
+        private ErrorResponse(ts.dto.Error error)
             : base(error, new DefaultJsonSerializer())
         {
             this.error = error;
@@ -25,7 +25,7 @@ namespace ts.api
 
         public static ErrorResponse FromMessage(string message)
         {
-            return new ErrorResponse(new Error { ErrorMessage = message });
+            return new ErrorResponse(new ts.dto.Error { ErrorMessage = message });
         }
 
         public static ErrorResponse FromException(Exception ex)
@@ -46,7 +46,7 @@ namespace ts.api
                 
             }
 
-            var error = new Error { ErrorMessage = summary, FullException = exception.ToString() };
+            var error = new ts.dto.Error { ErrorMessage = summary, FullException = exception.ToString() };
 
             // Special cases
             //if (exception is ResourceNotFoundException)
@@ -64,17 +64,6 @@ namespace ts.api
             var response = new ErrorResponse(error);
             response.StatusCode = statusCode;
             return response;
-        }
-
-        public class Error
-        {
-            public string ErrorMessage { get; set; }
-
-            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-            public string FullException { get; set; }
-
-            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-            public string[] Errors { get; set; }
         }
     }
 }

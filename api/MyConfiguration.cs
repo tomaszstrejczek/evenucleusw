@@ -9,7 +9,7 @@ namespace ts.api
 {
     public class MyConfiguration: IMyConfiguration
     {
-        public bool UseSql => true;
+        public bool UseSql => false;
         public string ConnectionString => "";
     }
 }

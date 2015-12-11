@@ -18,7 +18,7 @@ namespace ring1
 			var bootstrapper = new TestingBootstrapper();
 			var browser = new Browser(bootstrapper);
 
-            var result = browser.Post("http://localhost:8070/api/account/register", with => {
+            var result = browser.Post("http://localhost:8070/account/register", with => {
                 with.HttpRequest();
                 with.FormValue("email", "a@a.a");
                 with.FormValue("password", "123");
@@ -36,7 +36,7 @@ namespace ring1
             var bootstrapper = new TestingBootstrapper();
             var browser = new Browser(bootstrapper);
 
-            var result = browser.Post("http://localhost:8070/api/account/login", with => {
+            var result = browser.Post("http://localhost:8070/account/login", with => {
                 with.HttpRequest();
                 with.FormValue("email", "b@a.a");
                 with.FormValue("password", "123");
@@ -45,7 +45,7 @@ namespace ring1
 
             Assert.AreEqual(HttpStatusCode.Accepted, result.StatusCode);
 
-            var error = result.Body.DeserializeJson<ErrorResponse.Error>();
+            var error = result.Body.DeserializeJson<ts.dto.Error>();
             Assert.AreEqual(strings.InvalidUserPassword, error.ErrorMessage);
         }
 
@@ -55,7 +55,7 @@ namespace ring1
             var bootstrapper = new TestingBootstrapper();
             var browser = new Browser(bootstrapper);
 
-            var result = browser.Post("http://localhost:8070/api/account/register", with => {
+            var result = browser.Post("http://localhost:8070/account/register", with => {
                 with.HttpRequest();
                 with.FormValue("email", "a@a2.a");
                 with.FormValue("password", "123");
@@ -65,7 +65,7 @@ namespace ring1
             Assert.AreEqual(HttpStatusCode.OK, result.StatusCode);
             var skey = result.Body.AsString();
 
-            result = browser.Get("http://localhost:8070/api/pilots/1", with => {
+            result = browser.Get("http://localhost:8070/pilots/1", with => {
                 with.Header("jwt", skey);
                 with.Accept(new MediaRange("application/json"));
             });
@@ -79,13 +79,13 @@ namespace ring1
             var bootstrapper = new TestingBootstrapper();
             var browser = new Browser(bootstrapper);
 
-            var result = browser.Get("http://localhost:8070/api/pilots/1", with => {
+            var result = browser.Get("http://localhost:8070/pilots/1", with => {
                 with.Header("jwt", "dummy");
                 with.Accept(new MediaRange("application/json"));
             });
 
             Assert.AreEqual(HttpStatusCode.Accepted, result.StatusCode);
-            var error = result.Body.DeserializeJson<ErrorResponse.Error>();
+            var error = result.Body.DeserializeJson<ts.dto.Error>();
             Assert.AreEqual(strings.InvalidSessionKey, error.ErrorMessage);
         }
 
@@ -95,12 +95,12 @@ namespace ring1
             var bootstrapper = new TestingBootstrapper();
             var browser = new Browser(bootstrapper);
 
-            var result = browser.Get("http://localhost:8070/api/pilots/1", with => {
+            var result = browser.Get("http://localhost:8070/pilots/1", with => {
                 with.Accept(new MediaRange("application/json"));
             });
 
             Assert.AreEqual(HttpStatusCode.Accepted, result.StatusCode);
-            var error = result.Body.DeserializeJson<ErrorResponse.Error>();
+            var error = result.Body.DeserializeJson<ts.dto.Error>();
             Assert.AreEqual(strings.InvalidSessionKey, error.ErrorMessage);
         }
 

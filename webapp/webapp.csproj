@@ -109,6 +109,7 @@
     <Content Include="styles\img\tile\ribbon.png" />
     <Content Include="test\dom\dom.html" />
     <TypeScriptCompile Include="test\dom\index.ts" />
+    <TypeScriptCompile Include="test\dom\api-test.ts" />
     <TypeScriptCompile Include="test\dom\login-test.tsx" />
     <TypeScriptCompile Include="test\dom\smoke0-test.ts" />
     <Content Include="test\purejs\index.js" />

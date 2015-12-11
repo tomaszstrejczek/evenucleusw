@@ -24,7 +24,7 @@ namespace ring1
             var email = Convert.ToBase64String(skey) + "@ala.kot";
             var password = "123";
 
-            var result = Browser.Post("http://localhost:8070/api/account/register", with => {
+            var result = Browser.Post("http://localhost:8070/account/register", with => {
                 with.HttpRequest();
                 with.FormValue("email", email);
                 with.FormValue("password", password);

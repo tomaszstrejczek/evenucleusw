@@ -76,3 +76,5 @@ dto/bin/
 webapp/api/KeyInfoService.js
 webapp/app/IApiContext.js
 webapp/Scripts/Enums.js
+webapp/test/dom/api-test.js
+webapp/tsd-debug.log
