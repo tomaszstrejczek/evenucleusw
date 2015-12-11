@@ -2,10 +2,15 @@
 import {LoginInfo} from './../app/AppState';
 import {createAction, handleActions, Action} from 'redux-actions';
 import {owl} from './../utils/deepCopy';
+import * as Restful from 'restful.js';
+
 
 export const createLoginAction = createAction<string>(
     ActionTypes[ActionTypes.LOGIN_USER],
-    (jwt: string) => jwt
+    (api: Restful.Api, jwt: string) => {
+        api.header("jwt", jwt);
+        return jwt;
+    }
 );
 
 export const createLogoutAction = createAction<void>(

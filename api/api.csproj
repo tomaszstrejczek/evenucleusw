@@ -199,6 +199,10 @@
       <Project>{cb8e3f45-de62-420d-a164-3430f2c35705}</Project>
       <Name>domain</Name>
     </ProjectReference>
+    <ProjectReference Include="..\dto\dto.csproj">
+      <Project>{3b9177cf-0bc5-4a73-8ea5-76b5fe268f0a}</Project>
+      <Name>dto</Name>
+    </ProjectReference>
     <ProjectReference Include="..\fas\evelib\EveLib.Core\EveLib.Core.csproj">
       <Project>{aa85978c-2bf5-419f-9f8e-b70162e83f34}</Project>
       <Name>EveLib.Core</Name>

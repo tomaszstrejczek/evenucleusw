@@ -11,6 +11,7 @@ using Nancy.ModelBinding;
 using Nancy.Routing;
 using Serilog.Enrichers;
 using ts.data;
+using ts.dto;
 using ts.services;
 
 namespace ts.api
@@ -22,9 +23,9 @@ namespace ts.api
         public ServiceKeyInfo(IKeyInfoService keyInfoService)
         {
             _keyInfoService = keyInfoService;
-            Post["/api/keyinfo/add", runAsync:true] = async (parameters, ct) => 
-                await Add();
-            Post["/api/keyinfo/delete", runAsync: true] = async (parameters, ct) => await DeleteKey();
+            Post["/api/keyinfo/add", runAsync:true] = async (_, ct) => await Add();
+            Post["/api/keyinfo/delete", runAsync: true] = async (_, ct) => await DeleteKey();
+            Get["/api/keyinfo", runAsync: true] = async (_, ct) => await GetAll();
         }
 
         struct AddModel
@@ -51,6 +52,12 @@ namespace ts.api
             await _keyInfoService.Delete(m.KeyInfoId);
 
             return Nancy.HttpStatusCode.OK;
+        }
+
+        private async Task<List<KeyInfoDto>> GetAll()
+        {
+            var userid = (long) this.Context.Request.Session["UserId"];
+            return await _keyInfoService.Get(userid);
         }
     }
 

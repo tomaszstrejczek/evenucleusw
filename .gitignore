@@ -70,3 +70,9 @@ domain/obj/
 data/bin/
 services/obj/
 data/obj/
+dto/obj/
+domain/bin/
+dto/bin/
+webapp/api/KeyInfoService.js
+webapp/app/IApiContext.js
+webapp/Scripts/Enums.js

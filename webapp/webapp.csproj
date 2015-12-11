@@ -20,16 +20,19 @@
   </PropertyGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="actions\ActionTypes.ts" />
     <TypeScriptCompile Include="actions\LoginActions.ts" />
     <TypeScriptCompile Include="actions\rootReducer.ts" />
+    <TypeScriptCompile Include="api\KeyInfoService.ts" />
     <TypeScriptCompile Include="app.tsx" />
     <TypeScriptCompile Include="app\AppState.ts" />
     <TypeScriptCompile Include="api\AuthService.ts" />
     <TypeScriptCompile Include="app\IKernelContext.ts" />
+    <TypeScriptCompile Include="app\IApiContext.ts" />
     <TypeScriptCompile Include="app\IRouterContext.ts" />
     <TypeScriptCompile Include="app\IStoreContext.ts" />
     <TypeScriptCompile Include="app\kernel.ts" />
@@ -48,6 +51,18 @@
     <Content Include="industry\*.jsx" />
     <Content Include="industry\*.css" />
     <Content Include="karma.conf.js" />
+    <Content Include="Scripts\Enums.ts">
+      <DependentUpon>TypeLite.Net4.tt</DependentUpon>
+    </Content>
+    <Content Include="Scripts\TypeLite.Net4.d.ts">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TypeLite.Net4.tt</DependentUpon>
+    </Content>
+    <Content Include="Scripts\TypeLite.Net4.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>TypeLite.Net4.d.ts</LastGenOutput>
+    </Content>
     <Content Include="styles\**\*.js" />
     <Content Include="app.css" />
     <Content Include="index.html" />
@@ -203,6 +218,8 @@
     <Content Include="forms\input.jsx" />
     <Content Include="forms\row.jsx" />
     <Content Include="tsconfig.json" />
+    <Content Include="Scripts\Manager.ttinclude" />
+    <Content Include="packages.config" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>
@@ -211,7 +228,22 @@
     </None>
     <Content Include="webpack.config.js" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\dto\dto.csproj">
+      <Project>{3b9177cf-0bc5-4a73-8ea5-76b5fe268f0a}</Project>
+      <Name>dto</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="TypeLite, Version=1.5.2.0, Culture=neutral, PublicKeyToken=8cd4b9c9ac23d744, processorArchitecture=MSIL">
+      <HintPath>..\packages\TypeLite.1.5.2\lib\net4\TypeLite.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="TypeLite.Net4, Version=1.5.2.0, Culture=neutral, PublicKeyToken=8cd4b9c9ac23d744, processorArchitecture=MSIL">
+      <HintPath>..\packages\TypeLite.1.5.2\lib\net4\TypeLite.Net4.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">12.0</VisualStudioVersion>
   </PropertyGroup>

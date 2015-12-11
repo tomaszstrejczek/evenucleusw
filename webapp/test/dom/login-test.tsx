@@ -11,6 +11,9 @@ import {Store, createStore} from 'redux';
 import {rootReducer} from './../../actions/rootReducer';
 import {IStoreContext} from './../../app/IStoreContext';
 import {IRouterContext} from './../../app/IRouterContext';
+import {IApiContext} from './../../app/IApiContext';
+import * as Restful from 'restful.js';
+
 import * as Sinon from 'sinon';
 import * as When from 'when';
 
@@ -20,6 +23,7 @@ interface ContainerProps {
     store: Store;
     authService: IAuthService;
     router: any;
+    api: Restful.Api;
 }
 
 class Container extends React.Component<ContainerProps, any> implements React.ChildContextProvider<IAuthServiceContext & IStoreContext & IRouterContext> {
@@ -27,14 +31,16 @@ class Container extends React.Component<ContainerProps, any> implements React.Ch
     static childContextTypes: React.ValidationMap<any> = {
         authService: React.PropTypes.object,
         store: React.PropTypes.object,
-        router: React.PropTypes.func
+        router: React.PropTypes.func,
+        api: React.PropTypes.object
     };
 
-    getChildContext(): IAuthServiceContext & IStoreContext & IRouterContext {
+    getChildContext(): IAuthServiceContext & IStoreContext & IRouterContext & IApiContext{
         return {
             authService: this.props.authService,
             store: this.props.store,
-            router: this.props.router
+            router: this.props.router,
+            api: this.props.api
         };
     };
 
@@ -64,6 +70,7 @@ export class Runner {
                 const store: Store = createStore(rootReducer, initialState);
                 var div = document.createElement('div');
                 var authService = new AuthService(null);
+                var api = Restful.default("http://localhost:8080");
                 loginStub = Sinon.stub(authService, "login");
                 var router = function () { };
                 (router as any).transitionTo = (adr: string) => { };
@@ -73,7 +80,7 @@ export class Runner {
                 transitionToStub = Sinon.stub(router, "transitionTo");
 
                 var component = ReactDOM.render(
-                    <Container store={store} authService={authService} router={router}/>
+                    <Container store={store} authService={authService} router={router} api={api}/>
                     , div);
 
                 login = ReactAddons.findRenderedComponentWithType(component, Login);

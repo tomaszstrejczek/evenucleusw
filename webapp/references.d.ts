@@ -18,3 +18,4 @@
 /// <reference path="node_modules/typeioc/d.ts/typeioc.addons.d.ts" />
 
 /// <reference path="typings/mine-formsy-react/formsy-react.d.ts" />
+/// <reference path="Scripts/TypeLite.Net4.d.ts" />

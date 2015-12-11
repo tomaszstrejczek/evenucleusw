@@ -75,6 +75,16 @@ namespace ts.data
             }
         }
 
+        public async Task<ICollection<Pilot>> GetByKeyInfoId(long keyinfoid)
+        {
+            _logger.Debug("{method} {keyinfoid}", "PilotRepo::GetByKeyInfoId", keyinfoid);
+            using (var ctx = _accountContextProvider.Context)
+            {
+                var pilots = await ctx.Pilots.Include(p => p.Skills).Where(c => c.KeyInfoId== keyinfoid).ToListAsync();
+                return pilots;
+            }
+        }
+
         public async Task SetFreeManufacturingJobsNofificationCount(long pilotid, int value)
         {
             _logger.Debug("{method} {pilotid} {value}", "PilotRepo::SetFreeManufacturingJobsNofificationCount", pilotid, value);
@@ -103,15 +113,15 @@ namespace ts.data
             }
         }
 
-        public async Task SimpleUpdateFromKey(long userid, long keyid, string vcode)
+        public async Task SimpleUpdateFromKey(long userid, long keyinfoid, long keyid, string vcode)
         {
-            _logger.Debug("{method} {userid} {keyid}", "pilotRepo::SimpleUpdateFromKey", userid, keyid);
+            _logger.Debug("{method} {userid} {keyid} {keyinfoid}", "pilotRepo::SimpleUpdateFromKey", userid, keyid, keyinfoid);
 
             var pilots = (await GetAll(userid)).Select(x => x.EveId);
             var characters = _eveApi.GetCharacters(keyid, vcode);
             var toadd = characters.Where(x => !pilots.Contains(x.CharacterId));
             var pilotsToAdd =
-                toadd.Select(a => new Pilot() { Name = a.CharacterName, KeyInfoId = keyid, EveId = a.CharacterId }).ToList();
+                toadd.Select(a => new Pilot() { UserId = userid, Name = a.CharacterName, KeyInfoId = keyinfoid, EveId = a.CharacterId }).ToList();
             using (var ctx = _accountContextProvider.Context)
             {
                 ctx.Pilots.AddRange(pilotsToAdd);

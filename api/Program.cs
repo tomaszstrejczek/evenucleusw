@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.Owin.Hosting;
+using ts.domain;
 
 namespace ts.api
 {
@@ -8,6 +9,8 @@ namespace ts.api
         static void Main(string[] args)
         {
             var url = "http://+:8070/api";
+
+            Automapping.Init();
 
             using (WebApp.Start<Startup>(url))
             {

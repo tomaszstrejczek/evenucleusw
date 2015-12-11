@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using eZet.EveLib.Core.Cache;
 using Nancy.Bootstrapper;
 using Nancy;
 using Ninject;
@@ -44,6 +45,7 @@ namespace ts.api
             existingContainer.Bind<ITypeNameDict>().To<TypeNameDict>();
             existingContainer.Bind<IAccountService>().To<AccountService>();
             existingContainer.Bind<IKeyInfoService>().To<KeyInfoService>();
+            existingContainer.Bind<IEveLibCache>().To<EveSqlServerCache>();
 
             var config = new LoggerConfiguration();
 #if DEBUG

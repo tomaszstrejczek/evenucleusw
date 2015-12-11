@@ -5,6 +5,8 @@ import {KernelCreator} from './kernel';
 import * as TypeIoc from 'typeioc';
 import {IKernelContext} from './IKernelContext';
 import {IAuthServiceContext, IAuthService} from './../api/AuthService';
+import {IApiContext} from './IApiContext';
+import * as Restful from 'restful.js';
 
 import { bindActionCreators } from 'redux';
 
@@ -18,9 +20,10 @@ export class App extends React.Component<any, any> implements React.ChildContext
         authService: React.PropTypes.object
     };
 
-    getChildContext(): IAuthServiceContext {
+    getChildContext(): IAuthServiceContext & IApiContext {
         return {
-            authService: kernelSingleton.resolve<IAuthService>("IAuthService")
+            authService: kernelSingleton.resolve<IAuthService>("IAuthService"),
+            api: kernelSingleton.resolve<Restful.Api>("Restful.Api")
         };
     };
 

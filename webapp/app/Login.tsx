@@ -4,6 +4,7 @@ import {Context, Link} from 'react-router';
 import {IAuthServiceContext} from './../api/AuthService';
 import {IStoreContext} from './IStoreContext';
 import {IRouterContext} from './IRouterContext';
+import {IApiContext} from './IApiContext';
 import {createLoginAction} from './../actions/LoginActions';
 
 
@@ -144,12 +145,13 @@ export class Login extends React.Component<any, LoginState> {
         this.state = new LoginState();
     }
 
-    context: IStoreContext & IRouterContext & IAuthServiceContext;
+    context: IStoreContext & IRouterContext & IAuthServiceContext & IApiContext;
 
     static contextTypes: React.ValidationMap<any> = {
         router: React.PropTypes.func.isRequired,
         store: React.PropTypes.object.isRequired,
-        authService: React.PropTypes.object.isRequired
+        authService: React.PropTypes.object.isRequired,
+        api: React.PropTypes.object.isRequired
     };
 
     enableButton() {
@@ -172,7 +174,7 @@ export class Login extends React.Component<any, LoginState> {
         var that = this;
         return this.context.authService.login(model.email, model.password)
             .then(function (jwt: string) {
-                that.context.store.dispatch(createLoginAction(jwt));
+                that.context.store.dispatch(createLoginAction(that.context.api, jwt));
                 that.context.router.transitionTo('/');
             })
             .catch(function(err) {

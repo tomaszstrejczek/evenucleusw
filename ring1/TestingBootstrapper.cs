@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using eZet.EveLib.Core.Cache;
 using ts.api;
 using Nancy;
 using Nancy.Bootstrapper;
@@ -46,7 +47,8 @@ namespace ring1
             container.Register<ISkillRepo,SkillRepo>();
             container.Register<ITypeNameDict,TypeNameDict>();
             container.Register<IAccountService, AccountService>();
-            container.Register<IKeyInfoService, KeyInfoService>();
+            container.Register<IKeyInfoService, ts.services.KeyInfoService>();
+            container.Register<IEveLibCache, EveSqlServerCache>();
 
             var config = new LoggerConfiguration();
 #if DEBUG

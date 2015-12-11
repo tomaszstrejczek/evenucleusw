@@ -141,6 +141,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="AssemblyInit.cs" />
     <Compile Include="CacheEveLibProviderT.cs" />
     <Compile Include="EveSqlServerCacheT.cs" />
     <Compile Include="KeyInfoRepoT.cs" />

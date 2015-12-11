@@ -139,7 +139,8 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="ServiceKeyInfoT.cs" />
+    <Compile Include="AssemblyInit.cs" />
+    <Compile Include="KeyInfoService.cs" />
     <Compile Include="MyTestConfiguration.cs" />
     <Compile Include="AccountT.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -158,6 +159,14 @@
     <ProjectReference Include="..\domain\domain.csproj">
       <Project>{cb8e3f45-de62-420d-a164-3430f2c35705}</Project>
       <Name>domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\dto\dto.csproj">
+      <Project>{3b9177cf-0bc5-4a73-8ea5-76b5fe268f0a}</Project>
+      <Name>dto</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\fas\evelib\EveLib.Core\EveLib.Core.csproj">
+      <Project>{aa85978c-2bf5-419f-9f8e-b70162e83f34}</Project>
+      <Name>EveLib.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\fas\Nancy\src\Nancy.Testing\Nancy.Testing.csproj">
       <Project>{d79203c0-b672-4751-9c95-c3ab7d3fefbe}</Project>
