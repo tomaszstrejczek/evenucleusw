@@ -24,18 +24,17 @@ export class Runner {
             afterEach(function () {
             })
 
-            it('login wrong password', function (done: MochaDone) {
-                authService.login("wrong user", "wron password")
-                    .then((skey: string) => {
-                        done();
-                    })
-                    .catch((err: any) => {
-                        var error = err as ts.dto.Error;
-                        if (error.errorMessage !== "Invalid user/password")
-                            done(err);
-                        else
-                            done();
-                    })
+            it('login wrong password', function () {
+                var r = authService.login("wrong user", "wron password")
+                    .catch((reason: ts.dto.Error) => {
+                        assert.equal(reason.errorMessage, "Invalid user/password");
+                    });
+                return r;
+                    //.then((skey: string) => {
+                    //    assert.isFalse(skey);
+                    //    //assert.equal(skey.error.errorMessage, "Invalid user/password");
+                    //    done();
+                    //});
             });
         });
     }

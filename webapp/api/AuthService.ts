@@ -19,22 +19,31 @@ export class AuthService implements IAuthService {
     constructor(api: Restful.Api) {
         this._api = api;
     }
-    public login(username: string, password:string): When.Promise<string> {
-        function loginMock()
-        {
-            if (username !== 'a@a.a')
-                throw 'Invalid user/password';
-            
-            return 'token';
-        }
+    public login(username: string, password: string): When.Promise<string> {
 
         return When.promise<string>(function (resolve: (data: string) => void, reject: (reason: any) => void): void {
             $.post("/api/account/login", { email: username, password: password })
                 .then((data: any, textStatus: string, jqXHR: JQueryXHR) => {
-                    if (jqXHR.status === 202)
+                    if (jqXHR.status === 202) {
                         reject(data as ts.dto.Error);
+                    }
+                    else if (jqXHR.status === 200) {
+                        resolve(data as string);
+                    } else {
+                        reject({
+                            errorMessage: "Error calling account/login api",
+                            fullException: data.toString(),
+                            errors: null                        
+                        });
+                    }
                     resolve(data);
-                }, reject);
+                }, (reason: any) => {
+                    reject({
+                        errorMessage: "Error calling account/login api",
+                        fullException: reason.toString(),
+                        errors: null
+                    });
+                });
         });
         //$.post("/login", { email: username, password: password }
 

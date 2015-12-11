@@ -188,7 +188,7 @@ export class Runner {
 
                 expect(button.disabled).to.be.false;
 
-                loginStub.returns(When.promise(() => { throw "Invalid ala"; }));
+                loginStub.returns(When.promise(() => { throw { errorMessage: "Invalid ala" }; }));
 
                 var submitSpy = Sinon.spy(login, "submit");
 
