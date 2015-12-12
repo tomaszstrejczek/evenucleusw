@@ -4,8 +4,8 @@ import {Context, Link} from 'react-router';
 import {IAuthServiceContext} from './../api/AuthService';
 import {IStoreContext} from './IStoreContext';
 import {IRouterContext} from './IRouterContext';
-import {IApiContext} from './IApiContext';
 import {createLoginAction} from './../actions/LoginActions';
+import {IApiContext} from './IApiContext';
 
 
 var Input = require('./../forms/input');

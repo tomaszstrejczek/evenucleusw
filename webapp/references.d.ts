@@ -13,10 +13,10 @@
 /// <reference path="typings/redux-actions/redux-actions.d.ts" />
 /// <reference path="typings/sinon/sinon.d.ts" />
 /// <reference path="typings/es6-promise/es6-promise.d.ts" />
-/// <reference path="typings/restful.js/restful.js.d.ts" />
 
 /// <reference path="node_modules/typeioc/d.ts/typeioc.d.ts" />
 /// <reference path="node_modules/typeioc/d.ts/typeioc.addons.d.ts" />
 
 /// <reference path="typings/mine-formsy-react/formsy-react.d.ts" />
+
 /// <reference path="Scripts/TypeLite.Net4.d.ts" />

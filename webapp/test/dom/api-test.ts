@@ -2,22 +2,23 @@
 
 import {expect, assert} from 'chai';
 import {IAuthServiceContext, IAuthService, AuthService} from './../../api/AuthService';
-import * as Restful from 'restful.js';
-
+import {IApiCaller} from './../../api/IApiCaller';
+import {ApiCaller} from './../../api/ApiCaller';
 
 import * as Sinon from 'sinon';
 import * as When from 'when';
+
 
 //const TestUtils = ReactAddons.addons.TestUtils;
 
 export class Runner {
     static run(): void {
         describe('AuthService login', function () {
-            let api: Restful.Api;
+            let api: IApiCaller;
             let authService: IAuthService;
             
             beforeEach(function () {
-                api = Restful.default("http://localhost:8080");
+                api = new ApiCaller();
                 authService = new AuthService(api);
             })
 

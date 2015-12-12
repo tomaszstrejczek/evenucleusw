@@ -5,8 +5,8 @@ import {KernelCreator} from './kernel';
 import * as TypeIoc from 'typeioc';
 import {IKernelContext} from './IKernelContext';
 import {IAuthServiceContext, IAuthService} from './../api/AuthService';
+import {IApiCaller} from './../api/IApiCaller';
 import {IApiContext} from './IApiContext';
-import * as Restful from 'restful.js';
 
 import { bindActionCreators } from 'redux';
 
@@ -17,13 +17,14 @@ var kernelSingleton = KernelCreator.create();
 export class App extends React.Component<any, any> implements React.ChildContextProvider<IAuthServiceContext> {
 
     static childContextTypes: React.ValidationMap<any> = {
-        authService: React.PropTypes.object
+        authService: React.PropTypes.object,
+        api: React.PropTypes.object
     };
 
-    getChildContext(): IAuthServiceContext & IApiContext {
+    getChildContext(): IAuthServiceContext & IApiContext{
         return {
             authService: kernelSingleton.resolve<IAuthService>("IAuthService"),
-            api: kernelSingleton.resolve<Restful.Api>("Restful.Api")
+            api: kernelSingleton.resolve<IApiCaller>("IApiCaller")
         };
     };
 

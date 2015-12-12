@@ -12,7 +12,8 @@ import {rootReducer} from './../../actions/rootReducer';
 import {IStoreContext} from './../../app/IStoreContext';
 import {IRouterContext} from './../../app/IRouterContext';
 import {IApiContext} from './../../app/IApiContext';
-import * as Restful from 'restful.js';
+import {IApiCaller} from './../../api/IApiCaller';
+import {ApiCaller} from './../../api/ApiCaller';
 
 import * as Sinon from 'sinon';
 import * as When from 'when';
@@ -23,16 +24,16 @@ interface ContainerProps {
     store: Store;
     authService: IAuthService;
     router: any;
-    api: Restful.Api;
+    api: IApiCaller;
 }
 
-class Container extends React.Component<ContainerProps, any> implements React.ChildContextProvider<IAuthServiceContext & IStoreContext & IRouterContext> {
+class Container extends React.Component<ContainerProps, any> implements React.ChildContextProvider<IAuthServiceContext & IStoreContext & IRouterContext > {
 
     static childContextTypes: React.ValidationMap<any> = {
         authService: React.PropTypes.object,
         store: React.PropTypes.object,
         router: React.PropTypes.func,
-        api: React.PropTypes.object
+        api: React.PropTypes.object,
     };
 
     getChildContext(): IAuthServiceContext & IStoreContext & IRouterContext & IApiContext{
@@ -69,8 +70,8 @@ export class Runner {
                 }
                 const store: Store = createStore(rootReducer, initialState);
                 var div = document.createElement('div');
-                var authService = new AuthService(null);
-                var api = Restful.default("http://localhost:8080");
+                var api = new ApiCaller();
+                var authService = new AuthService(api);
                 loginStub = Sinon.stub(authService, "login");
                 var router = function () { };
                 (router as any).transitionTo = (adr: string) => { };

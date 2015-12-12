@@ -27,12 +27,14 @@
     <TypeScriptCompile Include="actions\ActionTypes.ts" />
     <TypeScriptCompile Include="actions\LoginActions.ts" />
     <TypeScriptCompile Include="actions\rootReducer.ts" />
+    <TypeScriptCompile Include="api\ApiCaller.ts" />
+    <TypeScriptCompile Include="api\IApiCaller.ts" />
     <TypeScriptCompile Include="api\KeyInfoService.ts" />
     <TypeScriptCompile Include="app.tsx" />
     <TypeScriptCompile Include="app\AppState.ts" />
     <TypeScriptCompile Include="api\AuthService.ts" />
-    <TypeScriptCompile Include="app\IKernelContext.ts" />
     <TypeScriptCompile Include="app\IApiContext.ts" />
+    <TypeScriptCompile Include="app\IKernelContext.ts" />
     <TypeScriptCompile Include="app\IRouterContext.ts" />
     <TypeScriptCompile Include="app\IStoreContext.ts" />
     <TypeScriptCompile Include="app\kernel.ts" />

@@ -78,3 +78,5 @@ webapp/app/IApiContext.js
 webapp/Scripts/Enums.js
 webapp/test/dom/api-test.js
 webapp/tsd-debug.log
+webapp/api/IApiCaller.js
+webapp/api/ApiCaller.js

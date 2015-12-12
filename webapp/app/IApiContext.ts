@@ -1,5 +1,5 @@
-﻿import * as Restful from 'restful.js';
+﻿import {IApiCaller} from './../api/IApiCaller';
 
 export interface IApiContext {
-    api: Restful.Api;
+    api: IApiCaller;
 }
