@@ -16,11 +16,11 @@ using ts.services;
 
 namespace ts.api
 {
-    public class ServiceKeyInfo: NancyModule
+    public class KeyInfoService: NancyModule
     {
         private readonly IKeyInfoService _keyInfoService;
 
-        public ServiceKeyInfo(IKeyInfoService keyInfoService)
+        public KeyInfoService(IKeyInfoService keyInfoService)
         {
             _keyInfoService = keyInfoService;
             Post["/keyinfo/add", runAsync:true] = async (_, ct) => await Add();
@@ -34,11 +34,12 @@ namespace ts.api
             public string VCode { get; set; }
         }
 
-        private async Task<string> Add()
+        private async Task<SingleLongDto> Add()
         {
             var m = this.Bind<AddModel>();
 
-            return (await _keyInfoService.Add((long) this.Context.Request.Session["UserId"], m.KeyId, m.VCode)).ToString();
+            var val = await _keyInfoService.Add((long) this.Context.Request.Session["UserId"], m.KeyId, m.VCode);
+            return new SingleLongDto() {Value = val};
         }
 
         struct DeleteModel

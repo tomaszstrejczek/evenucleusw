@@ -178,8 +178,8 @@
     <Compile Include="Pilots.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ServiceAccount.cs" />
-    <Compile Include="ServiceKeyInfo.cs" />
+    <Compile Include="AccountService.cs" />
+    <Compile Include="KeyInfoService.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>

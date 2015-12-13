@@ -46,6 +46,12 @@ declare module ts.dto {
 		fullException: string;
 		errors: string[];
 	}
+	interface SingleStringDto {
+		value: string;
+	}
+	interface SingleLongDto {
+		value: number;
+	}
 }
 
 

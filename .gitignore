@@ -80,3 +80,4 @@ webapp/test/dom/api-test.js
 webapp/tsd-debug.log
 webapp/api/IApiCaller.js
 webapp/api/ApiCaller.js
+webapp/test/dom/Helper.js

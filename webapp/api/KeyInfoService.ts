@@ -20,7 +20,8 @@ export class KeyInfoService implements IKeyInfoService {
     }
 
     public AddKey(keyid: number, vcode: string): When.Promise<number> {
-        return this._api.post<number>("/api/keyinfo/add", { KeyId: keyid, VCode: vcode });
+        var r = this._api.post<ts.dto.SingleLongDto>("/api/keyinfo/add", { KeyId: keyid, VCode: vcode });
+        return r.then((data: ts.dto.SingleLongDto) => data.value);
     }
 
     public GetAll(): When.Promise<ts.dto.KeyInfoDto[]> {

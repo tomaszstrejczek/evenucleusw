@@ -5,6 +5,8 @@ import {IAuthServiceContext, IAuthService, AuthService} from './../../api/AuthSe
 import {IApiCaller} from './../../api/IApiCaller';
 import {ApiCaller} from './../../api/ApiCaller';
 
+import {Helper} from './Helper';
+
 import * as Sinon from 'sinon';
 import * as When from 'when';
 
@@ -31,11 +33,11 @@ export class Runner {
                         assert.equal(reason.errorMessage, "Invalid user/password");
                     });
                 return r;
-                    //.then((skey: string) => {
-                    //    assert.isFalse(skey);
-                    //    //assert.equal(skey.error.errorMessage, "Invalid user/password");
-                    //    done();
-                    //});
+            });
+
+            it('create user', function() {
+                var helper = new Helper();
+                return helper.createTestUser();
             });
         });
     }

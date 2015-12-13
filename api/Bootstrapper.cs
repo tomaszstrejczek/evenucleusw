@@ -43,8 +43,8 @@ namespace ts.api
             existingContainer.Bind<IRefTypeDict>().To<RefTypeDict>();
             existingContainer.Bind<ISkillRepo>().To<SkillRepo>();
             existingContainer.Bind<ITypeNameDict>().To<TypeNameDict>();
-            existingContainer.Bind<IAccountService>().To<AccountService>();
-            existingContainer.Bind<IKeyInfoService>().To<KeyInfoService>();
+            existingContainer.Bind<IAccountService>().To<services.AccountService>();
+            existingContainer.Bind<IKeyInfoService>().To<services.KeyInfoService>();
             existingContainer.Bind<IEveLibCache>().To<EveSqlServerCache>();
 
             var config = new LoggerConfiguration();

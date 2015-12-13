@@ -5,6 +5,7 @@ using Nancy.Responses.Negotiation;
 using Nancy.Testing;
 using ts.api;
 using ts.domain;
+using ts.dto;
 
 
 namespace ring1
@@ -63,7 +64,7 @@ namespace ring1
             });
 
             Assert.AreEqual(HttpStatusCode.OK, result.StatusCode);
-            var skey = result.Body.AsString();
+            var skey = result.Body.DeserializeJson<SingleStringDto>().Value;
 
             result = browser.Get("http://localhost:8070/pilots/1", with => {
                 with.Header("jwt", skey);

@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Nancy.Responses.Negotiation;
 using Nancy.Testing;
+using ts.dto;
 
 namespace ring1
 {
@@ -32,7 +33,7 @@ namespace ring1
             });
 
             Assert.AreEqual(Nancy.HttpStatusCode.OK, result.StatusCode);
-            var key = result.Body.AsString();
+            var key = result.Body.DeserializeJson<SingleStringDto>().Value;
 
             return key;
         }

@@ -110,6 +110,7 @@
     <Content Include="styles\img\tile\ribbon-2x.png" />
     <Content Include="styles\img\tile\ribbon.png" />
     <Content Include="test\dom\dom.html" />
+    <TypeScriptCompile Include="test\dom\Helper.ts" />
     <TypeScriptCompile Include="test\dom\index.ts" />
     <TypeScriptCompile Include="test\dom\api-test.ts" />
     <TypeScriptCompile Include="test\dom\login-test.tsx" />

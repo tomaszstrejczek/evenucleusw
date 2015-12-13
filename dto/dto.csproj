@@ -49,6 +49,7 @@
     <Compile Include="KeyInfoDto.cs" />
     <Compile Include="PilotDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SingleDto.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

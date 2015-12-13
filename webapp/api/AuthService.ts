@@ -4,6 +4,7 @@ import {IApiCaller} from './IApiCaller';
 
 export interface IAuthService {
     login(username: string, password: string): When.Promise<string>;
+    register(username: string, password: string): When.Promise<string>;
     logout(): When.Promise<void>;
 }
 
@@ -19,7 +20,13 @@ export class AuthService implements IAuthService {
     }
 
     public login(username: string, password: string): When.Promise<string> {
-        return this._api.post<string>("/api/account/login", { email: username, password: password });
+        var r = this._api.post<ts.dto.SingleStringDto>("/api/account/login", { email: username, password: password });
+        return r.then((data: ts.dto.SingleStringDto) => data.value);
+    }
+
+    public register(username: string, password: string): When.Promise<string> {
+        var r = this._api.post<ts.dto.SingleStringDto>("/api/account/register", { email: username, password: password });
+        return r.then((data: ts.dto.SingleStringDto) => data.value);
     }
 
     public logout(): When.Promise<void> {

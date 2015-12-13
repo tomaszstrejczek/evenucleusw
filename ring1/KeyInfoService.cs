@@ -27,12 +27,12 @@ namespace ring1
             });
 
             Assert.AreEqual(Nancy.HttpStatusCode.OK, result.StatusCode);
-            var keyinfoid = result.Body.AsString();
+            var keyinfoid = result.Body.DeserializeJson<SingleLongDto>().Value;
 
             result = Browser.Post("http://localhost:8070/keyinfo/delete", with => {
                 with.HttpRequest();
                 with.Header("jwt", skey);
-                with.FormValue("KeyInfoId", keyinfoid);
+                with.FormValue("KeyInfoId", keyinfoid.ToString());
                 with.Accept(new MediaRange("application/json"));
             });
 
@@ -52,7 +52,7 @@ namespace ring1
                 with.Accept(new MediaRange("application/json"));
             });
             Assert.AreEqual(Nancy.HttpStatusCode.OK, result.StatusCode);
-            var keyinfoid = result.Body.AsString();
+            var keyinfoid = result.Body.DeserializeJson<SingleLongDto>().Value;
 
             var pilots = Browser.Get("http://localhost:8070/keyinfo", with => {
                 with.HttpRequest();

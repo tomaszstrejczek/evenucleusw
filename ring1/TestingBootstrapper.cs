@@ -14,6 +14,7 @@ using Serilog;
 using ts.data;
 using ts.shared;
 using ts.services;
+using AccountService = ts.api.AccountService;
 
 namespace ring1
 {
@@ -46,7 +47,7 @@ namespace ring1
             container.Register<IRefTypeDict,RefTypeDict>();
             container.Register<ISkillRepo,SkillRepo>();
             container.Register<ITypeNameDict,TypeNameDict>();
-            container.Register<IAccountService, AccountService>();
+            container.Register<IAccountService, ts.services.AccountService>();
             container.Register<IKeyInfoService, ts.services.KeyInfoService>();
             container.Register<IEveLibCache, EveSqlServerCache>();
 
@@ -74,9 +75,9 @@ namespace ring1
         {
             return new INancyModule[]
             {
-                new ServiceAccount(container.Resolve<IAccountService>()),
+                new AccountService(container.Resolve<IAccountService>()),
                 new Pilots(),
-                new ServiceKeyInfo(container.Resolve<IKeyInfoService>()),
+                new ts.api.KeyInfoService(container.Resolve<IKeyInfoService>()),
             }.AsEnumerable();
         }
     }

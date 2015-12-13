@@ -15,7 +15,9 @@
 		.WithReference("Enums.ts")
 		.WithMemberFormatter((identifier) => Char.ToLower(identifier.Name[0]) + identifier.Name.Substring(1))
 		.For<ts.dto.KeyInfoDto>()
-		.For<ts.dto.Error>();
+		.For<ts.dto.Error>()
+		.For<ts.dto.SingleStringDto>()
+		.For<ts.dto.SingleLongDto>();
 #>
 
 <#= ts.Generate(TsGeneratorOutput.Properties) #>
