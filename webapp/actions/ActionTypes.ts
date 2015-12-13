@@ -4,5 +4,6 @@
 
 export enum ActionTypes {
     LOGIN_USER,
-    LOGOUT_USER
+    LOGOUT_USER,
+    REGISTER_USER
 };

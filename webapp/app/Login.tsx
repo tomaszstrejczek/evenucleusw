@@ -174,7 +174,7 @@ export class Login extends React.Component<any, LoginState> {
         var that = this;
         return this.context.authService.login(model.email, model.password)
             .then(function (jwt: string) {
-                that.context.store.dispatch(createLoginAction(that.context.api, jwt));
+                that.context.store.dispatch(createLoginAction(that.context.api, jwt, model.email));
                 that.context.router.transitionTo('/');                    
             })
             .catch(function(err: ts.dto.Error) {

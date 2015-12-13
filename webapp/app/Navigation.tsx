@@ -4,7 +4,7 @@ import {IStoreContext} from './IStoreContext';
 import {IAppState} from './AppState';
 
 class NavigationState {
-    constructor(public userLoggedIn: boolean) {
+    constructor(public userLoggedIn: boolean, public userName: string) {
     }
 }
 
@@ -22,7 +22,7 @@ export class Navigation extends React.Component<any, NavigationState> {
     constructor(props, context) {
         super(props, context);
         var s: IAppState = this.context.store.getState() as IAppState;
-        this.state = new NavigationState(s.loginInfo.isLoggedIn());
+        this.state = new NavigationState(s.loginInfo.isLoggedIn(), s.loginInfo.user);
     }
 
     componentDidMount() {
@@ -32,7 +32,7 @@ export class Navigation extends React.Component<any, NavigationState> {
 
     _onChange() {
         var s: IAppState = this.context.store.getState() as IAppState;
-        this.setState(new NavigationState(s.loginInfo.isLoggedIn()));
+        this.setState(new NavigationState(s.loginInfo.isLoggedIn(), s.loginInfo.user));
     }
 
     componentWillUnmount() {
@@ -40,11 +40,14 @@ export class Navigation extends React.Component<any, NavigationState> {
     }
 
     render(): JSX.Element {
-        var login;
-        if (this.state.userLoggedIn)
+        var login, hello;
+        if (this.state.userLoggedIn) {
+            hello = <p className="navbar-text">Signed in as {this.state.userName}</p>
             login = <li><Link to="/logout">Logout</Link></li>;
-        else
+        } else {
+            hello = null;
             login = <li><Link to="/login">Login</Link></li>;
+        }
 
         return (
             <nav className="navbar navbar-default">
@@ -61,8 +64,10 @@ export class Navigation extends React.Component<any, NavigationState> {
                     <ul className="nav navbar-nav">
                         <li><Link to="/characters">Chracters</Link></li>
                         <li><Link to="/industry">Industry</Link></li>
+                        <li><Link to="/keys">Eve Api Keys</Link></li>
                     </ul>
                     <ul className="nav navbar-nav navbar-right">
+                        {hello}
                         {login}
                     </ul>
                 </div>

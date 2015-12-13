@@ -4,7 +4,8 @@ import {Context} from 'react-router';
 import {IAuthServiceContext} from './../api/AuthService';
 import {IStoreContext} from './IStoreContext';
 import {IRouterContext} from './IRouterContext';
-import {createLoginAction} from './../actions/LoginActions';
+import {createRegisterAction} from './../actions/LoginActions';
+import {IApiContext} from './IApiContext';
 
 
 var Input = require('./../forms/input');
@@ -39,12 +40,13 @@ export class Register extends React.Component<any, RegisterState> {
         this.state = new RegisterState();
     }
 
-    context: IStoreContext & IRouterContext & IAuthServiceContext;
+    context: IStoreContext & IRouterContext & IAuthServiceContext & IApiContext;
 
     static contextTypes: React.ValidationMap<any> = {
         router: React.PropTypes.func.isRequired,
         store: React.PropTypes.object.isRequired,
-        authService: React.PropTypes.object.isRequired
+        authService: React.PropTypes.object.isRequired,
+        api: React.PropTypes.object.isRequired
     };
 
     enableButton() {
@@ -65,9 +67,9 @@ export class Register extends React.Component<any, RegisterState> {
 
     submit(model: RegisterModel): When.Promise<void> {
         var that = this;
-        return this.context.authService.login(model.email, model.password)
+        return this.context.authService.register(model.email, model.password)
             .then(function (jwt: string) {
-                that.context.store.dispatch(createLoginAction(jwt));
+                that.context.store.dispatch(createRegisterAction(that.context.api, jwt, model.email));
                 that.context.router.transitionTo('/');
             })
             .catch(function(err) {
