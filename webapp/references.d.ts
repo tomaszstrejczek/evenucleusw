@@ -13,6 +13,7 @@
 /// <reference path="typings/redux-actions/redux-actions.d.ts" />
 /// <reference path="typings/sinon/sinon.d.ts" />
 /// <reference path="typings/es6-promise/es6-promise.d.ts" />
+/// <reference path="typings/redux-thunk/redux-thunk.d.ts" />
 
 /// <reference path="node_modules/typeioc/d.ts/typeioc.d.ts" />
 /// <reference path="node_modules/typeioc/d.ts/typeioc.addons.d.ts" />
