@@ -115,7 +115,7 @@ namespace ts.domain {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Session has expired.
+        ///   Looks up a localized string similar to Invalid or expired session key.
         /// </summary>
         public static string InvalidSessionKey {
             get {

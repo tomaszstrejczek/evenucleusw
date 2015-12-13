@@ -81,3 +81,4 @@ webapp/tsd-debug.log
 webapp/api/IApiCaller.js
 webapp/api/ApiCaller.js
 webapp/test/dom/Helper.js
+webapp/test/dom/api-keys-test.js

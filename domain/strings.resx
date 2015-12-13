@@ -136,7 +136,7 @@
     <value>Provided key is already defined</value>
   </data>
   <data name="InvalidSessionKey" xml:space="preserve">
-    <value>Session has expired</value>
+    <value>Invalid or expired session key</value>
   </data>
   <data name="InvalidUserPassword" xml:space="preserve">
     <value>Invalid user/password</value>
