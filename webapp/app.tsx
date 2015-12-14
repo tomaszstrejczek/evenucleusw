@@ -18,7 +18,7 @@ import {LoginInfo} from './app/AppState';
 import {rootReducer} from './actions/rootReducer';
 import {Store, createStore, applyMiddleware} from 'redux';
 import {Provider} from 'react-redux';
-import * as reduxThunk from 'redux-thunk';
+import reduxThunk = require("redux-thunk");
 
 console.log('app starting');
 
@@ -43,7 +43,7 @@ function run() {
     var initialState = {
         loginInfo: new LoginInfo()
     };
-    const store: Store = applyMiddleware(reduxThunk.default)(createStore)(rootReducer, initialState);
+    const store: Store = applyMiddleware(reduxThunk as any)(createStore)(rootReducer, initialState);
 
     Router.run(routes, function (Handler: new() => React.Component<any, any>) {
         ReactDOM.render(

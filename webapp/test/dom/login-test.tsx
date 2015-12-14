@@ -7,13 +7,14 @@ import * as ReactDOM from 'react-dom';
 import * as ReactAddons from 'react-addons-test-utils';
 import {IAuthServiceContext, IAuthService, AuthService} from './../../api/AuthService';
 import {LoginInfo} from './../../app/AppState';
-import {Store, createStore} from 'redux';
+import {Store, createStore, applyMiddleware} from 'redux';
 import {rootReducer} from './../../actions/rootReducer';
 import {IStoreContext} from './../../app/IStoreContext';
 import {IRouterContext} from './../../app/IRouterContext';
 import {IApiContext} from './../../app/IApiContext';
 import {IApiCaller} from './../../api/IApiCaller';
 import {ApiCaller} from './../../api/ApiCaller';
+import reduxThunk = require("redux-thunk");
 
 import * as Sinon from 'sinon';
 import * as When from 'when';
@@ -68,7 +69,7 @@ export class Runner {
                 var initialState = {
                     loginInfo: new LoginInfo()
                 }
-                const store: Store = createStore(rootReducer, initialState);
+                const store: Store = applyMiddleware(reduxThunk as any)(createStore)(rootReducer, initialState);
                 var div = document.createElement('div');
                 var api = new ApiCaller();
                 var authService = new AuthService(api);
