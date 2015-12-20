@@ -6,6 +6,7 @@ import {IStoreContext} from './IStoreContext';
 import {IRouterContext} from './IRouterContext';
 import {createRegisterAction} from './../actions/LoginActions';
 import {IApiContext} from './IApiContext';
+import {createNotificationShowAction, NotificationType} from './../actions/NotificationActions';
 
 
 var Input = require('./../forms/input');
@@ -74,6 +75,7 @@ export class Register extends React.Component<any, RegisterState> {
             })
             .catch(function(err) {
                 console.log("Error logging in", err);
+                that.context.store.dispatch(createNotificationShowAction(NotificationType.error, "error", err.errorMessage));
                 that.setState((prevState: RegisterState, props: any): RegisterState => {
                     prevState.formError = err;
                     return prevState;
