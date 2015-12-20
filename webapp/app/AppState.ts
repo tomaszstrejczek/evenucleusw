@@ -1,4 +1,6 @@
-﻿export class LoginInfo {
+﻿import * as ReactNotifications from 'react-notifications';
+
+export class LoginInfo {
     public user: string;
     public jwt: string;
 
@@ -10,4 +12,5 @@
 
 export interface IAppState {
     loginInfo: LoginInfo;
+    notifications: ReactNotifications.Notification[];
 }

@@ -43,6 +43,7 @@
     "react": "^0.14.3",
     "react-addons-test-utils": "^0.14.3",
     "react-dom": "^0.14.2",
+    "react-notifications": "^0.1.0",
     "react-redux": "^4.0.0",
     "react-router": "^0.13.5",
     "redux": "^3.0.4",

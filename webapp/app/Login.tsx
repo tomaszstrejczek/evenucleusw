@@ -5,7 +5,9 @@ import {IAuthServiceContext} from './../api/AuthService';
 import {IStoreContext} from './IStoreContext';
 import {IRouterContext} from './IRouterContext';
 import {createLoginAction} from './../actions/LoginActions';
+import {createNotificationShowAction, NotificationType} from './../actions/NotificationActions';
 import {IApiContext} from './IApiContext';
+
 
 
 var Input = require('./../forms/input');
@@ -177,8 +179,9 @@ export class Login extends React.Component<any, LoginState> {
                 that.context.store.dispatch(createLoginAction(that.context.api, jwt, model.email));
                 that.context.router.transitionTo('/');                    
             })
-            .catch(function(err: ts.dto.Error) {
+            .catch(function (err: ts.dto.Error) {
                 console.log("Error logging in ", err);
+                that.context.store.dispatch(createNotificationShowAction(NotificationType.error, "error", err.errorMessage));
                 that.setState((prevState: LoginState, props: any): LoginState => {
                     prevState.formError = err.errorMessage;
                     return prevState;
