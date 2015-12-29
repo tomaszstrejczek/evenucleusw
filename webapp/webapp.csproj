@@ -111,6 +111,7 @@
     <Content Include="styles\img\tile\ribbon-2x.png" />
     <Content Include="styles\img\tile\ribbon.png" />
     <Content Include="test\dom\dom.html" />
+    <TypeScriptCompile Include="characters\SkillBar.tsx" />
     <TypeScriptCompile Include="keys\keys.tsx" />
     <TypeScriptCompile Include="test\dom\api-keys-test.ts" />
     <TypeScriptCompile Include="test\dom\Helper.ts" />
@@ -132,6 +133,7 @@
     <TypeScriptCompile Include="typings\react-router\react-router.d.ts" />
     <TypeScriptCompile Include="typings\react\react.d.ts" />
     <TypeScriptCompile Include="typings\redux-actions\redux-actions.d.ts" />
+    <TypeScriptCompile Include="utils\colors.ts" />
     <TypeScriptCompile Include="utils\deepCopy.ts" />
   </ItemGroup>
   <ItemGroup>
@@ -220,7 +222,7 @@
     <Content Include="styles\less\modules\video.less" />
     <Content Include="styles\less\spaces.less" />
     <Content Include="styles\less\variables.less" />
-    <Content Include="test\mocha.opts" />
+    <Content Include="test\utils\mocha.opts" />
     <Content Include="forms\component.jsx" />
     <Content Include="forms\icon.jsx" />
     <Content Include="forms\input.jsx" />
