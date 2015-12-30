@@ -78,7 +78,7 @@ export class App extends React.Component<any, AppComponentState> implements Reac
         return (
             <div>
                 <Navigation/>
-                <div className="container">
+                <div className="container-fluid">
                 <RouteHandler/>
                     </div>
                 <Notifications notifications={this.state.notifications} onRequestHide={this.handleRequestHide.bind(this)}/>
