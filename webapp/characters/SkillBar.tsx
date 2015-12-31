@@ -5,10 +5,10 @@ import {TsColor} from './../utils/colors';
 
 
 var skillBarOuterStyle = {
-    width: "56px",
+    width: "52px",
     height: "12px",
     background: "#00689D",
-    borderRadius: "5px"
+    borderRadius: "4px"
 };
 
 var skillBarInnerStyleBase = {
@@ -38,7 +38,7 @@ export class SkillBar extends React.Component<SkillBarProperties, any> {
                 {Array.apply(0, Array(Math.max(this.props.levelCompleted, this.props.levelTraining))).map( (obj, index) => {
                     var props = owl.copy(skillBarInnerStyleBase);
                     if (index === 0)
-                        props.marginLeft = "4px";
+                        props.marginLeft = "2px";
                     if (index < this.props.levelCompleted)
                         props.background = this.props.color.lighter;
                     if (index >= this.props.levelCompleted && index < this.props.levelTraining - 1)
