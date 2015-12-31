@@ -1,5 +1,7 @@
 ﻿import * as React from 'react';
 
+import { Link } from 'react-router';
+
 import {owl} from './../utils/deepCopy';
 import {TsColor} from './../utils/colors';
 import {SkillBar} from './SkillBar';
@@ -37,7 +39,8 @@ export class PilotInfo extends React.Component<PilotInfoProperties, any> {
         var that = this;
 
         return (
-            <div className="col-md-4 col-xs-12 col-lg-3" style={{margin: "5px"}}>
+            <div className="col-md-4 col-xs-12 col-lg-3" style={{ margin: "5px" }}>
+              <Link to={"/pilot/" + encodeURIComponent(this.props.name)}>
               <table width="100%" >
                 <tbody style={{lineHeight: "normal"}}>
                 <tr style={{ background: this.props.color.primary }} ><td>
@@ -53,7 +56,7 @@ export class PilotInfo extends React.Component<PilotInfoProperties, any> {
                 </td></tr>
                 <tr><td>
                     <table width="100%">
-                    <tbody style={{ background: "white", fontSize: "75%"}}>
+                    <tbody style={{ background: "white", fontSize: "75%", color: "black"}}>
                     {queueTraining.map(skill => {
                             return <tr key={skill.name + skill.levelTraining}>
                                 <td><div style={{ marginLeft: "4px"}}>{skill.name}</div></td>
@@ -65,6 +68,7 @@ export class PilotInfo extends React.Component<PilotInfoProperties, any> {
                 </td></tr>
             </tbody>
             </table>
+            </Link>
         </div>
         );
     }

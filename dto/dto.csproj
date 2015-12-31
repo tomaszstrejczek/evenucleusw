@@ -50,6 +50,7 @@
     <Compile Include="PilotDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SingleDto.cs" />
+    <Compile Include="SkillDto.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

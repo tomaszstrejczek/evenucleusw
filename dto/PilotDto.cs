@@ -32,5 +32,7 @@ namespace ts.dto
         public bool TrainingWarning { get; set; }
 
         public bool TrainingNotActive { get; set; }
+
+        public List<SkillDto> Skills { get; set; } 
     }
 }

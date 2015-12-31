@@ -32,6 +32,13 @@ declare module ts.dto {
 		userId: number;
 		trainingWarning: boolean;
 		trainingNotActive: boolean;
+		skills: ts.dto.SkillDto[];
+	}
+	interface SkillDto {
+		skillId: number;
+		pilotId: number;
+		skillName: string;
+		level: number;
 	}
 	interface CorporationDto {
 		corporationId: number;
