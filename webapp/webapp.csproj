@@ -113,7 +113,9 @@
     <Content Include="test\dom\dom.html" />
     <TypeScriptCompile Include="characters\PilotDetails.tsx" />
     <TypeScriptCompile Include="characters\PilotInfo.tsx" />
+    <TypeScriptCompile Include="characters\SkillCard.tsx" />
     <TypeScriptCompile Include="characters\SkillBar.tsx" />
+    <TypeScriptCompile Include="characters\SkillData.ts" />
     <TypeScriptCompile Include="keys\keys.tsx" />
     <TypeScriptCompile Include="keys\KeyCard.tsx" />
     <TypeScriptCompile Include="test\dom\api-keys-test.ts" />
