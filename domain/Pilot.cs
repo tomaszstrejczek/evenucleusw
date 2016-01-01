@@ -31,8 +31,6 @@ namespace ts.domain
 
         public virtual ICollection<Skill> Skills { get; set; }
 
-        public List<string> TrainedSkills { get { return Skills.Select(x => x.SkillName).ToList(); } }
-
         public bool TrainingWarning => (TrainingQueueEnd - DateTime.UtcNow).Days == 0;
 
         public bool TrainingNotActive => !TrainingActive;

@@ -11,5 +11,6 @@ namespace ts.domain
         public int SkillId { get; set; }
         public long PilotId { get; set; }
         public string SkillName { get; set; }
+        public int Level { get; set; }
     }
 }

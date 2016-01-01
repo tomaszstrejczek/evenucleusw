@@ -108,7 +108,8 @@ namespace ts.services
                         p.Skills = sheet.Result.Skills.Select(x => new Skill()
                         {
                             PilotId = p.PilotId,
-                            SkillName = $"{typenames[(long) x.TypeId]} {x.Level}"
+                            SkillName = $"{typenames[(long) x.TypeId]}",
+                            Level = x.Level
                         }).ToList();
 
                         list.Add(p);

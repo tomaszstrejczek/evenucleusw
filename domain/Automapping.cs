@@ -18,6 +18,7 @@ namespace ts.domain
                 cfg.CreateMap<KeyInfo, KeyInfoDto>()
                     .ForMember(d => d.Pilots, opt => opt.Ignore())
                     .ForMember(d => d.Corporations, opt => opt.Ignore());
+                cfg.CreateMap<Skill, SkillDto>();
                 cfg.CreateMap<Pilot, PilotDto>();
                 cfg.CreateMap<Corporation, CorporationDto>();
             });

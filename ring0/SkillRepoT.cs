@@ -34,7 +34,7 @@ namespace ring0
                         EveId = 1,
                         KeyInfoId = 1,
                         Name = "Pilot1",
-                        Skills = new string[] {"skill1", "skill2"}.Select(x => new Skill(){SkillName=x}).ToList(),
+                        Skills = new Skill[] { new Skill() {SkillName = "skilla", Level=1}, new Skill() {SkillName = "skillb", Level = 2}}.ToList(),
                     }
                 }.ToList(),
                 Corporations = new List<Corporation>(),
@@ -69,7 +69,7 @@ namespace ring0
                         EveId = 1,
                         KeyInfoId = 1,
                         Name = "Pilot1",
-                        Skills = new string[] {"skill1", "skill2", "skill3"}.Select(x => new Skill{SkillName=x}).ToList(),
+                        Skills = new Skill[] { new Skill() {SkillName = "skilla", Level=1}, new Skill() {SkillName = "skillb", Level = 2}, new Skill() {SkillName = "skillc", Level = 3}}.ToList(),
                     }
                 }.ToList(),
                 Corporations = new List<Corporation>(),
@@ -86,7 +86,7 @@ namespace ring0
             Assert.AreEqual(1, notifications.Count);
             var n = notifications.First();
             Assert.AreEqual("Pilot1", n.Message);
-            Assert.AreEqual("skill3 trained", n.Message2);
+            Assert.AreEqual("skillc 3 trained", n.Message2);
             await notificationRepo.Remove(n.NotificationId);
 
             // stage 4 - added two skills
@@ -99,7 +99,7 @@ namespace ring0
                         EveId = 1,
                         KeyInfoId = 1,
                         Name = "Pilot1",
-                        Skills = new string[] {"skill1", "skill2", "skill3", "skill4", "skill5"}.Select(x => new Skill{SkillName=x}).ToList(),
+                        Skills = new Skill[] { new Skill() {SkillName = "skilla", Level=1}, new Skill() {SkillName = "skillb", Level = 2}, new Skill() {SkillName = "skillc", Level = 3}, new Skill() {SkillName = "skilld", Level = 4}, new Skill() {SkillName = "skille", Level = 5}}.ToList(),
                     }
                 }.ToList(),
                 Corporations = new List<Corporation>(),
@@ -114,14 +114,14 @@ namespace ring0
 
             notifications = await notificationRepo.GetAll(userid);
             Assert.AreEqual(2, notifications.Count);
-            n = notifications.First(x => x.Message2.Contains("skill4"));
+            n = notifications.First(x => x.Message2.Contains("skilld 4"));
             Assert.AreEqual("Pilot1", n.Message);
-            Assert.AreEqual("skill4 trained", n.Message2);
+            Assert.AreEqual("skilld 4 trained", n.Message2);
             await notificationRepo.Remove(n.NotificationId);
 
-            n = notifications.First(x => x.Message2.Contains("skill5"));
+            n = notifications.First(x => x.Message2.Contains("skille 5"));
             Assert.AreEqual("Pilot1", n.Message);
-            Assert.AreEqual("skill5 trained", n.Message2);
+            Assert.AreEqual("skille 5 trained", n.Message2);
             await notificationRepo.Remove(n.NotificationId);
         }
 
@@ -146,7 +146,7 @@ namespace ring0
                         EveId = 1,
                         KeyInfoId = 1,
                         Name = "Pilot1",
-                        Skills = new string[] {"skilla1", "skillb2", "skillc3"}.Select(x => new Skill(){SkillName = x}).ToList()
+                        Skills = new Skill[] { new Skill() {SkillName = "skilla", Level=1}, new Skill() {SkillName = "skillb", Level = 2}, new Skill() {SkillName = "skillc", Level = 3}}.ToList(),
                     }
                 }.ToList(),
                 Corporations = new List<Corporation>(),
@@ -172,7 +172,7 @@ namespace ring0
                         EveId = 1,
                         KeyInfoId = 1,
                         Name = "Pilot1",
-                        Skills = new string[] {"skilla1", "skillb2"}.Select(x => new Skill(){SkillName = x}).ToList(),
+                        Skills = new Skill[] { new Skill() {SkillName = "skilla", Level=1}, new Skill() {SkillName = "skillb", Level = 2}}.ToList(),
                     }
                 }.ToList(),
                 Corporations = new List<Corporation>(),
@@ -189,7 +189,7 @@ namespace ring0
             Assert.AreEqual(1, notifications.Count());
             var n = notifications.First();
             Assert.AreEqual("Pilot1", n.Message);
-            Assert.AreEqual("skillc3 removed", n.Message2);
+            Assert.AreEqual("skillc 3 removed", n.Message2);
             await notificationRepo.Remove(n.NotificationId);
 
             // stage 3 - removed two skills
@@ -217,14 +217,14 @@ namespace ring0
 
             notifications = await notificationRepo.GetAll(userid);
             Assert.AreEqual(2, notifications.Count());
-            n = notifications.First(x => x.Message2.Contains("skilla1"));
+            n = notifications.First(x => x.Message2.Contains("skilla 1"));
             Assert.AreEqual("Pilot1", n.Message);
-            Assert.AreEqual("skilla1 removed", n.Message2);
+            Assert.AreEqual("skilla 1 removed", n.Message2);
             await notificationRepo.Remove(n.NotificationId);
 
-            n = notifications.First(x => x.Message2.Contains("skillb2"));
+            n = notifications.First(x => x.Message2.Contains("skillb 2"));
             Assert.AreEqual("Pilot1", n.Message);
-            Assert.AreEqual("skillb2 removed", n.Message2);
+            Assert.AreEqual("skillb 2 removed", n.Message2);
             await notificationRepo.Remove(n.NotificationId);
         }
 
@@ -249,7 +249,7 @@ namespace ring0
                         EveId = 1,
                         KeyInfoId = 1,
                         Name = "Pilot1",
-                        Skills = new string[] {"skilla1", "skillb2", "skillc3"}.Select(x => new Skill(){SkillName = x}).ToList(),
+                        Skills = new Skill[] { new Skill() {SkillName = "skilla", Level=1}, new Skill() {SkillName = "skillb", Level = 2}, new Skill() {SkillName = "skillc", Level = 3}}.ToList(),
                     }
                 }.ToList(),
                 Corporations = new List<Corporation>(),
@@ -275,7 +275,7 @@ namespace ring0
                         EveId = 1,
                         KeyInfoId = 1,
                         Name = "Pilot1",
-                        Skills = new string[] {"skilla1", "skillb2", "skillx4"}.Select(x => new Skill(){SkillName = x}).ToList(),
+                        Skills = new Skill[] { new Skill() {SkillName = "skilla", Level=1}, new Skill() {SkillName = "skillb", Level = 2}, new Skill() {SkillName = "skillx", Level = 4}}.ToList(),
                     }
                 }.ToList(),
                 Corporations = new List<Corporation>(),
@@ -290,14 +290,14 @@ namespace ring0
 
             notifications = await notificationRepo.GetAll(userid);
             Assert.AreEqual(2, notifications.Count());
-            var n = notifications.First(x => x.Message2.Contains("skillc3"));
+            var n = notifications.First(x => x.Message2.Contains("skillc 3"));
             Assert.AreEqual("Pilot1", n.Message);
-            Assert.AreEqual("skillc3 removed", n.Message2);
+            Assert.AreEqual("skillc 3 removed", n.Message2);
             await notificationRepo.Remove(n.NotificationId);
 
-            n = notifications.First(x => x.Message2.Contains("skillx4"));
+            n = notifications.First(x => x.Message2.Contains("skillx 4"));
             Assert.AreEqual("Pilot1", n.Message);
-            Assert.AreEqual("skillx4 trained", n.Message2);
+            Assert.AreEqual("skillx 4 trained", n.Message2);
             await notificationRepo.Remove(n.NotificationId);
         }
 
@@ -322,7 +322,7 @@ namespace ring0
                         EveId = 1,
                         KeyInfoId = 1,
                         Name = "Pilot1",
-                        Skills = new string[] {"skill1", "skill2", "skill 3"}.Select(x => new Skill(){SkillName = x}).ToList(),
+                        Skills = new Skill[] { new Skill() {SkillName = "skilla", Level=1}, new Skill() {SkillName = "skillb", Level = 2}, new Skill() {SkillName = "skill ", Level = 3}}.ToList(),
                     }
                 }.ToList(),
                 Corporations = new List<Corporation>(),
@@ -348,7 +348,7 @@ namespace ring0
                         EveId = 1,
                         KeyInfoId = 1,
                         Name = "Pilot1",
-                        Skills = new string[] {"skill1", "skill2", "skill 4"}.Select(x => new Skill(){SkillName = x}).ToList(),
+                        Skills = new Skill[] { new Skill() {SkillName = "skilla", Level=1}, new Skill() {SkillName = "skillb", Level = 2}, new Skill() {SkillName = "skill ", Level = 4}}.ToList(),
                     }
                 }.ToList(),
                 Corporations = new List<Corporation>(),
@@ -364,9 +364,9 @@ namespace ring0
             notifications = await notificationRepo.GetAll(userid);
 
             Assert.AreEqual(1, notifications.Count);
-            var n = notifications.First(x => x.Message2.Contains("skill 4"));
+            var n = notifications.First(x => x.Message2.Contains("skill  4"));
             Assert.AreEqual("Pilot1", n.Message);
-            Assert.AreEqual("skill 4 trained", n.Message2);
+            Assert.AreEqual("skill  4 trained", n.Message2);
             await notificationRepo.Remove(n.NotificationId);
         }
 
@@ -395,21 +395,21 @@ namespace ring0
                         EveId = 1,
                         KeyInfoId = keyid1,
                         Name = "Pilot1",
-                        Skills = new string[] {"skill1", "skill2"}.Select(x => new Skill(){SkillName=x}).ToList(),
+                        Skills = new Skill[] { new Skill() {SkillName = "skill", Level=1}, new Skill() {SkillName = "skill", Level = 2}}.ToList(),
                     },
                     new Pilot()
                     {
                         EveId = 2,
                         KeyInfoId = keyid2,
                         Name = "Pilot2",
-                        Skills = new string[] {"skill1", "skill2"}.Select(x => new Skill(){SkillName=x}).ToList(),
+                        Skills = new Skill[] { new Skill() {SkillName = "skill", Level=1}, new Skill() {SkillName = "skill", Level = 2}}.ToList(),
                     },
                     new Pilot()
                     {
                         EveId = 3,
                         KeyInfoId = keyid2,
                         Name = "Pilot3",
-                        Skills = new string[] {"skilla1", "skilla2"}.Select(x => new Skill(){SkillName=x}).ToList(),
+                        Skills = new Skill[] { new Skill() {SkillName = "skilla", Level=1}, new Skill() {SkillName = "skilla", Level = 2}}.ToList(),
                     }
                 }.ToList(),
                 Corporations = new List<Corporation>(),

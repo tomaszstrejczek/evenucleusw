@@ -59,7 +59,6 @@ namespace ts.data
 
             modelBuilder.Entity<Pilot>().HasMany<Skill>().WithOne().HasForeignKey(s => s.PilotId);
             modelBuilder.Entity<Pilot>()
-                .Ignore(x => x.TrainedSkills)
                 .Ignore(x => x.TrainingLengthDescription)
                 .Ignore(x => x.TrainingWarning)
                 .Ignore(x => x.TrainingNotActive)

@@ -85,3 +85,10 @@ webapp/test/dom/api-keys-test.js
 webapp/actions/NotificationActions.js
 webapp/keys/Keys.js
 doc/Backup_of_design.cdr
+webapp/characters/PilotDetails.js
+webapp/characters/PilotInfo.js
+webapp/characters/SkillBar.js
+webapp/characters/SkillCard.js
+webapp/characters/SkillData.js
+webapp/keys/KeyCard.js
+webapp/utils/colors.js
