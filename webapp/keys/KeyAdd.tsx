@@ -1,22 +1,21 @@
 ﻿import * as React from 'react';
 
-import {IAuthServiceContext} from './../api/AuthService';
-import {IStoreContext} from './IStoreContext';
-import {IRouterContext} from './IRouterContext';
-import {createRegisterAction} from './../actions/LoginActions';
-import {IApiContext} from './IApiContext';
+import {IKeyInfoServiceContext} from './../api/KeyInfoService';
+import {IStoreContext} from './../app/IStoreContext';
+import {IRouterContext} from './../app/IRouterContext';
+import {createKeyAddAction} from './../actions/KeyActions';
 import {createNotificationShowAction, NotificationType} from './../actions/NotificationActions';
 
 
 var Input = require('./../forms/input');
 var LinkedStateMixin  = require('react/lib/LinkedStateMixin');
 
-require('app/Login.css');
+require('./../app/Login.css');
 
 import Formsy = require('formsy-react');
 
 
-class RegisterState {
+class KeyAddState {
     formError: string;
     canSubmit: boolean;
 
@@ -26,32 +25,30 @@ class RegisterState {
     }
 }
 
-class RegisterModel {
-    email: string;
-    password: string;
-    password2: string;
+class KeyAddModel {
+    keyid: number;
+    vcode: string;
 }
 
-export class Register extends React.Component<any, RegisterState> {
+export class KeyAdd extends React.Component<any, KeyAddState> {
     static mixins = [LinkedStateMixin];
 
     constructor() {
         super();
-        this.state = new RegisterState();
+        this.state = new KeyAddState();
     }
 
-    context: IStoreContext & IRouterContext & IAuthServiceContext & IApiContext;
+    context: IStoreContext & IRouterContext & IKeyInfoServiceContext;
 
     static contextTypes: React.ValidationMap<any> = {
         history: React.PropTypes.object.isRequired,
         store: React.PropTypes.object.isRequired,
-        authService: React.PropTypes.object.isRequired,
-        api: React.PropTypes.object.isRequired
+        keyInfoService: React.PropTypes.object.isRequired
     };
 
     enableButton() {
         this.setState(
-            (prevState: RegisterState, props: any): RegisterState => {
+            (prevState: KeyAddState, props: any): KeyAddState => {
                 prevState.canSubmit = true;
                 return prevState;
             })
@@ -59,23 +56,23 @@ export class Register extends React.Component<any, RegisterState> {
 
     disableButton() {
         this.setState(
-            (prevState: RegisterState, props: any): RegisterState => {
+            (prevState: KeyAddState, props: any): KeyAddState => {
                 prevState.canSubmit = false;
                 return prevState;
             })
     }
 
-    submit(model: RegisterModel): When.Promise<void> {
+    submit(model: KeyAddModel): When.Promise<void> {
         var that = this;
-        return this.context.authService.register(model.email, model.password)
-            .then(function (jwt: string) {
-                that.context.store.dispatch(createRegisterAction(that.context.api, jwt, model.email));
-                that.context.history.pushState('/');
+        return this.context.keyInfoService.AddKey(model.keyid, model.vcode)
+            .then(function (keyinfoid: number) {
+                that.context.store.dispatch(createKeyAddAction(keyinfoid, model.keyid, model.vcode));
+                that.context.history.pushState('/keys', '/keys');
             })
             .catch(function(err) {
                 console.log("Error logging in", err);
                 that.context.store.dispatch(createNotificationShowAction(NotificationType.error, "error", err.errorMessage));
-                that.setState((prevState: RegisterState, props: any): RegisterState => {
+                that.setState((prevState: KeyAddState, props: any): KeyAddState => {
                     prevState.formError = err.errorMessage;
                     return prevState;
                 });
@@ -84,26 +81,21 @@ export class Register extends React.Component<any, RegisterState> {
 
     render(): JSX.Element {
         var that = this;
-        var submitProxy = function (model: RegisterModel) {
+        var submitProxy = function (model: KeyAddModel) {
             that.submit(model);
         };
 
         return (
             <div className="row">
                 <div className="col-sm-6 col-md-4 col-md-offset-4">
-                    <h1 className="text-center login-title">Please register</h1>
+                    <h1 className="text-center login-title">Add a key (use <a href="http://community.eveonline.com/support/api-key/CreatePredefined?accessMask=17236104">this</a> link)</h1>
                     <div className="account-wall">
                         <Formsy.Form className="form-signin" onValidSubmit={submitProxy.bind(this)} onValid={this.enableButton.bind(this)} onInvalid={this.disableButton.bind(this)}>
                             <span className="help-block" ref="helpblock">{this.state.formError}</span>
-                            <Input name="email" type="text" validations="isEmail" placeholder="Email" required autofocus layout="elementOnly" validationError="This is not a valid email" ref="email"></Input>
-                            <Input name="password" type="password" placeholder="Password" required layout="elementOnly" ref="password"></Input>
-                            <Input name="password2" type="password" placeholder="Confirm password" required layout="elementOnly" ref="password2"></Input>
+                            <Input name="keyid" type="text" validations="isNumeric" placeholder="key id" required autofocus layout="elementOnly" validationError="This is not a valid key id" ref="keyid"></Input>
+                            <Input name="vcode" type="text" placeholder="vcode" required autofocus layout="elementOnly" validationError="This is not a valid vcode" ref="vcode"></Input>
                             <button className="btn btn-lg btn-primary btn-block" type="submit" disabled={!this.state.canSubmit} ref="button">
-                                Register</button>
-                            <label className="checkbox pull-left">
-                                <input type="checkbox" value="remember-me"></input>
-                                Remember me
-                            </label>
+                                Add</button>
                         </Formsy.Form>
                     </div>                    
                 </div>

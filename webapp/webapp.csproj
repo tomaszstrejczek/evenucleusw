@@ -25,6 +25,7 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="actions\ActionTypes.ts" />
+    <TypeScriptCompile Include="actions\KeyActions.ts" />
     <TypeScriptCompile Include="actions\NotificationActions.ts" />
     <TypeScriptCompile Include="actions\LoginActions.ts" />
     <TypeScriptCompile Include="actions\rootReducer.ts" />
@@ -118,6 +119,7 @@
     <TypeScriptCompile Include="characters\SkillData.ts" />
     <TypeScriptCompile Include="keys\keys.tsx" />
     <TypeScriptCompile Include="keys\KeyCard.tsx" />
+    <TypeScriptCompile Include="keys\KeyAdd.tsx" />
     <TypeScriptCompile Include="test\dom\api-keys-test.ts" />
     <TypeScriptCompile Include="test\dom\Helper.ts" />
     <TypeScriptCompile Include="test\dom\index.ts" />

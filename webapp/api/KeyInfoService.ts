@@ -9,7 +9,7 @@ export interface IKeyInfoService {
 }
 
 export interface IKeyInfoServiceContext {
-    authService: IKeyInfoService;
+    keyInfoService: IKeyInfoService;
 }
 
 export class KeyInfoService implements IKeyInfoService {

@@ -11,6 +11,7 @@ import {Characters} from './../characters/Characters';
 import {PilotDetails} from './../characters/PilotDetails';
 import {Industry} from './../industry/Industry';
 import {Keys} from './../keys/Keys';
+import {KeyAdd} from './../keys/KeyAdd';
 import {Store, createStore, applyMiddleware} from 'redux';
 import {IAppState} from './AppState';
 
@@ -29,6 +30,7 @@ export function createRoutes(store: Store): JSX.Element {
              <Route path="pilot/:name" component={PilotDetails}/>
              <Route path="industry" component={Industry}/>
              <Route path="keys" component={Keys} onEnter={onEnter}/>
+             <Route path="keyadd" component={KeyAdd} onEnter={onEnter}/>
              <Route path="login" component={Login}/>
              <Route path="logout" component={Logout}/>
              <Route path="register" component={Register}/>

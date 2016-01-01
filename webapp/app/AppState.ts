@@ -13,4 +13,5 @@ export class LoginInfo {
 export interface IAppState {
     loginInfo: LoginInfo;
     notifications: ReactNotifications.Notification[];
+    keys: ts.dto.KeyInfoDto[];
 }

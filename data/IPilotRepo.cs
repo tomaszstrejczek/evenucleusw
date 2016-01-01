@@ -15,6 +15,7 @@ namespace ts.data
         Task<ICollection<Pilot>> GetByKeyInfoId(long keyinfoid);
         Task SetFreeManufacturingJobsNofificationCount(long pilotid, int value);
         Task SetFreeResearchJobsNofificationCount(long pilotid, int value);
+        Task CheckKey(long keyid, string vcode);
         Task SimpleUpdateFromKey(long userid, long keyinfoid, long keyid, string vcode);
         Task DeleteByKey(long keyinfoid);
     }

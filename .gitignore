@@ -92,3 +92,5 @@ webapp/characters/SkillCard.js
 webapp/characters/SkillData.js
 webapp/keys/KeyCard.js
 webapp/utils/colors.js
+webapp/keys/KeyAdd.js
+webapp/actions/KeyActions.js

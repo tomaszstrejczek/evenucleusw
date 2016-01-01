@@ -129,6 +129,15 @@ namespace ts.data
             }
         }
 
+        public Task CheckKey(long keyid, string vcode)
+        {
+            _logger.Debug("{method} {keyid}", "pilotRepo::CheckKey", keyid);
+
+            _eveApi.GetCharacters(keyid, vcode);
+            return Task.FromResult(0);
+        }
+
+
         public async Task DeleteByKey(long keyinfoid)
         {
             _logger.Debug("{method} {keyid}", "pilotRepo::DeleteByKey", keyinfoid);

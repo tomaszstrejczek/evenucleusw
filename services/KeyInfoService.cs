@@ -24,6 +24,8 @@ namespace ts.services
 
         public async Task<long> Add(long userid, long keyid, string vcode)
         {
+            await _pilotRepo.CheckKey(keyid, vcode);
+
             var keyinfoid = await _keyInfoRepo.AddKey(userid, keyid, vcode);
             await _pilotRepo.SimpleUpdateFromKey(userid, keyinfoid, keyid, vcode);
 

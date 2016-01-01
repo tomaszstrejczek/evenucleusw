@@ -67,7 +67,14 @@ export class Runner {
                     })
                     .catch((reason: ts.dto.Error) => {
                         assert.equal(reason.errorMessage, "Authentication failure. Invalid key and/or verification code");
+                    })
+                    .then(() => {
+                        return keyInfoService.GetAll();
+                    })
+                    .then((data: ts.dto.KeyInfoDto[]) => {
+                        assert.equal(data.length, 0);
                     });
+
                 return r;
             });
 

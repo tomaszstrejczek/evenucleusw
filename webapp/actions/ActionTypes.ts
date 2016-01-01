@@ -7,5 +7,6 @@ export enum ActionTypes {
     LOGOUT_USER,
     REGISTER_USER,
     NOTIFICATION_SHOW,
-    NOTIFICATION_HIDE
+    NOTIFICATION_HIDE,
+    KEY_ADD
 };

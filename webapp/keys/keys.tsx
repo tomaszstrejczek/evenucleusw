@@ -2,6 +2,7 @@
 
 import {yellow, blue} from './../utils/colors';
 import {KeyCard} from './KeyCard';
+import {Link} from 'react-router';
 
 export class Keys extends React.Component<any, any>{
     render(): JSX.Element {
@@ -16,11 +17,13 @@ export class Keys extends React.Component<any, any>{
                     </div>
                 <div className="row">
                     <div className="col-md-4 col-xs-12 col-lg-3" style={{ margin: "5px" }}>
-                        <div className="panel panel-default">
-                          <div className="panel-heading" style={{ background: blue.darkest, color: "white" }} >
-                            <span>Add new</span><span className="glyphicon glyphicon-plus pull-right"></span>
-                          </div>
-                        </div>
+                        <Link to="/keyadd">
+                            <div className="panel panel-default">
+                              <div className="panel-heading" style={{ background: blue.darkest, color: "white" }} >
+                                <span>Add new</span><span className="glyphicon glyphicon-plus pull-right"></span>
+                              </div>
+                            </div>
+                        </Link>
                     </div>
                 </div>
             </div>

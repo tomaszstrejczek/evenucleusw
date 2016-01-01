@@ -5,6 +5,7 @@ import {KernelCreator} from './kernel';
 import * as TypeIoc from 'typeioc';
 import {IKernelContext} from './IKernelContext';
 import {IAuthServiceContext, IAuthService} from './../api/AuthService';
+import {IKeyInfoServiceContext, IKeyInfoService} from './../api/KeyInfoService';
 import {IApiCaller} from './../api/IApiCaller';
 import {IApiContext} from './IApiContext';
 import * as RactNotifications from 'react-notifications';
@@ -37,6 +38,7 @@ export class App extends React.Component<any, AppComponentState> implements Reac
 
     static childContextTypes: React.ValidationMap<any> = {
         authService: React.PropTypes.object,
+        keyInfoService: React.PropTypes.object,
         api: React.PropTypes.object
     };
     private changeListener: () => void;
@@ -47,10 +49,11 @@ export class App extends React.Component<any, AppComponentState> implements Reac
         this.state = new AppComponentState(s.notifications);
     }
 
-    getChildContext(): IAuthServiceContext & IApiContext{
+    getChildContext(): IAuthServiceContext & IApiContext & IKeyInfoServiceContext{
         return {
             authService: kernelSingleton.resolve<IAuthService>("IAuthService"),
-            api: kernelSingleton.resolve<IApiCaller>("IApiCaller")
+            api: kernelSingleton.resolve<IApiCaller>("IApiCaller"),
+            keyInfoService: kernelSingleton.resolve<IKeyInfoService>("IKeyInfoService"),
         };
     };
 
