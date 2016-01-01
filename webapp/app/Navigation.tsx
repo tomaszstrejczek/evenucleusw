@@ -18,6 +18,7 @@ export class Navigation extends React.Component<any, NavigationState> {
 
     public state: NavigationState;
     private changeListener: () => void;
+    private unsubscribe: Function;
 
     constructor(props, context) {
         super(props, context);
@@ -27,7 +28,7 @@ export class Navigation extends React.Component<any, NavigationState> {
 
     componentDidMount() {
         this.changeListener = this._onChange.bind(this);
-        this.context.store.subscribe(this.changeListener);
+        this.unsubscribe = this.context.store.subscribe(this.changeListener);
     }
 
     _onChange() {
@@ -36,7 +37,7 @@ export class Navigation extends React.Component<any, NavigationState> {
     }
 
     componentWillUnmount() {
-        //loginStore.removeChangeListener(this.changeListener);
+        this.unsubscribe();
     }
 
     render(): JSX.Element {

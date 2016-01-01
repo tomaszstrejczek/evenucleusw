@@ -1,12 +1,77 @@
 ﻿import * as React from 'react';
 
+import {IKeyInfoServiceContext} from './../api/KeyInfoService';
+import {IStoreContext} from './../app/IStoreContext';
+import {createNotificationShowAction, NotificationType} from './../actions/NotificationActions';
+import {IAppState} from './../app/AppState';
+import {createKeyGetAllAction} from './../actions/KeyActions';
+
 import {yellow, blue} from './../utils/colors';
 import {KeyCard} from './KeyCard';
 import {Link} from 'react-router';
 
-export class Keys extends React.Component<any, any>{
+import update =require('react-addons-update');
+
+
+interface IKeysState {
+    keys: ts.dto.KeyInfoDto[];
+}
+export class Keys extends React.Component<IKeysState, any>{
+    context: IStoreContext & IKeyInfoServiceContext;
+
+    static contextTypes: React.ValidationMap<any> = {
+        store: React.PropTypes.object.isRequired,
+        keyInfoService: React.PropTypes.object.isRequired
+    };
+
+    private changeListener: () => void;
+    private unsubscribe: Function;
+
+    constructor() {
+        this.state = { keys: [] };
+        super();
+    }
+
+    componentDidMount() {
+        this.changeListener = this._onChange.bind(this);
+        this.unsubscribe = this.context.store.subscribe(this.changeListener);
+
+        var that = this;
+        this.context.store.dispatch( (dispatch, getState) => {
+            that.context.keyInfoService.GetAll()
+                .then( keys => {
+                    dispatch(createKeyGetAllAction(keys));
+                })
+                .catch(function (err) {
+                    console.log("Error logging in", err);
+                    dispatch(createNotificationShowAction(NotificationType.error, "error", err.errorMessage));
+                });
+        });
+    }
+
+    componentWillUnmount() {
+        this.unsubscribe();
+    }
+
+    _onChange() {
+        var s: IAppState = this.context.store.getState() as IAppState;
+        var currentKeys = this.state.keys;
+
+        // to add
+        var currentKeyIds = currentKeys.map(elem => elem.keyId);
+        var toadd = s.keys.filter(elem => currentKeyIds.indexOf(elem.keyId)===-1);
+
+        // to remove
+        var newIds = s.keys.map(elem => elem.keyId);
+        var toremove = currentKeys.filter(elem => newIds.indexOf(elem.keyId) === -1);
+
+        currentKeys = update(currentKeys, { $push: toadd, $shift: toremove });
+
+        this.setState({ keys: currentKeys });
+    }
+
     render(): JSX.Element {
-        var data = this.getTestData();
+        var data = this.state.keys;
 
         return (
             <div>

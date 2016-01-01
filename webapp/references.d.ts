@@ -1,5 +1,6 @@
 /// <reference path="typings/react/react.d.ts" />
 /// <reference path="typings/react/react-addons-test-utils.d.ts" />
+/// <reference path="typings/react/react-addons-update.d.ts" />
 /// <reference path="typings/react/react-dom.d.ts" />
 /// <reference path="typings/jquery/jquery.d.ts" />
 /// <reference path="typings/fastclick/fastclick.d.ts" />

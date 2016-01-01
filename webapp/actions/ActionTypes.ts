@@ -8,5 +8,6 @@ export enum ActionTypes {
     REGISTER_USER,
     NOTIFICATION_SHOW,
     NOTIFICATION_HIDE,
-    KEY_ADD
+    KEY_ADD,
+    KEY_GETALL
 };

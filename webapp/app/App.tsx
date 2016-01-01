@@ -42,6 +42,7 @@ export class App extends React.Component<any, AppComponentState> implements Reac
         api: React.PropTypes.object
     };
     private changeListener: () => void;
+    private unsubscribe: Function;
 
     constructor(props, context) {
         super(props, context);
@@ -60,7 +61,11 @@ export class App extends React.Component<any, AppComponentState> implements Reac
 
     componentDidMount() {
         this.changeListener = this._onChange.bind(this);
-        this.context.store.subscribe(this.changeListener);
+        this.unsubscribe = this.context.store.subscribe(this.changeListener);
+    }
+
+    componentWillUnmount() {
+        this.unsubscribe();
     }
 
     _onChange() {

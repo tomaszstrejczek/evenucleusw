@@ -43,6 +43,7 @@
     "phantomjs": "^1.9.18",
     "react": "^0.14.3",
     "react-addons-test-utils": "^0.14.3",
+    "react-addons-update": "^0.14.5",
     "react-dom": "^0.14.2",
     "react-notifications": "^0.1.0",
     "react-redux": "^4.0.0",

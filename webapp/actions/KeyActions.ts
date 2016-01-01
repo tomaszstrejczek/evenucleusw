@@ -16,6 +16,13 @@ export const createKeyAddAction = createAction<ts.dto.KeyInfoDto>(
     }
 );
 
+export const createKeyGetAllAction = createAction<ts.dto.KeyInfoDto[]>(
+    ActionTypes[ActionTypes.KEY_GETALL],
+    (keys: ts.dto.KeyInfoDto[]) => {
+        return keys;
+    }
+);
+
 
 export var KeyReducer = handleActions<ts.dto.KeyInfoDto[]>(
 {
@@ -24,6 +31,10 @@ export var KeyReducer = handleActions<ts.dto.KeyInfoDto[]>(
         var result = owl.deepCopy(state, 10);
         result.push(payload);
         return result;
+    },
+    [ActionTypes[ActionTypes.KEY_GETALL]]: (state: ts.dto.KeyInfoDto[], action: Action): ts.dto.KeyInfoDto[] => {
+        var payload = action.payload as ts.dto.KeyInfoDto[];
+        return payload;
     },
 }, new Array<ts.dto.KeyInfoDto>()
 );
