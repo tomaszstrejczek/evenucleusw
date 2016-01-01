@@ -45,12 +45,10 @@ function run() {
     };
     const store: Store = applyMiddleware(reduxThunk as any)(createStore)(rootReducer, initialState);
 
-    Router.run(routes, function (Handler: new() => React.Component<any, any>) {
-        ReactDOM.render(
-            <Provider store={store}>
-                <Handler/>
-            </Provider>, document.getElementById("app"));
-    });
+    ReactDOM.render(
+        <Provider store={store}>
+            {routes}
+        </Provider>, document.getElementById("app"));
 };
 
 $(document).ready(function() {

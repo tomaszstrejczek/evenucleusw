@@ -24,7 +24,7 @@ import * as When from 'when';
 interface ContainerProps {
     store: Store;
     authService: IAuthService;
-    router: any;
+    history: any;
     api: IApiCaller;
 }
 
@@ -33,7 +33,7 @@ class Container extends React.Component<ContainerProps, any> implements React.Ch
     static childContextTypes: React.ValidationMap<any> = {
         authService: React.PropTypes.object,
         store: React.PropTypes.object,
-        router: React.PropTypes.func,
+        history: React.PropTypes.object,
         api: React.PropTypes.object,
     };
 
@@ -41,7 +41,7 @@ class Container extends React.Component<ContainerProps, any> implements React.Ch
         return {
             authService: this.props.authService,
             store: this.props.store,
-            router: this.props.router,
+            history: this.props.history,
             api: this.props.api
         };
     };
@@ -63,7 +63,7 @@ export class Runner {
             let password: HTMLInputElement;
             let button: HTMLButtonElement;
             let loginStub: Sinon.SinonStub;
-            let transitionToStub: Sinon.SinonStub;
+            let pushStateStub: Sinon.SinonStub;
             
             beforeEach(function () {
                 var initialState = {
@@ -74,15 +74,15 @@ export class Runner {
                 var api = new ApiCaller();
                 var authService = new AuthService(api);
                 loginStub = Sinon.stub(authService, "login");
-                var router = function () { };
-                (router as any).transitionTo = (adr: string) => { };
-                (router as any).makeHref = (to: string): string => to;
+                var router = { };
+                (router as any).pushState = (adr: string) => { };
+                (router as any).createHref = (to: string): string => to;
                 (router as any).isActive = (): boolean => true;
                 
-                transitionToStub = Sinon.stub(router, "transitionTo");
+                pushStateStub = Sinon.stub(router, "pushState");
 
                 var component = ReactDOM.render(
-                    <Container store={store} authService={authService} router={router} api={api}/>
+                    <Container store={store} authService={authService} history={router} api={api}/>
                     , div);
 
                 login = ReactAddons.findRenderedComponentWithType(component, Login);
@@ -177,8 +177,8 @@ export class Runner {
                         expect(loginStub.calledOnce).to.be.true;
                         expect(loginStub.calledWith("ala@a.a", "123")).to.be.true;
 
-                        expect(transitionToStub.calledOnce).to.be.true;
-                        expect(transitionToStub.calledWith("/")).to.be.true;
+                        expect(pushStateStub.calledOnce).to.be.true;
+                        expect(pushStateStub.calledWith("/")).to.be.true;
                     });
             });
 
@@ -206,7 +206,7 @@ export class Runner {
                         var helpBlock = button = ReactDOM.findDOMNode<HTMLButtonElement>(login.refs["helpblock"]);
                         expect(helpBlock.textContent).to.be.eq("Invalid ala");
 
-                        expect(transitionToStub.calledOnce).to.be.false;
+                        expect(pushStateStub.calledOnce).to.be.false;
 
                     });
             });

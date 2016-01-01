@@ -18,8 +18,6 @@ require('./../styles/notifications.css');
 
 var nsm = require('react-notifications');
 
-var RouteHandler = ReactRouter.RouteHandler;
-
 var kernelSingleton = KernelCreator.create();
 
 class AppComponentState {
@@ -79,7 +77,7 @@ export class App extends React.Component<any, AppComponentState> implements Reac
             <div>
                 <Navigation/>
                 <div className="container-fluid">
-                <RouteHandler/>
+                {this.props.children}
                     </div>
                 <Notifications notifications={this.state.notifications} onRequestHide={this.handleRequestHide.bind(this)}/>
             </div>

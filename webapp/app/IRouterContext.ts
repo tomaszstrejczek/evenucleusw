@@ -1,5 +1,5 @@
-﻿import {Context} from 'react-router';
+﻿import {History} from 'react-router';
 
 export interface IRouterContext {
-    router: Context;
+    history: History;
 }

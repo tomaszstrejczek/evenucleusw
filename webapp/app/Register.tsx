@@ -1,5 +1,4 @@
 ﻿import * as React from 'react';
-import {Context} from 'react-router';
 
 import {IAuthServiceContext} from './../api/AuthService';
 import {IStoreContext} from './IStoreContext';
@@ -44,7 +43,7 @@ export class Register extends React.Component<any, RegisterState> {
     context: IStoreContext & IRouterContext & IAuthServiceContext & IApiContext;
 
     static contextTypes: React.ValidationMap<any> = {
-        router: React.PropTypes.func.isRequired,
+        history: React.PropTypes.object.isRequired,
         store: React.PropTypes.object.isRequired,
         authService: React.PropTypes.object.isRequired,
         api: React.PropTypes.object.isRequired
@@ -71,7 +70,7 @@ export class Register extends React.Component<any, RegisterState> {
         return this.context.authService.register(model.email, model.password)
             .then(function (jwt: string) {
                 that.context.store.dispatch(createRegisterAction(that.context.api, jwt, model.email));
-                that.context.router.transitionTo('/');
+                that.context.history.pushState('/');
             })
             .catch(function(err) {
                 console.log("Error logging in", err);
