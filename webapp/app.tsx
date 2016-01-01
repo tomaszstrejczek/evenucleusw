@@ -11,7 +11,7 @@ import $ = require('jquery');
 import * as fclick from 'fastclick';
 //import ActionTypes from 'actions/ActionTypes';
 //import Dispatcher from 'app/Dispatcher';
-import {routes} from './app/Routes';
+import {createRoutes} from './app/Routes';
 import Router = require('react-router');
 
 import {LoginInfo} from './app/AppState';
@@ -47,7 +47,7 @@ function run() {
 
     ReactDOM.render(
         <Provider store={store}>
-            {routes}
+            {createRoutes(store)}
         </Provider>, document.getElementById("app"));
 };
 

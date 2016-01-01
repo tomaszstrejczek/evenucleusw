@@ -177,7 +177,11 @@ export class Login extends React.Component<any, LoginState> {
         return this.context.authService.login(model.email, model.password)
             .then(function (jwt: string) {
                 that.context.store.dispatch(createLoginAction(that.context.api, jwt, model.email));
-                that.context.history.pushState('/');                    
+                var nextPath = '/';
+                var location = that.props.location as any;
+                if (location && location.state && location.state.nextPathname)
+                    nextPath = location.state.nextPathname;
+                that.context.history.pushState(nextPath, nextPath);                    
             })
             .catch(function (err: ts.dto.Error) {
                 console.log("Error logging in ", err);
