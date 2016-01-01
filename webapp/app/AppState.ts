@@ -9,9 +9,18 @@ export class LoginInfo {
     }
 }
 
+export class ConfirmInfo {
+    public visible: boolean;
+    public owner: string;
+    public title: string;
+    public description: string;
+    public okButton: string;
+    public confirmed: boolean;
+}
 
 export interface IAppState {
     loginInfo: LoginInfo;
     notifications: ReactNotifications.Notification[];
     keys: ts.dto.KeyInfoDto[];
+    confirmInfo: ConfirmInfo;
 }

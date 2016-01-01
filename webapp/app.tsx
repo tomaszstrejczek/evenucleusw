@@ -20,6 +20,8 @@ import {Store, createStore, applyMiddleware} from 'redux';
 import {Provider} from 'react-redux';
 import reduxThunk = require("redux-thunk");
 
+var modal = require('react-modal');
+
 console.log('app starting');
 
 
@@ -45,10 +47,13 @@ function run() {
     };
     const store: Store = applyMiddleware(reduxThunk as any)(createStore)(rootReducer, initialState);
 
+    var appElement = document.getElementById("app");
+    (modal as any).setAppElement(appElement);
+
     ReactDOM.render(
         <Provider store={store}>
             {createRoutes(store)}
-        </Provider>, document.getElementById("app"));
+        </Provider>, appElement);
 };
 
 $(document).ready(function() {

@@ -1,5 +1,8 @@
 ﻿import * as React from 'react';
 
+import {IStoreContext} from './../app/IStoreContext';
+import {createConfirmShowAction} from './../actions/ConfirmActions';
+
 import {owl} from './../utils/deepCopy';
 import {TsColor} from './../utils/colors';
 
@@ -10,12 +13,24 @@ export interface KeyCardProperties {
 }
 
 export class KeyCard extends React.Component<KeyCardProperties, any> {
+
+    context: IStoreContext;
+
+    static contextTypes: React.ValidationMap<any> = {
+        store: React.PropTypes.object.isRequired
+    };
+
+
+    handleDelete() {
+        this.context.store.dispatch(createConfirmShowAction(true, "keycard", "Confirm delete", "Do you want delete key " + this.props.keyDto.keyId+"?", "Delete" ));
+    }
+
     render(): JSX.Element {
         return (
             <div className="col-md-4 col-xs-12 col-lg-3" style={{ margin: "5px" }}>
                 <div className="panel panel-default">
                   <div className="panel-heading" style={{ background: this.props.color.darkest, color: "white" }} >
-                    <span>{this.props.keyDto.keyId}</span><span className="glyphicon glyphicon-trash pull-right"></span>
+                    <span>{this.props.keyDto.keyId}</span><span className="glyphicon glyphicon-trash pull-right" onClick={this.handleDelete.bind(this)}></span>
                   </div>
                   <div className="panel-body" style={{ padding: "0px"}}>
                     <table className="table table-striped" style={{ marginBottom: "0px" }} >

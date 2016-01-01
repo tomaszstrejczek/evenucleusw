@@ -22,5 +22,6 @@
 
 /// <reference path="typings/mine-formsy-react/formsy-react.d.ts" />
 /// <reference path="typings/mine-react-notifications/react-notifications.d.ts" />
+/// <reference path="typings/mine-react-modal/react-modal.d.ts" />
 
 /// <reference path="Scripts/TypeLite.Net4.d.ts" />

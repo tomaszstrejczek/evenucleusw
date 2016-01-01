@@ -25,6 +25,7 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="actions\ActionTypes.ts" />
+    <TypeScriptCompile Include="actions\ConfirmActions.ts" />
     <TypeScriptCompile Include="actions\KeyActions.ts" />
     <TypeScriptCompile Include="actions\NotificationActions.ts" />
     <TypeScriptCompile Include="actions\LoginActions.ts" />
@@ -135,6 +136,7 @@
     <TypeScriptCompile Include="typings\fastclick\fastclick.d.ts" />
     <TypeScriptCompile Include="typings\jquery\jquery.d.ts" />
     <TypeScriptCompile Include="typings\mine-formsy-react\formsy-react.d.ts" />
+    <TypeScriptCompile Include="typings\mine-react-modal\react-modal.d.ts" />
     <TypeScriptCompile Include="typings\mine-react-notifications\react-notifications.d.ts" />
     <TypeScriptCompile Include="typings\node\node.d.ts" />
     <TypeScriptCompile Include="typings\react-router\react-router.d.ts" />
