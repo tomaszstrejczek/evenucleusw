@@ -33,6 +33,7 @@ namespace ts.dto
 
         public bool TrainingNotActive { get; set; }
 
-        public List<SkillDto> Skills { get; set; } 
+        public List<SkillDto> Skills { get; set; }
+        public List<SkillInQueueDto> SkillsInQueue { get; set; }
     }
 }

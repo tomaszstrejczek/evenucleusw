@@ -14,7 +14,7 @@ using ts.services;
 namespace ring2
 {
     [TestClass]
-    public class PilotsServiceT : TestBase
+    public class EvePilotDataServiceT : TestBase
     {
         [TestMethod]
         public async Task SinglePilot()
@@ -27,7 +27,7 @@ namespace ring2
                 .Returns(Task.FromResult( (ICollection<KeyInfo>) (new KeyInfo[] {new KeyInfo() {KeyId = code, VCode = vcode, KeyInfoId = code+1}}.ToList())));
 
             var api = new EveApi(Logger, EveCache);
-            var pilotLocalService = new PilotService(keyRepoMock.Object, api, Logger, TypeNameDict);
+            var pilotLocalService = new EvePilotDataService(keyRepoMock.Object, api, Logger, TypeNameDict);
 
             var result = await pilotLocalService.Get(1);
             Assert.AreEqual(1, result.Item1.Count);
@@ -52,7 +52,7 @@ namespace ring2
                 .Returns(Task.FromResult((ICollection<KeyInfo>)(new KeyInfo[] { new KeyInfo() { KeyId = code, VCode = vcode, KeyInfoId = code+1} }.ToList())));
 
             var api = new EveApi(Logger, EveCache);
-            var pilotLocalService = new PilotService(keyRepoMock.Object, api, Logger, TypeNameDict);
+            var pilotLocalService = new EvePilotDataService(keyRepoMock.Object, api, Logger, TypeNameDict);
 
             var result = await pilotLocalService.Get(1);
             Assert.AreEqual(1, result.Item1.Count);
@@ -80,7 +80,7 @@ namespace ring2
                 .Returns(Task.FromResult((ICollection<KeyInfo>)(new KeyInfo[] { new KeyInfo() { KeyId = code, VCode = vcode }, new KeyInfo() { KeyId = code2, VCode = vcode2 } }.ToList())));
 
             var api = new EveApi(Logger, EveCache);
-            var pilotLocalService = new PilotService(keyRepoMock.Object, api, Logger, TypeNameDict);
+            var pilotLocalService = new EvePilotDataService(keyRepoMock.Object, api, Logger, TypeNameDict);
 
             var result = await pilotLocalService.Get(1);
             Assert.AreEqual(3, result.Item1.Count);
@@ -100,7 +100,7 @@ namespace ring2
                 .Returns(Task.FromResult((ICollection<KeyInfo>)(new KeyInfo[] { new KeyInfo() { KeyId = code, VCode = vcode, KeyInfoId=code+1 } }.ToList())));
 
             var api = new EveApi(Logger, EveCache);
-            var pilotLocalService = new PilotService(keyRepoMock.Object, api, Logger, TypeNameDict);
+            var pilotLocalService = new EvePilotDataService(keyRepoMock.Object, api, Logger, TypeNameDict);
 
             var result = await pilotLocalService.Get(1);
             Assert.AreEqual(3, result.Item1.Count);
@@ -122,7 +122,7 @@ namespace ring2
                 .Returns(Task.FromResult((ICollection<KeyInfo>)(new KeyInfo[] { new KeyInfo() { KeyId = code, VCode = vcode, KeyInfoId = code+1 } }.ToList())));
 
             var api = new EveApi(Logger, EveCache);
-            var pilotLocalService = new PilotService(keyRepoMock.Object, api, Logger, TypeNameDict);
+            var pilotLocalService = new EvePilotDataService(keyRepoMock.Object, api, Logger, TypeNameDict);
 
             var result = await pilotLocalService.Get(1);
             Assert.AreEqual(0, result.Item1.Count);

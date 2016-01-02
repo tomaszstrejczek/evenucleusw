@@ -39,13 +39,15 @@ namespace ts.api
             existingContainer.Bind<IKeyInfoRepo>().To<KeyInfoRepo>();
             existingContainer.Bind<INotificationRepo>().To<NotificationRepo>();
             existingContainer.Bind<IPilotRepo>().To<PilotRepo>();
-            existingContainer.Bind<IPilotService>().To<PilotService>();
+            existingContainer.Bind<IEvePilotDataService>().To<EvePilotDataService>();
             existingContainer.Bind<IRefTypeDict>().To<RefTypeDict>();
             existingContainer.Bind<ISkillRepo>().To<SkillRepo>();
+            existingContainer.Bind<ISkillInQueueRepo>().To<SkillInQueueRepo>();
             existingContainer.Bind<ITypeNameDict>().To<TypeNameDict>();
             existingContainer.Bind<IAccountService>().To<services.AccountService>();
             existingContainer.Bind<IKeyInfoService>().To<services.KeyInfoService>();
             existingContainer.Bind<IEveLibCache>().To<EveSqlServerCache>();
+            existingContainer.Bind<IBackgroundUpdate>().To<ts.services.BackgroundUpdate>();
 
             var config = new LoggerConfiguration();
 #if DEBUG

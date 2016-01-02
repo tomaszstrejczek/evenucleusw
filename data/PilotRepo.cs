@@ -70,7 +70,7 @@ namespace ts.data
             _logger.Debug("{method} {userid}", "PilotRepo::GetAll", userid);
             using (var ctx = _accountContextProvider.Context)
             {
-                var pilots = await ctx.Pilots.Include(p => p.Skills).Where(c => c.UserId == userid).ToListAsync();
+                var pilots = await ctx.Pilots.Include(p => p.Skills).Include(p => p.SkillsInQueue).Where(c => c.UserId == userid).ToListAsync();
                 return pilots;
             }
         }
@@ -80,7 +80,7 @@ namespace ts.data
             _logger.Debug("{method} {keyinfoid}", "PilotRepo::GetByKeyInfoId", keyinfoid);
             using (var ctx = _accountContextProvider.Context)
             {
-                var pilots = await ctx.Pilots.Include(p => p.Skills).Where(c => c.KeyInfoId== keyinfoid).ToListAsync();
+                var pilots = await ctx.Pilots.Include(p => p.Skills).Include(p => p.SkillsInQueue).Where(c => c.KeyInfoId== keyinfoid).ToListAsync();
                 return pilots;
             }
         }
@@ -117,14 +117,18 @@ namespace ts.data
         {
             _logger.Debug("{method} {userid} {keyid} {keyinfoid}", "pilotRepo::SimpleUpdateFromKey", userid, keyid, keyinfoid);
 
-            var pilots = (await GetAll(userid)).Select(x => x.EveId);
-            var characters = _eveApi.GetCharacters(keyid, vcode);
-            var toadd = characters.Where(x => !pilots.Contains(x.CharacterId));
-            var pilotsToAdd =
-                toadd.Select(a => new Pilot() { UserId = userid, Name = a.CharacterName, KeyInfoId = keyinfoid, EveId = a.CharacterId }).ToList();
             using (var ctx = _accountContextProvider.Context)
             {
-                ctx.Pilots.AddRange(pilotsToAdd);
+                var user = await ctx.Users.Include(c => c.Pilots).SingleOrDefaultAsync(u => u.UserId == userid);
+
+                var characters = _eveApi.GetCharacters(keyid, vcode);
+                var toadd = characters.Where(x => user.Pilots.All(y => y.EveId != x.CharacterId));
+                var pilotsToAdd =
+                    toadd.Select(a => new Pilot() { UserId = userid, Name = a.CharacterName, KeyInfoId = keyinfoid, EveId = a.CharacterId }).ToList();
+
+                foreach (var a in pilotsToAdd)
+                    user.Pilots.Add(a);
+
                 await ctx.SaveChangesAsync();
             }
         }

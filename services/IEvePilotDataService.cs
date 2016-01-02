@@ -8,7 +8,7 @@ using ts.domain;
 
 namespace ts.services
 {
-    public interface IPilotService
+    public interface IEvePilotDataService
     {
         /// <returns>Returns list of PilotInfo, CorporationInfo, CachedUntilUTC, trained skills</returns>
         Task<Tuple<List<Pilot>, List<Corporation>, DateTime>> Get(long userid);

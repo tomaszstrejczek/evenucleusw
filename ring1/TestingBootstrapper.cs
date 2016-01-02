@@ -43,13 +43,15 @@ namespace ring1
             container.Register<IKeyInfoRepo,KeyInfoRepo>();
             container.Register<INotificationRepo,NotificationRepo>();
             container.Register<IPilotRepo,PilotRepo>();
-            container.Register<IPilotService,PilotService>();
+            container.Register<IEvePilotDataService,EvePilotDataService>();
             container.Register<IRefTypeDict,RefTypeDict>();
             container.Register<ISkillRepo,SkillRepo>();
+            container.Register<ISkillInQueueRepo, SkillInQueueRepo>();
             container.Register<ITypeNameDict,TypeNameDict>();
             container.Register<IAccountService, ts.services.AccountService>();
             container.Register<IKeyInfoService, ts.services.KeyInfoService>();
             container.Register<IEveLibCache, EveSqlServerCache>();
+            container.Register<IBackgroundUpdate, ts.services.BackgroundUpdate>();
 
             var config = new LoggerConfiguration();
 #if DEBUG
@@ -76,7 +78,8 @@ namespace ring1
             return new INancyModule[]
             {
                 new AccountService(container.Resolve<IAccountService>()),
-                new Pilots(),
+                new Pilots(container.Resolve<IPilotRepo>()),
+                new ts.api.BackgroundUpdate(container.Resolve<IBackgroundUpdate>()), 
                 new ts.api.KeyInfoService(container.Resolve<IKeyInfoService>()),
             }.AsEnumerable();
         }

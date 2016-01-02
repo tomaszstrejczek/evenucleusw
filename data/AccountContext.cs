@@ -20,6 +20,7 @@ namespace ts.data
         public DbSet<Pilot> Pilots { get; set; }
         public DbSet<Corporation> Corporations { get; set; }
         public DbSet<Skill> Skills { get; set; }
+        public DbSet<SkillInQueue> SkillsInQueue { get; set; }
         public DbSet<Job> Jobs { get; set; }
         public DbSet<Notification> Notifications { get; set; }
         public DbSet<CacheEntry> CacheEntries { get; set; }
@@ -58,6 +59,7 @@ namespace ts.data
             modelBuilder.Entity<Session>().HasOne<User>();
 
             modelBuilder.Entity<Pilot>().HasMany<Skill>().WithOne().HasForeignKey(s => s.PilotId);
+            modelBuilder.Entity<Pilot>().HasMany<SkillInQueue>().WithOne().HasForeignKey(s => s.PilotId);
             modelBuilder.Entity<Pilot>()
                 .Ignore(x => x.TrainingLengthDescription)
                 .Ignore(x => x.TrainingWarning)
@@ -68,6 +70,7 @@ namespace ts.data
                 .Ignore(x => x.Url);
 
             modelBuilder.Entity<Skill>().HasOne<Pilot>();
+            modelBuilder.Entity<SkillInQueue>().HasOne<Pilot>();
 
             modelBuilder.Entity<Job>()
                 .Ignore(x => x.DurationDescription);

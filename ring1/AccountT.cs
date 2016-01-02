@@ -66,7 +66,7 @@ namespace ring1
             Assert.AreEqual(HttpStatusCode.OK, result.StatusCode);
             var skey = result.Body.DeserializeJson<SingleStringDto>().Value;
 
-            result = browser.Get("http://localhost:8070/pilots/1", with => {
+            result = browser.Get("http://localhost:8070/pilots", with => {
                 with.Header("jwt", skey);
                 with.Accept(new MediaRange("application/json"));
             });

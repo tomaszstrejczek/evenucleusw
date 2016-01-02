@@ -19,6 +19,8 @@ namespace ts.domain
                     .ForMember(d => d.Pilots, opt => opt.Ignore())
                     .ForMember(d => d.Corporations, opt => opt.Ignore());
                 cfg.CreateMap<Skill, SkillDto>();
+                cfg.CreateMap<SkillInQueue, SkillInQueueDto>()
+                    .ForMember(d => d.Length, m => m.MapFrom(s => TimeSpanFormatter.Format(s.Length)));
                 cfg.CreateMap<Pilot, PilotDto>();
                 cfg.CreateMap<Corporation, CorporationDto>();
             });

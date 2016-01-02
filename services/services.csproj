@@ -53,13 +53,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccountService.cs" />
+    <Compile Include="BackgroundUpdate.cs" />
     <Compile Include="IAccountService.cs" />
+    <Compile Include="IBackgroundUpdate.cs" />
     <Compile Include="IJobService.cs" />
     <Compile Include="IKeyInfoService.cs" />
-    <Compile Include="IPilotService.cs" />
+    <Compile Include="IEvePilotDataService.cs" />
     <Compile Include="JobService.cs" />
     <Compile Include="KeyInfoService.cs" />
-    <Compile Include="PilotService.cs" />
+    <Compile Include="EvePilotDataService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

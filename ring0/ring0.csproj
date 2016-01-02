@@ -148,6 +148,7 @@
     <Compile Include="MyTestConfiguration.cs" />
     <Compile Include="AccountContextT.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SkillInQueueRepoT.cs" />
     <Compile Include="SkillRepoT.cs" />
     <Compile Include="TestBase.cs" />
     <Compile Include="PilotRepoT.cs" />

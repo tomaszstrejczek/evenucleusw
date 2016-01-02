@@ -3,20 +3,29 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AutoMapper;
 using Nancy;
+using ts.data;
+using ts.dto;
 
 namespace ts.api
 {
     public class Pilots: NancyModule
     {
-        public Pilots()
+        private readonly IPilotRepo _pilotRepo;
+
+        public Pilots(IPilotRepo pilotRepo)
         {
-            Get["/pilots/{userid}"] = (dynamic parameters) => GetPilots(parameters.userid);
+            _pilotRepo = pilotRepo;
+            Get["/pilots", runAsync: true] = async (_, ct) => await GetPilots();
         }
 
-        public string GetPilots(long userid)
+        public async Task<IEnumerable<PilotDto>>  GetPilots()
         {
-            return "";
+            long userid = (long)this.Context.Request.Session["UserId"];
+            var pilots = await _pilotRepo.GetAll(userid);
+
+            return pilots.Select(x => Mapper.Map<PilotDto>(x));
         }
     }
 }

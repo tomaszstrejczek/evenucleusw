@@ -140,6 +140,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="AssemblyInit.cs" />
+    <Compile Include="BackgroundUpdateT.cs" />
     <Compile Include="KeyInfoService.cs" />
     <Compile Include="MyTestConfiguration.cs" />
     <Compile Include="AccountT.cs" />

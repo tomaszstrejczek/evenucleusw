@@ -30,6 +30,7 @@ namespace ts.domain
         public long UserId { get; set; }
 
         public virtual ICollection<Skill> Skills { get; set; }
+        public virtual ICollection<SkillInQueue> SkillsInQueue { get; set; }
 
         public bool TrainingWarning => (TrainingQueueEnd - DateTime.UtcNow).Days == 0;
 

@@ -11,14 +11,14 @@ using ts.domain;
 
 namespace ts.services
 {
-    public class PilotService : IPilotService
+    public class EvePilotDataService : IEvePilotDataService
     {
         private IKeyInfoRepo _keyRepo;
         private IEveApi _eveApi;
         private ILogger _logger;
         private ITypeNameDict _typeNameDict;
 
-        public PilotService(IKeyInfoRepo keyRepo, IEveApi eveApi, ILogger logger, ITypeNameDict typeNameDict)
+        public EvePilotDataService(IKeyInfoRepo keyRepo, IEveApi eveApi, ILogger logger, ITypeNameDict typeNameDict)
         {
             _keyRepo = keyRepo;
             _eveApi = eveApi;
@@ -32,7 +32,7 @@ namespace ts.services
             var listCorpo = new List<Corporation>();
             var cachedUntilUTC = DateTime.UtcNow.AddHours(2);
 
-            _logger.Debug("{method}", "PilotService::Get");
+            _logger.Debug("{method}", "EvePilotDataService::Get");
 
             try
             {
@@ -102,14 +102,29 @@ namespace ts.services
                             MaxResearchJobs = maxResearchJobs,
                             KeyInfoId = k.KeyInfoId
                         };
+
+                        // interestiong type ids
+                        var ids =
+                            sheet.Result.Skills.Select(x => (long) x.TypeId)
+                                .Union(skillQueue.Result.Queue.Select(x => (long) x.TypeId))
+                                .Distinct();
+
                         var typenames =
-                            (await _typeNameDict.GetById(sheet.Result.Skills.Select(x => (long)x.TypeId))).ToDictionary
+                            (await _typeNameDict.GetById(ids)).ToDictionary
                                 (key => key.Item1, value => value.Item2);
                         p.Skills = sheet.Result.Skills.Select(x => new Skill()
                         {
                             PilotId = p.PilotId,
-                            SkillName = $"{typenames[(long) x.TypeId]}",
+                            SkillName = typenames[(long) x.TypeId],
                             Level = x.Level
+                        }).ToList();
+
+                        p.SkillsInQueue = skillQueue.Result.Queue.Select(x => new SkillInQueue()
+                        {
+                            PilotId = p.PilotId,
+                            SkillName = typenames[(long)x.TypeId],
+                            Level = x.Level,
+                            Length = x.EndTime - x.StartTime
                         }).ToList();
 
                         list.Add(p);
@@ -122,7 +137,7 @@ namespace ts.services
             }
             catch (Exception e)
             {
-                _logger.Error("{method} {@exception}", "PilotService::Get", e);
+                _logger.Error("{method} {@exception}", "EvePilotDataService::Get", e);
                 if (e.ToString().Contains("Illegal page") && e.ToString().Contains("access"))
                     throw new UserException(strings.ErrorAccessMask, e);
                 throw new UserException(strings.ErrorCallingEveApi, e);
