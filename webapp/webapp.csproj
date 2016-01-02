@@ -144,6 +144,7 @@
     <TypeScriptCompile Include="typings\redux-actions\redux-actions.d.ts" />
     <TypeScriptCompile Include="utils\colors.ts" />
     <TypeScriptCompile Include="utils\deepCopy.ts" />
+    <TypeScriptCompile Include="utils\DeferredActionExecutor.ts" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="package.json" />

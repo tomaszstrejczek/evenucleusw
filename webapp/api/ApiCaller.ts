@@ -32,15 +32,18 @@ export class ApiCaller implements IApiCaller {
                             resolve(data as T);
                         } else {
                             reject({
-                                errorMessage: "Error calling account/login api",
+                                errorMessage: "Error calling api",
                                 fullException: JSON.stringify(data),
                                 errors: null
                             });
                         }
                 })
                 .fail((reason: any) => {
+                    if (reason.status === 200) 
+                        resolve(undefined);
+                    else
                         reject({
-                            errorMessage: "Error calling account/login api",
+                            errorMessage: "Error calling api",
                             fullException: JSON.stringify(reason),
                             errors: null
                         });

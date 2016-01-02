@@ -10,6 +10,7 @@ export enum ActionTypes {
     NOTIFICATION_HIDE,
     KEY_ADD,
     KEY_GETALL,
+    KEY_DELETE,
     CONFIRM_SHOW,
     CONFIRM_CONFIRM,
 };

@@ -23,6 +23,13 @@ export const createKeyGetAllAction = createAction<ts.dto.KeyInfoDto[]>(
     }
 );
 
+export const createKeyDeleteAction = createAction<number>(
+    ActionTypes[ActionTypes.KEY_DELETE],
+    (keyid: number) => {
+        return keyid;
+    }
+);
+
 
 export var KeyReducer = handleActions<ts.dto.KeyInfoDto[]>(
 {
@@ -35,6 +42,11 @@ export var KeyReducer = handleActions<ts.dto.KeyInfoDto[]>(
     [ActionTypes[ActionTypes.KEY_GETALL]]: (state: ts.dto.KeyInfoDto[], action: Action): ts.dto.KeyInfoDto[] => {
         var payload = action.payload as ts.dto.KeyInfoDto[];
         return payload;
+    },
+    [ActionTypes[ActionTypes.KEY_DELETE]]: (state: ts.dto.KeyInfoDto[], action: Action): ts.dto.KeyInfoDto[] => {
+        var payload = action.payload as number;
+        var result = owl.deepCopy(state.filter(elem => elem.keyId!== payload), 10) as ts.dto.KeyInfoDto[];
+        return result;
     },
 }, new Array<ts.dto.KeyInfoDto>()
 );

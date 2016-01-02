@@ -94,3 +94,5 @@ webapp/keys/KeyCard.js
 webapp/utils/colors.js
 webapp/keys/KeyAdd.js
 webapp/actions/KeyActions.js
+webapp/actions/ConfirmActions.js
+webapp/utils/DeferredActionExecutor.js

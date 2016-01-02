@@ -91,6 +91,33 @@ export class Runner {
                     });
                 return r;
             });
+
+            it('add and delete key', function () {
+                var code = 3483492;
+                var vcode = "ZwML01eU6aQUVIEC7gedCEaySiNxRTJxgWo2qoVnxd5duN4tt4CWgMuYMSVNWIUG";
+
+                var r = keyInfoService.AddKey(code, vcode).then((data: number) => {
+                        assert.notEqual(data, 0);
+                    })
+                    .then(() => {
+                        return keyInfoService.GetAll();
+                    })
+                    .then((data: ts.dto.KeyInfoDto[]) => {
+                        assert.equal(data.length, 1);
+                        assert.equal(data[0].pilots.length, 1);
+                        assert.equal(data[0].pilots[0].name, "MicioGatto");
+
+                        return keyInfoService.Delete(data[0].keyInfoId);
+                    })
+                    .then(() => {
+                        return keyInfoService.GetAll();
+                    })
+                    .then((data: ts.dto.KeyInfoDto[]) => {
+                        assert.equal(data.length, 0);
+                    });
+                return r;
+            });
+
         });
     }
 }

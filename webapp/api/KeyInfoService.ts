@@ -6,6 +6,7 @@ import {IApiCaller} from './IApiCaller';
 export interface IKeyInfoService {
     AddKey(keyid: number, vcode: string): When.Promise<number>;
     GetAll(): When.Promise<ts.dto.KeyInfoDto[]>;
+    Delete(keyinfoid: number): When.Promise<void>;
 }
 
 export interface IKeyInfoServiceContext {
@@ -26,6 +27,11 @@ export class KeyInfoService implements IKeyInfoService {
 
     public GetAll(): When.Promise<ts.dto.KeyInfoDto[]> {
         return this._api.get<ts.dto.KeyInfoDto[]>("/api/keyinfo");
+    }
+
+    public Delete(keyinfoid: number): When.Promise<void> {
+        var r = this._api.post<void>("/api/keyinfo/delete", { KeyInfoId: keyinfoid});
+        return r;
     }
 }
 

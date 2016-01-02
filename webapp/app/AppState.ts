@@ -11,7 +11,7 @@ export class LoginInfo {
 
 export class ConfirmInfo {
     public visible: boolean;
-    public owner: string;
+    public key: string;
     public title: string;
     public description: string;
     public okButton: string;

@@ -13,7 +13,7 @@ import {IStoreContext} from './IStoreContext';
 import {IAppState, ConfirmInfo} from './AppState';
 import {createNotificationHideAction} from './../actions/NotificationActions';
 import {createConfirmShowAction, createConfirmConfirmAction} from './../actions/ConfirmActions';
-import {ConfirmDialog} from './../utils/ConfirmDialog';
+import {IDeferredActionExecutor, IDeferredActionExecutorContext} from './../utils/DeferredActionExecutor';
 
 import { bindActionCreators } from 'redux';
 
@@ -29,14 +29,14 @@ var kernelSingleton = KernelCreator.create();
 class AppComponentState {
     constructor(notifications:ReactNotifications.Notification[]) {
         this.notifications = notifications;
-        this.confirmInfo = { visible: false, owner:"", title: "", description:"", okButton:"", confirmed: false };
+        this.confirmInfo = { visible: false, key:"", title: "", description:"", okButton:"", confirmed: false };
     }
     notifications: ReactNotifications.Notification[];
     confirmInfo: ConfirmInfo;
 }
 
 
-export class App extends React.Component<any, AppComponentState> implements React.ChildContextProvider<IAuthServiceContext> {
+export class App extends React.Component<any, AppComponentState> implements React.ChildContextProvider<IAuthServiceContext & IApiContext & IKeyInfoServiceContext & IDeferredActionExecutorContext> {
 
     context: IStoreContext;
     static contextTypes: React.ValidationMap<any> = {
@@ -46,7 +46,8 @@ export class App extends React.Component<any, AppComponentState> implements Reac
     static childContextTypes: React.ValidationMap<any> = {
         authService: React.PropTypes.object,
         keyInfoService: React.PropTypes.object,
-        api: React.PropTypes.object
+        api: React.PropTypes.object,
+        deferredActionExecutor: React.PropTypes.object
     };
     private changeListener: () => void;
     private unsubscribe: Function;
@@ -57,11 +58,12 @@ export class App extends React.Component<any, AppComponentState> implements Reac
         this.state = new AppComponentState(s.notifications);
     }
 
-    getChildContext(): IAuthServiceContext & IApiContext & IKeyInfoServiceContext{
+    getChildContext(): IAuthServiceContext & IApiContext & IKeyInfoServiceContext & IDeferredActionExecutorContext{
         return {
             authService: kernelSingleton.resolve<IAuthService>("IAuthService"),
             api: kernelSingleton.resolve<IApiCaller>("IApiCaller"),
             keyInfoService: kernelSingleton.resolve<IKeyInfoService>("IKeyInfoService"),
+            deferredActionExecutor: kernelSingleton.resolve<IDeferredActionExecutor>("IDeferredActionExecutor"),
         };
     };
 
@@ -77,19 +79,19 @@ export class App extends React.Component<any, AppComponentState> implements Reac
 
     _onChange() {
         var s: IAppState = this.context.store.getState() as IAppState;
-        // merge notifications
-        var currentNotificationIds = this.state.notifications.map(elem => elem.id);
-        var toadd = s.notifications.filter(elem => currentNotificationIds.indexOf(elem.id) === -1);
+        //// merge notifications
+        //var currentNotificationIds = this.state.notifications.map(elem => elem.id);
+        //var toadd = s.notifications.filter(elem => currentNotificationIds.indexOf(elem.id) === -1);
 
-        var newIds = s.notifications.map(elem => elem.id);
-        var toremove = this.state.notifications.filter(elem => newIds.indexOf(elem.id) === -1);
+        //var newIds = s.notifications.map(elem => elem.id);
+        //var toremove = this.state.notifications.filter(elem => newIds.indexOf(elem.id) === -1);
 
-        var currentNotifications = update(this.state.notifications, { $push: toadd, $shift: toremove });
+        //var currentNotifications = update(this.state.notifications, { $push: toadd, $shift: toremove });
         
-        // merge confirmInfo
-        var ci = update(this.state.confirmInfo, { $merge: s.confirmInfo });
+        //// merge confirmInfo
+        //var ci = update(this.state.confirmInfo, { $merge: s.confirmInfo });
 
-        this.setState({ notifications: currentNotifications, confirmInfo: ci});
+        this.setState({ notifications: s.notifications, confirmInfo: s.confirmInfo});
     }
 
     handleRequestHide(notification: ReactNotifications.Notification) {
@@ -97,11 +99,15 @@ export class App extends React.Component<any, AppComponentState> implements Reac
     };
 
     handleModalCloseRequest() {
+        var deferredActionExecutor = kernelSingleton.resolve<IDeferredActionExecutor>("IDeferredActionExecutor");
+        deferredActionExecutor.RemoveAction(this.state.confirmInfo.key);
         this.context.store.dispatch(createConfirmShowAction(false, "", "", ""));
     };
 
-    handleSaveClicked(e:any) {
+    handleSaveClicked(e: any) {
         this.context.store.dispatch(createConfirmConfirmAction());
+        var deferredActionExecutor = kernelSingleton.resolve<IDeferredActionExecutor>("IDeferredActionExecutor");
+        deferredActionExecutor.RunAction(this.state.confirmInfo.key);
     };
 
     render(): JSX.Element {

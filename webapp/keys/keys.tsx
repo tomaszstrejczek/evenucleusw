@@ -55,19 +55,20 @@ export class Keys extends React.Component<IKeysState, any>{
 
     _onChange() {
         var s: IAppState = this.context.store.getState() as IAppState;
-        var currentKeys = this.state.keys;
+        //var currentKeys = this.state.keys;
+        //currentKeys.clear();
+        //// to add
+        //var currentKeyIds = currentKeys.map(elem => elem.keyId);
+        //var toadd = s.keys.filter(elem => currentKeyIds.indexOf(elem.keyId)===-1);
 
-        // to add
-        var currentKeyIds = currentKeys.map(elem => elem.keyId);
-        var toadd = s.keys.filter(elem => currentKeyIds.indexOf(elem.keyId)===-1);
+        //// to remove
+        //var newIds = s.keys.map(elem => elem.keyId);
+        //var toremove = currentKeys.filter(elem => newIds.indexOf(elem.keyId) === -1);
 
-        // to remove
-        var newIds = s.keys.map(elem => elem.keyId);
-        var toremove = currentKeys.filter(elem => newIds.indexOf(elem.keyId) === -1);
+        //currentKeys = update(currentKeys, { $push: toadd});
+        //currentKeys = update(currentKeys, { $shift: toremove });
 
-        currentKeys = update(currentKeys, { $push: toadd, $shift: toremove });
-
-        this.setState({ keys: currentKeys });
+        this.setState({ keys: s.keys });
     }
 
     render(): JSX.Element {

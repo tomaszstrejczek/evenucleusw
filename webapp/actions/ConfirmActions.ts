@@ -5,10 +5,10 @@ import {ConfirmInfo} from './../app/AppState';
 
 export const createConfirmShowAction = createAction<ConfirmInfo>(
     ActionTypes[ActionTypes.CONFIRM_SHOW],
-    (visible: boolean, owner: string, title: string, description: string, okButton: string) => {       
+    (visible: boolean, key: string, title: string, description: string, okButton: string) => {       
         return {
             visible: visible,
-            owner: owner,
+            key: key,
             title: title,
             description: description,
             okButton: okButton,
@@ -33,5 +33,5 @@ export var ConfirmReducer = handleActions<ConfirmInfo>(
         result.visible = false;
         return result;
     },
-}, {visible: false, owner: "", title: "", description: "", okButton: "Ok", confirmed: false}
+}, {visible: false, key: "", title: "", description: "", okButton: "Ok", confirmed: false}
 );

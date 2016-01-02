@@ -2,9 +2,14 @@
 
 import {IStoreContext} from './../app/IStoreContext';
 import {createConfirmShowAction} from './../actions/ConfirmActions';
+import {createKeyDeleteAction} from './../actions/KeyActions';
+import {createNotificationShowAction, NotificationType} from './../actions/NotificationActions';
 
 import {owl} from './../utils/deepCopy';
 import {TsColor} from './../utils/colors';
+
+import {IDeferredActionExecutorContext} from './../utils/DeferredActionExecutor';
+import {IKeyInfoServiceContext} from './../api/KeyInfoService';
 
 export interface KeyCardProperties {
     key?: string;
@@ -14,15 +19,33 @@ export interface KeyCardProperties {
 
 export class KeyCard extends React.Component<KeyCardProperties, any> {
 
-    context: IStoreContext;
+    context: IStoreContext & IDeferredActionExecutorContext & IKeyInfoServiceContext;
 
     static contextTypes: React.ValidationMap<any> = {
-        store: React.PropTypes.object.isRequired
+        store: React.PropTypes.object.isRequired,
+        deferredActionExecutor: React.PropTypes.object.isRequired,
+        keyInfoService: React.PropTypes.object.isRequired
     };
 
 
     handleDelete() {
-        this.context.store.dispatch(createConfirmShowAction(true, "keycard", "Confirm delete", "Do you want delete key " + this.props.keyDto.keyId+"?", "Delete" ));
+        var that = this;
+        function confirmed() {
+            that.context.store.dispatch((dispatch, getState) => {
+                that.context.keyInfoService.Delete(that.props.keyDto.keyInfoId)
+                    .then(() => {
+                        dispatch(createKeyDeleteAction(that.props.keyDto.keyId));
+                    })
+                    .catch(function (err) {
+                        console.log("Error logging in", err);
+                        dispatch(createNotificationShowAction(NotificationType.error, "error", err.errorMessage));
+                    });
+            });
+        }
+
+        var key = this.context.deferredActionExecutor.AddAction(confirmed);
+
+        this.context.store.dispatch(createConfirmShowAction(true, key, "Confirm delete", "Do you want delete key " + this.props.keyDto.keyId+"?", "Delete" ));
     }
 
     render(): JSX.Element {
