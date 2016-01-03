@@ -96,3 +96,6 @@ webapp/keys/KeyAdd.js
 webapp/actions/KeyActions.js
 webapp/actions/ConfirmActions.js
 webapp/utils/DeferredActionExecutor.js
+webapp/api/BackgroundUpdateService.js
+webapp/api/PilotsService.js
+webapp/test/dom/api-pilots-test.js

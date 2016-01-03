@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -55,9 +56,27 @@ namespace ts.data
             _logger.Debug("{method} {keyid}", "KeyRepo::DeleteKey", keyinfoid);
             using (var ctx = _accountContextProvider.Context)
             {
-                var toremove = new KeyInfo() {KeyInfoId = keyinfoid};
-                ctx.KeyInfos.Attach(toremove);
-                ctx.KeyInfos.Remove(toremove);
+                var keyInfo = ctx.KeyInfos.First(k => k.KeyInfoId == keyinfoid);
+                var user =
+                    ctx.Users.Include(u => u.KeyInfos)
+                        .Include(u => u.Pilots)
+                        .Include(u => u.Corporations)
+                        .First(u => u.UserId == keyInfo.UserId);
+                var pilotsToRemove = user.Pilots.Where(p => p.KeyInfoId == keyInfo.KeyInfoId).ToList();
+                var corposToRemove = user.Corporations.Where(c => c.KeyInfoId == keyInfo.KeyInfoId).ToList();
+
+                foreach (var p in pilotsToRemove)
+                {
+                    user.Pilots.Remove(p);
+                    ctx.Pilots.Remove(p);
+                }
+                foreach (var c in corposToRemove)
+                {
+                    user.Corporations.Remove(c);
+                    ctx.Corporations.Remove(c);
+                }
+                ctx.KeyInfos.Remove(keyInfo);
+
                 await ctx.SaveChangesAsync();
             }
         }

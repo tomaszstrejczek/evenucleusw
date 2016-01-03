@@ -31,7 +31,9 @@
     <TypeScriptCompile Include="actions\LoginActions.ts" />
     <TypeScriptCompile Include="actions\rootReducer.ts" />
     <TypeScriptCompile Include="api\ApiCaller.ts" />
+    <TypeScriptCompile Include="api\PilotsService.ts" />
     <TypeScriptCompile Include="api\IApiCaller.ts" />
+    <TypeScriptCompile Include="api\BackgroundUpdateService.ts" />
     <TypeScriptCompile Include="api\KeyInfoService.ts" />
     <TypeScriptCompile Include="app.tsx" />
     <TypeScriptCompile Include="app\AppState.ts" />
@@ -121,6 +123,7 @@
     <TypeScriptCompile Include="keys\keys.tsx" />
     <TypeScriptCompile Include="keys\KeyCard.tsx" />
     <TypeScriptCompile Include="keys\KeyAdd.tsx" />
+    <TypeScriptCompile Include="test\dom\api-pilots-test.ts" />
     <TypeScriptCompile Include="test\dom\api-keys-test.ts" />
     <TypeScriptCompile Include="test\dom\Helper.ts" />
     <TypeScriptCompile Include="test\dom\index.ts" />

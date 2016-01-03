@@ -5,6 +5,8 @@ import {IAuthServiceContext, IAuthService, AuthService} from './../../api/AuthSe
 import {IApiCaller} from './../../api/IApiCaller';
 import {ApiCaller} from './../../api/ApiCaller';
 import {IKeyInfoService, KeyInfoService} from './../../api/KeyInfoService';
+import {IBackgroundUpdateService, BackgroundUpdateService} from './../../api/BackgroundUpdateService';
+import {IPilotsService, PilotsService} from './../../api/PilotsService';
 
 import {Helper} from './Helper';
 
@@ -21,11 +23,15 @@ export class Runner {
             let keyInfoService: IKeyInfoService;
             let helper: Helper;
             let skey: string;
+            let pilotsService: IPilotsService;
+            let backgroundUpdateService: IBackgroundUpdateService;
 
             beforeEach(function() {
                 api = new ApiCaller();
                 keyInfoService = new KeyInfoService(api);
                 helper = new Helper();
+                pilotsService = new PilotsService(api);
+                backgroundUpdateService = new BackgroundUpdateService(api);
                 return helper.createTestUser().then((s: string) => { skey = s; api.setKey(s); });
             });
 
@@ -113,6 +119,21 @@ export class Runner {
                         return keyInfoService.GetAll();
                     })
                     .then((data: ts.dto.KeyInfoDto[]) => {
+                        assert.equal(data.length, 0);
+
+                        // check pilots
+                        return pilotsService.GetAll();
+                    })
+                    .then((data: ts.dto.PilotDto[]) => {
+                        assert.equal(data.length, 0);
+
+                        // do background update
+                        return backgroundUpdateService.Update();
+                    })
+                    .then(() => {
+                        return pilotsService.GetAll();
+                    })
+                    .then((data: ts.dto.PilotDto[]) => {
                         assert.equal(data.length, 0);
                     });
                 return r;

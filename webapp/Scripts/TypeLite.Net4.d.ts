@@ -33,12 +33,20 @@ declare module ts.dto {
 		trainingWarning: boolean;
 		trainingNotActive: boolean;
 		skills: ts.dto.SkillDto[];
+		skillsInQueue: ts.dto.SkillInQueueDto[];
 	}
 	interface SkillDto {
 		skillId: number;
 		pilotId: number;
 		skillName: string;
 		level: number;
+	}
+	interface SkillInQueueDto {
+		skillInQueueId: number;
+		pilotId: number;
+		skillName: string;
+		level: number;
+		length: string;
 	}
 	interface CorporationDto {
 		corporationId: number;
