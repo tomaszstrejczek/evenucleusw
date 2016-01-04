@@ -5,10 +5,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
+using AutoMapper;
 using Microsoft.Data.Entity;
 using Serilog;
 
 using ts.domain;
+using ts.dto;
 
 namespace ts.data
 {
@@ -41,7 +43,7 @@ namespace ts.data
                     ctx.SkillsInQueue.RemoveRange(toremove);
 
                     var toadd = pd.SkillsInQueue.Where(x => storedSkills.All(y => y.SkillName != x.SkillName || y.Level != x.Level))
-                        .Select(x => new SkillInQueue() { PilotId = p.PilotId, Length = x.Length, SkillName = x.SkillName, Level = x.Level });
+                        .Select(x => new SkillInQueue() { PilotId = p.PilotId, Length = x.Length, SkillName = x.SkillName, Level = x.Level, Order = x.Order});
                     p.SkillsInQueue.Clear();
                     foreach(var a in toadd)
                         p.SkillsInQueue.Add(a);
@@ -51,7 +53,7 @@ namespace ts.data
             }
         }
 
-        public async Task<List<string>> GetForPilot(long pilotId)
+        public async Task<List<SkillInQueueDto>> GetForPilot(long pilotId)
         {
             _logger.Debug("{method} {userid}", "SkillInQueue::GetForPilot", pilotId);
 
@@ -61,7 +63,7 @@ namespace ts.data
                 if (pilot == null)
                     throw new UserException(strings.SecurityException);
 
-                return pilot.SkillsInQueue.Select(s => s.SkillName).ToList();
+                return pilot.SkillsInQueue.Select(s => Mapper.Map<SkillInQueueDto>(s)).ToList();
             }
         }
 

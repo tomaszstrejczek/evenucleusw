@@ -13,4 +13,5 @@ export enum ActionTypes {
     KEY_DELETE,
     CONFIRM_SHOW,
     CONFIRM_CONFIRM,
+    PILOTS_GETALL
 };

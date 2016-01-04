@@ -26,6 +26,7 @@
   <ItemGroup>
     <TypeScriptCompile Include="actions\ActionTypes.ts" />
     <TypeScriptCompile Include="actions\ConfirmActions.ts" />
+    <TypeScriptCompile Include="actions\PilotsActions.ts" />
     <TypeScriptCompile Include="actions\KeyActions.ts" />
     <TypeScriptCompile Include="actions\NotificationActions.ts" />
     <TypeScriptCompile Include="actions\LoginActions.ts" />

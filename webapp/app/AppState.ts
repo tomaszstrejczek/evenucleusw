@@ -23,4 +23,5 @@ export interface IAppState {
     notifications: ReactNotifications.Notification[];
     keys: ts.dto.KeyInfoDto[];
     confirmInfo: ConfirmInfo;
+    pilots: ts.dto.PilotDto[];
 }

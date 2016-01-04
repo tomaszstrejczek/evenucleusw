@@ -22,6 +22,7 @@ declare module ts.dto {
 		url: string;
 		currentTrainingNameAndLevel: string;
 		currentTrainingEnd: Date;
+		currentTrainingLength: string;
 		trainingQueueEnd: Date;
 		trainingActive: boolean;
 		maxManufacturingJobs: number;
@@ -47,6 +48,7 @@ declare module ts.dto {
 		skillName: string;
 		level: number;
 		length: string;
+		order: number;
 	}
 	interface CorporationDto {
 		corporationId: number;

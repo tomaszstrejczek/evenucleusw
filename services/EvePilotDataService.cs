@@ -119,13 +119,16 @@ namespace ts.services
                             Level = x.Level
                         }).ToList();
 
-                        p.SkillsInQueue = skillQueue.Result.Queue.Select(x => new SkillInQueue()
+                        p.SkillsInQueue = skillQueue.Result.Queue.OrderBy(z => z.StartTime).Select(x => new SkillInQueue()
                         {
                             PilotId = p.PilotId,
                             SkillName = typenames[(long)x.TypeId],
                             Level = x.Level,
                             Length = x.EndTime - x.StartTime
                         }).ToList();
+                        int order = 1;
+                        foreach (var sq in p.SkillsInQueue)
+                            sq.Order = order++;
 
                         list.Add(p);
                     }

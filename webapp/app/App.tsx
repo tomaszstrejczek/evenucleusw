@@ -14,6 +14,8 @@ import {IAppState, ConfirmInfo} from './AppState';
 import {createNotificationHideAction} from './../actions/NotificationActions';
 import {createConfirmShowAction, createConfirmConfirmAction} from './../actions/ConfirmActions';
 import {IDeferredActionExecutor, IDeferredActionExecutorContext} from './../utils/DeferredActionExecutor';
+import {IPilotsService, IPilotsServiceContext} from './../api/PilotsService';
+import {IBackgroundUpdateService, IBackgroundUpdateServiceContext} from './../api/BackgroundUpdateService';
 
 import { bindActionCreators } from 'redux';
 
@@ -36,7 +38,8 @@ class AppComponentState {
 }
 
 
-export class App extends React.Component<any, AppComponentState> implements React.ChildContextProvider<IAuthServiceContext & IApiContext & IKeyInfoServiceContext & IDeferredActionExecutorContext> {
+export class App extends React.Component<any, AppComponentState> implements React.ChildContextProvider<IAuthServiceContext & IApiContext
+    & IKeyInfoServiceContext & IDeferredActionExecutorContext & IPilotsServiceContext & IBackgroundUpdateServiceContext> {
 
     context: IStoreContext;
     static contextTypes: React.ValidationMap<any> = {
@@ -47,7 +50,9 @@ export class App extends React.Component<any, AppComponentState> implements Reac
         authService: React.PropTypes.object,
         keyInfoService: React.PropTypes.object,
         api: React.PropTypes.object,
-        deferredActionExecutor: React.PropTypes.object
+        deferredActionExecutor: React.PropTypes.object,
+        pilotsService: React.PropTypes.object.isRequired,
+        backgroundUpdateService: React.PropTypes.object.isRequired
     };
     private changeListener: () => void;
     private unsubscribe: Function;
@@ -58,12 +63,14 @@ export class App extends React.Component<any, AppComponentState> implements Reac
         this.state = new AppComponentState(s.notifications);
     }
 
-    getChildContext(): IAuthServiceContext & IApiContext & IKeyInfoServiceContext & IDeferredActionExecutorContext{
+    getChildContext(): IAuthServiceContext & IApiContext & IKeyInfoServiceContext & IDeferredActionExecutorContext & IPilotsServiceContext & IBackgroundUpdateServiceContext{
         return {
             authService: kernelSingleton.resolve<IAuthService>("IAuthService"),
             api: kernelSingleton.resolve<IApiCaller>("IApiCaller"),
             keyInfoService: kernelSingleton.resolve<IKeyInfoService>("IKeyInfoService"),
             deferredActionExecutor: kernelSingleton.resolve<IDeferredActionExecutor>("IDeferredActionExecutor"),
+            pilotsService: kernelSingleton.resolve<IPilotsService>("IPilotsService"),
+            backgroundUpdateService: kernelSingleton.resolve<IBackgroundUpdateService>("IBackgroundUpdateService"),
         };
     };
 

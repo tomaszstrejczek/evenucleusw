@@ -13,5 +13,6 @@ namespace ts.dto
         public string SkillName { get; set; }
         public int Level { get; set; }
         public string Length { get; set; }
+        public int Order { get; set; }
     }
 }

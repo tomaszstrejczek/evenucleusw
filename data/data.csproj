@@ -30,6 +30,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=4.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\AutoMapper.4.1.1\lib\net45\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework.Core, Version=7.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.Core.7.0.0-rc1-final\lib\net451\EntityFramework.Core.dll</HintPath>
       <Private>True</Private>
@@ -233,6 +237,10 @@
     <ProjectReference Include="..\domain\domain.csproj">
       <Project>{cb8e3f45-de62-420d-a164-3430f2c35705}</Project>
       <Name>domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\dto\dto.csproj">
+      <Project>{3B9177CF-0BC5-4A73-8EA5-76B5FE268F0A}</Project>
+      <Name>dto</Name>
     </ProjectReference>
     <ProjectReference Include="..\fas\evelib\EveLib.Core\EveLib.Core.csproj">
       <Project>{aa85978c-2bf5-419f-9f8e-b70162e83f34}</Project>

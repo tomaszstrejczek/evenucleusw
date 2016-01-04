@@ -13,5 +13,6 @@ namespace ts.domain
         public string SkillName { get; set; }
         public int Level { get; set; }
         public TimeSpan Length { get; set; }
+        public int Order { get; set; }
     }
 }

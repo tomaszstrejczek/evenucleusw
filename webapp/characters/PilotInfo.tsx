@@ -16,25 +16,26 @@ export interface PilotInfoProperties {
     key?: string;
     url: string;
     name: string;
-    skills: Array<SkillData>;
+    skillInTraining: ts.dto.SkillInQueueDto,
+    skillsInQueue: ts.dto.SkillInQueueDto[];
     color: TsColor;
 }
 
 export class PilotInfo extends React.Component<PilotInfoProperties, any> {
     render(): JSX.Element {
         var currentTraining: JSX.Element;
-        if (this.props.skills.length > 0)
+        if (this.props.skillInTraining !== undefined)
             currentTraining =
                 <div>
-                    <div>{this.props.skills[0].name}</div>
-                    <div><SkillBar levelCompleted={this.props.skills[0].levelCompleted} levelTraining={this.props.skills[0].levelTraining} color={this.props.color}/></div>
-                <div>100d 10h 20m/100h</div>
+                    <div>{this.props.skillInTraining.skillName}</div>
+                    <div><SkillBar levelCompleted={this.props.skillInTraining.level-1} levelTraining={this.props.skillInTraining.level} color={this.props.color}/></div>
+                <div>{this.props.skillInTraining.length}</div>
                     </div>;
         else
             currentTraining =
                 <div>-/-</div>;
 
-        var queueTraining = this.props.skills.slice(1, 4);
+        var queueTraining = this.props.skillInTraining.length.length > 0 ? this.props.skillsInQueue.slice(1, 4) : this.props.skillsInQueue.slice(0, 3);
 
         var that = this;
 
@@ -46,7 +47,7 @@ export class PilotInfo extends React.Component<PilotInfoProperties, any> {
                 <tr style={{ background: this.props.color.primary }} ><td>
                   <table width="100%" style={{ color: "white" }}>
                     <tbody>
-                    <tr><td rowSpan={3} style={{ width: "10px"}}><img src="https://image.eveonline.com/Character/1_64.jpg" style={{margin: "4px"}}/></td></tr>
+                    <tr><td rowSpan={3} style={{ width: "10px"}}><img src={this.props.url} style={{margin: "4px"}}/></td></tr>
                     <tr><td style={{ height: "1px", lineHeight: "normal" }}>{this.props.name}</td></tr>
                     <tr><td style={{ verticalAlign: "bottom", fontSize: "75%" }}>
                         {currentTraining}
@@ -58,9 +59,9 @@ export class PilotInfo extends React.Component<PilotInfoProperties, any> {
                     <table width="100%">
                     <tbody style={{ background: "white", fontSize: "75%", color: "black"}}>
                     {queueTraining.map(skill => {
-                            return <tr key={skill.name + skill.levelTraining}>
-                                <td><div style={{ marginLeft: "4px"}}>{skill.name}</div></td>
-                                <td style={{width:"1px"}}><SkillBar levelTraining={skill.levelTraining} levelCompleted={skill.levelCompleted} color={that.props.color}/></td>
+                            return <tr key={skill.skillName + skill.level}>
+                                <td><div style={{ marginLeft: "4px" }}>{skill.skillName}</div></td>
+                                <td style={{width:"1px"}}><SkillBar levelTraining={skill.level} levelCompleted={skill.level-1} color={that.props.color}/></td>
                                 </tr>;
                     }) }
                     </tbody>

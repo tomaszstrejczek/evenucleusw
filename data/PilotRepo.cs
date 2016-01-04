@@ -46,12 +46,16 @@ namespace ts.data
                 {
                     _logger.Debug("{method} adding {pilot}", "pilotRepo::updatePilotData", a.Name);
 
-                    var stored = storedPilots.FirstOrDefault(x => x.EveId == a.EveId && x.UserId==userid);
+                    var stored = storedPilots.FirstOrDefault(x => x.EveId == a.EveId && x.UserId == userid);
                     var pilot = a;
-                    pilot.FreeManufacturingJobsNofificationCount = stored == null ? 0 : stored.FreeManufacturingJobsNofificationCount;
-                    pilot.FreeResearchJobsNofificationCount = stored == null ? 0 : stored.FreeResearchJobsNofificationCount;
+                    pilot.FreeManufacturingJobsNofificationCount = stored == null
+                        ? 0
+                        : stored.FreeManufacturingJobsNofificationCount;
+                    pilot.FreeResearchJobsNofificationCount = stored == null
+                        ? 0
+                        : stored.FreeResearchJobsNofificationCount;
                     // We deliberatly don't update children skills - so skillrepo may issue appropriate notifications
-                    pilot.KeyInfoId= a.KeyInfoId;
+                    pilot.KeyInfoId = a.KeyInfoId;
                     pilot.UserId = userid;
 
                     if (stored == null)
@@ -59,8 +63,20 @@ namespace ts.data
                         user.Pilots.Add(pilot);
                         ctx.Pilots.Add(pilot);
                     }
-                }
+                    else
+                    {
+                        stored.CurrentTrainingNameAndLevel = a.CurrentTrainingNameAndLevel;
+                        stored.CurrentTrainingEnd = a.CurrentTrainingEnd;
+                        stored.TrainingQueueEnd = a.TrainingQueueEnd;
+                        stored.TrainingActive = a.TrainingActive;
 
+                        stored.MaxManufacturingJobs = a.MaxManufacturingJobs;
+                        stored.MaxResearchJobs = a.MaxResearchJobs;
+
+                        stored.FreeManufacturingJobsNofificationCount = a.FreeManufacturingJobsNofificationCount;
+                        stored.FreeResearchJobsNofificationCount = a.FreeResearchJobsNofificationCount;
+                    }
+                }
                 await ctx.SaveChangesAsync();
             }                
         }

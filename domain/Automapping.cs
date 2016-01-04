@@ -21,7 +21,8 @@ namespace ts.domain
                 cfg.CreateMap<Skill, SkillDto>();
                 cfg.CreateMap<SkillInQueue, SkillInQueueDto>()
                     .ForMember(d => d.Length, m => m.MapFrom(s => TimeSpanFormatter.Format(s.Length)));
-                cfg.CreateMap<Pilot, PilotDto>();
+                cfg.CreateMap<Pilot, PilotDto>()
+                    .ForMember(d => d.CurrentTrainingLength, m => m.MapFrom(s => TimeSpanFormatter.Format(s.CurrentTrainingEnd - DateTime.UtcNow)));
                 cfg.CreateMap<Corporation, CorporationDto>();
             });
 

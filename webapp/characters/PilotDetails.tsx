@@ -17,9 +17,18 @@ export class PilotDetails extends React.Component<any, PilotDetailsState> {
     render(): JSX.Element {
         var data = this.getTestData();
 
+        var skillInTraining: ts.dto.SkillInQueueDto = {
+            skillInQueueId: 0,
+            pilotId: data.pilotId,
+            skillName: data.currentTrainingNameAndLevel.substr(0, data.currentTrainingNameAndLevel.length - 2),
+            level: Number(data.currentTrainingNameAndLevel.charAt(data.currentTrainingNameAndLevel.length - 1)),
+            length: data.currentTrainingLength,
+            order: 0
+        };
+
         return (
             <div className="row">
-                <PilotInfo name={data.name} url={data.url} skills={[]} color={purple}/>
+                <PilotInfo name={data.name} url={data.url} skillsInQueue={data.skillsInQueue.sort((a, b) => a.order - b.order)} skillInTraining={skillInTraining} color={purple}/>
                 <div className="col-md-7 col-xs-11 col-lg-8">
                     <SkillCard skills={data.skills} grouping={frigates} color={red} tableCount={4} classStyle="col-md-3"/>
                     <SkillCard skills={data.skills} grouping={destroyers} color={purple} tableCount={2} classStyle="col-md-6"/>

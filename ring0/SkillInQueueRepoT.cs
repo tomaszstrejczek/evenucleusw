@@ -37,9 +37,9 @@ namespace ring0
                         SkillsInQueue =
                             new SkillInQueue[]
                             {
-                                new SkillInQueue() {SkillName = "skilla", Level = 1},
-                                new SkillInQueue() {SkillName = "skillb", Level = 2},
-                                new SkillInQueue() {SkillName = "skillc", Level = 3}
+                                new SkillInQueue() {SkillName = "skilla", Level = 1, Order = 1},
+                                new SkillInQueue() {SkillName = "skillb", Level = 2, Order = 2},
+                                new SkillInQueue() {SkillName = "skillc", Level = 3, Order = 3}
                             }.ToList(),
                     }
                 }.ToList(),
@@ -52,6 +52,8 @@ namespace ring0
 
             var skills = await skillInQueueRepo.GetForPilot(userData.Pilots[0].PilotId);
             Assert.AreEqual(3, skills.Count);
+            foreach(var s in skills)
+                Assert.IsTrue(s.Order > 0);
 
             var userData2 = new UserDataDto()
             {
@@ -79,7 +81,7 @@ namespace ring0
 
             skills = await skillInQueueRepo.GetForPilot(userData.Pilots[0].PilotId);
             Assert.AreEqual(1, skills.Count);
-            Assert.AreEqual("skilld", skills[0]);
+            Assert.AreEqual("skilld", skills[0].SkillName);
         }
 
         [TestMethod]
@@ -148,7 +150,7 @@ namespace ring0
 
             skills = await skillInQueueRepo.GetForPilot(userData.Pilots[0].PilotId);
             Assert.AreEqual(1, skills.Count);
-            Assert.AreEqual("skillb", skills[0]);
+            Assert.AreEqual("skillb", skills[0].SkillName);
         }
         [TestMethod]
         public async Task MultipleLevels2()
@@ -216,7 +218,7 @@ namespace ring0
 
             skills = await skillInQueueRepo.GetForPilot(userData.Pilots[0].PilotId);
             Assert.AreEqual(1, skills.Count);
-            Assert.AreEqual("skilla", skills[0]);
+            Assert.AreEqual("skilla", skills[0].SkillName);
         }
 
         [TestMethod]

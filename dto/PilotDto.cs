@@ -17,6 +17,7 @@ namespace ts.dto
 
         public string CurrentTrainingNameAndLevel { get; set; }
         public DateTime CurrentTrainingEnd { get; set; }
+        public string CurrentTrainingLength { get; set; }
         public DateTime TrainingQueueEnd { get; set; }
         public bool TrainingActive { get; set; }
 

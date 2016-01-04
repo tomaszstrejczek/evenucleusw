@@ -50,6 +50,8 @@ namespace ring1
             Assert.IsTrue(pilots[0].SkillsInQueue.Count > 0);
             Assert.IsTrue(pilots[0].Skills.Count > 0);
             Assert.IsTrue(pilots[0].Skills.Any(x => x.SkillName == "Interceptors"));
+            Assert.IsNotNull(pilots[0].CurrentTrainingNameAndLevel);
+            Assert.IsTrue(pilots[0].CurrentTrainingNameAndLevel.Length > 0);
         }
     }
 }
