@@ -8,6 +8,7 @@ import {owl} from './../utils/deepCopy';
 import {PilotInfo} from './PilotInfo';
 import {SkillCard} from './SkillCard';
 import {frigates, destroyers} from './SkillData';
+import {NotFound} from './../special/NotFound';
 
 export interface PilotDetailsState {
     name: string;
@@ -15,6 +16,8 @@ export interface PilotDetailsState {
 
 export class PilotDetails extends React.Component<any, PilotDetailsState> {
     render(): JSX.Element {
+        return <NotFound/>;
+
         var data = this.getTestData();
 
         var skillInTraining: ts.dto.SkillInQueueDto = {

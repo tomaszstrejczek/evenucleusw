@@ -124,6 +124,7 @@
     <TypeScriptCompile Include="keys\keys.tsx" />
     <TypeScriptCompile Include="keys\KeyCard.tsx" />
     <TypeScriptCompile Include="keys\KeyAdd.tsx" />
+    <TypeScriptCompile Include="special\NotFound.tsx" />
     <TypeScriptCompile Include="test\dom\api-pilots-test.ts" />
     <TypeScriptCompile Include="test\dom\api-keys-test.ts" />
     <TypeScriptCompile Include="test\dom\Helper.ts" />
