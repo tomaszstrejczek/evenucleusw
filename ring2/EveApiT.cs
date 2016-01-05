@@ -244,5 +244,28 @@ namespace ring2
             var rsp = await corpo.GetIndustryJobsAsync();
             Assert.IsNotNull(rsp);
         }
+
+        [TestMethod]
+        public async Task CharacterSkills()
+        {
+            int code = 4107075;
+            String vcode = "R27d16Sq1v1yrO8ViWBGdhS8uFftxiUONcPMH8m9vzbaxy6NoOGIwsMpuk0Vra2N";
+            var api = EveApi;
+
+            var characters = api.GetCharacters(code, vcode);
+            var stryju = characters.FirstOrDefault(x => x.CharacterName == "stryju");
+            Assert.IsNotNull(stryju);
+            var sheet = await stryju.GetCharacterSheetAsync();
+
+            var ids = sheet.Result.Skills.Select(x => (long) x.TypeId).ToList();
+            var typenames =(await TypeNameDict.GetById(ids)).ToDictionary
+                                           (key => key.Item1, value => value.Item2);
+
+            Assert.AreEqual(ids.Count, typenames.Count);
+            var uknown = typenames.Where(x => x.Value == "Unknown").ToList();
+            Assert.IsTrue(typenames.ContainsValue("Logistics Cruisers"));
+
+        }
+
     }
 }
