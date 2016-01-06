@@ -8,6 +8,7 @@ using System.IO;
 using System.Reflection;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
+using ts.data;
 
 namespace devtools
 {
@@ -78,7 +79,7 @@ namespace devtools
             }");
         }
 
-        static void Main(string[] args)
+        private static void GenerateTypeIds()
         {
             string codeBase = Assembly.GetExecutingAssembly().CodeBase;
             UriBuilder uri = new UriBuilder(codeBase);
@@ -103,6 +104,11 @@ namespace devtools
                 var formatter = new BinaryFormatter();
                 formatter.Serialize(stream, dict);
             }
+        }
+
+        static void Main(string[] args)
+        {
+            var ctx = new AccountContext(null);
         }
     }
 }

@@ -10,6 +10,6 @@ namespace ts.data
     public class MyConfiguration: IMyConfiguration
     {
         public bool UseSql => true;
-        public string ConnectionString => "";
+        public string ConnectionString => "Server=tcp:evenucleusw.database.windows.net,1433;Database=evenucleusw;User ID=tomek@evenucleusw;Password=Traktor12;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
     }
 }

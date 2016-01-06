@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Data.Entity;
@@ -26,6 +27,11 @@ namespace ts.data
         public DbSet<CacheEntry> CacheEntries { get; set; }
         public DbSet<TypeNameEntry> TypeNameEntries { get; set; }
 
+        //public AccountContext()
+        //{
+        //    _configuration = null;
+        //}
+
         public AccountContext(IMyConfiguration configuration)
         {
             _configuration = configuration;
@@ -34,7 +40,8 @@ namespace ts.data
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (_configuration == null)
-                optionsBuilder.UseSqlServer("Data Source=localhost;Initial Catalog=evenucleusw;Integrated Security=True");
+                optionsBuilder.UseSqlServer("Server=tcp:evenucleusw.database.windows.net,1433;Database=evenucleusw;User ID=tomek@evenucleusw;Password=Traktor12;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+
             else if (_configuration.UseSql)
                 optionsBuilder.UseSqlServer(_configuration.ConnectionString);
             else
