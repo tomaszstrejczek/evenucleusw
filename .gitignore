@@ -101,3 +101,6 @@ webapp/api/PilotsService.js
 webapp/test/dom/api-pilots-test.js
 webapp/actions/PilotsActions.js
 webapp/special/NotFound.js
+staticcontent/obj/
+devtools/obj/
+devtools/bin/

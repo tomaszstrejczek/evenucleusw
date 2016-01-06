@@ -11,6 +11,7 @@ using Microsoft.Data.Entity;
 using Serilog;
 
 using ts.domain;
+using ts.staticcontent;
 
 namespace ts.data
 {
@@ -30,6 +31,8 @@ namespace ts.data
         public async Task<List<Tuple<long, string>>> GetById(IEnumerable<long> ids)
         {
             _logger.Debug("{method} ids count: {count}", "TypeNameDict::GetById", ids.Count());
+
+            return ids.Select(x => new Tuple<long, string>(x, TypeFromYaml.FromTypeId(x))).ToList();
 
             if (ids.Count() == 0)
                 return new List<Tuple<long, string>>();

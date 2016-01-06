@@ -7,7 +7,7 @@ using eZet.EveLib.Core.Cache;
 using eZet.EveLib.EveXmlModule;
 using eZet.EveLib.EveXmlModule.Models.Misc;
 
-namespace ts.data
+namespace ts.data 
 {
     public class RefTypeDict : IRefTypeDict
     {
