@@ -22,6 +22,8 @@ namespace ts.api
         {
             base.ApplicationStartup(container, pipelines);
             StaticConfiguration.EnableRequestTracing = true;
+
+            Automapping.Init();
         }
 
         protected override void ConfigureApplicationContainer(IKernel existingContainer)

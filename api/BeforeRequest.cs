@@ -16,6 +16,9 @@ namespace ts.api
     {
         public static async Task<Response> BeforeRequestHandler(IAccountRepo accountRepo, NancyContext ctx, CancellationToken token)
         {
+            if (!ctx.Request.Url.ToString().Contains("/api/"))
+                return null;
+
             // do not check for session key if login
             if (ctx.Request.Url.ToString().Contains("/account/"))
                 return null;

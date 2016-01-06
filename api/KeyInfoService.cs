@@ -23,9 +23,9 @@ namespace ts.api
         public KeyInfoService(IKeyInfoService keyInfoService)
         {
             _keyInfoService = keyInfoService;
-            Post["/keyinfo/add", runAsync:true] = async (_, ct) => await Add();
-            Post["/keyinfo/delete", runAsync: true] = async (_, ct) => await DeleteKey();
-            Get["/keyinfo", runAsync: true] = async (_, ct) => await GetAll();
+            Post["/api/keyinfo/add", runAsync:true] = async (_, ct) => await Add();
+            Post["/api/keyinfo/delete", runAsync: true] = async (_, ct) => await DeleteKey();
+            Get["/api/keyinfo", runAsync: true] = async (_, ct) => await GetAll();
         }
 
         struct AddModel

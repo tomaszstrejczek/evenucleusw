@@ -254,9 +254,21 @@
     <Content Include="webpack.config.js" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\api\api.csproj">
+      <Project>{2feed3dd-c782-49c2-8679-20bec802396b}</Project>
+      <Name>api</Name>
+    </ProjectReference>
     <ProjectReference Include="..\dto\dto.csproj">
       <Project>{3b9177cf-0bc5-4a73-8ea5-76b5fe268f0a}</Project>
       <Name>dto</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\fas\Nancy\src\Nancy.Hosting.Aspnet\Nancy.Hosting.Aspnet.csproj">
+      <Project>{15b7f794-0bb2-4b66-ad78-4a951f1209b2}</Project>
+      <Name>Nancy.Hosting.Aspnet</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\fas\Nancy\src\Nancy\Nancy.csproj">
+      <Project>{34576216-0dca-4b0f-a0dc-9075e75a676f}</Project>
+      <Name>Nancy</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

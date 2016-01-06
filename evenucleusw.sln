@@ -47,6 +47,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "devtools", "devtools\devtoo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "staticcontent", "staticcontent\staticcontent.csproj", "{A708ACB1-DACB-4138-8AC8-850808A84ED8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nancy.Hosting.Aspnet", "fas\Nancy\src\Nancy.Hosting.Aspnet\Nancy.Hosting.Aspnet.csproj", "{15B7F794-0BB2-4B66-AD78-4A951F1209B2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -207,6 +209,14 @@ Global
 		{A708ACB1-DACB-4138-8AC8-850808A84ED8}.MonoRelease|Any CPU.Build.0 = Release|Any CPU
 		{A708ACB1-DACB-4138-8AC8-850808A84ED8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A708ACB1-DACB-4138-8AC8-850808A84ED8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{15B7F794-0BB2-4B66-AD78-4A951F1209B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15B7F794-0BB2-4B66-AD78-4A951F1209B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15B7F794-0BB2-4B66-AD78-4A951F1209B2}.MonoDebug|Any CPU.ActiveCfg = MonoDebug|Any CPU
+		{15B7F794-0BB2-4B66-AD78-4A951F1209B2}.MonoDebug|Any CPU.Build.0 = MonoDebug|Any CPU
+		{15B7F794-0BB2-4B66-AD78-4A951F1209B2}.MonoRelease|Any CPU.ActiveCfg = MonoRelease|Any CPU
+		{15B7F794-0BB2-4B66-AD78-4A951F1209B2}.MonoRelease|Any CPU.Build.0 = MonoRelease|Any CPU
+		{15B7F794-0BB2-4B66-AD78-4A951F1209B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15B7F794-0BB2-4B66-AD78-4A951F1209B2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -221,5 +231,6 @@ Global
 		{47BC6A5B-9F93-4CAF-B4E4-B37DECFDDCF6} = {854F7BE5-CC25-4469-B544-E932B3EAA1F7}
 		{AA85978C-2BF5-419F-9F8E-B70162E83F34} = {47BC6A5B-9F93-4CAF-B4E4-B37DECFDDCF6}
 		{655CA737-CD94-4128-B2B5-DCE37EA6E7F8} = {47BC6A5B-9F93-4CAF-B4E4-B37DECFDDCF6}
+		{15B7F794-0BB2-4B66-AD78-4A951F1209B2} = {379CA240-3A70-41C7-A4E3-39489DEA6501}
 	EndGlobalSection
 EndGlobal

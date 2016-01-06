@@ -15,7 +15,7 @@ namespace ts.api
         public BackgroundUpdate(IBackgroundUpdate backgroundUpdate)
         {
             _backgroundUpdate = backgroundUpdate;
-            Post["/backgroundupdate", runAsync: true] = async (_, ct) => await DoUpdate();
+            Post["/api/backgroundupdate", runAsync: true] = async (_, ct) => await DoUpdate();
         }
 
         public async Task<string> DoUpdate()

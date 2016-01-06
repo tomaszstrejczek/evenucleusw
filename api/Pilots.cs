@@ -17,7 +17,7 @@ namespace ts.api
         public Pilots(IPilotRepo pilotRepo)
         {
             _pilotRepo = pilotRepo;
-            Get["/pilots", runAsync: true] = async (_, ct) => await GetPilots();
+            Get["/api/pilots", runAsync: true] = async (_, ct) => await GetPilots();
         }
 
         public async Task<IEnumerable<PilotDto>>  GetPilots()
