@@ -26,7 +26,7 @@ namespace ring0
         }
 
         [TestMethod]
-        public async Task Performance()
+        public void Performance()
         {
             var typeNameDict = new TypeNameDict(AccountContextProvider, EveCache, Logger);
 
@@ -36,7 +36,7 @@ namespace ring0
             for (long i = 0; i < 400000; ++i)
             {
                 ids.Add(i);
-                ids2.Add(369547l);
+                ids2.Add(369547L);
                 dict.Add(i, i.ToString());
             }
 

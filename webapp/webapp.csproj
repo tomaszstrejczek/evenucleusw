@@ -132,9 +132,6 @@
     <TypeScriptCompile Include="test\dom\api-test.ts" />
     <TypeScriptCompile Include="test\dom\login-test.tsx" />
     <TypeScriptCompile Include="test\dom\smoke0-test.ts" />
-    <Content Include="test\purejs\index.js" />
-    <Content Include="test\purejs\smoke0.js" />
-    <Content Include="test\utils\dom.js" />
     <Content Include="web.config" />
     <TypeScriptCompile Include="industry\Industry.tsx" />
     <TypeScriptCompile Include="references.d.ts" />
@@ -237,7 +234,6 @@
     <Content Include="styles\less\modules\video.less" />
     <Content Include="styles\less\spaces.less" />
     <Content Include="styles\less\variables.less" />
-    <Content Include="test\utils\mocha.opts" />
     <Content Include="forms\component.jsx" />
     <Content Include="forms\icon.jsx" />
     <Content Include="forms\input.jsx" />
@@ -245,6 +241,7 @@
     <Content Include="tsconfig.json" />
     <Content Include="Scripts\Manager.ttinclude" />
     <Content Include="packages.config" />
+    <None Include="evenuceus.pubxml" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>
@@ -321,10 +318,44 @@
     <TypeScriptNoEmitOnError>True</TypeScriptNoEmitOnError>
     <TypeScriptMapRoot />
     <TypeScriptSourceRoot />
+    <PublishDatabases>false</PublishDatabases>
+    <FilesToIncludeForPublish>OnlyFilesToRunTheApp</FilesToIncludeForPublish>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)' == 'Release'">
     <TypeScriptRemoveComments>true</TypeScriptRemoveComments>
     <TypeScriptSourceMap>false</TypeScriptSourceMap>
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
+
+  <PropertyGroup>
+    <MyDeployDir>deploy\$(Configuration)</MyDeployDir>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ToDeploy Include="Built\*" Exclude="Built\dom.*">
+      <InProject>false</InProject>
+      <ToDir>Built</ToDir>
+    </ToDeploy>  
+    <ToDeploy Include="bin\*" Exclude="bin\*.pdb;bin\*.xml">
+      <InProject>false</InProject>
+      <ToDir>bin</ToDir>
+    </ToDeploy>  
+    <ToDeploy Include="web.config;index.html;app.css;favicon.ico">
+      <InProject>false</InProject>
+      <ToDir>.</ToDir>
+    </ToDeploy>  
+  </ItemGroup>
+
+  <Target Name="AfterBuild">
+    <Message Text="AfterBuild" Importance="high" />
+    <MakeDir Directories="$(MyDeployDir)\%(ToDeploy.ToDir)" />
+
+    <Copy 
+        SourceFiles="@(ToDeploy)" 
+        DestinationFolder="$(MyDeployDir)\%(ToDeploy.ToDir)" 
+        SkipUnchangedFiles="true"
+    />
+
+  </Target>
+
 </Project>

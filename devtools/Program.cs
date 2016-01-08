@@ -108,7 +108,6 @@ namespace devtools
 
         static void Main(string[] args)
         {
-            var ctx = new AccountContext(null);
         }
     }
 }

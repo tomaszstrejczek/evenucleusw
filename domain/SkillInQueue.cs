@@ -12,7 +12,16 @@ namespace ts.domain
         public long PilotId { get; set; }
         public string SkillName { get; set; }
         public int Level { get; set; }
-        public TimeSpan Length { get; set; }
+
+        public TimeSpan Length
+        {
+            get
+            {
+                return TimeSpan.FromTicks(LengthTicks);
+            }
+            set { LengthTicks = value.Ticks; }
+        }
+        public long LengthTicks { get; set; }
         public int Order { get; set; }
     }
 }

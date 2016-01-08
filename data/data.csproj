@@ -231,6 +231,10 @@
     <Compile Include="Migrations\20160106203349_Initial.designer.cs">
       <DependentUpon>20160106203349_Initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20160108184124_Fix1.cs" />
+    <Compile Include="Migrations\20160108184124_Fix1.designer.cs">
+      <DependentUpon>20160108184124_Fix1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\AccountContextModelSnapshot.cs" />
     <Compile Include="MyConfiguration.cs" />
     <Compile Include="NotificationRepo.cs" />

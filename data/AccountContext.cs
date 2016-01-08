@@ -78,6 +78,7 @@ namespace ts.data
 
             modelBuilder.Entity<Skill>().HasOne<Pilot>();
             modelBuilder.Entity<SkillInQueue>().HasOne<Pilot>();
+            modelBuilder.Entity<SkillInQueue>().Ignore(c => c.Length);
 
             modelBuilder.Entity<Job>()
                 .Ignore(x => x.DurationDescription);
