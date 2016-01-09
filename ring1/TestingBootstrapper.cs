@@ -12,7 +12,6 @@ using Nancy.TinyIoc;
 using Microsoft.Data.Entity;
 using Serilog;
 using ts.data;
-using ts.shared;
 using ts.services;
 using AccountService = ts.api.AccountService;
 
@@ -22,8 +21,7 @@ namespace ring1
     {
         protected override void ApplicationStartup(TinyIoCContainer container, IPipelines pipelines)
         {
-            var config = new MyTestConfiguration();
-            var context = new AccountContext(config);
+            var context = new AccountContext();
             context.Database.EnsureCreated();
 
             base.ApplicationStartup(container, pipelines);
@@ -31,7 +29,6 @@ namespace ring1
 
         protected override void ConfigureApplicationContainer(TinyIoCContainer container)
         {
-            container.Register<IMyConfiguration, MyTestConfiguration>();
             container.Register<IAccountContextProvider, AccountContextProvider>();
             container.Register<IAccountRepo, AccountRepo>();
             container.Register<ICacheLocalProvider,CacheLocalProvider>();

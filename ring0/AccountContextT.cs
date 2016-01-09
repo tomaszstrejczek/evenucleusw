@@ -141,7 +141,7 @@ namespace ring0
             }
 
             // let's check if it is in ArchiveSession now
-            using (var db = new AccountContext(new MyTestConfiguration()))
+            using (var db = new AccountContext())
             {
                 var found = await db.ArchiveSessions.SingleOrDefaultAsync(s => s.SessionId == skey);
                 Assert.IsNotNull(found);
@@ -149,7 +149,7 @@ namespace ring0
 
             // let's simulate elapsed time
             skey = await repo.Login("ala@kot5.pies", "123");
-            using (var db = new AccountContext(new MyTestConfiguration()))
+            using (var db = new AccountContext())
             {
                 var found = await db.Sessions.SingleOrDefaultAsync(s => s.SessionId == skey);
                 Assert.IsNotNull(found);

@@ -9,7 +9,6 @@ using Nancy;
 using Ninject;
 using Serilog;
 using ts.data;
-using ts.shared;
 
 using ts.services;
 using ts.domain;
@@ -30,7 +29,6 @@ namespace ts.api
         {
             // Perform registation that should have an application lifetime
             existingContainer.Bind<IAccountContextProvider>().To<AccountContextProvider>();
-            existingContainer.Bind<IMyConfiguration>().To<MyConfiguration>();
             existingContainer.Bind<IAccountRepo>().To<AccountRepo>();
             existingContainer.Bind<ICacheLocalProvider>().To<CacheLocalProvider>();
             existingContainer.Bind<ICharacterNameDict>().To<CharacterNameDict>();
@@ -59,13 +57,6 @@ namespace ts.api
 #endif
             var log = config.CreateLogger();
             existingContainer.Bind<ILogger>().ToConstant(log);
-
-            var c = existingContainer.Get<IMyConfiguration>();
-            if (!c.UseSql)
-            {
-                var ctx = existingContainer.Get<IAccountContextProvider>();
-                ctx.Context.Database.EnsureCreated();
-            }
         }
 
         protected override void RequestStartup(IKernel container, IPipelines pipelines, NancyContext context)

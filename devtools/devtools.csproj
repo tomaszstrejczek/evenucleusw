@@ -133,7 +133,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MyConfiguration.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TypeIdsYaml.cs" />
@@ -150,10 +149,6 @@
     <ProjectReference Include="..\domain\domain.csproj">
       <Project>{cb8e3f45-de62-420d-a164-3430f2c35705}</Project>
       <Name>domain</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\shared\shared.csproj">
-      <Project>{F8CCFB67-A37A-40A4-834B-0C150E188A4E}</Project>
-      <Name>shared</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

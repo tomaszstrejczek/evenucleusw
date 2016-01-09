@@ -15,8 +15,7 @@ namespace ring0
         {
             get
             {
-                var config = new MyTestConfiguration();
-                var ctxprovider = new AccountContextProvider(config);
+                var ctxprovider = new AccountContextProvider();
 
                 return ctxprovider;
             }

@@ -142,7 +142,6 @@
     <Compile Include="AssemblyInit.cs" />
     <Compile Include="BackgroundUpdateT.cs" />
     <Compile Include="KeyInfoService.cs" />
-    <Compile Include="MyTestConfiguration.cs" />
     <Compile Include="AccountT.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceTestBase.cs" />
@@ -180,10 +179,6 @@
     <ProjectReference Include="..\services\services.csproj">
       <Project>{938ecf13-a4d9-4858-8b40-4ae44126f10b}</Project>
       <Name>services</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\shared\shared.csproj">
-      <Project>{f8ccfb67-a37a-40a4-834b-0c150e188a4e}</Project>
-      <Name>shared</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

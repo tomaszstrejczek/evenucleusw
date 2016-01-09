@@ -236,7 +236,6 @@
       <DependentUpon>20160108184124_Fix1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\AccountContextModelSnapshot.cs" />
-    <Compile Include="MyConfiguration.cs" />
     <Compile Include="NotificationRepo.cs" />
     <Compile Include="PasswordHash.cs" />
     <Compile Include="PilotRepo.cs" />
@@ -266,10 +265,6 @@
     <ProjectReference Include="..\fas\evelib\EveLib.EveXml\EveLib.EveXml.csproj">
       <Project>{655ca737-cd94-4128-b2b5-dce37ea6e7f8}</Project>
       <Name>EveLib.EveXml</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\shared\shared.csproj">
-      <Project>{f8ccfb67-a37a-40a4-834b-0c150e188a4e}</Project>
-      <Name>shared</Name>
     </ProjectReference>
     <ProjectReference Include="..\staticcontent\staticcontent.csproj">
       <Project>{a708acb1-dacb-4138-8ac8-850808a84ed8}</Project>

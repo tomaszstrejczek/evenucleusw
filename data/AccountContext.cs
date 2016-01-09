@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Data.Entity;
-using ts.shared;
 
 using ts.domain;
 
@@ -13,7 +13,6 @@ namespace ts.data
 {
     public class AccountContext: DbContext
     {
-        private readonly IMyConfiguration _configuration;
         public DbSet<User> Users { get; set; }
         public DbSet<Session> Sessions { get; set; }
         public DbSet<ArchiveSession> ArchiveSessions { get; set; }
@@ -27,25 +26,38 @@ namespace ts.data
         public DbSet<CacheEntry> CacheEntries { get; set; }
         public DbSet<TypeNameEntry> TypeNameEntries { get; set; }
 
-        //public AccountContext()
-        //{
-        //    _configuration = null;
-        //}
-
-        public AccountContext(IMyConfiguration configuration)
+        public AccountContext()
         {
-            _configuration = configuration;
         }
+
+        internal class Config
+        {
+            internal Config()
+            {
+                if (System.Environment.MachineName.ToLower() == "vir")
+                    ConnectionString = Local;
+                else
+                    ConnectionString = Azure;
+            }
+
+            internal string ConnectionString { get; set; }
+
+            private string Local => "Server=vir;Database=myDataBase;Trusted_Connection=True;";
+            private string Azure => "Server=tcp:evenucleusw.database.windows.net,1433;Database=evenucleusw;User ID=tomek@evenucleusw;Password=Traktor12;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+        }
+
+        static private Config _config = new Config();
+
+        static public bool UseInMemory = false;
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            if (_configuration == null)
-                optionsBuilder.UseSqlServer("Server=tcp:evenucleusw.database.windows.net,1433;Database=evenucleusw;User ID=tomek@evenucleusw;Password=Traktor12;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
-
-            else if (_configuration.UseSql)
-                optionsBuilder.UseSqlServer(_configuration.ConnectionString);
-            else
+            if (UseInMemory)
+            {
                 optionsBuilder.UseInMemoryDatabase();
+            }
+            else
+                optionsBuilder.UseSqlServer(_config.ConnectionString);
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

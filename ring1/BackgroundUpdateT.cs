@@ -19,7 +19,7 @@ namespace ring1
         {
             var skey = GetSKey();
 
-            var result = Browser.Post("http://localhost:8070/keyinfo/add", with => {
+            var result = Browser.Post("http://localhost:8070/api/keyinfo/add", with => {
                 with.HttpRequest();
                 with.Header("jwt", skey);
                 with.FormValue("KeyId", "3645238");
@@ -30,14 +30,14 @@ namespace ring1
             Assert.AreEqual(Nancy.HttpStatusCode.OK, result.StatusCode);
             var keyinfoid = result.Body.DeserializeJson<SingleLongDto>().Value;
 
-            result = Browser.Post("http://localhost:8070/backgroundupdate", with => {
+            result = Browser.Post("http://localhost:8070/api/backgroundupdate", with => {
                 with.HttpRequest();
                 with.Header("jwt", skey);
                 with.Accept(new MediaRange("application/json"));
             });
             Assert.AreEqual(HttpStatusCode.OK, result.StatusCode);
 
-            result = Browser.Get("http://localhost:8070/pilots", with => {
+            result = Browser.Get("http://localhost:8070/api/pilots", with => {
                 with.HttpRequest();
                 with.Header("jwt", skey);
                 with.Accept(new MediaRange("application/json"));
