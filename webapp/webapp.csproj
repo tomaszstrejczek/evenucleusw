@@ -241,7 +241,6 @@
     <Content Include="tsconfig.json" />
     <Content Include="Scripts\Manager.ttinclude" />
     <Content Include="packages.config" />
-    <None Include="evenuceus.pubxml" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>
@@ -324,38 +323,40 @@
   <PropertyGroup Condition="'$(Configuration)' == 'Release'">
     <TypeScriptRemoveComments>true</TypeScriptRemoveComments>
     <TypeScriptSourceMap>false</TypeScriptSourceMap>
+    <TypeScriptTarget>ES5</TypeScriptTarget>
+    <TypeScriptJSXEmit>React</TypeScriptJSXEmit>
+    <TypeScriptCompileOnSaveEnabled>False</TypeScriptCompileOnSaveEnabled>
+    <TypeScriptNoImplicitAny>False</TypeScriptNoImplicitAny>
+    <TypeScriptModuleKind>AMD</TypeScriptModuleKind>
+    <TypeScriptOutFile />
+    <TypeScriptOutDir />
+    <TypeScriptGeneratesDeclarations>False</TypeScriptGeneratesDeclarations>
+    <TypeScriptNoEmitOnError>True</TypeScriptNoEmitOnError>
+    <TypeScriptMapRoot />
+    <TypeScriptSourceRoot>
+    </TypeScriptSourceRoot>
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
-
   <PropertyGroup>
     <MyDeployDir>deploy\$(Configuration)</MyDeployDir>
   </PropertyGroup>
-
   <ItemGroup>
     <ToDeploy Include="Built\*" Exclude="Built\dom.*">
       <InProject>false</InProject>
       <ToDir>Built</ToDir>
-    </ToDeploy>  
+    </ToDeploy>
     <ToDeploy Include="bin\*" Exclude="bin\*.pdb;bin\*.xml">
       <InProject>false</InProject>
       <ToDir>bin</ToDir>
-    </ToDeploy>  
+    </ToDeploy>
     <ToDeploy Include="web.config;index.html;app.css;favicon.ico">
       <InProject>false</InProject>
       <ToDir>.</ToDir>
-    </ToDeploy>  
+    </ToDeploy>
   </ItemGroup>
-
   <Target Name="AfterBuild">
     <Message Text="AfterBuild" Importance="high" />
     <MakeDir Directories="$(MyDeployDir)\%(ToDeploy.ToDir)" />
-
-    <Copy 
-        SourceFiles="@(ToDeploy)" 
-        DestinationFolder="$(MyDeployDir)\%(ToDeploy.ToDir)" 
-        SkipUnchangedFiles="true"
-    />
-
+    <Copy SourceFiles="@(ToDeploy)" DestinationFolder="$(MyDeployDir)\%(ToDeploy.ToDir)" SkipUnchangedFiles="true" />
   </Target>
-
 </Project>

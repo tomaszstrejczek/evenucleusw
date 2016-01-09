@@ -65,7 +65,7 @@ render: function() {
     */
 
     var classNames = {
-        formGroup: ['form-group'],
+        formGroup: ['form-group', 'has-feedback'],
         elementWrapper: []
     };
 
