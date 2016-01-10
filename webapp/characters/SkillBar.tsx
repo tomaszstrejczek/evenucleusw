@@ -10,7 +10,7 @@ var skillBarOuterStyle = (autoprefix as any)({
     height: "12px",
     background: "#00689D",
     borderRadius: "4px",
-    marginLeft: "10px",
+    //marginLeft: "10px",
     //position: "relative",
     //top: "50%",
     //transform: "translateY(-50%)"
@@ -31,12 +31,15 @@ export interface SkillBarProperties {
     levelCompleted: number;
     levelTraining: number;
     color: TsColor;
+    marginLeft?: string;
 }
 
 export class SkillBar extends React.Component<SkillBarProperties, any> {
     render(): JSX.Element {
         var outerStyle = owl.copy(skillBarOuterStyle);
         outerStyle.background = this.props.color.darkest;
+        if (this.props.marginLeft !== undefined)
+            outerStyle.marginLeft = this.props.marginLeft;
 
         return (
             <div style={outerStyle}>

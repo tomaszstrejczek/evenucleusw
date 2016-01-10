@@ -39,6 +39,7 @@ export interface SkillCardProperties {
     skills: ts.dto.SkillDto[];
     grouping: ISkillGrouping;
     color: TsColor;
+    key?: string;
 }
 
 export class SkillCard extends React.Component<SkillCardProperties, any> {
@@ -50,13 +51,13 @@ export class SkillCard extends React.Component<SkillCardProperties, any> {
         }
 
         return (
-            <div className="panel panel-default">
+            <div className="panel panel-default" key={this.props.key}>
                 <div className="panel-body" style={{background:this.props.color.lighter, color: "black"}}>
                     <div style={row}>
                         {this.props.grouping.section1.map((skill, key) => {
                              return <div key={key} style={rowElement}>
                                         <div>{skill}</div>
-                                        <SkillBar levelCompleted={getLevel(skill) } levelTraining={0} color={this.props.color}/>
+                                        <SkillBar levelCompleted={getLevel(skill) } levelTraining={0} color={this.props.color} marginLeft="10px"/>
                                     </div>;
                     })}
                     </div>
@@ -65,7 +66,7 @@ export class SkillCard extends React.Component<SkillCardProperties, any> {
                         {this.props.grouping.section2.map((skill, key) => {
                             return <div key={key} style={rowElement}>
                                         <div>{skill}</div>
-                                        <SkillBar levelCompleted={getLevel(skill) } levelTraining={0} color={this.props.color}/>
+                                        <SkillBar levelCompleted={getLevel(skill) } levelTraining={0} color={this.props.color} marginLeft="10px"/>
                                 </div>;
                         }) }
                         </div>

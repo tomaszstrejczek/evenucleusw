@@ -7,7 +7,7 @@ import { Link } from 'react-router';
 import {owl} from './../utils/deepCopy';
 import {PilotInfo} from './PilotInfo';
 import {SkillCard} from './SkillCard';
-import {frigates, destroyers, cruisers, battlecruisers, battleships} from './SkillData';
+import {frigates, destroyers, cruisers, battlecruisers, battleships, transport} from './SkillData';
 import {NotFound} from './../special/NotFound';
 
 import {IAppState} from './../app/AppState';
@@ -41,9 +41,21 @@ export class PilotDetails extends React.Component<any, any> {
     render(): JSX.Element {
 
         let { name } = this.props.params;
+        let { query } = this.props.location;
+
+        var tab = "combat";
+
+        if (query !== undefined && query.tab !== undefined)
+            tab = query.tab;
 
         if (name === undefined)
             return <NotFound/>;
+
+        var tabContent = [frigates, destroyers, cruisers, battlecruisers, battleships];
+
+        if (tab === "industry") {
+            tabContent = [transport];
+        }
 
         var s: IAppState = this.context.store.getState() as IAppState;
 
@@ -66,13 +78,15 @@ export class PilotDetails extends React.Component<any, any> {
 
         return (
             <div style={containerProps}>
-                <PilotInfo name={data.name} url={data.url} skillsInQueue={data.skillsInQueue.sort((a, b) => a.order - b.order)} skillInTraining={skillInTraining} color={purple}/>
+                <PilotInfo name={data.name} url={data.url} skillsInQueue={data.skillsInQueue.sort((a, b) => a.order - b.order) } skillInTraining={skillInTraining} color={purple} skillCountLimit={100}/>
                 <div style={containerProps2}>
-                    <SkillCard skills={data.skills} grouping={frigates} color={red}/>
-                    <SkillCard skills={data.skills} grouping={destroyers} color={purple}/>
-                    <SkillCard skills={data.skills} grouping={cruisers} color={red}/>
-                    <SkillCard skills={data.skills} grouping={battlecruisers} color={purple}/>
-                    <SkillCard skills={data.skills} grouping={battleships} color={red}/>
+                    <ul className="nav nav-pills">
+                        <li><Link to={"/pilot/"+encodeURIComponent(name)} query={{tab: "combat"}}>Combat ships</Link></li>
+                        <li><Link to={"/pilot/" + encodeURIComponent(name) } query={{ tab: "industry" }}>Industry ships</Link></li>
+                    </ul>
+                    {tabContent.map((tabInfo, key) => {
+                            return <SkillCard key={tab + key.toString()} skills={data.skills} grouping={tabInfo} color={key%2==0?red:purple}/>;
+                    })}
                 </div>
             </div>
         );

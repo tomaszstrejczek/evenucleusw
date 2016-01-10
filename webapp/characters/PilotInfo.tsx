@@ -19,6 +19,7 @@ export interface PilotInfoProperties {
     skillInTraining: ts.dto.SkillInQueueDto,
     skillsInQueue: ts.dto.SkillInQueueDto[];
     color: TsColor;
+    skillCountLimit?: number;
 }
 
 export class PilotInfo extends React.Component<PilotInfoProperties, any> {
@@ -35,7 +36,8 @@ export class PilotInfo extends React.Component<PilotInfoProperties, any> {
             currentTraining =
                 <div>-/-</div>;
 
-        var queueTraining = this.props.skillInTraining.length.length > 0 ? this.props.skillsInQueue.slice(1, 4) : this.props.skillsInQueue.slice(0, 3);
+        var limit = this.props.skillCountLimit === undefined ? 3 : this.props.skillCountLimit;
+        var queueTraining = this.props.skillInTraining.length.length > 0 ? this.props.skillsInQueue.slice(1, limit+1) : this.props.skillsInQueue.slice(0, limit);
 
         var that = this;
 

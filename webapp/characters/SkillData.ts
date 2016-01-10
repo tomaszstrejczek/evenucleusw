@@ -27,3 +27,8 @@ export var battleships: ISkillGrouping = {
     section1: ["Black Ops", "Marauders"],
     section2: ["Amarr Battleship", "Caldari Battleship", "Gallente Battleship", "Minmatar Battleship"]
 };
+
+export var transport: ISkillGrouping = {
+    section1: ["Industry", "Transport Ships"],
+    section2: ["Amarr Industrial", "Caldari Industrial", "Gallente Industrial", "Minmatar Industrial"]
+};
