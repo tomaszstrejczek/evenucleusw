@@ -5,30 +5,44 @@ import {TsColor} from './../utils/colors';
 import {ISkillGrouping} from './SkillData';
 import {SkillBar} from './SkillBar';
 
+import autoprefix = require("auto-prefixer");
+
+var containerProps = (autoprefix as any)({
+    display: "flex",
+    flexDirection: "row",
+    flexWrap: "wrap",
+    //alignContent: "flex-end"
+    marginTop: "-20px"
+});
+
+var row = (autoprefix as any)({
+    display: "flex",
+    flexDirection: "row",
+    flexWrap: "wrap",
+    justifyContent: "space-between",
+    transformStyle: "preserve-3d"
+    //alignContent: "flex-end"
+});
+
+var rowElement = (autoprefix as any)({
+    display: "flex",
+    flexDirection: "row",
+    flexWrap: "wrap",
+    marginRight: "10px",
+    justifyContent: "flex-start",
+    alignItems: "center"
+    //alignContent: "flex-end"
+});
+
 
 export interface SkillCardProperties {
     skills: ts.dto.SkillDto[];
     grouping: ISkillGrouping;
     color: TsColor;
-    tableCount: number;
-    classStyle: string;
 }
 
 export class SkillCard extends React.Component<SkillCardProperties, any> {
     render(): JSX.Element {
-        var tableCount = this.props.tableCount;
-        var classStyle = this.props.classStyle;
-        var gr = this.props.grouping.section1;
-
-        var data = Array.apply(0, Array(tableCount)).map((elem) => []);
-        var tab = 0;
-        for (var i = 0; i < gr.length; ++i) {
-            data[tab].push(gr[i]);
-            ++tab;
-            if (tab >= tableCount)
-                tab = 0;
-        }
-
         var that = this;
         function getLevel(skill: string) {
             var elem = that.props.skills.filter(elem => elem.skillName === skill);
@@ -38,27 +52,23 @@ export class SkillCard extends React.Component<SkillCardProperties, any> {
         return (
             <div className="panel panel-default">
                 <div className="panel-body" style={{background:this.props.color.lighter, color: "black"}}>
-                    <div className="row">
-                        {data.map( (elem, key) => {
-                            return <div key={key} className={classStyle}><table><tbody>
-                                {elem.map(skill => {
-                                    return <tr key={skill}>
-                                                        <td style={{ fontSize: "75%", verticalAlign:"middle" }}>{skill}</td>
-                                                        <td style={{ verticalAlign: "middle", paddingLeft: "15px", paddingTop:"3px" }}><SkillBar levelCompleted={getLevel(skill)} levelTraining={0} color={this.props.color}/></td>
-                                                   </tr>;
-                                }) }
-                                </tbody></table></div>;
+                    <div style={row}>
+                        {this.props.grouping.section1.map((skill, key) => {
+                             return <div key={key} style={rowElement}>
+                                        <div>{skill}</div>
+                                        <SkillBar levelCompleted={getLevel(skill) } levelTraining={0} color={this.props.color}/>
+                                    </div>;
                     })}
-                        </div>
-                    <div className="row"><div className="col-md-12"><hr/></div></div>
-                    <div className="row">
-                        {this.props.grouping.section2.map(skill => {
-                            return <div key={skill} className="col-md-3"><table><tbody><tr>
-                                    <td style={{ fontSize: "75%", verticalAlign: "middle" }}>{skill}</td>
-                                    <td style={{ verticalAlign: "middle", paddingLeft: "15px", paddingTop: "3px" }}><SkillBar levelCompleted={getLevel(skill)} levelTraining={0} color={this.props.color}/></td>
-                                </tr></tbody></table></div>;
-                            })}
                     </div>
+                    <div><hr/></div>
+                    <div style={row}>
+                        {this.props.grouping.section2.map((skill, key) => {
+                            return <div key={key} style={rowElement}>
+                                        <div>{skill}</div>
+                                        <SkillBar levelCompleted={getLevel(skill) } levelTraining={0} color={this.props.color}/>
+                                </div>;
+                        }) }
+                        </div>
                 </div>
             </div>
         );

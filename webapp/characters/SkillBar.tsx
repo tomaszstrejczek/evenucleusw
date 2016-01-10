@@ -3,13 +3,18 @@
 import {owl} from './../utils/deepCopy';
 import {TsColor} from './../utils/colors';
 
+import autoprefix = require("auto-prefixer");
 
-var skillBarOuterStyle = {
+var skillBarOuterStyle = (autoprefix as any)({
     width: "52px",
     height: "12px",
     background: "#00689D",
-    borderRadius: "4px"
-};
+    borderRadius: "4px",
+    marginLeft: "10px",
+    //position: "relative",
+    //top: "50%",
+    //transform: "translateY(-50%)"
+});
 
 var skillBarInnerStyleBase = {
     width: "8px",

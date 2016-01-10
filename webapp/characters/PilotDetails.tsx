@@ -13,6 +13,23 @@ import {NotFound} from './../special/NotFound';
 import {IAppState} from './../app/AppState';
 import {IStoreContext} from './../app/IStoreContext';
 
+import autoprefix = require("auto-prefixer");
+
+var containerProps = (autoprefix as any)({
+    display: "flex",
+    flexDirection: "row",
+    flexWrap: "wrap",
+    //alignContent: "flex-end"
+    marginTop: "-20px"
+});
+
+var containerProps2 = (autoprefix as any)({
+    display: "flex",
+    flexDirection: "column",
+    flexWrap: "wrap",
+    marginTop: "25px"
+    //alignContent: "flex-end"
+});
 
 export class PilotDetails extends React.Component<any, any> {
     context: IStoreContext;
@@ -36,6 +53,8 @@ export class PilotDetails extends React.Component<any, any> {
 
         var data = p[0];
 
+        //var data = this.getTestData();
+
         var skillInTraining: ts.dto.SkillInQueueDto = {
             skillInQueueId: 0,
             pilotId: data.pilotId,
@@ -46,14 +65,14 @@ export class PilotDetails extends React.Component<any, any> {
         };
 
         return (
-            <div className="row">
+            <div style={containerProps}>
                 <PilotInfo name={data.name} url={data.url} skillsInQueue={data.skillsInQueue.sort((a, b) => a.order - b.order)} skillInTraining={skillInTraining} color={purple}/>
-                <div className="col-md-7 col-xs-11 col-lg-8">
-                    <SkillCard skills={data.skills} grouping={frigates} color={red} tableCount={4} classStyle="col-md-3"/>
-                    <SkillCard skills={data.skills} grouping={destroyers} color={purple} tableCount={2} classStyle="col-md-6"/>
-                    <SkillCard skills={data.skills} grouping={cruisers} color={red} tableCount={4} classStyle="col-md-3"/>
-                    <SkillCard skills={data.skills} grouping={battlecruisers} color={purple} tableCount={1} classStyle="col-md-12"/>
-                    <SkillCard skills={data.skills} grouping={battleships} color={red} tableCount={2} classStyle="col-md-6"/>
+                <div style={containerProps2}>
+                    <SkillCard skills={data.skills} grouping={frigates} color={red}/>
+                    <SkillCard skills={data.skills} grouping={destroyers} color={purple}/>
+                    <SkillCard skills={data.skills} grouping={cruisers} color={red}/>
+                    <SkillCard skills={data.skills} grouping={battlecruisers} color={purple}/>
+                    <SkillCard skills={data.skills} grouping={battleships} color={red}/>
                 </div>
             </div>
         );
@@ -67,9 +86,17 @@ export class PilotDetails extends React.Component<any, any> {
         skills.push({ skillName: "Amarr Frigates", level: 5 } as ts.dto.SkillDto);
         
         var p = {
-            name: this.props.params.name,
+            name: "two skill",
             url: "https://image.eveonline.com/Character/1_64.jpg",
-            skills: skills
+            skillsInQueue: [
+                { skillName: "Skill 1", level: 2, skillInQueueId: 1, pilotId: 1, order: 0 } as ts.dto.SkillInQueueDto,
+                { skillName: "Skill 2", level: 2, skillInQueueId: 1, pilotId: 1, order: 1 } as ts.dto.SkillInQueueDto,
+                { skillName: "Skill 3", level: 3, skillInQueueId: 1, pilotId: 1, order: 2 } as ts.dto.SkillInQueueDto,
+            ],
+            pilotId: 1,
+            skills: skills,
+            currentTrainingNameAndLevel: "Interceprots 2",
+            currentTrainingLength: "10d 20g 5m 3s"
         } as ts.dto.PilotDto;
 
 
