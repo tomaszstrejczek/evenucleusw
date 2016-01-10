@@ -28,7 +28,7 @@ export function createRoutes(store: Store): JSX.Element {
     return <Router history={History.createHistory()}>
              <Route path="/" component={App} >
                  <Route path="characters" component={Characters} onEnter={onEnter}/>
-                 <Route path="pilot/:name" component={PilotDetails}/>
+                 <Route path="pilot/:name" component={PilotDetails} onEnter={onEnter}/>
                  <Route path="industry" component={Industry}/>
                  <Route path="keys" component={Keys} onEnter={onEnter}/>
                  <Route path="keyadd" component={KeyAdd} onEnter={onEnter}/>

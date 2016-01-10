@@ -137,6 +137,7 @@
     <TypeScriptCompile Include="references.d.ts" />
     <TypeScriptCompile Include="typings\fastclick\fastclick.d.ts" />
     <TypeScriptCompile Include="typings\jquery\jquery.d.ts" />
+    <TypeScriptCompile Include="typings\mine-auto-prefixer\auto-prefixer.d.ts" />
     <TypeScriptCompile Include="typings\mine-formsy-react\formsy-react.d.ts" />
     <TypeScriptCompile Include="typings\mine-react-modal\react-modal.d.ts" />
     <TypeScriptCompile Include="typings\mine-react-notifications\react-notifications.d.ts" />

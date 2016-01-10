@@ -11,11 +11,18 @@ import {createPilotsGetAllAction} from './../actions/PilotsActions';
 import {purple} from './../utils/colors';
 import {PilotInfo, SkillData, PilotInfoProperties} from './PilotInfo';
 
+import autoprefix = require("auto-prefixer");
 
 interface ICharactersState {
     pilots: ts.dto.PilotDto[];
 }
 
+var containerProps = (autoprefix as any)({
+    display: "flex",
+    flexDirection: "row",
+    flexWrap: "wrap",
+    //alignContent: "flex-end"
+});
 
 export class Characters extends React.Component<any, ICharactersState> {
     context: IStoreContext & IKeyInfoServiceContext & IPilotsServiceContext & IBackgroundUpdateServiceContext;
@@ -69,9 +76,10 @@ export class Characters extends React.Component<any, ICharactersState> {
 
     render(): JSX.Element {
         var data = this.state.pilots;
+        //var data = this.getTestData();
 
         return (
-            <div className="row">
+            <div style={containerProps}>
                 {data.map(pilot => {
                     var skillInTraining: ts.dto.SkillInQueueDto = {
                         skillInQueueId: 0,
@@ -87,50 +95,78 @@ export class Characters extends React.Component<any, ICharactersState> {
         );
     }
 
-    //getTestData(): Array<PilotInfoProperties> {
-    //    var result = new Array<PilotInfoProperties>();
-    //    var p: PilotInfoProperties;
-    //    p = {
-    //        name: "empty",
-    //        url: "https://image.eveonline.com/Character/1_64.jpg",
-    //        skillsInQueue: new Array<tspan.>(),
-    //        color: purple
-    //    };
-    //    result.push(p);
+    getTestData(): ts.dto.PilotDto[] {
+        var result = new Array<ts.dto.PilotDto>();
+        var p: ts.dto.PilotDto;
+        p = {
+            name: "empty",
+            url: "https://image.eveonline.com/Character/1_64.jpg",
+            skillsInQueue: new Array<ts.dto.SkillInQueueDto>(),
+            pilotId: 1,
+            currentTrainingNameAndLevel: "Interceprots 2",
+            currentTrainingLength: "10d 20g 5m 3s",
+        } as ts.dto.PilotDto;
+        result.push(p);
 
-    //    p = {
-    //        name: "one skill",
-    //        url: "https://image.eveonline.com/Character/1_64.jpg",
-    //        skills: [{ name:"Minmatar Starship Engineering", levelCompleted:0, levelTraining: 1}],
-    //        color: purple
-    //    };
-    //    result.push(p);
+        p = {
+            name: "one skill",
+            url: "https://image.eveonline.com/Character/1_64.jpg",
+            skillsInQueue: [
+                { skillName: "Skill 1", level: 2, skillInQueueId: 1, pilotId: 1, order: 0 } as ts.dto.SkillInQueueDto,
+                { skillName: "Skill 2", level: 2, skillInQueueId: 1, pilotId: 1, order: 1 } as ts.dto.SkillInQueueDto,
+            ],
+            pilotId: 1,
+            currentTrainingNameAndLevel: "Interceprots 2",
+            currentTrainingLength: "10d 20g 5m 3s"
+        } as ts.dto.PilotDto;
+        result.push(p);
 
-    //    p = {
-    //        name: "one skill bis",
-    //        url: "https://image.eveonline.com/Character/1_64.jpg",
-    //        skills: [{ name: "Minmatar Starship Engineering", levelCompleted: 5, levelTraining: 0 }],
-    //        color: purple
-    //    };
-    //    result.push(p);
+        p = {
+            name: "two skill",
+            url: "https://image.eveonline.com/Character/1_64.jpg",
+            skillsInQueue: [
+                { skillName: "Skill 1", level: 2, skillInQueueId: 1, pilotId: 1, order: 0 } as ts.dto.SkillInQueueDto,
+                { skillName: "Skill 2", level: 2, skillInQueueId: 1, pilotId: 1, order: 1 } as ts.dto.SkillInQueueDto,
+                { skillName: "Skill 3", level: 3, skillInQueueId: 1, pilotId: 1, order: 2 } as ts.dto.SkillInQueueDto,
+            ],
+            pilotId: 1,
+            currentTrainingNameAndLevel: "Interceprots 2",
+            currentTrainingLength: "10d 20g 5m 3s"
+        } as ts.dto.PilotDto;
+        result.push(p);
 
-    //    p = {
-    //        name: "two skills",
-    //        url: "https://image.eveonline.com/Character/1_64.jpg",
-    //        skills: [{ name: "Minmatar Starship Engineering", levelCompleted: 0, levelTraining: 0 }, { name: "Minmatar Starship Engineering", levelCompleted: 0, levelTraining: 1 }],
-    //        color: purple
-    //    };
-    //    result.push(p);
+        p = {
+            name: "three skill",
+            url: "https://image.eveonline.com/Character/1_64.jpg",
+            skillsInQueue: [
+                { skillName: "Skill 1", level: 2, skillInQueueId: 1, pilotId: 1, order: 0 } as ts.dto.SkillInQueueDto,
+                { skillName: "Skill 2", level: 2, skillInQueueId: 1, pilotId: 1, order: 1 } as ts.dto.SkillInQueueDto,
+                { skillName: "Skill 3 really long skill name ", level: 3, skillInQueueId: 1, pilotId: 1, order: 2 } as ts.dto.SkillInQueueDto,
+                { skillName: "Skill 4", level: 4, skillInQueueId: 1, pilotId: 1, order: 2 } as ts.dto.SkillInQueueDto,
+            ],
+            pilotId: 1,
+            currentTrainingNameAndLevel: "Interceprots 2",
+            currentTrainingLength: "10d 20g 5m 3s"
+        } as ts.dto.PilotDto;
+        result.push(p);
 
-    //    p = {
-    //        name: "more skills",
-    //        url: "https://image.eveonline.com/Character/1_64.jpg",
-    //        skills: [{ name: "Minmatar Starship Engineering", levelCompleted: 0, levelTraining: 1 }, { name: "Minmatar Starship Engineering", levelCompleted: 0, levelTraining: 2 }, { name: "Minmatar Starship Engineering", levelCompleted: 0, levelTraining: 3 }, { name: "Minmatar Starship Engineering", levelCompleted: 0, levelTraining: 4 }, { name: "Minmatar Starship Engineering", levelCompleted: 0, levelTraining: 5 }, { name: "Minmatar Starship Engineering2", levelCompleted: 2, levelTraining: 5 }],
-    //        color: purple
-    //    };
-    //    result.push(p);
+        p = {
+            name: "four skill",
+            url: "https://image.eveonline.com/Character/1_64.jpg",
+            skillsInQueue: [
+                { skillName: "Skill 1", level: 2, skillInQueueId: 1, pilotId: 1, order: 0 } as ts.dto.SkillInQueueDto,
+                { skillName: "Skill 2", level: 2, skillInQueueId: 1, pilotId: 1, order: 1 } as ts.dto.SkillInQueueDto,
+                { skillName: "Skill 3", level: 3, skillInQueueId: 1, pilotId: 1, order: 2 } as ts.dto.SkillInQueueDto,
+                { skillName: "Skill 4", level: 4, skillInQueueId: 1, pilotId: 1, order: 2 } as ts.dto.SkillInQueueDto,
+                { skillName: "Skill 5", level: 5, skillInQueueId: 1, pilotId: 1, order: 2 } as ts.dto.SkillInQueueDto,
+            ],
+            pilotId: 1,
+            currentTrainingNameAndLevel: "Interceprots 2",
+            currentTrainingLength: "10d 20g 5m 3s"
+        } as ts.dto.PilotDto;
+        result.push(p);
 
-    //    return result;
-    //}
+        return result;
+    }
 };
 

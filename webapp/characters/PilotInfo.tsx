@@ -40,7 +40,7 @@ export class PilotInfo extends React.Component<PilotInfoProperties, any> {
         var that = this;
 
         return (
-            <div className="col-md-4 col-xs-12 col-lg-3" style={{ margin: "5px" }}>
+            <div style={{ margin: "25px" }}>
               <Link to={"/pilot/" + encodeURIComponent(this.props.name)}>
               <table width="100%" >
                 <tbody style={{lineHeight: "normal"}}>
@@ -60,7 +60,7 @@ export class PilotInfo extends React.Component<PilotInfoProperties, any> {
                     <tbody style={{ background: "white", fontSize: "75%", color: "black"}}>
                     {queueTraining.map(skill => {
                             return <tr key={skill.skillName + skill.level}>
-                                <td><div style={{ marginLeft: "4px" }}>{skill.skillName}</div></td>
+                                <td><div style={{ marginLeft: "4px", marginRight:"20px" }}>{skill.skillName}</div></td>
                                 <td style={{width:"1px"}}><SkillBar levelTraining={skill.level} levelCompleted={skill.level-1} color={that.props.color}/></td>
                                 </tr>;
                     }) }

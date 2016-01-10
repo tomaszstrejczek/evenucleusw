@@ -64,5 +64,8 @@
     "webpack": "^1.12.2",
     "webpack-notifier": "^1.2.1",
     "when": "^3.7.3"
+  },
+  "dependencies": {
+    "auto-prefixer": "^0.4.2"
   }
 }
