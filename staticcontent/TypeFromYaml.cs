@@ -26,5 +26,15 @@ namespace ts.staticcontent
             else
                 return "Unknown";
         }
+
+        public static long FromTypeName(string name)
+        {
+            var namel = name.ToLower();
+            foreach(var k in typeids)
+                if (k.Value!=null && k.Value.ToLower() == namel)
+                    return k.Key;
+
+            return -1;
+        }
     }
 }

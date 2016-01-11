@@ -78,6 +78,7 @@ namespace ring1
                 new Pilots(container.Resolve<IPilotRepo>()),
                 new ts.api.BackgroundUpdate(container.Resolve<IBackgroundUpdate>()), 
                 new ts.api.KeyInfoService(container.Resolve<IKeyInfoService>()),
+                new ts.api.TypeNameService(container.Resolve<ITypeNameDict>()), 
             }.AsEnumerable();
         }
     }

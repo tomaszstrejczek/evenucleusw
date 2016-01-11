@@ -141,6 +141,7 @@
   <ItemGroup>
     <Compile Include="AssemblyInit.cs" />
     <Compile Include="BackgroundUpdateT.cs" />
+    <Compile Include="TypeNameServiceT.cs" />
     <Compile Include="KeyInfoService.cs" />
     <Compile Include="AccountT.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

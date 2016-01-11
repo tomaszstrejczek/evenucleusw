@@ -41,7 +41,7 @@ namespace ring0
         }
 
         public IEveLibCache EveCache => new EveSqlServerCache(Logger, AccountContextProvider);
-        public ITypeNameDict TypeNameDict => new TypeNameDict(AccountContextProvider, EveCache, Logger);
+        public ITypeNameDict TypeNameDict => new TypeNameDict(Logger);
         public ICacheLocalProvider CacheLocalProvider => new CacheLocalProvider(EveCache);
         public IRefTypeDict RefTypeDict => new RefTypeDict(CacheLocalProvider, EveCache);
         public EveApi EveApi => new EveApi(Logger, EveCache);

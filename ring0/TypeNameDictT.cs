@@ -15,7 +15,7 @@ namespace ring0
         [TestMethod]
         public async Task SimpleCall()
         {
-            var typeNameDict = new TypeNameDict(AccountContextProvider, EveCache, Logger);
+            var typeNameDict = new TypeNameDict(Logger);
 
             var r = await typeNameDict.GetById(new long[] { 12345 });
             Assert.AreEqual("200mm Railgun I Blueprint", r[0].Item2);
@@ -28,7 +28,7 @@ namespace ring0
         [TestMethod]
         public void Performance()
         {
-            var typeNameDict = new TypeNameDict(AccountContextProvider, EveCache, Logger);
+            var typeNameDict = new TypeNameDict(Logger);
 
             var ids = new List<long>();
             var ids2 = new List<long>();
@@ -62,5 +62,32 @@ namespace ring0
 
             z.PrintComparison();
         }
+
+        [TestMethod]
+        public async Task TypeName()
+        {
+            var typeNameDict = new TypeNameDict(Logger);
+
+            var r = await typeNameDict.GetByName(new string[] { "200mm Railgun I Blueprint" });
+            Assert.AreEqual(12345, r[0].Item1);
+
+            r = await typeNameDict.GetByName(new string[] { "200mm Railgun I Blueprint" });
+            Assert.AreEqual(12345, r[0].Item1);
+
+            r = await typeNameDict.GetByName(new string[] {"200mm Railgun I Blueprint", "Confessor"});
+            Assert.AreEqual(12345, r[0].Item1);
+            Assert.AreEqual(34317, r[1].Item1);
+
+            r = await typeNameDict.GetByName(new string[] { "Tengu" });
+            Assert.IsTrue(r[0].Item1 > 0);
+
+            r = await typeNameDict.GetByName(new string[] { "tengu" });
+            Assert.IsTrue(r[0].Item1 > 0);
+
+            r = await typeNameDict.GetByName(new string[] { "alamakota" });
+            Assert.AreEqual(-1, r[0].Item1);
+
+        }
+
     }
 }

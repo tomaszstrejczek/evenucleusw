@@ -176,6 +176,7 @@
     <Compile Include="BeforeRequest.cs" />
     <Compile Include="Bootstrapper.cs" />
     <Compile Include="ErrorResponse.cs" />
+    <Compile Include="TypeNameService.cs" />
     <Compile Include="Migrations\20151128202714_Initial.cs" />
     <Compile Include="Migrations\20151128202714_Initial.Designer.cs" />
     <Compile Include="Migrations\AccountContextModelSnapshot.cs" />

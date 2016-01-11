@@ -9,5 +9,6 @@ namespace ts.data
     public interface ITypeNameDict
     {
         Task<List<Tuple<long, string>>> GetById(IEnumerable<long> ids);
+        Task<List<Tuple<long, string>>> GetByName(IEnumerable<string> name);
     }
 }
