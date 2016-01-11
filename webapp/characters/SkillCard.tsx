@@ -61,16 +61,19 @@ export class SkillCard extends React.Component<SkillCardProperties, any> {
                                     </div>;
                     })}
                     </div>
-                    <div><hr/></div>
-                    <div style={row}>
-                        {this.props.grouping.section2.map((skill, key) => {
-                            return <div key={key} style={rowElement}>
-                                        <div>{skill}</div>
-                                        <SkillBar levelCompleted={getLevel(skill) } levelTraining={0} color={this.props.color} marginLeft="10px"/>
-                                </div>;
-                        }) }
+                    {this.props.grouping.section2.map((skillArr, key) => {
+                            return <div key={"skillarr"+key.toString()}><div><hr/></div>
+                            <div style={row}>
+                                {skillArr.map((skill, key) => {
+                                return <div key={key} style={rowElement}>
+                                                <div>{skill}</div>
+                                                <SkillBar levelCompleted={getLevel(skill) } levelTraining={0} color={this.props.color} marginLeft="10px"/>
+                                        </div>;
+                            }) }
+                                </div>
+                            </div>;
+                        })}
                         </div>
-                </div>
             </div>
         );
     }

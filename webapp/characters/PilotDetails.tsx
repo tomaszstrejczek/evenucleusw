@@ -8,6 +8,9 @@ import {owl} from './../utils/deepCopy';
 import {PilotInfo} from './PilotInfo';
 import {SkillCard} from './SkillCard';
 import {frigates, destroyers, cruisers, battlecruisers, battleships, transport} from './SkillData';
+import {carriers, freighters, dreads, titans, jfreighters, industryCapitals} from './SkillData';
+import {barges, armor, shield, engineering, rigging} from './SkillData';
+import {drones, projectiles, missiles, amarrTech3, caldariTech3, gallenteTech3, minmatarTech3} from './SkillData';
 import {NotFound} from './../special/NotFound';
 
 import {IAppState} from './../app/AppState';
@@ -54,7 +57,15 @@ export class PilotDetails extends React.Component<any, any> {
         var tabContent = [frigates, destroyers, cruisers, battlecruisers, battleships];
 
         if (tab === "industry") {
-            tabContent = [transport];
+            tabContent = [barges, transport, industryCapitals];
+        } else if (tab === "capital") {
+            tabContent = [freighters, carriers, dreads, jfreighters, titans];
+        } else if (tab === "defense") {
+            tabContent = [armor, shield, engineering, rigging];
+        } else if (tab === "weapons") {
+            tabContent = [drones, projectiles, missiles];
+        } else if (tab === "tech3") {
+            tabContent = [amarrTech3, caldariTech3, gallenteTech3, minmatarTech3];
         }
 
         var s: IAppState = this.context.store.getState() as IAppState;
@@ -83,6 +94,10 @@ export class PilotDetails extends React.Component<any, any> {
                     <ul className="nav nav-pills">
                         <li><Link to={"/pilot/"+encodeURIComponent(name)} query={{tab: "combat"}}>Combat ships</Link></li>
                         <li><Link to={"/pilot/" + encodeURIComponent(name) } query={{ tab: "industry" }}>Industry ships</Link></li>
+                        <li><Link to={"/pilot/" + encodeURIComponent(name) } query={{ tab: "capital" }}>Capital ships</Link></li>
+                        <li><Link to={"/pilot/" + encodeURIComponent(name) } query={{ tab: "defense" }}>Defense &amp; fitting</Link></li>
+                        <li><Link to={"/pilot/" + encodeURIComponent(name) } query={{ tab: "weapons" }}>Weapons</Link></li>
+                        <li><Link to={"/pilot/" + encodeURIComponent(name) } query={{ tab: "tech3" }}>Tech3</Link></li>
                     </ul>
                     {tabContent.map((tabInfo, key) => {
                             return <SkillCard key={tab + key.toString()} skills={data.skills} grouping={tabInfo} color={key%2==0?red:purple}/>;
