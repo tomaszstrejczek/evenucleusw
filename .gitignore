@@ -105,3 +105,4 @@ staticcontent/obj/
 devtools/obj/
 devtools/bin/
 webapp/deploy/
+webapp/test/dom/skill-data-test.js

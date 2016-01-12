@@ -80,7 +80,7 @@ export var shield: ISkillGrouping = {
 
 export var engineering: ISkillGrouping = {
     section1: ["CPU Management", "Power Grid Management", "Capacitor Management", "Weapon Upgrades"],
-    section2: [["Advanced Weapon Upgrades", "Capacitor System Management", "Electronics Upgrades", "Energy Grid Upgrades", "Thermodynamics"]]
+    section2: [["Advanced Weapon Upgrades", "Capacitor Systems Operation", "Electronics Upgrades", "Energy Grid Upgrades", "Thermodynamics"]]
 };
 
 export var rigging: ISkillGrouping = {
