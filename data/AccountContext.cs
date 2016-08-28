@@ -48,7 +48,7 @@ namespace ts.data
 
         static private Config _config = new Config();
 
-        static public bool UseInMemory = true;
+        static public bool UseInMemory = false;
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
